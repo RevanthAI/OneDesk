@@ -1,0 +1,594 @@
+Using Python 3.12.12 environment at: /usr/local
+Resolved 13 packages in 83ms
+Downloading hf-xet (4.1MiB)
+ Downloaded hf-xet
+Prepared 13 packages in 108ms
+Installed 13 packages in 10ms
+ + certifi==2026.10.23
+ + charset-normalizer==3.5.2
+ + filelock==4.2.10
+ + fsspec==2026.9.0
+ + hf-xet==1.8.0
+ + huggingface-hub==0.36.2
+ + idna==3.20
+ + packaging==26.3
+ + pyyaml==6.0.3
+ + requests==2.34.2
+ + tqdm==4.70.1
+ + typing-extensions==4.16.0
+ + urllib3==2.8.0
+
+cloud_v2_bootstrap.sh:   0%|          | 0.00/1.02k [00:00<?, ?B/s][Acloud_v2_bootstrap.sh: 100%|██████████| 1.02k/1.02k [00:00<00:00, 7.20MB/s]
+Using Python 3.12.12 environment at: /usr/local
+Resolved 25 packages in 133ms
+Downloading setuptools (1.2MiB)
+Downloading nvidia-cufft-cu12 (184.2MiB)
+Downloading sympy (6.0MiB)
+Downloading networkx (2.0MiB)
+Downloading nvidia-nccl-cu12 (307.4MiB)
+Downloading triton (148.4MiB)
+Downloading torch (847.9MiB)
+Downloading nvidia-cuda-nvrtc-cu12 (84.0MiB)
+Downloading nvidia-cusparse-cu12 (274.9MiB)
+Downloading nvidia-cuda-cupti-cu12 (9.8MiB)
+Downloading nvidia-cufile-cu12 (1.1MiB)
+Downloading nvidia-cublas-cu12 (566.8MiB)
+Downloading nvidia-cusolver-cu12 (255.1MiB)
+Downloading nvidia-cusparselt-cu12 (273.9MiB)
+Downloading nvidia-curand-cu12 (60.7MiB)
+Downloading nvidia-nvjitlink-cu12 (37.4MiB)
+Downloading nvidia-cudnn-cu12 (674.0MiB)
+ Downloaded nvidia-cufile-cu12
+ Downloaded nvidia-cuda-cupti-cu12
+ Downloaded nvidia-nvjitlink-cu12
+ Downloaded setuptools
+ Downloaded nvidia-cufft-cu12
+ Downloaded nvidia-curand-cu12
+ Downloaded networkx
+ Downloaded nvidia-cuda-nvrtc-cu12
+ Downloaded triton
+ Downloaded nvidia-nccl-cu12
+ Downloaded nvidia-cusparse-cu12
+ Downloaded sympy
+ Downloaded nvidia-cusolver-cu12
+ Downloaded nvidia-cublas-cu12
+ Downloaded nvidia-cusparselt-cu12
+ Downloaded nvidia-cudnn-cu12
+ Downloaded torch
+Prepared 22 packages in 24.46s
+Installed 22 packages in 390ms
+ + jinja2==3.1.6
+ + markupsafe==3.0.3
+ + mpmath==1.3.0
+ + networkx==3.7
+ + nvidia-cublas-cu12==12.8.4.1
+ + nvidia-cuda-cupti-cu12==12.8.90
+ + nvidia-cuda-nvrtc-cu12==12.8.93
+ + nvidia-cuda-runtime-cu12==12.8.90
+ + nvidia-cudnn-cu12==9.10.2.21
+ + nvidia-cufft-cu12==11.3.3.83
+ + nvidia-cufile-cu12==1.13.1.3
+ + nvidia-curand-cu12==10.3.9.90
+ + nvidia-cusolver-cu12==11.7.3.90
+ + nvidia-cusparse-cu12==12.5.8.93
+ + nvidia-cusparselt-cu12==0.7.1
+ + nvidia-nccl-cu12==2.27.3
+ + nvidia-nvjitlink-cu12==12.8.93
+ + nvidia-nvtx-cu12==12.8.90
+ + setuptools==78.1.0
+ + sympy==1.14.0
+ + torch==2.8.0+cu128
+ + triton==3.4.0
+Using Python 3.12.12 environment at: /usr/local
+Resolved 83 packages in 432ms
+Downloading pygments (1.2MiB)
+Downloading kiwisolver (1.4MiB)
+Downloading tokenizers (3.1MiB)
+Downloading pandas (11.5MiB)
+Downloading pillow (6.8MiB)
+Downloading numpy (16.0MiB)
+Downloading pyarrow (52.5MiB)
+Downloading fonttools (5.2MiB)
+Downloading transformers (11.4MiB)
+Downloading tensorboard-data-server (6.3MiB)
+Downloading aiohttp (1.8MiB)
+Downloading matplotlib (8.3MiB)
+Downloading grpcio (7.0MiB)
+Downloading tensorboard (5.3MiB)
+ Downloaded kiwisolver
+ Downloaded aiohttp
+ Downloaded tokenizers
+ Downloaded pygments
+ Downloaded tensorboard-data-server
+ Downloaded fonttools
+ Downloaded pillow
+ Downloaded tensorboard
+ Downloaded grpcio
+ Downloaded matplotlib
+ Downloaded numpy
+ Downloaded pandas
+ Downloaded pyarrow
+ Downloaded transformers
+Prepared 49 packages in 1.94s
+Uninstalled 1 package in 1ms
+Installed 49 packages in 174ms
+ + absl-py==2.5.1
+ + accelerate==1.15.0
+ + aiohappyeyeballs==2.7.1
+ + aiohttp==3.14.5
+ + aiosignal==1.4.0
+ + anyio==4.16.0
+ + attrs==26.1.0
+ + contourpy==1.4.0
+ + cycler==0.12.1
+ + datasets==4.8.5
+ + dill==0.4.1
+ + fonttools==4.68.0
+ + frozenlist==1.8.0
+ - fsspec==2026.9.0
+ + fsspec==2026.2.0
+ + grpcio==1.85.1
+ + h11==0.16.0
+ + httpcore==1.0.9
+ + httpx==0.28.1
+ + kiwisolver==1.5.1
+ + markdown==3.11.3
+ + markdown-it-py==4.3.0
+ + matplotlib==3.10.7
+ + mdurl==0.1.2
+ + multidict==7.2.1
+ + multiprocess==0.70.19
+ + numpy==2.5.4
+ + pandas==3.1.1
+ + peft==0.17.1
+ + pillow==13.0.0
+ + propcache==0.5.4
+ + protobuf==7.36.2
+ + psutil==7.2.2
+ + pyarrow==26.0.1
+ + pygments==2.21.0
+ + pyparsing==3.3.3
+ + python-dateutil==4.0.0
+ + python-dotenv==1.2.4
+ + regex==2026.11.9
+ + rich==15.0.0
+ + safetensors==0.8.0
+ + tensorboard==2.20.0
+ + tensorboard-data-server==0.7.2
+ + tokenizers==0.22.2
+ + transformers==4.57.6
+ + trl==0.23.1
+ + tzdata==2026.6
+ + werkzeug==3.1.9
+ + xxhash==4.1.0
+ + yarl==1.25.1
+
+pipeline_bundle.zip:   0%|          | 0.00/1.66M [00:00<?, ?B/s][Apipeline_bundle.zip: 100%|██████████| 1.66M/1.66M [00:00<00:00, 4.48MB/s]
+{"event": "v2_phase", "phase": "A_base_evaluation", "updated_at": 1794479745.4202604}
+
+tokenizer_config.json:   0%|          | 0.00/8.17k [00:00<?, ?B/s][Atokenizer_config.json: 100%|██████████| 8.17k/8.17k [00:00<00:00, 49.4MB/s]
+
+tokenizer.json:   0%|          | 0.00/21.4M [00:00<?, ?B/s][Atokenizer.json: 100%|██████████| 21.4M/21.4M [00:00<00:00, 51.4MB/s]
+
+special_tokens_map.json:   0%|          | 0.00/567 [00:00<?, ?B/s][Aspecial_tokens_map.json: 100%|██████████| 567/567 [00:00<00:00, 4.16MB/s]
+
+config.json:   0%|          | 0.00/1.96k [00:00<?, ?B/s][Aconfig.json: 100%|██████████| 1.96k/1.96k [00:00<00:00, 17.5MB/s]
+
+model.safetensors.index.json:   0%|          | 0.00/23.6k [00:00<?, ?B/s][Amodel.safetensors.index.json: 100%|██████████| 23.6k/23.6k [00:00<00:00, 24.1MB/s]
+
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s][A
+model-00002-of-00002.safetensors:   0%|          | 0.00/1.71G [00:00<?, ?B/s][A
+model-00001-of-00002.safetensors:   0%|          | 0.00/4.99G [00:00<?, ?B/s][A
+model-00001-of-00002.safetensors:   5%|▌         | 256M/4.99G [00:01<00:18, 253MB/s][A
+model-00002-of-00002.safetensors:  16%|█▌        | 268M/1.71G [00:02<00:13, 107MB/s][A
+model-00001-of-00002.safetensors:  15%|█▌        | 768M/4.99G [00:02<00:13, 313MB/s][A
+model-00002-of-00002.safetensors:  45%|████▌     | 768M/1.71G [00:03<00:03, 249MB/s][A
+model-00001-of-00002.safetensors:  31%|███       | 1.54G/4.99G [00:04<00:09, 382MB/s][A
+model-00001-of-00002.safetensors:  52%|█████▏    | 2.62G/4.99G [00:05<00:04, 591MB/s][A
+model-00001-of-00002.safetensors:  77%|███████▋  | 3.82G/4.99G [00:06<00:01, 776MB/s][Amodel-00001-of-00002.safetensors: 100%|██████████| 4.99G/4.99G [00:07<00:00, 692MB/s]
+
+Fetching 2 files:  50%|█████     | 1/2 [00:07<00:07,  7.31s/it][A
+model-00002-of-00002.safetensors:  79%|███████▊  | 1.34G/1.71G [00:07<00:01, 186MB/s][Amodel-00002-of-00002.safetensors: 100%|██████████| 1.71G/1.71G [00:07<00:00, 224MB/s]
+Fetching 2 files: 100%|██████████| 2/2 [00:07<00:00,  3.85s/it]
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][ALoading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  3.05it/s]
+
+generation_config.json:   0%|          | 0.00/132 [00:00<?, ?B/s][Ageneration_config.json: 100%|██████████| 132/132 [00:00<00:00, 1.06MB/s]
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "test_synth", "completed": 16, "total": 400}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "test_synth", "completed": 32, "total": 400}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "test_synth", "completed": 48, "total": 400}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "test_synth", "completed": 64, "total": 400}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "test_synth", "completed": 80, "total": 400}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "test_synth", "completed": 96, "total": 400}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "test_synth", "completed": 112, "total": 400}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "test_synth", "completed": 128, "total": 400}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "test_synth", "completed": 144, "total": 400}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "test_synth", "completed": 160, "total": 400}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "test_synth", "completed": 176, "total": 400}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "test_synth", "completed": 192, "total": 400}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "test_synth", "completed": 208, "total": 400}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "test_synth", "completed": 224, "total": 400}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "test_synth", "completed": 240, "total": 400}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "test_synth", "completed": 256, "total": 400}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "test_synth", "completed": 272, "total": 400}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "test_synth", "completed": 288, "total": 400}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "test_synth", "completed": 304, "total": 400}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "test_synth", "completed": 320, "total": 400}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "test_synth", "completed": 336, "total": 400}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "test_synth", "completed": 352, "total": 400}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "test_synth", "completed": 368, "total": 400}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "test_synth", "completed": 384, "total": 400}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "test_synth", "completed": 400, "total": 400}
+{"event": "v2_eval_complete", "output": "reports_v2/v2_base_fire", "split": "test_synth", "accuracy": 0.005}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "repo_style", "completed": 16, "total": 100}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "repo_style", "completed": 32, "total": 100}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "repo_style", "completed": 48, "total": 100}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "repo_style", "completed": 64, "total": 100}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "repo_style", "completed": 80, "total": 100}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "repo_style", "completed": 96, "total": 100}
+{"event": "v2_eval_progress", "output": "reports_v2/v2_base_fire", "split": "repo_style", "completed": 100, "total": 100}
+{"event": "v2_eval_complete", "output": "reports_v2/v2_base_fire", "split": "repo_style", "accuracy": 0.0}
+{"event": "v2_phase", "phase": "B_sft_training", "updated_at": 1794480157.8742805}
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][ALoading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  3.03it/s]
+{"event": "sft_step", "step": 1, "loss": 0.6170046627521515, "grad_norm": 1.2022945880889893, "seconds": 15.642166286000247, "supervised_tokens": 2729, "samples_seen": 16, "learning_rate": 0.0001}
+{"event": "sft_step", "step": 2, "loss": 0.5578672885894775, "grad_norm": 1.1969671249389648, "seconds": 15.547605879000002, "supervised_tokens": 2490, "samples_seen": 32, "learning_rate": 9.874639560909117e-05}
+{"event": "sft_step", "step": 3, "loss": 0.43205301463603973, "grad_norm": 0.739035964012146, "seconds": 15.629251117000422, "supervised_tokens": 2582, "samples_seen": 48, "learning_rate": 9.504844339512095e-05}
+{"event": "sft_step", "step": 4, "loss": 0.24420344084501266, "grad_norm": 0.4075474739074707, "seconds": 15.54831041199941, "supervised_tokens": 2266, "samples_seen": 64, "learning_rate": 8.90915741234015e-05}
+{"event": "sft_step", "step": 5, "loss": 0.31511177122592926, "grad_norm": 0.532898485660553, "seconds": 15.534577532000185, "supervised_tokens": 1943, "samples_seen": 80, "learning_rate": 8.117449009293668e-05}
+{"event": "sft_step", "step": 6, "loss": 0.22251176834106445, "grad_norm": 0.40696486830711365, "seconds": 15.537783103000038, "supervised_tokens": 2002, "samples_seen": 96, "learning_rate": 7.169418695587791e-05}
+{"event": "sft_step", "step": 7, "loss": 0.1651037409901619, "grad_norm": 0.3059110939502716, "seconds": 15.613144566000301, "supervised_tokens": 2285, "samples_seen": 112, "learning_rate": 6.112604669781572e-05}
+{"event": "sft_step", "step": 8, "loss": 0.15640466660261154, "grad_norm": 0.2990094721317291, "seconds": 15.538175628000317, "supervised_tokens": 2242, "samples_seen": 128, "learning_rate": 5e-05}
+{"event": "sft_step", "step": 9, "loss": 0.13525160402059555, "grad_norm": 0.29188790917396545, "seconds": 15.463621303000764, "supervised_tokens": 2148, "samples_seen": 144, "learning_rate": 3.887395330218429e-05}
+{"event": "sft_step", "step": 10, "loss": 0.10802547261118889, "grad_norm": 0.22031281888484955, "seconds": 15.479601406000256, "supervised_tokens": 2289, "samples_seen": 160, "learning_rate": 2.8305813044122097e-05}
+{"event": "sft_step", "step": 11, "loss": 0.12450585514307022, "grad_norm": 0.2521587908267975, "seconds": 15.443122141999993, "supervised_tokens": 2089, "samples_seen": 176, "learning_rate": 1.8825509907063327e-05}
+{"event": "sft_step", "step": 12, "loss": 0.10128860175609589, "grad_norm": 0.2011539787054062, "seconds": 15.482338488000096, "supervised_tokens": 2477, "samples_seen": 192, "learning_rate": 1.0908425876598528e-05}
+{"event": "sft_step", "step": 13, "loss": 0.09739609062671661, "grad_norm": 0.1948506385087967, "seconds": 15.485754442000143, "supervised_tokens": 2418, "samples_seen": 208, "learning_rate": 4.951556604879048e-06}
+{"event": "sft_step", "step": 14, "loss": 0.07098792865872383, "grad_norm": 0.1799764186143875, "seconds": 15.489322913999786, "supervised_tokens": 2424, "samples_seen": 224, "learning_rate": 1.2536043909088136e-06}
+{"event": "sft_step", "step": 15, "loss": 0.10009889677166939, "grad_norm": 0.2441711276769638, "seconds": 15.53407750399947, "supervised_tokens": 2172, "samples_seen": 240, "learning_rate": 0.0}
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...int-15/optimizer_state.pt:   1%|          | 2.25MB /  242MB            [A[A
+
+
+  ...ng/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A
+
+
+
+  ...ckpoint-15/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A[A
+
+  ...int-15/optimizer_state.pt:   1%|          | 2.25MB /  242MB            [A[A
+
+
+  ...ng/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A
+
+
+
+  ...ckpoint-15/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A[A
+
+
+
+
+  ...adapter_model.safetensors:  42%|████▏     | 50.3MB /  121MB            [A[A[A[A[A
+
+
+
+
+
+  ...adapter_model.safetensors:   7%|▋         | 8.33MB /  121MB            [A[A[A[A[A[A
+
+  ...int-15/optimizer_state.pt:  21%|██▏       | 51.7MB /  242MB            [A[A
+
+
+  ...ng/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A
+
+
+
+  ...ckpoint-15/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A[A
+
+
+
+
+  ...adapter_model.safetensors:  42%|████▏     | 50.3MB /  121MB            [A[A[A[A[A
+
+
+
+
+
+  ...adapter_model.safetensors:   7%|▋         | 8.33MB /  121MB            [A[A[A[A[A[A
+
+  ...int-15/optimizer_state.pt:  28%|██▊       | 67.1MB /  242MB            [A[A
+
+
+  ...ng/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A
+
+
+
+  ...ckpoint-15/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A[A
+
+
+
+
+  ...adapter_model.safetensors:  55%|█████▌    | 67.1MB /  121MB            [A[A[A[A[A
+
+
+
+
+
+  ...adapter_model.safetensors:   9%|▉         | 11.1MB /  121MB            [A[A[A[A[A[A
+
+  ...int-15/optimizer_state.pt:  28%|██▊       | 67.1MB /  242MB            [A[A
+
+
+  ...ng/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A
+
+
+
+  ...ckpoint-15/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A[A
+
+
+
+
+  ...adapter_model.safetensors:  58%|█████▊    | 70.8MB /  121MB            [A[A[A[A[A
+
+
+
+
+
+  ...adapter_model.safetensors:  42%|████▏     | 50.7MB /  121MB            [A[A[A[A[A[AProcessing Files (2 / 5)      :  44%|████▍     |  231MB /  527MB, 21.8MB/s  
+New Data Upload               :  55%|█████▍    |  174MB /  316MB, 16.5MB/s  [A
+
+  ...int-15/optimizer_state.pt:  28%|██▊       | 67.1MB /  242MB            [A[A
+
+
+  ...ng/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A
+
+
+
+  ...ckpoint-15/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A[A
+
+
+
+
+  ...adapter_model.safetensors:  61%|██████    | 73.3MB /  121MB            [A[A[A[A[A
+
+
+
+
+
+  ...adapter_model.safetensors:  65%|██████▍   | 78.2MB /  121MB            [A[A[A[A[A[A
+
+  ...int-15/optimizer_state.pt:  30%|███       | 72.7MB /  242MB            [A[A
+
+
+  ...ng/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A
+
+
+
+  ...ckpoint-15/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A[A
+
+
+
+
+  ...adapter_model.safetensors:  61%|██████    | 73.3MB /  121MB            [A[A[A[A[A
+
+
+
+
+
+  ...adapter_model.safetensors:  65%|██████▍   | 78.2MB /  121MB            [A[A[A[A[A[A
+
+  ...int-15/optimizer_state.pt:  51%|█████     |  122MB /  242MB            [A[A
+
+
+  ...ng/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A
+
+
+
+  ...ckpoint-15/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A[A
+
+
+
+
+  ...adapter_model.safetensors:  79%|███████▉  | 95.5MB /  121MB            [A[A[A[A[A
+
+
+
+
+
+  ...adapter_model.safetensors:  65%|██████▍   | 78.2MB /  121MB            [A[A[A[A[A[A
+
+  ...int-15/optimizer_state.pt:  73%|███████▎  |  178MB /  242MB            [A[A
+
+
+  ...ng/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A
+
+
+
+  ...ckpoint-15/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A[A
+
+
+
+
+  ...adapter_model.safetensors: 100%|█████████▉|  121MB /  121MB            [A[A[A[A[A
+
+
+
+
+
+  ...adapter_model.safetensors:  65%|██████▍   | 78.2MB /  121MB            [A[A[A[A[A[AProcessing Files (2 / 5)      :  80%|███████▉  |  420MB /  527MB, 37.3MB/s  
+New Data Upload               :  84%|████████▍ |  360MB /  426MB, 32.2MB/s  [A
+
+  ...int-15/optimizer_state.pt:  83%|████████▎ |  201MB /  242MB            [A[A
+
+
+  ...ng/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A
+
+
+
+  ...ckpoint-15/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A[A
+
+
+
+
+  ...adapter_model.safetensors: 100%|█████████▉|  121MB /  121MB            [A[A[A[A[A
+
+
+
+
+
+  ...adapter_model.safetensors: 100%|█████████▉|  121MB /  121MB            [A[A[A[A[A[A
+
+  ...int-15/optimizer_state.pt: 100%|█████████▉|  242MB /  242MB            [A[A
+
+
+  ...ng/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A
+
+
+
+  ...ckpoint-15/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A[A
+
+
+
+
+  ...adapter_model.safetensors: 100%|█████████▉|  121MB /  121MB            [A[A[A[A[A
+
+
+
+
+
+  ...adapter_model.safetensors: 100%|█████████▉|  121MB /  121MB            [A[A[A[A[A[A
+
+  ...int-15/optimizer_state.pt: 100%|█████████▉|  242MB /  242MB            [A[A
+
+
+  ...ng/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A
+
+
+
+  ...ckpoint-15/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A[A
+
+
+
+
+  ...adapter_model.safetensors: 100%|██████████|  121MB /  121MB            [A[A[A[A[A
+
+
+
+
+
+  ...adapter_model.safetensors: 100%|█████████▉|  121MB /  121MB            [A[A[A[A[A[AProcessing Files (3 / 5)      : 100%|█████████▉|  527MB /  527MB, 43.4MB/s  
+New Data Upload               : 100%|█████████▉|  467MB /  467MB, 38.8MB/s  [A
+
+  ...int-15/optimizer_state.pt: 100%|█████████▉|  242MB /  242MB            [A[A
+
+
+  ...ng/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A
+
+
+
+  ...ckpoint-15/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A[A
+
+
+
+
+  ...adapter_model.safetensors: 100%|██████████|  121MB /  121MB            [A[A[A[A[A
+
+
+
+
+
+  ...adapter_model.safetensors: 100%|██████████|  121MB /  121MB            [A[A[A[A[A[A
+
+  ...int-15/optimizer_state.pt: 100%|██████████|  242MB /  242MB            [A[A
+
+
+  ...ng/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A
+
+
+
+  ...ckpoint-15/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A[A
+
+
+
+
+  ...adapter_model.safetensors: 100%|██████████|  121MB /  121MB            [A[A[A[A[A
+
+
+
+
+
+  ...adapter_model.safetensors: 100%|██████████|  121MB /  121MB            [A[A[A[A[A[AProcessing Files (5 / 5)      : 100%|██████████|  527MB /  527MB, 41.4MB/s  
+New Data Upload               : 100%|██████████|  467MB /  467MB, 37.0MB/s  
+  ...int-15/optimizer_state.pt: 100%|██████████|  242MB /  242MB            
+  ...ng/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            
+  ...ckpoint-15/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            
+  ...adapter_model.safetensors: 100%|██████████|  121MB /  121MB            
+  ...adapter_model.safetensors: 100%|██████████|  121MB /  121MB            
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...adapter_model.safetensors: 100%|██████████|  121MB /  121MB            [A[A
+
+
+  ...ng/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A
+
+  ...adapter_model.safetensors: 100%|██████████|  121MB /  121MB            [A[A
+
+
+  ...ng/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[AProcessing Files (2 / 2)      : 100%|██████████|  142MB /  142MB, 14.1MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...adapter_model.safetensors: 100%|██████████|  121MB /  121MB            
+  ...ng/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            
+{"event": "v2_phase", "phase": "B_sft_evaluation", "updated_at": 1794480453.2832649}
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...adapter_model.safetensors: 100%|██████████|  121MB /  121MB            [A[A
+
+
+  ...int-15/optimizer_state.pt: 100%|██████████|  242MB /  242MB            [A[A[A
+
+
+
+  ...ng/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A[A
+
+
+
+
+  ...adapter_model.safetensors: 100%|██████████|  121MB /  121MB            [A[A[A[A[A
+
+
+
+
+
+  ...ckpoint-15/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A[A[A[A
+
+  ...adapter_model.safetensors: 100%|██████████|  121MB /  121MB            [A[A
+
+
+  ...int-15/optimizer_state.pt: 100%|██████████|  242MB /  242MB            [A[A[A
+
+
+
+  ...ng/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A[A
+
+
+
+
+  ...adapter_model.safetensors: 100%|██████████|  121MB /  121MB            [A[A[A[A[A
+
+
+
+
+
+  ...ckpoint-15/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A[A[A[AProcessing Files (5 / 5)      : 100%|██████████|  527MB /  527MB,   ???B/s  
+New Data Upload               : |          |  0.00B /  0.00B,   ???B/s  
+  ...adapter_model.safetensors: 100%|██████████|  121MB /  121MB            
+  ...int-15/optimizer_state.pt: 100%|██████████|  242MB /  242MB            
+  ...ng/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            
+  ...adapter_model.safetensors: 100%|██████████|  121MB /  121MB            
+  ...ckpoint-15/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][ALoading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  2.98it/s]

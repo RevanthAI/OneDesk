@@ -1,0 +1,20 @@
+{
+  "tests": {
+    "tests": 120,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "protected_files": 19,
+  "existing_artifacts_verified_unchanged": 1503,
+  "changed_existing_artifacts": [],
+  "abstract_words": 365,
+  "sections": 11,
+  "gpu_training_launched": false,
+  "benchmark_model_inference_performed": false,
+  "paid_jobs_launched": false,
+  "real_git_status": "Not a git repository; temporary-index preview recorded separately",
+  "gitignore_validation": "46 expected ignore/eligibility checks passed, no eligible file >100MiB",
+  "dossier_sha256": "919d69db2a3b3816ecdf6b72b4859708ba5ffa21d50b00479ded982490d059c6",
+  "gitignore_sha256": "ca71fb0df5c9426dfe82273e46683e6628bbda1d65e00de6f58c8e0f2fe0be79"
+}

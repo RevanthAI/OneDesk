@@ -1,0 +1,1961 @@
+Using Python 3.12.12 environment at: /usr/local
+Resolved 13 packages in 253ms
+Downloading hf-xet (4.1MiB)
+ Downloaded hf-xet
+Prepared 13 packages in 155ms
+Installed 13 packages in 10ms
+ + certifi==2026.10.23
+ + charset-normalizer==3.5.2
+ + filelock==4.2.10
+ + fsspec==2026.9.0
+ + hf-xet==1.8.0
+ + huggingface-hub==0.36.2
+ + idna==3.20
+ + packaging==26.3
+ + pyyaml==6.0.3
+ + requests==2.34.2
+ + tqdm==4.70.1
+ + typing-extensions==4.16.0
+ + urllib3==2.8.0
+
+cloud_grpo_bootstrap.sh:   0%|          | 0.00/969 [00:00<?, ?B/s][Acloud_grpo_bootstrap.sh: 100%|██████████| 969/969 [00:00<00:00, 7.34MB/s]
+Using Python 3.12.12 environment at: /usr/local
+Resolved 25 packages in 189ms
+Downloading setuptools (1.2MiB)
+Downloading sympy (6.0MiB)
+Downloading networkx (2.0MiB)
+Downloading torch (847.9MiB)
+Downloading triton (148.4MiB)
+Downloading nvidia-nccl-cu12 (307.4MiB)
+Downloading nvidia-cuda-nvrtc-cu12 (84.0MiB)
+Downloading nvidia-cusparse-cu12 (274.9MiB)
+Downloading nvidia-cufft-cu12 (184.2MiB)
+Downloading nvidia-cuda-cupti-cu12 (9.8MiB)
+Downloading nvidia-cufile-cu12 (1.1MiB)
+Downloading nvidia-cublas-cu12 (566.8MiB)
+Downloading nvidia-cusolver-cu12 (255.1MiB)
+Downloading nvidia-cusparselt-cu12 (273.9MiB)
+Downloading nvidia-curand-cu12 (60.7MiB)
+Downloading nvidia-nvjitlink-cu12 (37.4MiB)
+Downloading nvidia-cudnn-cu12 (674.0MiB)
+ Downloaded nvidia-cufile-cu12
+ Downloaded nvidia-cuda-cupti-cu12
+ Downloaded setuptools
+ Downloaded networkx
+ Downloaded triton
+ Downloaded nvidia-nvjitlink-cu12
+ Downloaded nvidia-cuda-nvrtc-cu12
+ Downloaded sympy
+ Downloaded nvidia-curand-cu12
+ Downloaded nvidia-cufft-cu12
+ Downloaded nvidia-cusparse-cu12
+ Downloaded nvidia-cusolver-cu12
+ Downloaded nvidia-nccl-cu12
+ Downloaded nvidia-cusparselt-cu12
+ Downloaded nvidia-cublas-cu12
+ Downloaded nvidia-cudnn-cu12
+ Downloaded torch
+Prepared 22 packages in 28.43s
+Installed 22 packages in 344ms
+ + jinja2==3.1.6
+ + markupsafe==3.0.3
+ + mpmath==1.3.0
+ + networkx==3.7
+ + nvidia-cublas-cu12==12.8.4.1
+ + nvidia-cuda-cupti-cu12==12.8.90
+ + nvidia-cuda-nvrtc-cu12==12.8.93
+ + nvidia-cuda-runtime-cu12==12.8.90
+ + nvidia-cudnn-cu12==9.10.2.21
+ + nvidia-cufft-cu12==11.3.3.83
+ + nvidia-cufile-cu12==1.13.1.3
+ + nvidia-curand-cu12==10.3.9.90
+ + nvidia-cusolver-cu12==11.7.3.90
+ + nvidia-cusparse-cu12==12.5.8.93
+ + nvidia-cusparselt-cu12==0.7.1
+ + nvidia-nccl-cu12==2.27.3
+ + nvidia-nvjitlink-cu12==12.8.93
+ + nvidia-nvtx-cu12==12.8.90
+ + setuptools==78.1.0
+ + sympy==1.14.0
+ + torch==2.8.0+cu128
+ + triton==3.4.0
+Using Python 3.12.12 environment at: /usr/local
+Resolved 83 packages in 443ms
+Downloading numpy (16.0MiB)
+Downloading pillow (6.8MiB)
+Downloading grpcio (7.0MiB)
+Downloading pygments (1.2MiB)
+Downloading tensorboard-data-server (6.3MiB)
+Downloading pyarrow (52.5MiB)
+Downloading kiwisolver (1.4MiB)
+Downloading pandas (11.5MiB)
+Downloading fonttools (5.2MiB)
+Downloading tensorboard (5.3MiB)
+Downloading transformers (11.4MiB)
+Downloading aiohttp (1.8MiB)
+Downloading tokenizers (3.1MiB)
+Downloading matplotlib (8.3MiB)
+ Downloaded kiwisolver
+ Downloaded aiohttp
+ Downloaded tokenizers
+ Downloaded pygments
+ Downloaded tensorboard-data-server
+ Downloaded fonttools
+ Downloaded pillow
+ Downloaded tensorboard
+ Downloaded grpcio
+ Downloaded matplotlib
+ Downloaded numpy
+ Downloaded pyarrow
+ Downloaded pandas
+ Downloaded transformers
+Prepared 49 packages in 1.93s
+Uninstalled 1 package in 1ms
+Installed 49 packages in 108ms
+ + absl-py==2.5.1
+ + accelerate==1.15.0
+ + aiohappyeyeballs==2.7.1
+ + aiohttp==3.14.5
+ + aiosignal==1.4.0
+ + anyio==4.16.0
+ + attrs==26.1.0
+ + contourpy==1.4.0
+ + cycler==0.12.1
+ + datasets==4.8.5
+ + dill==0.4.1
+ + fonttools==4.68.0
+ + frozenlist==1.8.0
+ - fsspec==2026.9.0
+ + fsspec==2026.2.0
+ + grpcio==1.85.1
+ + h11==0.16.0
+ + httpcore==1.0.9
+ + httpx==0.28.1
+ + kiwisolver==1.5.1
+ + markdown==3.11.3
+ + markdown-it-py==4.3.0
+ + matplotlib==3.10.7
+ + mdurl==0.1.2
+ + multidict==7.2.1
+ + multiprocess==0.70.19
+ + numpy==2.5.4
+ + pandas==3.1.1
+ + peft==0.17.1
+ + pillow==13.0.0
+ + propcache==0.5.4
+ + protobuf==7.36.2
+ + psutil==7.2.2
+ + pyarrow==26.0.1
+ + pygments==2.21.0
+ + pyparsing==3.3.3
+ + python-dateutil==4.0.0
+ + python-dotenv==1.2.4
+ + regex==2026.11.9
+ + rich==15.0.0
+ + safetensors==0.8.0
+ + tensorboard==2.20.0
+ + tensorboard-data-server==0.7.2
+ + tokenizers==0.22.2
+ + transformers==4.57.6
+ + trl==0.23.1
+ + tzdata==2026.6
+ + werkzeug==3.1.9
+ + xxhash==4.1.0
+ + yarl==1.25.1
+
+cloud_grpo_bundle.zip:   0%|          | 0.00/947k [00:00<?, ?B/s][Acloud_grpo_bundle.zip: 100%|██████████| 947k/947k [00:00<00:00, 5.09MB/s]
+
+tokenizer_config.json:   0%|          | 0.00/4.82k [00:00<?, ?B/s][Atokenizer_config.json: 100%|██████████| 4.82k/4.82k [00:00<00:00, 30.1MB/s]
+
+tokenizer.json:   0%|          | 0.00/21.4M [00:00<?, ?B/s][Atokenizer.json: 100%|██████████| 21.4M/21.4M [00:00<00:00, 79.5MB/s]
+
+special_tokens_map.json:   0%|          | 0.00/664 [00:00<?, ?B/s][Aspecial_tokens_map.json: 100%|██████████| 664/664 [00:00<00:00, 5.09MB/s]
+
+chat_template.jinja:   0%|          | 0.00/3.24k [00:00<?, ?B/s][Achat_template.jinja: 100%|██████████| 3.24k/3.24k [00:00<00:00, 30.5MB/s]
+
+config.json:   0%|          | 0.00/1.96k [00:00<?, ?B/s][Aconfig.json: 100%|██████████| 1.96k/1.96k [00:00<00:00, 14.8MB/s]
+
+model.safetensors.index.json:   0%|          | 0.00/23.6k [00:00<?, ?B/s][Amodel.safetensors.index.json: 100%|██████████| 23.6k/23.6k [00:00<00:00, 109MB/s]
+
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s][A
+model-00001-of-00002.safetensors:   0%|          | 0.00/4.99G [00:00<?, ?B/s][A
+model-00002-of-00002.safetensors:   0%|          | 0.00/1.71G [00:00<?, ?B/s][A
+model-00001-of-00002.safetensors:   3%|▎         | 134M/4.99G [00:01<00:54, 88.7MB/s][A
+model-00002-of-00002.safetensors:  15%|█▌        | 256M/1.71G [00:01<00:08, 169MB/s][A
+model-00001-of-00002.safetensors:  15%|█▌        | 768M/4.99G [00:02<00:11, 353MB/s] [A
+model-00002-of-00002.safetensors:  45%|████▌     | 768M/1.71G [00:03<00:03, 270MB/s][A
+model-00002-of-00002.safetensors:  75%|███████▍  | 1.27G/1.71G [00:04<00:01, 355MB/s][Amodel-00002-of-00002.safetensors: 100%|██████████| 1.71G/1.71G [00:04<00:00, 396MB/s]
+
+Fetching 2 files:  50%|█████     | 1/2 [00:04<00:04,  4.41s/it][A
+model-00001-of-00002.safetensors:  30%|██▉       | 1.48G/4.99G [00:04<00:10, 330MB/s][A
+model-00001-of-00002.safetensors:  56%|█████▋    | 2.82G/4.99G [00:05<00:03, 612MB/s][A
+model-00001-of-00002.safetensors:  82%|████████▏ | 4.09G/4.99G [00:08<00:01, 534MB/s][A
+model-00001-of-00002.safetensors: 100%|██████████| 4.99G/4.99G [00:11<00:00, 406MB/s][Amodel-00001-of-00002.safetensors: 100%|██████████| 4.99G/4.99G [00:11<00:00, 419MB/s]
+
+Fetching 2 files: 100%|██████████| 2/2 [00:11<00:00,  6.00s/it][AFetching 2 files: 100%|██████████| 2/2 [00:11<00:00,  6.00s/it]
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][ALoading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  3.04it/s]
+
+generation_config.json:   0%|          | 0.00/132 [00:00<?, ?B/s][Ageneration_config.json: 100%|██████████| 132/132 [00:00<00:00, 542kB/s]
+
+adapter_config.json:   0%|          | 0.00/936 [00:00<?, ?B/s][Aadapter_config.json: 100%|██████████| 936/936 [00:00<00:00, 8.11MB/s]
+
+adapter_model.safetensors:   0%|          | 0.00/121M [00:00<?, ?B/s][A
+adapter_model.safetensors: 100%|██████████| 121M/121M [00:01<00:00, 91.7MB/s][Aadapter_model.safetensors: 100%|██████████| 121M/121M [00:01<00:00, 91.5MB/s]
+{"event": "validation", "label": "before", "n": 40, "exact_outcome": 1.0, "mean_reward": 1.46}
+The model is already on multiple devices. Skipping the move to device specified in `args`.
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'eos_token_id': 6}.
+{"event": "grpo_rollout", "step": 0, "rollout_batch": 1, "wall_time": 1794413127.7054684, "mean_reward": 0.9249999523162842, "mean_specified_reward": 0.9875, "reward_std": 0.75, "zero_variance_fraction": 0.0, "exact_outcome": 0.75, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 518, "seconds": 19.344654384000023, "peak_vram_reserved_gib": 7.703125}
+{'loss': 0.0, 'grad_norm': 0.339187890291214, 'learning_rate': 5e-06, 'mean_reward': 0.9249999523162842, 'reward_std': 0.75, 'zero_variance_fraction': 0.0, 'exact_outcome': 0.75, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 0.0, 'clip_fraction': 0.0, 'epoch': 0.002777777777777778}
+{"event": "grpo_rollout", "step": 1, "rollout_batch": 2, "wall_time": 1794413147.673996, "mean_reward": 0.9249999523162842, "mean_specified_reward": 0.9875, "reward_std": 0.75, "zero_variance_fraction": 0.0, "exact_outcome": 0.75, "verified_citation_f1": 0.75, "format_valid": 1.0, "mean_tool_calls": 1.5, "sampled_tokens": 409, "seconds": 18.26693861199965, "peak_vram_reserved_gib": 7.873046875}
+{'loss': 0.0, 'grad_norm': 0.8025612831115723, 'learning_rate': 5e-06, 'mean_reward': 0.9249999523162842, 'reward_std': 0.75, 'zero_variance_fraction': 0.0, 'exact_outcome': 0.75, 'verified_citation_f1': 0.75, 'format_valid': 1.0, 'mean_tool_calls': 1.5, 'kl': 0.00023751881099087768, 'clip_fraction': 0.0, 'epoch': 0.005555555555555556}
+{"event": "grpo_rollout", "step": 2, "rollout_batch": 3, "wall_time": 1794413168.1731317, "mean_reward": 1.5, "mean_specified_reward": 1.5, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 540, "seconds": 18.975694078999368, "peak_vram_reserved_gib": 7.87890625}
+{'loss': 0.0, 'grad_norm': 1.2033729035465512e-06, 'learning_rate': 5e-06, 'mean_reward': 1.5, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 1.0861290888897202e-07, 'clip_fraction': 0.0, 'epoch': 0.008333333333333333}
+{"event": "grpo_rollout", "step": 3, "rollout_batch": 4, "wall_time": 1794413188.1760988, "mean_reward": -0.20000000298023224, "mean_specified_reward": 0.05, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 0.0, "verified_citation_f1": 0.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 504, "seconds": 18.475950430998637, "peak_vram_reserved_gib": 7.87890625}
+{'loss': 0.0, 'grad_norm': 5.952715582679957e-05, 'learning_rate': 5e-06, 'mean_reward': -0.20000000298023224, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 0.0, 'verified_citation_f1': 0.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 3.471166201052256e-05, 'clip_fraction': 0.0, 'epoch': 0.011111111111111112}
+{"event": "grpo_rollout", "step": 4, "rollout_batch": 5, "wall_time": 1794413216.0680127, "mean_reward": 0.7749999761581421, "mean_specified_reward": 0.775, "reward_std": 1.0499999523162842, "zero_variance_fraction": 0.0, "exact_outcome": 0.75, "verified_citation_f1": 0.75, "format_valid": 0.75, "mean_tool_calls": 3.0, "sampled_tokens": 783, "seconds": 26.22324204100005, "peak_vram_reserved_gib": 7.9375}
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 10.6kB / 10.6kB            [A[A
+
+
+  ...e/output/optimization.png: 100%|██████████| 85.3kB / 85.3kB            [A[A[A
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  175kB /  175kB            [A[A[A[A
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 10.6kB / 10.6kB            [A[A
+
+
+  ...e/output/optimization.png: 100%|██████████| 85.3kB / 85.3kB            [A[A[A
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  175kB /  175kB            [A[A[A[AProcessing Files (3 / 3)      : 100%|██████████|  271kB /  271kB,   ???B/s  
+New Data Upload               : 100%|██████████|  271kB /  271kB,   ???B/s  
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 10.6kB / 10.6kB            
+  ...e/output/optimization.png: 100%|██████████| 85.3kB / 85.3kB            
+  ...put/training_rollouts.png: 100%|██████████|  175kB /  175kB            
+{'loss': 0.0, 'grad_norm': 0.12194158136844635, 'learning_rate': 5e-06, 'mean_reward': 0.7749999761581421, 'reward_std': 1.0499999523162842, 'zero_variance_fraction': 0.0, 'exact_outcome': 0.75, 'verified_citation_f1': 0.75, 'format_valid': 0.75, 'mean_tool_calls': 3.0, 'kl': 1.1154772323607176e-05, 'clip_fraction': 0.0, 'epoch': 0.013888888888888888}
+{"event": "grpo_rollout", "step": 5, "rollout_batch": 6, "wall_time": 1794413238.4989343, "mean_reward": 0.5499999523162842, "mean_specified_reward": 0.675, "reward_std": 0.8660253882408142, "zero_variance_fraction": 0.0, "exact_outcome": 0.5, "verified_citation_f1": 0.75, "format_valid": 1.0, "mean_tool_calls": 1.5, "sampled_tokens": 413, "seconds": 18.80189033300121, "peak_vram_reserved_gib": 7.9375}
+{'loss': 0.0012, 'grad_norm': 0.45943495631217957, 'learning_rate': 5e-06, 'mean_reward': 0.5499999523162842, 'reward_std': 0.8660253882408142, 'zero_variance_fraction': 0.0, 'exact_outcome': 0.5, 'verified_citation_f1': 0.75, 'format_valid': 1.0, 'mean_tool_calls': 1.5, 'kl': 0.030779487033214536, 'clip_fraction': 0.0, 'epoch': 0.016666666666666666}
+{"event": "grpo_rollout", "step": 6, "rollout_batch": 7, "wall_time": 1794413266.480465, "mean_reward": 1.2999999523162842, "mean_specified_reward": 1.3, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 3.0, "sampled_tokens": 784, "seconds": 26.215884789002303, "peak_vram_reserved_gib": 7.9375}
+{'loss': 0.0, 'grad_norm': 4.646620084258757e-07, 'learning_rate': 5e-06, 'mean_reward': 1.2999999523162842, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 3.0, 'kl': 2.2595025939153857e-07, 'clip_fraction': 0.0, 'epoch': 0.019444444444444445}
+{"event": "grpo_rollout", "step": 7, "rollout_batch": 8, "wall_time": 1794413280.4377441, "mean_reward": 1.0, "mean_specified_reward": 1.0, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 0.0, "format_valid": 1.0, "mean_tool_calls": 1.0, "sampled_tokens": 309, "seconds": 12.430563972000527, "peak_vram_reserved_gib": 7.9375}
+{'loss': 0.0, 'grad_norm': 0.0024185585789382458, 'learning_rate': 5e-06, 'mean_reward': 1.0, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 0.0, 'format_valid': 1.0, 'mean_tool_calls': 1.0, 'kl': 6.577748627023539e-05, 'clip_fraction': 0.0, 'epoch': 0.022222222222222223}
+{"event": "grpo_rollout", "step": 8, "rollout_batch": 9, "wall_time": 1794413301.2023187, "mean_reward": 0.6200000047683716, "mean_specified_reward": 0.6825, "reward_std": 0.547965943813324, "zero_variance_fraction": 0.0, "exact_outcome": 0.75, "verified_citation_f1": 0.0, "format_valid": 1.0, "mean_tool_calls": 1.5, "sampled_tokens": 394, "seconds": 19.210155968001345, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 0.4319196343421936, 'learning_rate': 5e-06, 'mean_reward': 0.6200000047683716, 'reward_std': 0.547965943813324, 'zero_variance_fraction': 0.0, 'exact_outcome': 0.75, 'verified_citation_f1': 0.0, 'format_valid': 1.0, 'mean_tool_calls': 1.5, 'kl': 0.0004327943970565684, 'clip_fraction': 0.0, 'epoch': 0.025}
+{"event": "grpo_rollout", "step": 9, "rollout_batch": 10, "wall_time": 1794413328.9414625, "mean_reward": 1.2999999523162842, "mean_specified_reward": 1.3, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 3.0, "sampled_tokens": 784, "seconds": 26.175581797000632, "peak_vram_reserved_gib": 7.943359375}
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...e/output/optimization.png: 100%|██████████| 98.5kB / 98.5kB            [A[A
+
+
+  ...put/training_rollouts.png: 100%|██████████|  210kB /  210kB            [A[A[A
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 14.3kB / 14.3kB            [A[A[A[A
+
+  ...e/output/optimization.png: 100%|██████████| 98.5kB / 98.5kB            [A[A
+
+
+  ...put/training_rollouts.png: 100%|██████████|  210kB /  210kB            [A[A[A
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 14.3kB / 14.3kB            [A[A[A[AProcessing Files (3 / 3)      : 100%|██████████|  323kB /  323kB,   ???B/s  
+New Data Upload               : 100%|██████████|  323kB /  323kB,   ???B/s  
+  ...e/output/optimization.png: 100%|██████████| 98.5kB / 98.5kB            
+  ...put/training_rollouts.png: 100%|██████████|  210kB /  210kB            
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 14.3kB / 14.3kB            
+{'loss': 0.0, 'grad_norm': 1.2405049346853048e-05, 'learning_rate': 5e-06, 'mean_reward': 1.2999999523162842, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 3.0, 'kl': 2.0822091755690053e-05, 'clip_fraction': 0.0, 'epoch': 0.027777777777777776}
+{"event": "grpo_rollout", "step": 10, "rollout_batch": 11, "wall_time": 1794413359.2476697, "mean_reward": 1.2999999523162842, "mean_specified_reward": 1.3, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 3.0, "sampled_tokens": 784, "seconds": 26.15817514599985, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 3.0172575407050317e-06, 'learning_rate': 5e-06, 'mean_reward': 1.2999999523162842, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 3.0, 'kl': 4.4064861981496506e-07, 'clip_fraction': 0.0, 'epoch': 0.030555555555555555}
+{"event": "grpo_rollout", "step": 11, "rollout_batch": 12, "wall_time": 1794413379.2078671, "mean_reward": 1.2999999523162842, "mean_specified_reward": 1.3, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 504, "seconds": 18.418936237001617, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 3.249751046041638e-07, 'learning_rate': 5e-06, 'mean_reward': 1.2999999523162842, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 1.6192594785024994e-06, 'clip_fraction': 0.0, 'epoch': 0.03333333333333333}
+{"event": "grpo_rollout", "step": 12, "rollout_batch": 13, "wall_time": 1794413399.1269262, "mean_reward": 1.2999999523162842, "mean_specified_reward": 1.3, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 512, "seconds": 18.42912362899733, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 1.0813097333084443e-06, 'learning_rate': 5e-06, 'mean_reward': 1.2999999523162842, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 9.671784937381744e-07, 'clip_fraction': 0.0, 'epoch': 0.03611111111111111}
+{"event": "grpo_rollout", "step": 13, "rollout_batch": 14, "wall_time": 1794413418.9508262, "mean_reward": -0.20000000298023224, "mean_specified_reward": 0.05, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 0.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 492, "seconds": 18.119271138999466, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0005, 'grad_norm': 0.0194761510938406, 'learning_rate': 5e-06, 'mean_reward': -0.20000000298023224, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 0.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 0.01204652525484562, 'clip_fraction': 0.0, 'epoch': 0.03888888888888889}
+{"event": "grpo_rollout", "step": 14, "rollout_batch": 15, "wall_time": 1794413438.8947327, "mean_reward": 1.2999999523162842, "mean_specified_reward": 1.3, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 504, "seconds": 18.453568848999566, "peak_vram_reserved_gib": 7.943359375}
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...e/output/optimization.png: 100%|██████████|  101kB /  101kB            [A[A
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 17.9kB / 17.9kB            [A[A[A[A
+
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  214kB /  214kB            [A[A[A[A[A
+
+  ...e/output/optimization.png: 100%|██████████|  101kB /  101kB            [A[A
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 17.9kB / 17.9kB            [A[A[A[A
+
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  214kB /  214kB            [A[A[A[A[AProcessing Files (4 / 4)      : 100%|██████████|  341kB /  341kB,   ???B/s  
+New Data Upload               : 100%|██████████|  341kB /  341kB,   ???B/s  
+  ...e/output/optimization.png: 100%|██████████|  101kB /  101kB            
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 17.9kB / 17.9kB            
+  ...put/training_rollouts.png: 100%|██████████|  214kB /  214kB            
+{'loss': 0.0, 'grad_norm': 2.642246499817702e-06, 'learning_rate': 5e-06, 'mean_reward': 1.2999999523162842, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 1.1533971701283008e-05, 'clip_fraction': 0.0, 'epoch': 0.041666666666666664}
+{"event": "grpo_rollout", "step": 15, "rollout_batch": 16, "wall_time": 1794413461.360759, "mean_reward": 1.2999999523162842, "mean_specified_reward": 1.3, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 512, "seconds": 18.736007396000787, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 2.4824328193062684e-07, 'learning_rate': 5e-06, 'mean_reward': 1.2999999523162842, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 1.0579824447631836e-06, 'clip_fraction': 0.0, 'epoch': 0.044444444444444446}
+{"event": "grpo_rollout", "step": 16, "rollout_batch": 17, "wall_time": 1794413481.2069669, "mean_reward": 1.2999999523162842, "mean_specified_reward": 1.3, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 508, "seconds": 18.367097547001322, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 1.6559197320020758e-06, 'learning_rate': 5e-06, 'mean_reward': 1.2999999523162842, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 1.8504661056795157e-05, 'clip_fraction': 0.0, 'epoch': 0.04722222222222222}
+{"event": "grpo_rollout", "step": 17, "rollout_batch": 18, "wall_time": 1794413501.0482237, "mean_reward": 1.2999999523162842, "mean_specified_reward": 1.3, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 484, "seconds": 18.372267735001515, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 6.034169200574979e-05, 'learning_rate': 5e-06, 'mean_reward': 1.2999999523162842, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 0.00035368656972423196, 'clip_fraction': 0.0, 'epoch': 0.05}
+{"event": "grpo_rollout", "step": 18, "rollout_batch": 19, "wall_time": 1794413521.455782, "mean_reward": 0.6399999856948853, "mean_specified_reward": 0.7025, "reward_std": 0.5600000023841858, "zero_variance_fraction": 0.0, "exact_outcome": 0.75, "verified_citation_f1": 0.0, "format_valid": 1.0, "mean_tool_calls": 1.25, "sampled_tokens": 354, "seconds": 18.92681404399991, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 0.648280918598175, 'learning_rate': 5e-06, 'mean_reward': 0.6399999856948853, 'reward_std': 0.5600000023841858, 'zero_variance_fraction': 0.0, 'exact_outcome': 0.75, 'verified_citation_f1': 0.0, 'format_valid': 1.0, 'mean_tool_calls': 1.25, 'kl': 0.0009420307178515941, 'clip_fraction': 0.0, 'epoch': 0.05277777777777778}
+{"event": "grpo_rollout", "step": 19, "rollout_batch": 20, "wall_time": 1794413541.3764632, "mean_reward": 1.2999999523162842, "mean_specified_reward": 1.3, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 492, "seconds": 18.200449847001437, "peak_vram_reserved_gib": 7.943359375}
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  ...e/output/optimization.png: 100%|██████████|  105kB /  105kB            [A[A[A
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  221kB /  221kB            [A[A[A[A
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 21.5kB / 21.5kB            [A[A[A[A[A
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  ...e/output/optimization.png: 100%|██████████|  105kB /  105kB            [A[A[A
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  221kB /  221kB            [A[A[A[A
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 21.5kB / 21.5kB            [A[A[A[A[AProcessing Files (4 / 4)      : 100%|██████████|  355kB /  355kB,   ???B/s  
+New Data Upload               : 100%|██████████|  348kB /  348kB,   ???B/s  
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...e/output/optimization.png: 100%|██████████|  105kB /  105kB            
+  ...put/training_rollouts.png: 100%|██████████|  221kB /  221kB            
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 21.5kB / 21.5kB            
+{'loss': 0.0, 'grad_norm': 7.266182677767574e-08, 'learning_rate': 5e-06, 'mean_reward': 1.2999999523162842, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 6.590432235498156e-07, 'clip_fraction': 0.0, 'epoch': 0.05555555555555555}
+{'train_runtime': 437.1295, 'train_samples_per_second': 0.183, 'train_steps_per_second': 0.046, 'train_loss': 8.99221556722063e-05, 'epoch': 0.05555555555555555}
+WandB not available. Install with: pip install wandb
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  221kB /  221kB            [A[A[A[A
+
+
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  221kB /  221kB            [A[A[A[A
+
+
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A[A[A[A
+
+
+
+
+
+
+  ...e/output/optimization.png: 100%|██████████|  105kB /  105kB            [A[A[A[A[A[A[A
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  221kB /  221kB            [A[A[A[A
+
+
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A[A[A[A
+
+
+
+
+
+
+  ...e/output/optimization.png: 100%|██████████|  105kB /  105kB            [A[A[A[A[A[A[AProcessing Files (6 / 6)      : 100%|██████████|  370kB /  370kB,   ???B/s  
+New Data Upload               : 100%|██████████|  128kB /  128kB,   ???B/s  
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...put/training_rollouts.png: 100%|██████████|  221kB /  221kB            
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            
+  ...e/output/optimization.png: 100%|██████████|  105kB /  105kB            
+The model is already on multiple devices. Skipping the move to device specified in `args`.
+{"event": "grpo_rollout", "step": 0, "rollout_batch": 1, "wall_time": 1794413568.4308019, "mean_reward": 0.6200000047683716, "mean_specified_reward": 0.6825, "reward_std": 0.547965943813324, "zero_variance_fraction": 0.0, "exact_outcome": 0.75, "verified_citation_f1": 0.0, "format_valid": 1.0, "mean_tool_calls": 1.5, "sampled_tokens": 393, "seconds": 19.5356814379993, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0001, 'grad_norm': 0.3665018081665039, 'learning_rate': 5e-06, 'mean_reward': 0.6200000047683716, 'reward_std': 0.547965943813324, 'zero_variance_fraction': 0.0, 'exact_outcome': 0.75, 'verified_citation_f1': 0.0, 'format_valid': 1.0, 'mean_tool_calls': 1.5, 'kl': 0.0021797766676172614, 'clip_fraction': 0.0, 'epoch': 0.002777777777777778}
+{"event": "grpo_rollout", "step": 1, "rollout_batch": 2, "wall_time": 1794413589.8023593, "mean_reward": 1.2624999284744263, "mean_specified_reward": 1.2625, "reward_std": 0.07500001043081284, "zero_variance_fraction": 0.0, "exact_outcome": 1.0, "verified_citation_f1": 0.875, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 508, "seconds": 19.76465318299961, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 0.2907446026802063, 'learning_rate': 5e-06, 'mean_reward': 1.2624999284744263, 'reward_std': 0.07500001043081284, 'zero_variance_fraction': 0.0, 'exact_outcome': 1.0, 'verified_citation_f1': 0.875, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 0.0003610380406371405, 'clip_fraction': 0.0, 'epoch': 0.005555555555555556}
+{"event": "grpo_rollout", "step": 2, "rollout_batch": 3, "wall_time": 1794413610.4091375, "mean_reward": 0.22499999403953552, "mean_specified_reward": 0.4125, "reward_std": 0.8500000238418579, "zero_variance_fraction": 0.0, "exact_outcome": 0.25, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 514, "seconds": 19.042135730000155, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0004, 'grad_norm': 0.35275471210479736, 'learning_rate': 5e-06, 'mean_reward': 0.22499999403953552, 'reward_std': 0.8500000238418579, 'zero_variance_fraction': 0.0, 'exact_outcome': 0.25, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 0.01117515447549522, 'clip_fraction': 0.0, 'epoch': 0.008333333333333333}
+{"event": "grpo_rollout", "step": 3, "rollout_batch": 4, "wall_time": 1794413631.851585, "mean_reward": 0.6499999761581421, "mean_specified_reward": 0.775, "reward_std": 0.9814954996109009, "zero_variance_fraction": 0.0, "exact_outcome": 0.5, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 540, "seconds": 19.640342094997322, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0003, 'grad_norm': 0.4216470420360565, 'learning_rate': 5e-06, 'mean_reward': 0.6499999761581421, 'reward_std': 0.9814954996109009, 'zero_variance_fraction': 0.0, 'exact_outcome': 0.5, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 0.007201718166470528, 'clip_fraction': 0.0, 'epoch': 0.011111111111111112}
+{"event": "grpo_rollout", "step": 4, "rollout_batch": 5, "wall_time": 1794413651.294862, "mean_reward": 1.2999999523162842, "mean_specified_reward": 1.3, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 476, "seconds": 17.915293304999068, "peak_vram_reserved_gib": 7.943359375}
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A[A[A
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A[A[A
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 10.6kB / 10.6kB            [A[A[A[A[A[A
+
+
+
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  241kB /  241kB            [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+  ...e/output/optimization.png: 100%|██████████|  116kB /  116kB            [A[A[A[A[A[A[A[A
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A[A[A
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 10.6kB / 10.6kB            [A[A[A[A[A[A
+
+
+
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  241kB /  241kB            [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+  ...e/output/optimization.png: 100%|██████████|  116kB /  116kB            [A[A[A[A[A[A[A[AProcessing Files (7 / 7)      : 100%|██████████|  412kB /  412kB,   ???B/s  
+New Data Upload               : 100%|██████████|  368kB /  368kB,   ???B/s  
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 10.6kB / 10.6kB            
+  ...put/training_rollouts.png: 100%|██████████|  241kB /  241kB            
+  ...e/output/optimization.png: 100%|██████████|  116kB /  116kB            
+{'loss': 0.0, 'grad_norm': 8.332551806233823e-05, 'learning_rate': 5e-06, 'mean_reward': 1.2999999523162842, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 0.0003014697867911309, 'clip_fraction': 0.0, 'epoch': 0.013888888888888888}
+{"event": "grpo_rollout", "step": 5, "rollout_batch": 6, "wall_time": 1794413673.3218133, "mean_reward": 1.25, "mean_specified_reward": 1.25, "reward_std": 0.05773497372865677, "zero_variance_fraction": 0.0, "exact_outcome": 1.0, "verified_citation_f1": 0.8333333333333333, "format_valid": 1.0, "mean_tool_calls": 1.5, "sampled_tokens": 398, "seconds": 18.278430532998755, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 0.3125865161418915, 'learning_rate': 5e-06, 'mean_reward': 1.25, 'reward_std': 0.05773497372865677, 'zero_variance_fraction': 0.0, 'exact_outcome': 1.0, 'verified_citation_f1': 0.8333333333333333, 'format_valid': 1.0, 'mean_tool_calls': 1.5, 'kl': 0.0001888828155642841, 'clip_fraction': 0.0, 'epoch': 0.016666666666666666}
+{"event": "grpo_rollout", "step": 6, "rollout_batch": 7, "wall_time": 1794413687.067568, "mean_reward": 1.0, "mean_specified_reward": 1.0, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 0.0, "format_valid": 1.0, "mean_tool_calls": 1.0, "sampled_tokens": 312, "seconds": 11.955889985001704, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 0.00012609324767254293, 'learning_rate': 5e-06, 'mean_reward': 1.0, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 0.0, 'format_valid': 1.0, 'mean_tool_calls': 1.0, 'kl': 0.00010288984049111605, 'clip_fraction': 0.0, 'epoch': 0.019444444444444445}
+{"event": "grpo_rollout", "step": 7, "rollout_batch": 8, "wall_time": 1794413707.2622347, "mean_reward": 1.0750000476837158, "mean_specified_reward": 1.1375, "reward_std": 0.8500000238418579, "zero_variance_fraction": 0.0, "exact_outcome": 0.75, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 514, "seconds": 18.727197611999145, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 0.23935212194919586, 'learning_rate': 5e-06, 'mean_reward': 1.0750000476837158, 'reward_std': 0.8500000238418579, 'zero_variance_fraction': 0.0, 'exact_outcome': 0.75, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 0.0005963411638099103, 'clip_fraction': 0.0, 'epoch': 0.022222222222222223}
+{"event": "grpo_rollout", "step": 8, "rollout_batch": 9, "wall_time": 1794413727.6332002, "mean_reward": 1.0750000476837158, "mean_specified_reward": 1.1375, "reward_std": 0.8500000238418579, "zero_variance_fraction": 0.0, "exact_outcome": 0.75, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 522, "seconds": 18.832252628999413, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 0.28933000564575195, 'learning_rate': 5e-06, 'mean_reward': 1.0750000476837158, 'reward_std': 0.8500000238418579, 'zero_variance_fraction': 0.0, 'exact_outcome': 0.75, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 0.00020278735746614984, 'clip_fraction': 0.0, 'epoch': 0.025}
+{"event": "grpo_rollout", "step": 9, "rollout_batch": 10, "wall_time": 1794413748.1149457, "mean_reward": 1.5, "mean_specified_reward": 1.5, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 536, "seconds": 18.9331944939986, "peak_vram_reserved_gib": 7.943359375}
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A
+
+
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A
+
+
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 14.3kB / 14.3kB            [A[A[A[A[A[A
+
+
+
+
+
+
+  ...e/output/optimization.png: 100%|██████████|  120kB /  120kB            [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  254kB /  254kB            [A[A[A[A[A[A[A[A
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A
+
+
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 14.3kB / 14.3kB            [A[A[A[A[A[A
+
+
+
+
+
+
+  ...e/output/optimization.png: 100%|██████████|  120kB /  120kB            [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  254kB /  254kB            [A[A[A[A[A[A[A[AProcessing Files (7 / 7)      : 100%|██████████|  433kB /  433kB,   ???B/s  
+New Data Upload               : 100%|██████████|  389kB /  389kB,   ???B/s  
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 14.3kB / 14.3kB            
+  ...e/output/optimization.png: 100%|██████████|  120kB /  120kB            
+  ...put/training_rollouts.png: 100%|██████████|  254kB /  254kB            
+{'loss': 0.0, 'grad_norm': 0.0006435191025957465, 'learning_rate': 5e-06, 'mean_reward': 1.5, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 2.508510442567058e-05, 'clip_fraction': 0.0, 'epoch': 0.027777777777777776}
+{"event": "grpo_rollout", "step": 10, "rollout_batch": 11, "wall_time": 1794413771.9709802, "mean_reward": 1.5, "mean_specified_reward": 1.5, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 524, "seconds": 18.78385703299864, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 1.4423616448766552e-05, 'learning_rate': 5e-06, 'mean_reward': 1.5, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 2.347331019336707e-06, 'clip_fraction': 0.0, 'epoch': 0.030555555555555555}
+{"event": "grpo_rollout", "step": 11, "rollout_batch": 12, "wall_time": 1794413792.4624956, "mean_reward": 0.9249999523162842, "mean_specified_reward": 0.9875, "reward_std": 0.75, "zero_variance_fraction": 0.0, "exact_outcome": 0.75, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 518, "seconds": 19.00948140699984, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 0.33380410075187683, 'learning_rate': 5e-06, 'mean_reward': 0.9249999523162842, 'reward_std': 0.75, 'zero_variance_fraction': 0.0, 'exact_outcome': 0.75, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 3.158027448080247e-05, 'clip_fraction': 0.0, 'epoch': 0.03333333333333333}
+{"event": "grpo_rollout", "step": 12, "rollout_batch": 13, "wall_time": 1794413812.3979726, "mean_reward": 1.2999999523162842, "mean_specified_reward": 1.3, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 496, "seconds": 18.364353839002433, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 3.8799857975391205e-06, 'learning_rate': 5e-06, 'mean_reward': 1.2999999523162842, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 8.238899908974417e-07, 'clip_fraction': 0.0, 'epoch': 0.03611111111111111}
+{"event": "grpo_rollout", "step": 13, "rollout_batch": 14, "wall_time": 1794413832.7729769, "mean_reward": 1.5, "mean_specified_reward": 1.5, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 524, "seconds": 18.703472331999365, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 0.00017088669119402766, 'learning_rate': 5e-06, 'mean_reward': 1.5, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 3.35546865244396e-05, 'clip_fraction': 0.0, 'epoch': 0.03888888888888889}
+{"event": "grpo_rollout", "step": 14, "rollout_batch": 15, "wall_time": 1794413852.6187823, "mean_reward": 0.6399999856948853, "mean_specified_reward": 0.7025, "reward_std": 0.5600000023841858, "zero_variance_fraction": 0.0, "exact_outcome": 0.75, "verified_citation_f1": 0.0, "format_valid": 1.0, "mean_tool_calls": 1.25, "sampled_tokens": 334, "seconds": 18.3404483719969, "peak_vram_reserved_gib": 7.943359375}
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A[A
+
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A[A
+
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 17.9kB / 17.9kB            [A[A[A[A[A[A
+
+
+
+
+
+
+  ...e/output/optimization.png: 100%|██████████|  122kB /  122kB            [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  270kB /  270kB            [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A[A[A
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A[A
+
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 17.9kB / 17.9kB            [A[A[A[A[A[A
+
+
+
+
+
+
+  ...e/output/optimization.png: 100%|██████████|  122kB /  122kB            [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  270kB /  270kB            [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A[A[AProcessing Files (8 / 8)      : 100%|██████████|  461kB /  461kB,   ???B/s  
+New Data Upload               : 100%|██████████|  417kB /  417kB,   ???B/s  
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 17.9kB / 17.9kB            
+  ...e/output/optimization.png: 100%|██████████|  122kB /  122kB            
+  ...put/training_rollouts.png: 100%|██████████|  270kB /  270kB            
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+{'loss': 0.0003, 'grad_norm': 0.4123225212097168, 'learning_rate': 5e-06, 'mean_reward': 0.6399999856948853, 'reward_std': 0.5600000023841858, 'zero_variance_fraction': 0.0, 'exact_outcome': 0.75, 'verified_citation_f1': 0.0, 'format_valid': 1.0, 'mean_tool_calls': 1.25, 'kl': 0.007935090688988566, 'clip_fraction': 0.0, 'epoch': 0.041666666666666664}
+{"event": "grpo_rollout", "step": 15, "rollout_batch": 16, "wall_time": 1794413868.9014494, "mean_reward": 1.0, "mean_specified_reward": 1.0, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 0.0, "format_valid": 1.0, "mean_tool_calls": 1.0, "sampled_tokens": 312, "seconds": 12.051130829000613, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 1.799167148419656e-05, 'learning_rate': 5e-06, 'mean_reward': 1.0, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 0.0, 'format_valid': 1.0, 'mean_tool_calls': 1.0, 'kl': 0.00019133396563120186, 'clip_fraction': 0.0, 'epoch': 0.044444444444444446}
+{"event": "grpo_rollout", "step": 16, "rollout_batch": 17, "wall_time": 1794413890.3391387, "mean_reward": 1.0750000476837158, "mean_specified_reward": 1.1375, "reward_std": 0.8500000238418579, "zero_variance_fraction": 0.0, "exact_outcome": 0.75, "verified_citation_f1": 0.9166666666666666, "format_valid": 1.0, "mean_tool_calls": 1.75, "sampled_tokens": 489, "seconds": 19.740704972999083, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0001, 'grad_norm': 0.3274461030960083, 'learning_rate': 5e-06, 'mean_reward': 1.0750000476837158, 'reward_std': 0.8500000238418579, 'zero_variance_fraction': 0.0, 'exact_outcome': 0.75, 'verified_citation_f1': 0.9166666666666666, 'format_valid': 1.0, 'mean_tool_calls': 1.75, 'kl': 0.0012978610557183856, 'clip_fraction': 0.0, 'epoch': 0.04722222222222222}
+{"event": "grpo_rollout", "step": 17, "rollout_batch": 18, "wall_time": 1794413918.0088255, "mean_reward": 1.2999999523162842, "mean_specified_reward": 1.3, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 3.0, "sampled_tokens": 784, "seconds": 26.133598528998846, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 4.991047148905636e-07, 'learning_rate': 5e-06, 'mean_reward': 1.2999999523162842, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 3.0, 'kl': 2.2564616131148796e-07, 'clip_fraction': 0.0, 'epoch': 0.05}
+{"event": "grpo_rollout", "step": 18, "rollout_batch": 19, "wall_time": 1794413938.1642284, "mean_reward": 1.5, "mean_specified_reward": 1.5, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 524, "seconds": 18.624322487001336, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 8.736038807910518e-07, 'learning_rate': 5e-06, 'mean_reward': 1.5, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 6.383612003446615e-07, 'clip_fraction': 0.0, 'epoch': 0.05277777777777778}
+{"event": "grpo_rollout", "step": 19, "rollout_batch": 20, "wall_time": 1794413958.5978498, "mean_reward": 1.5, "mean_specified_reward": 1.5, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 524, "seconds": 18.708341905999987, "peak_vram_reserved_gib": 7.943359375}
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A
+
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A
+
+
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A
+
+
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A
+
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A
+
+
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A
+
+
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A
+
+
+
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  276kB /  276kB            [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 21.5kB / 21.5kB            [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+  ...e/output/optimization.png: 100%|██████████|  127kB /  127kB            [A[A[A[A[A[A[A[A[A
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A
+
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A
+
+
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A
+
+
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A
+
+
+
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  276kB /  276kB            [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 21.5kB / 21.5kB            [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+  ...e/output/optimization.png: 100%|██████████|  127kB /  127kB            [A[A[A[A[A[A[A[A[AProcessing Files (8 / 8)      : 100%|██████████|  476kB /  476kB,   ???B/s  
+New Data Upload               : 100%|██████████|  424kB /  424kB,   ???B/s  
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...put/training_rollouts.png: 100%|██████████|  276kB /  276kB            
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 21.5kB / 21.5kB            
+  ...e/output/optimization.png: 100%|██████████|  127kB /  127kB            
+{'loss': 0.0, 'grad_norm': 1.9033601006412937e-07, 'learning_rate': 5e-06, 'mean_reward': 1.5, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 6.187963208503788e-08, 'clip_fraction': 0.0, 'epoch': 0.05555555555555555}
+{"event": "grpo_rollout", "step": 20, "rollout_batch": 21, "wall_time": 1794413981.7185638, "mean_reward": 1.2999999523162842, "mean_specified_reward": 1.3, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 512, "seconds": 18.554215396001382, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 1.5779152818140574e-05, 'learning_rate': 5e-06, 'mean_reward': 1.2999999523162842, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 2.862280234694481e-05, 'clip_fraction': 0.0, 'epoch': 0.058333333333333334}
+{"event": "grpo_rollout", "step": 21, "rollout_batch": 22, "wall_time": 1794414001.7522607, "mean_reward": 1.5, "mean_specified_reward": 1.5, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 516, "seconds": 18.561751373003062, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 1.998451625695452e-05, 'learning_rate': 5e-06, 'mean_reward': 1.5, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 5.983104983897647e-06, 'clip_fraction': 0.0, 'epoch': 0.06111111111111111}
+{"event": "grpo_rollout", "step": 22, "rollout_batch": 23, "wall_time": 1794414022.5690594, "mean_reward": 1.5, "mean_specified_reward": 1.5, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 524, "seconds": 19.120023716001015, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 0.001678885193541646, 'learning_rate': 5e-06, 'mean_reward': 1.5, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 2.758648588496726e-05, 'clip_fraction': 0.0, 'epoch': 0.06388888888888888}
+{"event": "grpo_rollout", "step": 23, "rollout_batch": 24, "wall_time": 1794414043.1842315, "mean_reward": 1.5, "mean_specified_reward": 1.5, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 552, "seconds": 19.106907040000806, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 1.0407419722469058e-05, 'learning_rate': 5e-06, 'mean_reward': 1.5, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 1.4083972928347066e-05, 'clip_fraction': 0.0, 'epoch': 0.06666666666666667}
+{"event": "grpo_rollout", "step": 24, "rollout_batch": 25, "wall_time": 1794414063.3082724, "mean_reward": 1.2999999523162842, "mean_specified_reward": 1.3, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 512, "seconds": 18.605864487999497, "peak_vram_reserved_gib": 7.943359375}
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A
+
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A[A[A
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 25.1kB / 25.1kB            [A[A[A[A[A[A
+
+
+
+
+
+
+  ...e/output/optimization.png: 100%|██████████|  125kB /  125kB            [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  265kB /  265kB            [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A[A[A[A
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A
+
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A[A[A
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 25.1kB / 25.1kB            [A[A[A[A[A[A
+
+
+
+
+
+
+  ...e/output/optimization.png: 100%|██████████|  125kB /  125kB            [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  265kB /  265kB            [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A[A[A[AProcessing Files (9 / 9)      : 100%|██████████|  474kB /  474kB,   ???B/s  
+New Data Upload               : 100%|██████████|  415kB /  415kB,   ???B/s  
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 25.1kB / 25.1kB            
+  ...e/output/optimization.png: 100%|██████████|  125kB /  125kB            
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...put/training_rollouts.png: 100%|██████████|  265kB /  265kB            
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+{'loss': 0.0, 'grad_norm': 3.2257448765449226e-05, 'learning_rate': 5e-06, 'mean_reward': 1.2999999523162842, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 3.492925316095352e-06, 'clip_fraction': 0.0, 'epoch': 0.06944444444444445}
+{"event": "grpo_rollout", "step": 25, "rollout_batch": 26, "wall_time": 1794414085.9168901, "mean_reward": 1.5, "mean_specified_reward": 1.5, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 524, "seconds": 18.62711760300226, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 8.329350384883583e-05, 'learning_rate': 5e-06, 'mean_reward': 1.5, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 7.068018749123439e-05, 'clip_fraction': 0.0, 'epoch': 0.07222222222222222}
+{"event": "grpo_rollout", "step": 26, "rollout_batch": 27, "wall_time": 1794414106.01641, "mean_reward": 0.5499999523162842, "mean_specified_reward": 0.675, "reward_std": 0.8660253882408142, "zero_variance_fraction": 0.0, "exact_outcome": 0.5, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 496, "seconds": 18.58189874799791, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0001, 'grad_norm': 0.3919331729412079, 'learning_rate': 5e-06, 'mean_reward': 0.5499999523162842, 'reward_std': 0.8660253882408142, 'zero_variance_fraction': 0.0, 'exact_outcome': 0.5, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 0.0013531148506444879, 'clip_fraction': 0.0, 'epoch': 0.075}
+{"event": "grpo_rollout", "step": 27, "rollout_batch": 28, "wall_time": 1794414126.2394958, "mean_reward": 1.5, "mean_specified_reward": 1.5, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 532, "seconds": 18.697538950000308, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 5.649244485539384e-05, 'learning_rate': 5e-06, 'mean_reward': 1.5, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 4.7175955842249095e-05, 'clip_fraction': 0.0, 'epoch': 0.07777777777777778}
+{"event": "grpo_rollout", "step": 28, "rollout_batch": 29, "wall_time": 1794414139.947642, "mean_reward": 1.0, "mean_specified_reward": 1.0, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 0.0, "format_valid": 1.0, "mean_tool_calls": 1.0, "sampled_tokens": 312, "seconds": 12.188416842000152, "peak_vram_reserved_gib": 7.943359375}
+{'loss': 0.0, 'grad_norm': 1.44510859172442e-05, 'learning_rate': 5e-06, 'mean_reward': 1.0, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 0.0, 'format_valid': 1.0, 'mean_tool_calls': 1.0, 'kl': 0.00015296768106054515, 'clip_fraction': 0.0, 'epoch': 0.08055555555555556}
+{"event": "grpo_rollout", "step": 29, "rollout_batch": 30, "wall_time": 1794414168.9054449, "mean_reward": 0.925000011920929, "mean_specified_reward": 0.925, "reward_std": 1.149999976158142, "zero_variance_fraction": 0.0, "exact_outcome": 0.75, "verified_citation_f1": 0.75, "format_valid": 0.75, "mean_tool_calls": 2.25, "sampled_tokens": 593, "seconds": 27.269742016000237, "peak_vram_reserved_gib": 7.943359375}
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A
+
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A
+
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A
+
+
+
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A
+
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A
+
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A
+
+
+
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A
+
+
+
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  280kB /  280kB            [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+  ...e/output/optimization.png: 100%|██████████|  128kB /  128kB            [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 28.7kB / 28.7kB            [A[A[A[A[A[A[A[A[A[A
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A
+
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A
+
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A
+
+
+
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A
+
+
+
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  280kB /  280kB            [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+  ...e/output/optimization.png: 100%|██████████|  128kB /  128kB            [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 28.7kB / 28.7kB            [A[A[A[A[A[A[A[A[A[AProcessing Files (9 / 9)      : 100%|██████████|  495kB /  495kB,   ???B/s  
+New Data Upload               : 100%|██████████|  436kB /  436kB,   ???B/s  
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...put/training_rollouts.png: 100%|██████████|  280kB /  280kB            
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...e/output/optimization.png: 100%|██████████|  128kB /  128kB            
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 28.7kB / 28.7kB            
+{'loss': 0.0, 'grad_norm': 0.1939164251089096, 'learning_rate': 5e-06, 'mean_reward': 0.925000011920929, 'reward_std': 1.149999976158142, 'zero_variance_fraction': 0.0, 'exact_outcome': 0.75, 'verified_citation_f1': 0.75, 'format_valid': 0.75, 'mean_tool_calls': 2.25, 'kl': 0.0011012869372279965, 'clip_fraction': 0.0, 'epoch': 0.08333333333333333}
+{"event": "grpo_rollout", "step": 30, "rollout_batch": 31, "wall_time": 1794414192.6582797, "mean_reward": 1.0750000476837158, "mean_specified_reward": 1.1375, "reward_std": 0.8500000238418579, "zero_variance_fraction": 0.0, "exact_outcome": 0.75, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 534, "seconds": 19.147494747001474, "peak_vram_reserved_gib": 7.98046875}
+{'loss': 0.0005, 'grad_norm': 0.23372818529605865, 'learning_rate': 5e-06, 'mean_reward': 1.0750000476837158, 'reward_std': 0.8500000238418579, 'zero_variance_fraction': 0.0, 'exact_outcome': 0.75, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 0.011629715178059996, 'clip_fraction': 0.0, 'epoch': 0.08611111111111111}
+{"event": "grpo_rollout", "step": 31, "rollout_batch": 32, "wall_time": 1794414213.2020314, "mean_reward": 1.5, "mean_specified_reward": 1.5, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 548, "seconds": 19.013597631997982, "peak_vram_reserved_gib": 7.98046875}
+{'loss': 0.0, 'grad_norm': 4.269064447726123e-05, 'learning_rate': 5e-06, 'mean_reward': 1.5, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 4.7105506382649764e-05, 'clip_fraction': 0.0, 'epoch': 0.08888888888888889}
+{"event": "grpo_rollout", "step": 32, "rollout_batch": 33, "wall_time": 1794414241.4045575, "mean_reward": 1.0750000476837158, "mean_specified_reward": 1.1375, "reward_std": 0.8500000238418579, "zero_variance_fraction": 0.0, "exact_outcome": 0.75, "verified_citation_f1": 0.95, "format_valid": 1.0, "mean_tool_calls": 2.25, "sampled_tokens": 577, "seconds": 26.475667575999978, "peak_vram_reserved_gib": 7.98046875}
+{'loss': 0.0, 'grad_norm': 0.1997615247964859, 'learning_rate': 5e-06, 'mean_reward': 1.0750000476837158, 'reward_std': 0.8500000238418579, 'zero_variance_fraction': 0.0, 'exact_outcome': 0.75, 'verified_citation_f1': 0.95, 'format_valid': 1.0, 'mean_tool_calls': 2.25, 'kl': 0.0003237245236960007, 'clip_fraction': 0.0, 'epoch': 0.09166666666666666}
+{"event": "grpo_rollout", "step": 33, "rollout_batch": 34, "wall_time": 1794414261.0280912, "mean_reward": 1.2999999523162842, "mean_specified_reward": 1.3, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 484, "seconds": 18.050187410000945, "peak_vram_reserved_gib": 7.98046875}
+{'loss': 0.0, 'grad_norm': 0.00018566694052424282, 'learning_rate': 5e-06, 'mean_reward': 1.2999999523162842, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 0.00014958844985812902, 'clip_fraction': 0.0, 'epoch': 0.09444444444444444}
+{"event": "grpo_rollout", "step": 34, "rollout_batch": 35, "wall_time": 1794414288.156742, "mean_reward": 1.0750000476837158, "mean_specified_reward": 1.1375, "reward_std": 0.8500000238418579, "zero_variance_fraction": 0.0, "exact_outcome": 0.75, "verified_citation_f1": 0.75, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 577, "seconds": 25.66126789700138, "peak_vram_reserved_gib": 8.80078125}
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A
+
+
+
+
+  ...oint-30/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A
+
+
+
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A
+
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A[A[A[A[A
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A
+
+
+
+
+  ...oint-30/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A
+
+
+
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A
+
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+  ...e/output/optimization.png: 100%|██████████|  134kB /  134kB            [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 32.3kB / 32.3kB            [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  292kB /  292kB            [A[A[A[A[A[A[A[A[A[A
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A
+
+
+
+
+  ...oint-30/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A
+
+
+
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A
+
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+  ...e/output/optimization.png: 100%|██████████|  134kB /  134kB            [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 32.3kB / 32.3kB            [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  292kB /  292kB            [A[A[A[A[A[A[A[A[A[AProcessing Files (9 / 9)      : 100%|██████████|  517kB /  517kB,   ???B/s  
+New Data Upload               : 100%|██████████|  458kB /  458kB,   ???B/s  
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...oint-30/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            
+  ...e/output/optimization.png: 100%|██████████|  134kB /  134kB            
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 32.3kB / 32.3kB            
+  ...put/training_rollouts.png: 100%|██████████|  292kB /  292kB            
+{'loss': 0.0, 'grad_norm': 0.26186421513557434, 'learning_rate': 5e-06, 'mean_reward': 1.0750000476837158, 'reward_std': 0.8500000238418579, 'zero_variance_fraction': 0.0, 'exact_outcome': 0.75, 'verified_citation_f1': 0.75, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 0.00014329553221159586, 'clip_fraction': 0.0, 'epoch': 0.09722222222222222}
+{"event": "grpo_rollout", "step": 35, "rollout_batch": 36, "wall_time": 1794414305.046792, "mean_reward": 1.0, "mean_specified_reward": 1.0, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 0.0, "format_valid": 1.0, "mean_tool_calls": 1.0, "sampled_tokens": 312, "seconds": 11.984537906999321, "peak_vram_reserved_gib": 8.80078125}
+{'loss': 0.0, 'grad_norm': 4.41817901446484e-05, 'learning_rate': 5e-06, 'mean_reward': 1.0, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 0.0, 'format_valid': 1.0, 'mean_tool_calls': 1.0, 'kl': 0.0003646344703156501, 'clip_fraction': 0.0, 'epoch': 0.1}
+{"event": "grpo_rollout", "step": 36, "rollout_batch": 37, "wall_time": 1794414324.9237359, "mean_reward": 1.2999999523162842, "mean_specified_reward": 1.3, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 512, "seconds": 18.399330461001227, "peak_vram_reserved_gib": 8.80078125}
+{'loss': 0.0, 'grad_norm': 0.00013382469478528947, 'learning_rate': 5e-06, 'mean_reward': 1.2999999523162842, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 3.400491550564766e-05, 'clip_fraction': 0.0, 'epoch': 0.10277777777777777}
+{"event": "grpo_rollout", "step": 37, "rollout_batch": 38, "wall_time": 1794414338.2995872, "mean_reward": 0.9200000166893005, "mean_specified_reward": 0.92, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 0.0, "format_valid": 1.0, "mean_tool_calls": 1.0, "sampled_tokens": 304, "seconds": 11.894968042000983, "peak_vram_reserved_gib": 8.80078125}
+{'loss': 0.0002, 'grad_norm': 0.0015231583965942264, 'learning_rate': 5e-06, 'mean_reward': 0.9200000166893005, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 0.0, 'format_valid': 1.0, 'mean_tool_calls': 1.0, 'kl': 0.003771421266719699, 'clip_fraction': 0.0, 'epoch': 0.10555555555555556}
+{"event": "grpo_rollout", "step": 38, "rollout_batch": 39, "wall_time": 1794414359.1016166, "mean_reward": 1.5, "mean_specified_reward": 1.5, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 552, "seconds": 19.128971998998168, "peak_vram_reserved_gib": 8.80078125}
+{'loss': 0.0, 'grad_norm': 2.2610411178902723e-05, 'learning_rate': 5e-06, 'mean_reward': 1.5, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 2.1328096408979036e-05, 'clip_fraction': 0.0, 'epoch': 0.10833333333333334}
+{"event": "grpo_rollout", "step": 39, "rollout_batch": 40, "wall_time": 1794414379.1065087, "mean_reward": 1.5, "mean_specified_reward": 1.5, "reward_std": 0.0, "zero_variance_fraction": 1.0, "exact_outcome": 1.0, "verified_citation_f1": 1.0, "format_valid": 1.0, "mean_tool_calls": 2.0, "sampled_tokens": 516, "seconds": 18.48311990900038, "peak_vram_reserved_gib": 8.80078125}
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 35.9kB / 35.9kB            [A[A
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  297kB /  297kB            [A[A[A[A
+
+
+
+
+  ...oint-30/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A
+
+
+
+
+
+  ...e/output/optimization.png: 100%|██████████|  136kB /  136kB            [A[A[A[A[A[A
+
+
+
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A[A[A[A
+
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 35.9kB / 35.9kB            [A[A
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  297kB /  297kB            [A[A[A[A
+
+
+
+
+  ...oint-30/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A
+
+
+
+
+
+  ...e/output/optimization.png: 100%|██████████|  136kB /  136kB            [A[A[A[A[A[A
+
+
+
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A[A[A[AProcessing Files (9 / 9)      : 100%|██████████|  527kB /  527kB,   ???B/s  
+New Data Upload               : 100%|██████████|  468kB /  468kB,   ???B/s  
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 35.9kB / 35.9kB            
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...put/training_rollouts.png: 100%|██████████|  297kB /  297kB            
+  ...oint-30/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...e/output/optimization.png: 100%|██████████|  136kB /  136kB            
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+{'loss': 0.0, 'grad_norm': 2.2749816253053723e-06, 'learning_rate': 5e-06, 'mean_reward': 1.5, 'reward_std': 0.0, 'zero_variance_fraction': 1.0, 'exact_outcome': 1.0, 'verified_citation_f1': 1.0, 'format_valid': 1.0, 'mean_tool_calls': 2.0, 'kl': 1.899493781820638e-06, 'clip_fraction': 0.0, 'epoch': 0.1111111111111111}
+{'train_runtime': 835.1374, 'train_samples_per_second': 0.192, 'train_steps_per_second': 0.048, 'train_loss': 5.111614049759239e-05, 'epoch': 0.1111111111111111}
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  ...oint-30/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A
+
+
+
+  ...oint-40/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A
+
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A
+
+
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  297kB /  297kB            [A[A[A[A[A[A
+
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 37.0kB / 37.0kB            [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+  ...e/output/optimization.png: 100%|██████████|  136kB /  136kB            [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+  .../stage2/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A[A[A[A[A
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  ...oint-30/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A
+
+
+
+  ...oint-40/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A
+
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A
+
+
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  297kB /  297kB            [A[A[A[A[A[A
+
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 37.0kB / 37.0kB            [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+  ...e/output/optimization.png: 100%|██████████|  136kB /  136kB            [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+  .../stage2/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A[A[A[A[AProcessing Files (10 / 10)    : 100%|██████████|  535kB /  535kB,   ???B/s  
+New Data Upload               : 100%|██████████|  173kB /  173kB,   ???B/s  
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...oint-30/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...oint-40/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...put/training_rollouts.png: 100%|██████████|  297kB /  297kB            
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 37.0kB / 37.0kB            
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...e/output/optimization.png: 100%|██████████|  136kB /  136kB            
+  .../stage2/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+{"event": "validation", "label": "after", "n": 40, "exact_outcome": 1.0, "mean_reward": 1.46}
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...oint-40/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A
+
+
+
+  ...e/output/optimization.png: 100%|██████████|  136kB /  136kB            [A[A[A[A
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A[A[A
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 37.0kB / 37.0kB            [A[A[A[A[A[A
+
+  ...oint-40/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A
+
+
+
+  ...e/output/optimization.png: 100%|██████████|  136kB /  136kB            [A[A[A[A
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A[A[A
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 37.0kB / 37.0kB            [A[A[A[A[A[A
+
+
+
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  297kB /  297kB            [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+  .../stage2/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+  ...oint-30/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A[A[A[A[A
+
+  ...oint-40/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A
+
+
+
+  ...e/output/optimization.png: 100%|██████████|  136kB /  136kB            [A[A[A[A
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A[A[A
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 37.0kB / 37.0kB            [A[A[A[A[A[A
+
+
+
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  297kB /  297kB            [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+  .../stage2/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+  ...oint-30/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A[A[A[A[AProcessing Files (10 / 10)    : 100%|██████████|  535kB /  535kB, 53.1kB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...oint-40/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...e/output/optimization.png: 100%|██████████|  136kB /  136kB            
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 37.0kB / 37.0kB            
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...put/training_rollouts.png: 100%|██████████|  297kB /  297kB            
+  .../stage2/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...oint-30/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...adapter_model.safetensors:  18%|█▊        | 22.2MB /  121MB            [A[A
+
+
+  ...ut/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A
+
+  ...adapter_model.safetensors:  18%|█▊        | 22.2MB /  121MB            [A[A
+
+
+  ...ut/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A
+
+  ...adapter_model.safetensors:  84%|████████▍ |  102MB /  121MB            [A[A
+
+
+  ...ut/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  121MB /  121MB            [A[A
+
+
+  ...ut/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[A
+
+  ...adapter_model.safetensors: 100%|██████████|  121MB /  121MB            [A[A
+
+
+  ...ut/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A[AProcessing Files (2 / 2)      : 100%|██████████|  142MB /  142MB, 12.4MB/s  
+New Data Upload               : 100%|██████████|  121MB /  121MB, 10.5MB/s  [AProcessing Files (2 / 2)      : 100%|██████████|  142MB /  142MB, 12.4MB/s  
+New Data Upload               : 100%|██████████|  121MB /  121MB, 10.5MB/s  
+  ...adapter_model.safetensors: 100%|██████████|  121MB /  121MB            
+  ...ut/adapter/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 37.0kB / 37.0kB            [A[A[A
+
+
+
+  ...e/output/optimization.png: 100%|██████████|  136kB /  136kB            [A[A[A[A
+
+
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A
+
+
+
+
+
+  ...oint-30/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A
+
+
+
+
+
+
+  .../stage2/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+  ...oint-40/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  297kB /  297kB            [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A[A[A[A[A
+
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A
+
+
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 37.0kB / 37.0kB            [A[A[A
+
+
+
+  ...e/output/optimization.png: 100%|██████████|  136kB /  136kB            [A[A[A[A
+
+
+
+
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A
+
+
+
+
+
+  ...oint-30/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A
+
+
+
+
+
+
+  .../stage2/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+  ...oint-40/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+  ...put/training_rollouts.png: 100%|██████████|  297kB /  297kB            [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            [A[A[A[A[A[A[A[A[A[A[AProcessing Files (10 / 10)    : 100%|██████████|  535kB /  535kB, 53.3kB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...oint-10/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...nwzldq1-6590b-wxgxx.165.1: 100%|██████████| 37.0kB / 37.0kB            
+  ...e/output/optimization.png: 100%|██████████|  136kB /  136kB            
+  .../stage1/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...oint-30/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  .../stage2/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...oint-40/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+  ...put/training_rollouts.png: 100%|██████████|  297kB /  297kB            
+  ...nwzldq1-6590b-wxgxx.165.0: 100%|██████████| 22.5kB / 22.5kB            
+  ...oint-20/training_args.bin: 100%|██████████| 7.25kB / 7.25kB            
+{"event": "complete", "status": "pilot_complete", "adapter_l1_change": 1104.732531964779, "mixed_reward_batches": 21}

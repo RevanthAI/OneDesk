@@ -1,0 +1,8 @@
+{
+  "job_id": "6af5f9d80f431c4f7b55fbe9",
+  "reason": "Uniform-reward saturation of G=4 after stronger SFT; retain all SFT and diagnostic work, discard pilot RL policy, restart allowed G=6 exploration from the same selected SFT",
+  "replacement_group_size": 6,
+  "replacement_temperature": 1.0,
+  "replacement_retry_temperature": 1.15,
+  "requested_at": 1794511634.041495
+}

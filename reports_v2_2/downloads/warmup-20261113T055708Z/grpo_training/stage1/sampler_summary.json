@@ -1,0 +1,17 @@
+{
+  "accepted": 40,
+  "accepted_by_kind": {
+    "conflict": 15,
+    "incident": 15,
+    "consistent": 5,
+    "abstain": 5
+  },
+  "draws": {
+    "conflict": 55,
+    "incident": 71,
+    "consistent": 5,
+    "abstain": 17
+  },
+  "fallbacks": 0,
+  "cycle_offset": 0
+}

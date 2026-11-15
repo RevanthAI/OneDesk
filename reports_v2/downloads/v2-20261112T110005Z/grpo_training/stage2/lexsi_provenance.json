@@ -1,0 +1,18 @@
+{
+  "schema": "lexsi.provenance/1",
+  "library": "agenttune",
+  "version": "0+unknown",
+  "git_sha": null,
+  "created_at": "2026-11-12T16:31:32Z",
+  "base_model": "CohereLabs/tiny-aya-fire",
+  "method": "agentic.grpo",
+  "inputs": [
+    {
+      "kind": "dataset",
+      "ref": "data_v2/train_grpo_stage2.jsonl",
+      "config": null,
+      "provenance": null
+    }
+  ],
+  "params": {}
+}

@@ -1,0 +1,10 @@
+{
+  "abstract_words": 365,
+  "sections": 11,
+  "words": 14729,
+  "bytes": 129100,
+  "sha256": "919d69db2a3b3816ecdf6b72b4859708ba5ffa21d50b00479ded982490d059c6",
+  "source_artifacts_read": 1503,
+  "paid_jobs_launched": false,
+  "model_inference_performed": false
+}

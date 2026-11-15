@@ -1,0 +1,23 @@
+{
+  "status": "complete",
+  "release": {
+    "path": "/home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/reports_v2/driftguard_v2_release.zip",
+    "sha256": "99b5a206a09671a9304d7d1f2f2ac5c1832e51fd47ddf37c52d4ab81d45c878b",
+    "files": 597,
+    "bytes": 5034543,
+    "legacy_included": false,
+    "secrets_included": false,
+    "raw_training_rollouts": "Linked private HF run repository; omitted from source archive",
+    "remote_publication_performed": false
+  },
+  "adapter_sha256": {
+    "checkpoints_v2/sft_adapter/adapter_model.safetensors": "f7524411f0bf7fc79d6d0bc93b0dad7c484ce8facabbf916dc165553915a40cb",
+    "checkpoints_v2/grpo_adapter/adapter_model.safetensors": "1f12051c19604fc874b81a6d7f8f1654088866b6402967bf7a8ff0475d10eb32"
+  },
+  "review_complete": true,
+  "review_sync": {
+    "repo": "Revanth-ml/driftguard-mcp-v2-runs",
+    "revision": "ef54c1b2658e6b9690dbd41a3f5c7dc9f45ca026",
+    "path": "v2-20261112T110005Z/final_review"
+  }
+}

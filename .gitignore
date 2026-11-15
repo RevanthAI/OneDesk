@@ -1,0 +1,72 @@
+# Credentials (examples contain placeholders only).
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+*.key
+*.p12
+*.pfx
+**/secrets/
+**/.secrets/
+**/token
+**/token.txt
+**/stored_tokens
+credentials.json
+service-account*.json
+.netrc
+.hf_token
+.huggingface_token
+hf_token
+huggingface_token
+HF_TOKEN
+HUGGINGFACE_TOKEN
+
+# Python environments, tooling and operating-system caches.
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+.coverage
+htmlcov/
+.DS_Store
+
+# Hub-hosted model/optimizer blobs. Keep checkpoint directories traversable so
+# adapter_config.json, trainer_state.json, READMEs and checksums remain eligible.
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.gguf
+*.onnx
+*.h5
+*.msgpack
+models/
+**/tokenizer.json
+**/vocab.json
+**/merges.txt
+**/tokenizer.model
+**/spiece.model
+
+# Download locks, packaged duplicate bundles and temporary scratch only.
+*.lock
+*.incomplete
+*.tmp
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+/scratch/
+/tmp/
+
+# Reconstruct pinned upstream dependencies using toolkit_revisions.json.
+vendor/
+
+# Intentionally do NOT ignore reports*/downloads/: canonical report aliases
+# resolve into those trees. Source, tests, configs, space, Markdown, JSON/JSONL,
+# manifests, PNG/SVG/HTML plots and TensorBoard logs remain eligible for Git.

@@ -1,0 +1,37 @@
+{
+  "best": {
+    "accuracy": 0.7375,
+    "step": 120,
+    "path": "reports_v2_1/sft_training/epoch4/adapter"
+  },
+  "validation": [
+    {
+      "step": 30,
+      "epoch": 1,
+      "exact_outcome": 0.525,
+      "predicted_abstention_rate": 0.15,
+      "adapter": "reports_v2_1/sft_training/epoch1/adapter"
+    },
+    {
+      "step": 60,
+      "epoch": 2,
+      "exact_outcome": 0.675,
+      "predicted_abstention_rate": 0.2375,
+      "adapter": "reports_v2_1/sft_training/epoch2/adapter"
+    },
+    {
+      "step": 90,
+      "epoch": 3,
+      "exact_outcome": 0.65,
+      "predicted_abstention_rate": 0.225,
+      "adapter": "reports_v2_1/sft_training/epoch3/adapter"
+    },
+    {
+      "step": 120,
+      "epoch": 4,
+      "exact_outcome": 0.7375,
+      "predicted_abstention_rate": 0.225,
+      "adapter": "reports_v2_1/sft_training/epoch4/adapter"
+    }
+  ]
+}

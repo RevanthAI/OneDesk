@@ -1,0 +1,10 @@
+{
+  "project": "OneDesk",
+  "mode": "dry-run",
+  "network_calls": 0,
+  "models": 9,
+  "datasets": 6,
+  "rename_prefix": "onedesk",
+  "plan": "hf_cards/PLAN.json",
+  "collections": "Not created; --publish required"
+}

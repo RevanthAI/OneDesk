@@ -1,0 +1,16 @@
+{
+  "run_repo": "Revanth-ml/driftguard-mcp-v2-runs",
+  "run_prefix": "v2-20261112T110005Z",
+  "bundle_revision": "3c9fc4546b011111ed1df60b85c694d6a87c1781",
+  "bundle_sha256": "6a40cbc5dac69e3f3d94af6eedad0336b7ed79b35f1d5fe320bf83ba77da2961",
+  "dataset_repo": "Revanth-ml/driftguard-mcp-v2-data",
+  "dataset_revision": "97917b6fc7c5800f69afacb2b251926e7a21596d",
+  "sft_repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-sft",
+  "grpo_repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-grpo",
+  "timeout": "12h",
+  "flavor": "l40sx1",
+  "namespace": "Revanth-ml",
+  "phase": "all",
+  "resume_prefix": "v2-20261112T103309Z",
+  "resume_sft_revision": "f8bd317a9f84746328af7d078a49cc08a64f0086"
+}

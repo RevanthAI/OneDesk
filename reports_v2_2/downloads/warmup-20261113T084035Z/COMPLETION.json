@@ -1,0 +1,22 @@
+{
+  "status": "complete",
+  "grpo_training_status": "complete",
+  "completed_grpo_updates": 80,
+  "selected_grpo_step": 40,
+  "approved_data_unchanged": true,
+  "wall_seconds": 6709.1241891384125,
+  "model_revisions": {
+    "SFT_WARMUP": {
+      "repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-sft",
+      "revision": "72aafc56b1506a81a7cb12930e95f8f2f17d03d5"
+    },
+    "GRPO_BEST_VAL": {
+      "repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-grpo-best-val",
+      "revision": "016676680121b4dd90ec6026978de7ee1cdb1271"
+    },
+    "GRPO_FINAL": {
+      "repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-grpo-final",
+      "revision": "b006ec346e48807afd23030abf17b599adfcf71f"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "recommended_microbatch": 8,
+  "effective_batch": 16,
+  "gradient_accumulation": 2,
+  "largest_passed_batch": 32,
+  "selection": "highest measured throughput among safe batches <=8, preserving optimizer update count on the small dataset",
+  "successful_batches": 6
+}

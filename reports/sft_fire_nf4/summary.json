@@ -1,0 +1,295 @@
+{
+  "test_synth": {
+    "n": 400,
+    "metrics": {
+      "exact_outcome": {
+        "estimate": 0.8525,
+        "ci95": [
+          0.8075,
+          0.895
+        ],
+        "denominator": 400.0,
+        "clusters": 100
+      },
+      "stale_catch": {
+        "estimate": 0.87,
+        "ci95": [
+          0.8035714285714286,
+          0.9264705882352942
+        ],
+        "denominator": 200.0,
+        "clusters": 100
+      },
+      "verified_citation_f1": {
+        "estimate": 0.8941176470588236,
+        "ci95": [
+          0.8563218390804598,
+          0.9292635658914727
+        ],
+        "denominator": 340.0,
+        "clusters": 100
+      },
+      "distractor_immunity": {
+        "estimate": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "denominator": 200.0,
+        "clusters": 100
+      },
+      "successful_tool_calls": {
+        "estimate": 1.8914956011730206,
+        "ci95": [
+          1.763155870445344,
+          2.017968142265318
+        ],
+        "denominator": 341.0,
+        "clusters": 100
+      },
+      "format_valid": {
+        "estimate": 0.99,
+        "ci95": [
+          0.98,
+          0.9975
+        ],
+        "denominator": 400.0,
+        "clusters": 100
+      },
+      "stale_value_returned": {
+        "estimate": 0.05,
+        "ci95": [
+          0.02403846153846154,
+          0.07894736842105263
+        ],
+        "denominator": 200.0,
+        "clusters": 100
+      },
+      "abstention_precision": {
+        "estimate": 0.6944444444444444,
+        "ci95": [
+          0.5079365079365079,
+          0.8314636309875812
+        ],
+        "denominator": 72.0,
+        "clusters": 100
+      },
+      "abstention_recall": {
+        "estimate": 0.8333333333333334,
+        "ci95": [
+          0.725,
+          0.9318181818181818
+        ],
+        "denominator": 60.0,
+        "clusters": 100
+      },
+      "unplugged_recall": {
+        "estimate": 0.6428571428571429,
+        "ci95": [
+          0.5416666666666666,
+          0.75
+        ],
+        "denominator": 28.0,
+        "clusters": 100
+      },
+      "accuracy_by_language": {
+        "en": {
+          "estimate": 0.88,
+          "ci95": [
+            0.81,
+            0.94
+          ],
+          "denominator": 100.0,
+          "clusters": 100
+        },
+        "hi": {
+          "estimate": 0.83,
+          "ci95": [
+            0.75,
+            0.9
+          ],
+          "denominator": 100.0,
+          "clusters": 100
+        },
+        "hinglish": {
+          "estimate": 0.85,
+          "ci95": [
+            0.78,
+            0.9102499999999963
+          ],
+          "denominator": 100.0,
+          "clusters": 100
+        },
+        "te": {
+          "estimate": 0.85,
+          "ci95": [
+            0.78,
+            0.92
+          ],
+          "denominator": 100.0,
+          "clusters": 100
+        }
+      }
+    },
+    "auditkit_headline": {
+      "driftguard_exact_outcome": 0.8525,
+      "driftguard_evidence_f1_all_items": 0.76,
+      "tool_call_precision_name": 0.926875,
+      "tool_call_recall_name": 0.8791666666666668,
+      "tool_call_f1_name": 0.8923809523809524,
+      "tool_call_exact_name": 0.8275,
+      "tool_call_validity": 0.989247311827957,
+      "redundant_tool_calls": 0.0
+    },
+    "completion_reasons": {
+      "final_answer": 396,
+      "malformed_output": 4
+    }
+  },
+  "repo_style": {
+    "n": 100,
+    "metrics": {
+      "exact_outcome": {
+        "estimate": 0.68,
+        "ci95": [
+          0.6161616161616161,
+          0.7448979591836735
+        ],
+        "denominator": 100.0,
+        "clusters": 30
+      },
+      "stale_catch": {
+        "estimate": 0.68,
+        "ci95": [
+          0.6161616161616161,
+          0.7448979591836735
+        ],
+        "denominator": 100.0,
+        "clusters": 30
+      },
+      "verified_citation_f1": {
+        "estimate": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "denominator": 100.0,
+        "clusters": 30
+      },
+      "distractor_immunity": {
+        "estimate": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "denominator": 50.0,
+        "clusters": 30
+      },
+      "successful_tool_calls": {
+        "estimate": 2.0,
+        "ci95": [
+          2.0,
+          2.0
+        ],
+        "denominator": 68.0,
+        "clusters": 30
+      },
+      "format_valid": {
+        "estimate": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "denominator": 100.0,
+        "clusters": 30
+      },
+      "stale_value_returned": {
+        "estimate": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "denominator": 100.0,
+        "clusters": 30
+      },
+      "abstention_precision": {
+        "estimate": null,
+        "ci95": [
+          null,
+          null
+        ],
+        "denominator": 0,
+        "clusters": 30
+      },
+      "abstention_recall": {
+        "estimate": null,
+        "ci95": [
+          null,
+          null
+        ],
+        "denominator": 0,
+        "clusters": 30
+      },
+      "unplugged_recall": {
+        "estimate": null,
+        "ci95": [
+          null,
+          null
+        ],
+        "denominator": 0,
+        "clusters": 30
+      },
+      "accuracy_by_language": {
+        "en": {
+          "estimate": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "denominator": 25.0,
+          "clusters": 25
+        },
+        "hi": {
+          "estimate": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "denominator": 25.0,
+          "clusters": 25
+        },
+        "hinglish": {
+          "estimate": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ],
+          "denominator": 25.0,
+          "clusters": 25
+        },
+        "te": {
+          "estimate": 0.72,
+          "ci95": [
+            0.52,
+            0.88
+          ],
+          "denominator": 25.0,
+          "clusters": 25
+        }
+      }
+    },
+    "auditkit_headline": {
+      "driftguard_exact_outcome": 0.68,
+      "driftguard_evidence_f1_all_items": 1.0,
+      "tool_call_precision_name": 1.0,
+      "tool_call_recall_name": 1.0,
+      "tool_call_f1_name": 1.0,
+      "tool_call_exact_name": 1.0,
+      "tool_call_validity": 1.0,
+      "redundant_tool_calls": 0.0
+    },
+    "completion_reasons": {
+      "final_answer": 100
+    }
+  }
+}

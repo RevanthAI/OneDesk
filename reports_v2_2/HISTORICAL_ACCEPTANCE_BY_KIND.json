@@ -1,0 +1,20 @@
+{
+  "conflict": {
+    "attempted": 15,
+    "accepted": 4,
+    "all_correct_skipped": 9,
+    "all_wrong_skipped": 2
+  },
+  "incident": {
+    "attempted": 54,
+    "accepted": 1,
+    "all_correct_skipped": 51,
+    "all_wrong_skipped": 2
+  },
+  "consistent": {
+    "attempted": 3,
+    "accepted": 1,
+    "all_correct_skipped": 2,
+    "all_wrong_skipped": 0
+  }
+}

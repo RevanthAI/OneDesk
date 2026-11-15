@@ -1,0 +1,10 @@
+{
+  "path": "/home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/reports_v2/driftguard_v2_release.zip",
+  "sha256": "99b5a206a09671a9304d7d1f2f2ac5c1832e51fd47ddf37c52d4ab81d45c878b",
+  "files": 597,
+  "bytes": 5034543,
+  "legacy_included": false,
+  "secrets_included": false,
+  "raw_training_rollouts": "Linked private HF run repository; omitted from source archive",
+  "remote_publication_performed": false
+}

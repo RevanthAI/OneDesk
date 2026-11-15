@@ -1,0 +1,508 @@
+Using Python 3.12.12 environment at: /usr/local
+Resolved 13 packages in 72ms
+Downloading hf-xet (4.1MiB)
+ Downloaded hf-xet
+Prepared 13 packages in 113ms
+Installed 13 packages in 9ms
+ + certifi==2026.10.23
+ + charset-normalizer==3.5.2
+ + filelock==4.2.10
+ + fsspec==2026.9.0
+ + hf-xet==1.8.0
+ + huggingface-hub==0.36.2
+ + idna==3.20
+ + packaging==26.3
+ + pyyaml==6.0.3
+ + requests==2.34.2
+ + tqdm==4.70.1
+ + typing-extensions==4.16.0
+ + urllib3==2.8.0
+
+cloud_bootstrap.sh:   0%|          | 0.00/749 [00:00<?, ?B/s][Acloud_bootstrap.sh: 100%|██████████| 749/749 [00:00<00:00, 5.12MB/s]
+Using Python 3.12.12 environment at: /usr/local
+Resolved 25 packages in 160ms
+Downloading networkx (2.0MiB)
+Downloading sympy (6.0MiB)
+Downloading setuptools (1.2MiB)
+Downloading nvidia-cuda-nvrtc-cu12 (84.0MiB)
+Downloading triton (148.4MiB)
+Downloading torch (847.9MiB)
+Downloading nvidia-cufft-cu12 (184.2MiB)
+Downloading nvidia-nccl-cu12 (307.4MiB)
+Downloading nvidia-cusparse-cu12 (274.9MiB)
+Downloading nvidia-cuda-cupti-cu12 (9.8MiB)
+Downloading nvidia-cufile-cu12 (1.1MiB)
+Downloading nvidia-cublas-cu12 (566.8MiB)
+Downloading nvidia-cusolver-cu12 (255.1MiB)
+Downloading nvidia-cusparselt-cu12 (273.9MiB)
+Downloading nvidia-curand-cu12 (60.7MiB)
+Downloading nvidia-nvjitlink-cu12 (37.4MiB)
+Downloading nvidia-cudnn-cu12 (674.0MiB)
+ Downloaded nvidia-cufile-cu12
+ Downloaded nvidia-cuda-cupti-cu12
+ Downloaded setuptools
+ Downloaded nvidia-cuda-nvrtc-cu12
+ Downloaded networkx
+ Downloaded triton
+ Downloaded nvidia-nvjitlink-cu12
+ Downloaded nvidia-cufft-cu12
+ Downloaded sympy
+ Downloaded nvidia-curand-cu12
+ Downloaded nvidia-nccl-cu12
+ Downloaded nvidia-cusparse-cu12
+ Downloaded nvidia-cusolver-cu12
+ Downloaded nvidia-cusparselt-cu12
+ Downloaded nvidia-cublas-cu12
+ Downloaded nvidia-cudnn-cu12
+ Downloaded torch
+Prepared 22 packages in 25.11s
+Installed 22 packages in 396ms
+ + jinja2==3.1.6
+ + markupsafe==3.0.3
+ + mpmath==1.3.0
+ + networkx==3.7
+ + nvidia-cublas-cu12==12.8.4.1
+ + nvidia-cuda-cupti-cu12==12.8.90
+ + nvidia-cuda-nvrtc-cu12==12.8.93
+ + nvidia-cuda-runtime-cu12==12.8.90
+ + nvidia-cudnn-cu12==9.10.2.21
+ + nvidia-cufft-cu12==11.3.3.83
+ + nvidia-cufile-cu12==1.13.1.3
+ + nvidia-curand-cu12==10.3.9.90
+ + nvidia-cusolver-cu12==11.7.3.90
+ + nvidia-cusparse-cu12==12.5.8.93
+ + nvidia-cusparselt-cu12==0.7.1
+ + nvidia-nccl-cu12==2.27.3
+ + nvidia-nvjitlink-cu12==12.8.93
+ + nvidia-nvtx-cu12==12.8.90
+ + setuptools==78.1.0
+ + sympy==1.14.0
+ + torch==2.8.0+cu128
+ + triton==3.4.0
+Using Python 3.12.12 environment at: /usr/local
+Resolved 43 packages in 153ms
+Downloading tokenizers (3.1MiB)
+Downloading transformers (11.4MiB)
+Downloading numpy (16.0MiB)
+ Downloaded tokenizers
+ Downloaded numpy
+ Downloaded transformers
+Prepared 8 packages in 823ms
+Installed 8 packages in 100ms
+ + accelerate==1.15.0
+ + numpy==2.5.4
+ + peft==0.17.1
+ + psutil==7.2.2
+ + regex==2026.11.9
+ + safetensors==0.8.0
+ + tokenizers==0.22.2
+ + transformers==4.57.6
+
+cloud_bundle.zip:   0%|          | 0.00/897k [00:00<?, ?B/s][Acloud_bundle.zip: 100%|██████████| 897k/897k [00:00<00:00, 3.02MB/s]
+
+tokenizer_config.json:   0%|          | 0.00/8.17k [00:00<?, ?B/s][Atokenizer_config.json: 100%|██████████| 8.17k/8.17k [00:00<00:00, 34.7MB/s]
+
+tokenizer.json:   0%|          | 0.00/21.4M [00:00<?, ?B/s][Atokenizer.json: 100%|██████████| 21.4M/21.4M [00:00<00:00, 57.7MB/s]
+
+special_tokens_map.json:   0%|          | 0.00/567 [00:00<?, ?B/s][Aspecial_tokens_map.json: 100%|██████████| 567/567 [00:00<00:00, 4.09MB/s]
+
+config.json:   0%|          | 0.00/1.96k [00:00<?, ?B/s][Aconfig.json: 100%|██████████| 1.96k/1.96k [00:00<00:00, 15.4MB/s]
+`torch_dtype` is deprecated! Use `dtype` instead!
+
+model.safetensors.index.json:   0%|          | 0.00/23.6k [00:00<?, ?B/s][Amodel.safetensors.index.json: 100%|██████████| 23.6k/23.6k [00:00<00:00, 105MB/s]
+
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s][A
+model-00001-of-00002.safetensors:   0%|          | 0.00/4.99G [00:00<?, ?B/s][A
+model-00002-of-00002.safetensors:   0%|          | 0.00/1.71G [00:00<?, ?B/s][A
+model-00002-of-00002.safetensors:  15%|█▌        | 256M/1.71G [00:01<00:05, 253MB/s][A
+model-00001-of-00002.safetensors:   1%|▏         | 67.1M/4.99G [00:01<01:32, 53.2MB/s][A
+model-00002-of-00002.safetensors:  45%|████▌     | 768M/1.71G [00:02<00:02, 353MB/s][A
+model-00001-of-00002.safetensors:   5%|▌         | 268M/4.99G [00:02<00:40, 116MB/s]  [A
+model-00001-of-00002.safetensors:  19%|█▉        | 939M/4.99G [00:03<00:11, 338MB/s][A
+model-00002-of-00002.safetensors:  86%|████████▋ | 1.48G/1.71G [00:04<00:00, 381MB/s][Amodel-00002-of-00002.safetensors: 100%|██████████| 1.71G/1.71G [00:04<00:00, 398MB/s]
+
+Fetching 2 files:  50%|█████     | 1/2 [00:04<00:04,  4.38s/it][A
+model-00001-of-00002.safetensors:  31%|███       | 1.54G/4.99G [00:04<00:08, 398MB/s][A
+model-00001-of-00002.safetensors:  58%|█████▊    | 2.88G/4.99G [00:06<00:03, 649MB/s][A
+model-00001-of-00002.safetensors: 100%|██████████| 4.99G/4.99G [00:07<00:00, 1.05GB/s][Amodel-00001-of-00002.safetensors: 100%|██████████| 4.99G/4.99G [00:07<00:00, 700MB/s] 
+
+Fetching 2 files: 100%|██████████| 2/2 [00:07<00:00,  3.61s/it][AFetching 2 files: 100%|██████████| 2/2 [00:07<00:00,  3.61s/it]
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][ALoading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  2.93it/s]
+
+generation_config.json:   0%|          | 0.00/132 [00:00<?, ?B/s][Ageneration_config.json: 100%|██████████| 132/132 [00:00<00:00, 960kB/s]
+trainable params: 30,228,480 || all params: 3,379,456,000 || trainable%: 0.8945
+{"event": "sft_step", "step": 1, "loss": 0.4287937134504318, "grad_norm": 1.3047561645507812, "seconds": 8.503303109000626, "supervised_tokens": 2369, "samples_seen": 16, "learning_rate": 0.0001}
+{"event": "sft_step", "step": 2, "loss": 0.36531247198581696, "grad_norm": 1.3303977251052856, "seconds": 8.291665954000564, "supervised_tokens": 2135, "samples_seen": 32, "learning_rate": 9.977359612865423e-05}
+{"event": "sft_step", "step": 3, "loss": 0.1615932434797287, "grad_norm": 0.6027125716209412, "seconds": 8.321389125998394, "supervised_tokens": 2232, "samples_seen": 48, "learning_rate": 9.909643486313533e-05}
+{"event": "sft_step", "step": 4, "loss": 0.08833390846848488, "grad_norm": 0.3236036002635956, "seconds": 8.339542622001318, "supervised_tokens": 2309, "samples_seen": 64, "learning_rate": 9.797464868072488e-05}
+{"event": "sft_step", "step": 5, "loss": 0.0766957700252533, "grad_norm": 0.3238386809825897, "seconds": 8.304519023999092, "supervised_tokens": 1836, "samples_seen": 80, "learning_rate": 9.641839665080363e-05}
+{"event": "sft_step", "step": 6, "loss": 0.03897840157151222, "grad_norm": 0.1785975843667984, "seconds": 8.316414991999409, "supervised_tokens": 2031, "samples_seen": 96, "learning_rate": 9.444177243274618e-05}
+{"event": "sft_step", "step": 7, "loss": 0.04550095461308956, "grad_norm": 0.23099179565906525, "seconds": 8.321321798999634, "supervised_tokens": 2203, "samples_seen": 112, "learning_rate": 9.206267664155907e-05}
+{"event": "sft_step", "step": 8, "loss": 0.043321648612618446, "grad_norm": 0.26064905524253845, "seconds": 8.330953203998433, "supervised_tokens": 2298, "samples_seen": 128, "learning_rate": 8.930265473713938e-05}
+{"event": "sft_step", "step": 9, "loss": 0.02342705149203539, "grad_norm": 0.14798951148986816, "seconds": 8.33201948399983, "supervised_tokens": 2359, "samples_seen": 144, "learning_rate": 8.618670190525352e-05}
+{"event": "sft_step", "step": 10, "loss": 0.0239527877420187, "grad_norm": 0.11702773720026016, "seconds": 8.294842151999546, "supervised_tokens": 1827, "samples_seen": 160, "learning_rate": 8.274303669726426e-05}
+{"event": "sft_step", "step": 11, "loss": 0.019189358688890934, "grad_norm": 0.10327243059873581, "seconds": 8.329023836000488, "supervised_tokens": 2234, "samples_seen": 176, "learning_rate": 7.900284547855991e-05}
+{"event": "sft_step", "step": 12, "loss": 0.014906353317201138, "grad_norm": 0.10114254057407379, "seconds": 8.334571131999837, "supervised_tokens": 2342, "samples_seen": 192, "learning_rate": 7.500000000000001e-05}
+{"event": "sft_step", "step": 13, "loss": 0.02141826879233122, "grad_norm": 0.14361363649368286, "seconds": 8.318301544999485, "supervised_tokens": 2198, "samples_seen": 208, "learning_rate": 7.077075065009433e-05}
+{"event": "sft_step", "step": 14, "loss": 0.012541199568659067, "grad_norm": 0.10311099886894226, "seconds": 8.356964732000051, "supervised_tokens": 2539, "samples_seen": 224, "learning_rate": 6.635339816587109e-05}
+{"event": "sft_step", "step": 15, "loss": 0.014128310605883598, "grad_norm": 0.08303888887166977, "seconds": 8.312645123000038, "supervised_tokens": 1926, "samples_seen": 240, "learning_rate": 6.178794677547137e-05}
+{"event": "sft_step", "step": 16, "loss": 0.008282737340778112, "grad_norm": 0.048689428716897964, "seconds": 8.325349493999965, "supervised_tokens": 2140, "samples_seen": 256, "learning_rate": 5.7115741913664264e-05}
+{"event": "sft_step", "step": 17, "loss": 0.008540107868611813, "grad_norm": 0.05135166272521019, "seconds": 8.324520645999655, "supervised_tokens": 2069, "samples_seen": 272, "learning_rate": 5.2379095791187124e-05}
+{"event": "sft_step", "step": 18, "loss": 0.006277745822444558, "grad_norm": 0.05047903209924698, "seconds": 8.349313238999457, "supervised_tokens": 2282, "samples_seen": 288, "learning_rate": 4.762090420881289e-05}
+{"event": "sft_step", "step": 19, "loss": 0.009114186512306333, "grad_norm": 0.1317804902791977, "seconds": 8.302101744999163, "supervised_tokens": 1792, "samples_seen": 304, "learning_rate": 4.288425808633575e-05}
+{"event": "sft_step", "step": 20, "loss": 0.006055917823687196, "grad_norm": 0.05200529471039772, "seconds": 8.347572423999736, "supervised_tokens": 2220, "samples_seen": 320, "learning_rate": 3.821205322452865e-05}
+{"event": "sft_step", "step": 21, "loss": 0.008205084130167961, "grad_norm": 0.0837097242474556, "seconds": 8.310163757998453, "supervised_tokens": 1851, "samples_seen": 336, "learning_rate": 3.364660183412892e-05}
+{"event": "sft_step", "step": 22, "loss": 0.005170435644686222, "grad_norm": 0.03844481706619263, "seconds": 8.335753518000274, "supervised_tokens": 2121, "samples_seen": 352, "learning_rate": 2.9229249349905674e-05}
+{"event": "sft_step", "step": 23, "loss": 0.003362470306456089, "grad_norm": 0.03689689561724663, "seconds": 8.369282326000757, "supervised_tokens": 2263, "samples_seen": 368, "learning_rate": 2.500000000000001e-05}
+{"event": "sft_step", "step": 24, "loss": 0.0035047673154622316, "grad_norm": 0.04435018077492714, "seconds": 8.38814728699981, "supervised_tokens": 2336, "samples_seen": 384, "learning_rate": 2.09971545214401e-05}
+{"event": "sft_step", "step": 25, "loss": 0.005104367039166391, "grad_norm": 0.05077490583062172, "seconds": 8.385292683000444, "supervised_tokens": 2039, "samples_seen": 400, "learning_rate": 1.725696330273575e-05}
+{"event": "sft_step", "step": 26, "loss": 0.0051275137811899185, "grad_norm": 0.05185755714774132, "seconds": 8.392210089999935, "supervised_tokens": 1998, "samples_seen": 416, "learning_rate": 1.3813298094746491e-05}
+{"event": "sft_step", "step": 27, "loss": 0.004582955385558307, "grad_norm": 0.05003800243139267, "seconds": 8.396058489999632, "supervised_tokens": 2151, "samples_seen": 432, "learning_rate": 1.0697345262860625e-05}
+{"event": "sft_step", "step": 28, "loss": 0.003511438728310168, "grad_norm": 0.031881678849458694, "seconds": 8.357388213999002, "supervised_tokens": 2236, "samples_seen": 448, "learning_rate": 7.937323358440945e-06}
+{"event": "sft_step", "step": 29, "loss": 0.002274092868901789, "grad_norm": 0.03775382041931152, "seconds": 8.356325848000779, "supervised_tokens": 2437, "samples_seen": 464, "learning_rate": 5.558227567253832e-06}
+{"event": "sft_step", "step": 30, "loss": 0.004404059669468552, "grad_norm": 0.05074648931622505, "seconds": 8.33073153100122, "supervised_tokens": 2222, "samples_seen": 480, "learning_rate": 3.581603349196372e-06}
+{"event": "sft_step", "step": 31, "loss": 0.0029550273902714252, "grad_norm": 0.024347631260752678, "seconds": 8.342195856001126, "supervised_tokens": 2364, "samples_seen": 496, "learning_rate": 2.0253513192751373e-06}
+{"event": "sft_step", "step": 32, "loss": 0.004853031365200877, "grad_norm": 0.060509856790304184, "seconds": 8.294726088999596, "supervised_tokens": 1846, "samples_seen": 512, "learning_rate": 9.035651368646703e-07}
+{"event": "sft_step", "step": 33, "loss": 0.0040502374758943915, "grad_norm": 0.03986598923802376, "seconds": 8.309059138999146, "supervised_tokens": 2045, "samples_seen": 528, "learning_rate": 2.2640387134577058e-07}
+{"event": "sft_step", "step": 34, "loss": 0.0034321725834161043, "grad_norm": 0.031237466260790825, "seconds": 8.44327931800035, "supervised_tokens": 2146, "samples_seen": 544, "learning_rate": 0.0}
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...adapter_model.safetensors:   4%|▍         | 4.55MB /  121MB            [A[A
+
+  ...adapter_model.safetensors:   4%|▍         | 4.55MB /  121MB            [A[A
+
+  ...adapter_model.safetensors:  67%|██████▋   | 81.0MB /  121MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  121MB /  121MB            [A[A
+
+  ...adapter_model.safetensors: 100%|██████████|  121MB /  121MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  121MB /  121MB, 10.6MB/s  
+New Data Upload               : 100%|██████████|  121MB /  121MB, 10.6MB/s  [AProcessing Files (1 / 1)      : 100%|██████████|  121MB /  121MB, 10.6MB/s  
+New Data Upload               : 100%|██████████|  121MB /  121MB, 10.6MB/s  
+  ...adapter_model.safetensors: 100%|██████████|  121MB /  121MB            
+
+README.md:   0%|          | 0.00/5.17k [00:00<?, ?B/s][AREADME.md: 100%|██████████| 5.17k/5.17k [00:00<00:00, 35.5MB/s]
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...mpvc0aog6z/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A
+
+  ...mpvc0aog6z/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 21.4MB / 21.4MB, 2.12MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...mpvc0aog6z/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...0001-of-00002.safetensors:   2%|▏         | 80.0MB / 4.00GB            [A[A
+
+  ...0001-of-00002.safetensors:   2%|▏         | 80.0MB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:   2%|▏         | 52.9MB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  10%|▉         |  384MB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:   2%|▏         | 52.9MB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  17%|█▋        |  680MB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:   4%|▍         |  114MB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  24%|██▍       |  976MB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:   7%|▋         |  180MB / 2.70GB            [A[A[AProcessing Files (0 / 2)      :  17%|█▋        | 1.16GB / 6.70GB,  110MB/s  
+New Data Upload               :  67%|██████▋   |  180MB /  268MB, 17.2MB/s  [A
+
+  ...0001-of-00002.safetensors:  26%|██▋       | 1.05GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:   9%|▉         |  246MB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  28%|██▊       | 1.10GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  12%|█▏        |  312MB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  29%|██▉       | 1.16GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  14%|█▍        |  388MB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  30%|██▉       | 1.18GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  17%|█▋        |  453MB / 2.70GB            [A[A[AProcessing Files (0 / 2)      :  24%|██▍       | 1.64GB / 6.70GB,  144MB/s  
+New Data Upload               :  80%|███████▉  |  587MB /  738MB, 53.1MB/s  [A
+
+  ...0001-of-00002.safetensors:  31%|███       | 1.24GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  19%|█▉        |  521MB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  33%|███▎      | 1.30GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  20%|█▉        |  536MB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  34%|███▍      | 1.36GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  22%|██▏       |  589MB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  35%|███▌      | 1.42GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  24%|██▍       |  650MB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  37%|███▋      | 1.49GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  26%|██▋       |  714MB / 2.70GB            [A[A[AProcessing Files (0 / 2)      :  33%|███▎      | 2.21GB / 6.70GB,  179MB/s  
+New Data Upload               :  86%|████████▋ | 1.16GB / 1.34GB, 98.0MB/s  [A
+
+  ...0001-of-00002.safetensors:  39%|███▉      | 1.55GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  29%|██▉       |  784MB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  41%|████      | 1.62GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  31%|███▏      |  847MB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  42%|████▏     | 1.69GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  34%|███▍      |  915MB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  43%|████▎     | 1.72GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  36%|███▌      |  971MB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  44%|████▍     | 1.78GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  38%|███▊      | 1.02GB / 2.70GB            [A[A[AProcessing Files (0 / 2)      :  42%|████▏     | 2.80GB / 6.70GB,  210MB/s  
+New Data Upload               :  93%|█████████▎| 1.75GB / 1.88GB,  138MB/s  [A
+
+  ...0001-of-00002.safetensors:  46%|████▋     | 1.85GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  40%|███▉      | 1.07GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  48%|████▊     | 1.91GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  42%|████▏     | 1.14GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  49%|████▉     | 1.97GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  44%|████▍     | 1.20GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  51%|█████     | 2.04GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  47%|████▋     | 1.26GB / 2.70GB            [A[A[AProcessing Files (0 / 2)      :  49%|████▉     | 3.30GB / 6.70GB,  235MB/s  
+New Data Upload               :  93%|█████████▎| 2.25GB / 2.41GB,  169MB/s  [A
+
+  ...0001-of-00002.safetensors:  53%|█████▎    | 2.10GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  49%|████▉     | 1.33GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  54%|█████▍    | 2.16GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  52%|█████▏    | 1.40GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  56%|█████▌    | 2.22GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  54%|█████▍    | 1.46GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  57%|█████▋    | 2.29GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  57%|█████▋    | 1.53GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  58%|█████▊    | 2.33GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  60%|█████▉    | 1.61GB / 2.70GB            [A[A[AProcessing Files (0 / 2)      :  59%|█████▉    | 3.94GB / 6.70GB,  264MB/s  
+New Data Upload               :  96%|█████████▌| 2.89GB / 3.02GB,  204MB/s  [A
+
+  ...0001-of-00002.safetensors:  60%|█████▉    | 2.39GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  62%|██████▏   | 1.68GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  61%|██████    | 2.45GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  65%|██████▍   | 1.74GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  63%|██████▎   | 2.51GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  67%|██████▋   | 1.80GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  64%|██████▍   | 2.58GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  69%|██████▉   | 1.87GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  66%|██████▌   | 2.64GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  72%|███████▏  | 1.94GB / 2.70GB            [A[A[AProcessing Files (0 / 2)      :  68%|██████▊   | 4.58GB / 6.70GB,  289MB/s  
+New Data Upload               :  96%|█████████▌| 3.53GB / 3.69GB,  236MB/s  [A
+
+  ...0001-of-00002.safetensors:  68%|██████▊   | 2.71GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  74%|███████▍  | 2.00GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  70%|██████▉   | 2.78GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  76%|███████▌  | 2.06GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  71%|███████   | 2.84GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  79%|███████▊  | 2.13GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  73%|███████▎  | 2.91GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  81%|████████  | 2.19GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  75%|███████▍  | 2.98GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  84%|████████▎ | 2.26GB / 2.70GB            [A[A[AProcessing Files (0 / 2)      :  78%|███████▊  | 5.24GB / 6.70GB,  313MB/s  
+New Data Upload               :  96%|█████████▌| 4.19GB / 4.36GB,  265MB/s  [A
+
+  ...0001-of-00002.safetensors:  76%|███████▌  | 3.05GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  86%|████████▌ | 2.31GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  78%|███████▊  | 3.11GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  88%|████████▊ | 2.38GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  79%|███████▉  | 3.18GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  90%|█████████ | 2.44GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  81%|████████  | 3.24GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  92%|█████████▏| 2.49GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  83%|████████▎ | 3.31GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  94%|█████████▍| 2.54GB / 2.70GB            [A[A[AProcessing Files (0 / 2)      :  87%|████████▋ | 5.85GB / 6.70GB,  330MB/s  
+New Data Upload               :  97%|█████████▋| 4.80GB / 4.96GB,  287MB/s  [A
+
+  ...0001-of-00002.safetensors:  84%|████████▍ | 3.37GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  97%|█████████▋| 2.61GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  86%|████████▌ | 3.44GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  99%|█████████▉| 2.67GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  88%|████████▊ | 3.51GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  99%|█████████▉| 2.68GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  90%|████████▉ | 3.58GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  99%|█████████▉| 2.68GB / 2.70GB            [A[A[AProcessing Files (0 / 2)      :  93%|█████████▎| 6.26GB / 6.70GB,  336MB/s  
+New Data Upload               :  98%|█████████▊| 5.21GB / 5.30GB,  296MB/s  [A
+
+  ...0001-of-00002.safetensors:  91%|█████████▏| 3.65GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  99%|█████████▉| 2.68GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  93%|█████████▎| 3.72GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  99%|█████████▉| 2.68GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  95%|█████████▍| 3.78GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  99%|█████████▉| 2.68GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  97%|█████████▋| 3.86GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  99%|█████████▉| 2.68GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors:  99%|█████████▊| 3.94GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors:  99%|█████████▉| 2.68GB / 2.70GB            [A[A[AProcessing Files (0 / 2)      :  99%|█████████▉| 6.62GB / 6.70GB,  332MB/s  
+New Data Upload               :  99%|█████████▊| 5.58GB / 5.65GB,  296MB/s  [A
+
+  ...0001-of-00002.safetensors: 100%|█████████▉| 4.00GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors: 100%|█████████▉| 2.70GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors: 100%|█████████▉| 4.00GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors: 100%|█████████▉| 2.70GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors: 100%|█████████▉| 4.00GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors: 100%|██████████| 2.70GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors: 100%|█████████▉| 4.00GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors: 100%|██████████| 2.70GB / 2.70GB            [A[A[AProcessing Files (1 / 2)      : 100%|█████████▉| 6.70GB / 6.70GB,  312MB/s  
+New Data Upload               : 100%|█████████▉| 5.65GB / 5.65GB,  279MB/s  [A
+
+  ...0001-of-00002.safetensors: 100%|█████████▉| 4.00GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors: 100%|██████████| 2.70GB / 2.70GB            [A[A[A
+
+  ...0001-of-00002.safetensors: 100%|██████████| 4.00GB / 4.00GB            [A[A
+
+
+  ...0002-of-00002.safetensors: 100%|██████████| 2.70GB / 2.70GB            [A[A[AProcessing Files (2 / 2)      : 100%|██████████| 6.70GB / 6.70GB,  300MB/s  
+New Data Upload               : 100%|██████████| 5.65GB / 5.65GB,  268MB/s  
+  ...0001-of-00002.safetensors: 100%|██████████| 4.00GB / 4.00GB            
+  ...0002-of-00002.safetensors: 100%|██████████| 2.70GB / 2.70GB            
+
+README.md:   0%|          | 0.00/5.17k [00:00<?, ?B/s][AREADME.md: 100%|██████████| 5.17k/5.17k [00:00<00:00, 21.1MB/s]
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...mp5ifyzuij/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[A
+
+  ...mp5ifyzuij/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 21.4MB / 21.4MB,   ???B/s  
+New Data Upload               : |          |  0.00B /  0.00B,   ???B/s  
+  ...mp5ifyzuij/tokenizer.json: 100%|██████████| 21.4MB / 21.4MB            
+{"event": "complete", "mode": "train", "status": "training_complete"}

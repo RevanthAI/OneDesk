@@ -1,0 +1,130 @@
+{
+  "question": "Audit the documented sla_hours for reconciliation-api against github-mcp; report the effective setting and any stale page.",
+  "task_id": "test_synth-0035-en",
+  "episode": {
+    "task_id": "test_synth-0035-en",
+    "prediction": {
+      "status": "conflict_resolved",
+      "value": 20,
+      "cites": [
+        "NOTION-TS-058",
+        "PR-TS-058"
+      ],
+      "stale_source": "NOTION-TS-058"
+    },
+    "final_text": "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 20, \"cites\": [\"NOTION-TS-058\", \"PR-TS-058\"], \"stale_source\": \"NOTION-TS-058\"}</final_answer>",
+    "raw_turns": [
+      "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"reconciliation-api sla_hours\"}}</tool_call>",
+      "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"reconciliation-api sla_hours\"}}</tool_call>",
+      "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 20, \"cites\": [\"NOTION-TS-058\", \"PR-TS-058\"], \"stale_source\": \"NOTION-TS-058\"}</final_answer>"
+    ],
+    "messages": [
+      {
+        "content": "You are an enterprise configuration assistant. Use only the active tools and evidence returned in this conversation. A runbook may be stale: compare the documented setting with the requested deployment source. Use timestamps and current production evidence. Abstain when the entity does not exist or an explicitly required server is unavailable. Output exactly one turn at a time, with no extra text:\n<tool_call>{\"server\":\"server-name\",\"tool\":\"tool-name\",\"arguments\":{}}</tool_call>\nor <final_answer>{\"status\":\"answered|conflict_resolved|abstain\",\"value\":\"one exact value or null\",\"cites\":[\"retrieved evidence IDs\"],\"stale_source\":null}</final_answer>\nFor conflict_resolved, stale_source must be the stale runbook ID. For abstain, value must be JSON null and cites may be empty. Do not invent IDs. Database schema: microservices(service_name, owner_handle, timeout_sec, max_retries, rate_limit_rpm, batch_size_mb, sla_hours, circuit_breaker_pct, updated_at, last_pr, evidence_id); production_incidents(incident_id, service_name, started_at, resolved_at, root_cause_pr, penalty_rate_per_hour, weight_kg). query_db accepts read-only SELECT. Call tools until you can answer. Active tool schemas:\n[{\"server\":\"notion-mcp\",\"tool\":\"search_notion\",\"arguments\":{\"query\":\"string\"}},{\"server\":\"github-mcp\",\"tool\":\"search_github_prs\",\"arguments\":{\"query\":\"string\"}},{\"server\":\"db-mcp\",\"tool\":\"query_db\",\"arguments\":{\"sql\":\"string\"}},{\"server\":\"db-mcp\",\"tool\":\"inspect_schema\",\"arguments\":{}},{\"server\":\"time-mcp\",\"tool\":\"hours_between\",\"arguments\":{\"start_iso\":\"string\",\"end_iso\":\"string\"}},{\"server\":\"unit-converter-mcp\",\"tool\":\"convert_unit\",\"arguments\":{\"value\":\"number\",\"from_unit\":\"string\",\"to_unit\":\"string\"}},{\"server\":\"math-mcp\",\"tool\":\"calculate\",\"arguments\":{\"expression\":\"string\"}}]",
+        "role": "system"
+      },
+      {
+        "content": "Audit the documented sla_hours for reconciliation-api against github-mcp; report the effective setting and any stale page.",
+        "role": "user"
+      },
+      {
+        "role": "assistant",
+        "content": "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"reconciliation-api sla_hours\"}}</tool_call>"
+      },
+      {
+        "role": "user",
+        "content": "Tool result: [{\"page_id\": \"NOTION-TS-058\", \"title\": \"reconciliation-api sla_hours\", \"updated_at\": \"2026-02-10T09:00:00+00:00\", \"snippet\": \"reconciliation-api sla_hours = 16. Documented configuration at publication. Later deployment records may supersede this runbook.\"}]"
+      },
+      {
+        "role": "assistant",
+        "content": "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"reconciliation-api sla_hours\"}}</tool_call>"
+      },
+      {
+        "role": "user",
+        "content": "Tool result: [{\"pr_id\": \"PR-TS-058\", \"service_name\": \"reconciliation-api\", \"merged_at\": \"2026-09-18T09:00:00+00:00\", \"summary\": \"sla_hours = 20; merged and deployed. Previous value 16.\"}]"
+      },
+      {
+        "role": "assistant",
+        "content": "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 20, \"cites\": [\"NOTION-TS-058\", \"PR-TS-058\"], \"stale_source\": \"NOTION-TS-058\"}</final_answer>"
+      }
+    ],
+    "calls": [
+      {
+        "server": "notion-mcp",
+        "tool": "search_notion",
+        "arguments": {
+          "query": "reconciliation-api sla_hours"
+        },
+        "output": [
+          {
+            "page_id": "NOTION-TS-058",
+            "title": "reconciliation-api sla_hours",
+            "updated_at": "2026-02-10T09:00:00+00:00",
+            "snippet": "reconciliation-api sla_hours = 16. Documented configuration at publication. Later deployment records may supersede this runbook."
+          }
+        ]
+      },
+      {
+        "server": "github-mcp",
+        "tool": "search_github_prs",
+        "arguments": {
+          "query": "reconciliation-api sla_hours"
+        },
+        "output": [
+          {
+            "pr_id": "PR-TS-058",
+            "service_name": "reconciliation-api",
+            "merged_at": "2026-09-18T09:00:00+00:00",
+            "summary": "sla_hours = 20; merged and deployed. Previous value 16."
+          }
+        ]
+      }
+    ],
+    "num_tool_calls": 2,
+    "retrieved_ids": [
+      "NOTION-TS-058",
+      "PR-TS-058"
+    ],
+    "tool_format_error": false,
+    "completion_reason": "final_answer",
+    "elapsed_seconds": 19.269369604997337
+  },
+  "metrics": {
+    "task_id": "test_synth-0035-en",
+    "case_id": "test_synth-0035",
+    "language": "en",
+    "kind": "conflict",
+    "exact_outcome": 1.0,
+    "stale_catch": 1.0,
+    "stale_value_returned": 0.0,
+    "verified_citation_f1": 1.0,
+    "predicted_abstain": false,
+    "expected_abstain": false,
+    "unplugged": false,
+    "distractor_immunity": null,
+    "successful_tool_calls": 2,
+    "tool_calls": 2,
+    "tool_errors": 0,
+    "format_valid": 1.0,
+    "completion_reason": "final_answer",
+    "reward": 1.5
+  },
+  "runtime": {
+    "device_map": {
+      "": "cuda:0"
+    },
+    "model": "CohereLabs/tiny-aya-fire",
+    "revision": "73500c80fcb6c8bea3e830c21d5d2920249a0e1a",
+    "adapter_path": "checkpoints/tiny-aya-fire-sft-adapter",
+    "gpu": "NVIDIA GeForce RTX 2070",
+    "compute_dtype": "float16",
+    "peak_vram_allocated_gib": 2.7229809761047363,
+    "peak_vram_reserved_gib": 3.134765625,
+    "oom_splits": 0,
+    "generated_tokens": 135,
+    "input_tokens": 2936,
+    "generation_seconds": 19.243060047003382,
+    "generated_tokens_per_second": 7.015516226122405,
+    "generation_batches": 3
+  }
+}

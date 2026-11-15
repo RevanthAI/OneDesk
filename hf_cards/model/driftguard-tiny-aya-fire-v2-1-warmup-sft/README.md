@@ -1,0 +1,96 @@
+---
+license: cc-by-nc-4.0
+base_model: CohereLabs/tiny-aya-fire
+library_name: peft
+pipeline_tag: text-generation
+language:
+- en
+- hi
+- te
+tags:
+- agenttune
+- curatorkit
+- auditkit
+- mcp
+- grpo
+- tool-calling
+- multilingual
+- tiny-aya-fire
+inference: false
+---
+
+# OneDesk — OneDesk protocol warmup · 60 steps
+
+## Overview
+
+OneDesk is a multilingual company-knowledge agent built on **Tiny Aya Fire (3.35B)**. It reconciles runbooks, GitHub PRs, Slack deployment records and live SQL data, and can chain time, conversion and arithmetic tools. Users can ask in English, Hindi (Devanagari/Latin), Hinglish, and Telugu (native/Latin).
+
+This repository contains **OneDesk protocol warmup · 60 steps**, evaluated or retained as described below on the frozen data_v2 company-knowledge benchmark. Repository names preserve the original DriftGuard experiment identifiers; OneDesk is the presentation name.
+
+## Benchmark results
+
+
+|Cohort|Queries|Exact outcome % [95% CI]|Strict outdated-doc catch % [95% CI]|Valid final format % [95% CI]|
+|---|---|---|---|---|
+|Validation|80|67.50 [48.75, 85.00]|45.00 [0.00, 100.00]|100.00 [100.00, 100.00]|
+|Synthetic holdout|400|72.50 [65.25, 79.25]|74.00 [63.30, 83.96]|100.00 [100.00, 100.00]|
+|Repo-style holdout|100|64.00 [46.53, 80.39]|56.00 [28.21, 82.05]|100.00 [100.00, 100.00]|
+
+
+
+
+Exact outcome requires the right status and normalized value. Strict outdated-doc catch also requires the correct stale page and all gold citations retrieved and cited. Confidence intervals use 10,000 semantic-case cluster resamples. Translations share cases.
+
+## Intended use
+
+Research on evidence-grounded multilingual tool calling, retrieval, stale-document reconciliation and read-only incident calculations. Nine logical MCP interfaces are available: Notion, GitHub, Slack, SQL, time, conversion, arithmetic, weather and calendar. The latter two test routing immunity.
+
+## Load the LoRA adapter
+
+Install compatible `transformers`, `peft`, `accelerate`, `torch` and `safetensors`; the recorded experiment used Transformers 4.57.6 and PEFT 0.17.1.
+
+```python
+from transformers import AutoModelForCausalLM, AutoTokenizer
+from peft import PeftModel
+import torch
+
+adapter = "Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-sft"
+# Weights are pinned independently of subsequent README-only updates.
+adapter_revision = "72aafc56b1506a81a7cb12930e95f8f2f17d03d5"
+tokenizer = AutoTokenizer.from_pretrained(adapter, revision=adapter_revision)
+base = AutoModelForCausalLM.from_pretrained(
+    "CohereLabs/tiny-aya-fire",
+    revision="73500c80fcb6c8bea3e830c21d5d2920249a0e1a",
+    dtype=torch.bfloat16,  # use float16 on hardware without BF16 support
+    device_map="auto",
+)
+model = PeftModel.from_pretrained(base, adapter, revision=adapter_revision)
+model.eval()
+```
+
+This snippet loads weights only. Full agent evaluation needs the OneDesk router, active tool schemas and tool-result feedback loop. Use the project’s local-demo/evaluation entry points to execute tool calls. Local NF4 deployment uses a separate numerical path from the BF16 benchmark.
+
+## Training recipe
+
+Fresh two-epoch SFT: 60 optimizer steps, effective batch 8, 480 exposures, LR 1.5e-4, 2,560-token context, zero truncation. Validation at steps 30/45/60 selected 60; the first 60 steps use a 120-step cosine horizon.
+
+## Toolkit chain
+
+CuratorKIT 0.1.21 exact-deduplicates model-visible prompts. AgentTune 1.1.4 runs assistant-only SFT and live multi-turn GRPO through the project compatibility backend. AuditKIT 1.1.7 scores actual saved tool episodes. The final selected recipe uses 60-step SFT, followed by 80 active G6 GRPO updates; validation selected update 40. A separate 120-step full SFT model is the strongest overall-accuracy control. The historical weak/collapsed and v1 repositories have their own recipes and are not the final selected policy.
+
+## Provenance
+
+- Base: `CohereLabs/tiny-aya-fire` at `73500c80fcb6c8bea3e830c21d5d2920249a0e1a`.
+- Saved weight revision in this repository: `72aafc56b1506a81a7cb12930e95f8f2f17d03d5`.
+- Local artifact path in the project: `checkpoints_v2_2/sft_warmup_adapter`.
+- Owner and teammate: [@Revanth-ml](https://huggingface.co/Revanth-ml).
+- Companion frozen data: [driftguard-mcp-v2-data](https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-v2-data).
+- Final study logs: [driftguard-mcp-warmup-runs](https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-warmup-runs).
+
+## Limitations and license
+
+The worlds and repo-style records are constructed fixtures, not live company connectors or verified upstream Git histories. The final GRPO policy improves strict stale catch over full SFT while having lower overall holdout accuracy and lower required-server chain compliance. Overall GRPO gains over warmup have paired intervals including zero. Final-update 80 has no separate complete holdout benchmark. An on-premises deployment can keep evidence local only when connectors and logging follow that boundary; the model does not guarantee privacy or correctness.
+
+Original synthetic datasets are licensed under **CC-BY-4.0** and original project code under **Apache-2.0**; third-party code retains its own license. The model and adapters are under **CC BY-NC 4.0**, retaining the base model’s attribution and noncommercial conditions. This card does not grant commercial rights. Historical v1 NF4 VRAM/speed results do not establish final v2 NF4 quality.
+
+Adapter SHA-256: `bc362ae46f670c2d24ffe3ebc02d22df45aeebce8515ceb2873c5c7319442dc6`.

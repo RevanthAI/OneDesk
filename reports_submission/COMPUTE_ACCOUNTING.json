@@ -1,0 +1,163 @@
+{
+  "blocks": [
+    {
+      "name": "v1 SFT program incl evaluation/export",
+      "seconds": 358.4673044681549,
+      "source": "reports/cloud_sft/downloaded_artifacts/train-l40sx1-20261111T113101Z/run_metadata.json",
+      "gpu": "L40S",
+      "rate": 1.8
+    },
+    {
+      "name": "v1 A100 sizing program",
+      "seconds": 141.25661826133728,
+      "source": "reports/cloud_sft/downloaded_artifacts/smoke-a100-large-20261111T112652Z/run_metadata.json",
+      "gpu": "A100",
+      "rate": 2.5
+    },
+    {
+      "name": "v1 GRPO smoke program",
+      "seconds": 128.79863858222961,
+      "source": "reports/cloud_grpo/downloaded_artifacts/smoke-l40sx1-20261111T155637Z/run_metadata.json",
+      "gpu": "L40S",
+      "rate": 1.8
+    },
+    {
+      "name": "v1 GRPO60update program",
+      "seconds": 1718.1029233932495,
+      "source": "reports/cloud_grpo/downloaded_artifacts/pilot-l40sx1-20261111T160022Z/run_metadata.json",
+      "gpu": "L40S",
+      "rate": 1.8
+    },
+    {
+      "name": "v2 completed340update pipeline (not canceled attempt)",
+      "seconds": 20968.825474977493,
+      "source": "reports_v2/downloads/v2-20261112T110005Z/COMPLETION.json",
+      "gpu": "L40S",
+      "rate": 1.8
+    },
+    {
+      "name": "Four-epoch SFT optimizer work only",
+      "seconds": 928.6000714220127,
+      "source": "reports_v2_1/downloads/v2-1-20261112T173923Z/sft_training/training_log.jsonl",
+      "gpu": "L40S",
+      "rate": 1.8
+    },
+    {
+      "name": "Four-epoch run eval: sft_evaluation/runtime.json",
+      "seconds": 1527.441936055,
+      "source": "reports_v2_1/downloads/v2-1-20261112T173923Z/sft_evaluation/runtime.json",
+      "gpu": "L40S",
+      "rate": 1.8
+    },
+    {
+      "name": "Four-epoch run eval: sft_training/epoch1/validation/runtime.json",
+      "seconds": 184.6006130529995,
+      "source": "reports_v2_1/downloads/v2-1-20261112T173923Z/sft_training/epoch1/validation/runtime.json",
+      "gpu": "L40S",
+      "rate": 1.8
+    },
+    {
+      "name": "Four-epoch run eval: sft_training/epoch2/validation/runtime.json",
+      "seconds": 225.8105074089999,
+      "source": "reports_v2_1/downloads/v2-1-20261112T173923Z/sft_training/epoch2/validation/runtime.json",
+      "gpu": "L40S",
+      "rate": 1.8
+    },
+    {
+      "name": "Four-epoch run eval: sft_training/epoch3/validation/runtime.json",
+      "seconds": 220.58244440199996,
+      "source": "reports_v2_1/downloads/v2-1-20261112T173923Z/sft_training/epoch3/validation/runtime.json",
+      "gpu": "L40S",
+      "rate": 1.8
+    },
+    {
+      "name": "Four-epoch run eval: sft_training/epoch4/validation/runtime.json",
+      "seconds": 188.70639468599984,
+      "source": "reports_v2_1/downloads/v2-1-20261112T173923Z/sft_training/epoch4/validation/runtime.json",
+      "gpu": "L40S",
+      "rate": 1.8
+    },
+    {
+      "name": "Four-epoch run eval: stage1_diagnostic/runtime.json",
+      "seconds": 154.76574047599934,
+      "source": "reports_v2_1/downloads/v2-1-20261112T173923Z/stage1_diagnostic/runtime.json",
+      "gpu": "L40S",
+      "rate": 1.8
+    },
+    {
+      "name": "Discarded G4 pilot observed journal span",
+      "seconds": 1853.6138656139374,
+      "source": "reports_v2_1/downloads/v2-1-20261112T173923Z/grpo_training/stage1/rollout_metrics.jsonl",
+      "gpu": "L40S",
+      "rate": 1.8
+    },
+    {
+      "name": "Warmup60 SFT optimizer work only",
+      "seconds": 463.7635774769999,
+      "source": "reports_v2_2/downloads/warmup-20261113T055708Z/sft_training/training_log.jsonl",
+      "gpu": "L40S",
+      "rate": 1.8
+    },
+    {
+      "name": "Warmup first allocation eval: prior_v2/base/runtime.json",
+      "seconds": 45.98039079199998,
+      "source": "reports_v2_2/downloads/warmup-20261113T055708Z/prior_v2/base/runtime.json",
+      "gpu": "L40S",
+      "rate": 1.8
+    },
+    {
+      "name": "Warmup first allocation eval: stage1_evaluation/runtime.json",
+      "seconds": 1183.20049246,
+      "source": "reports_v2_2/downloads/warmup-20261113T055708Z/stage1_evaluation/runtime.json",
+      "gpu": "L40S",
+      "rate": 1.8
+    },
+    {
+      "name": "Warmup first allocation eval: sft_evaluation/runtime.json",
+      "seconds": 1413.030923487,
+      "source": "reports_v2_2/downloads/warmup-20261113T055708Z/sft_evaluation/runtime.json",
+      "gpu": "L40S",
+      "rate": 1.8
+    },
+    {
+      "name": "Warmup first allocation eval: sft_training/step030/validation/runtime.json",
+      "seconds": 184.57129673099985,
+      "source": "reports_v2_2/downloads/warmup-20261113T055708Z/sft_training/step030/validation/runtime.json",
+      "gpu": "L40S",
+      "rate": 1.8
+    },
+    {
+      "name": "Warmup first allocation eval: sft_training/step045/validation/runtime.json",
+      "seconds": 185.8710491180002,
+      "source": "reports_v2_2/downloads/warmup-20261113T055708Z/sft_training/step045/validation/runtime.json",
+      "gpu": "L40S",
+      "rate": 1.8
+    },
+    {
+      "name": "Warmup first allocation eval: sft_training/step060/validation/runtime.json",
+      "seconds": 187.6949789129999,
+      "source": "reports_v2_2/downloads/warmup-20261113T055708Z/sft_training/step060/validation/runtime.json",
+      "gpu": "L40S",
+      "rate": 1.8
+    },
+    {
+      "name": "Warmup GRPO Stage1 incl update20/40 validation",
+      "seconds": 4562.3245,
+      "source": "reports_v2_2/downloads/warmup-20261113T055708Z/grpo_training/stage1/optimizer_log.jsonl",
+      "gpu": "L40S",
+      "rate": 1.8
+    },
+    {
+      "name": "Continuation Stage2 + final eval/export program",
+      "seconds": 6709.1241891384125,
+      "source": "reports_v2_2/COMPLETION.json",
+      "gpu": "L40S",
+      "rate": 1.8
+    }
+  ],
+  "l40s_observed_minutes": 723.2312885442415,
+  "a100_observed_minutes": 2.354276971022288,
+  "list_rate_equivalent_usd": 21.795033530119838,
+  "invoice_confirmed": false,
+  "overlap_policy": "Stage1 trainer runtimes include callback validation. Whole completed v2 and continuation programs are used instead of summing their children. Copied evaluation artifacts are not counted as fresh jobs."
+}

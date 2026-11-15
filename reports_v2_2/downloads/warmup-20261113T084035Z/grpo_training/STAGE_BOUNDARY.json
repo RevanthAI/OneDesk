@@ -1,0 +1,31 @@
+{
+  "starting_update": 40,
+  "stage1_completed_updates": 40,
+  "best_step": 40,
+  "best_accuracy": 0.8,
+  "history": [
+    {
+      "step": 20,
+      "exact_outcome": 0.7375,
+      "predicted_abstention_rate": 0.2625,
+      "safe": true,
+      "selected": true,
+      "early_stop": false,
+      "best_step": 20,
+      "best_accuracy": 0.7375
+    },
+    {
+      "step": 40,
+      "exact_outcome": 0.8,
+      "predicted_abstention_rate": 0.25,
+      "safe": true,
+      "selected": true,
+      "early_stop": false,
+      "best_step": 40,
+      "best_accuracy": 0.8
+    }
+  ],
+  "policy_sha256": "b286392a2d979af730b6c9fcd1c2a14369a2f859bcc691526478d0e8220a2f07",
+  "best_sha256": "b286392a2d979af730b6c9fcd1c2a14369a2f859bcc691526478d0e8220a2f07",
+  "optimizer": "Fresh Stage-2 optimizer, exactly as in the original two-stage recipe; Stage-1 policy and frozen warmup reference are retained unchanged"
+}

@@ -1,0 +1,11 @@
+{
+  "attempted_groups": 342,
+  "accepted_groups": 80,
+  "acceptance_rate": 0.23391812865497075,
+  "all_negative_skipped": 3,
+  "zero_variance_skipped": 260,
+  "accepted_mixed_outcomes": 68,
+  "accepted_all_correct": 7,
+  "accepted_all_wrong_positive_evidence": 5,
+  "accepted_with_format_errors": 9
+}

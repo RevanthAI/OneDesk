@@ -1,0 +1,23 @@
+[
+  {
+    "job_id": "6af451009737d9a9e092d528",
+    "mode": "smoke",
+    "flavor": "a100-large",
+    "stage": "COMPLETED",
+    "message": null
+  },
+  {
+    "job_id": "6af44fd5ab34849891ae072d",
+    "mode": "smoke",
+    "flavor": "l40sx1",
+    "stage": "CANCELED",
+    "message": null
+  },
+  {
+    "job_id": "6af451ffab34849891ae08ce",
+    "mode": "train",
+    "flavor": "l40sx1",
+    "stage": "COMPLETED",
+    "message": null
+  }
+]

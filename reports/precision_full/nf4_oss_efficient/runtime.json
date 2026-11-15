@@ -1,0 +1,49 @@
+{
+  "model": "CohereLabs/tiny-aya-fire",
+  "revision": "73500c80fcb6c8bea3e830c21d5d2920249a0e1a",
+  "quantization": "4bit",
+  "max_new_tokens": 384,
+  "max_tool_calls": 6,
+  "batch_size": 1,
+  "seed": 42,
+  "temperature": 0.0,
+  "dataset_hashes": {
+    "curation_funnel.json": "9ccf35c212138b4281ac4812bb5ae9205a7b12674683f28673becf9464631637",
+    "holdout_repo_style_100_frozen.jsonl": "bafc7eae5563216963cf36e284d376a32f7be95369b3b266af8412a70e6af253",
+    "holdout_synth_400_frozen.jsonl": "4fc790e517f4f5c34c887a68c2a4a95de0eb98347eeaac855f3e0e4e861e8ef9",
+    "train_grpo_stage1.jsonl": "ac9a066588db779fb37f866858d0592cf64560e214cc87be2ffcffb4c86b589d",
+    "train_grpo_stage2.jsonl": "88b917119182c1941a49078fd02352a356cdd3eb79ae02350c95670b095a010a",
+    "train_sft_400.jsonl": "4f6926280ecbc6aa5b78a9ee5804351cb991c5be3d894d90b75bc1905dcf78a0",
+    "train_sft_agenttune_trajectories.jsonl": "237b733ac831be5ecedbc505f38868b039dc6a3de548304a558d943af41c05a4",
+    "world_repo_style.json": "986244ef0d7c7f7755d67bfcb461ec5bbbf66856d2328e4727c64b455717830f",
+    "world_test_synth.json": "8917e2520ba04b2809c65004e45035507bca2efc56bd383089c13306fc10a544",
+    "world_train.json": "2f68a305b5eeb515442f6564a9fb2399b5f5291bd2172e4697d9b29a1594cf44"
+  },
+  "limit": 0,
+  "worlds": [
+    "repo_style"
+  ],
+  "sdpa_expand_kv": true,
+  "device_map": {
+    "": "cuda:0"
+  },
+  "gpu": "NVIDIA GeForce RTX 2070",
+  "compute_dtype": "float16",
+  "peak_vram_allocated_gib": 2.5341787338256836,
+  "peak_vram_reserved_gib": 3.05859375,
+  "oom_splits": 0,
+  "generated_tokens": 11847,
+  "input_tokens": 178239,
+  "generation_seconds": 883.398477463983,
+  "generated_tokens_per_second": 13.41070909926151,
+  "generation_batches": 192,
+  "scoring_session_elapsed_seconds": 916.3481515489984,
+  "versions": {
+    "torch": "2.8.0+cu128",
+    "transformers": "4.57.6",
+    "bitsandbytes": "0.50.2",
+    "agenttune": "1.1.4",
+    "auditkit": "1.1.7",
+    "curatorkit": "0.1.21"
+  }
+}

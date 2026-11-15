@@ -1,0 +1,65 @@
+{
+  "source": {
+    "namespace": "Revanth-ml",
+    "run_repo": "Revanth-ml/driftguard-mcp-warmup-runs",
+    "run_prefix": "warmup-20261113T055708Z",
+    "bundle_revision": "d79e121819357250f3c5bd8bf1e2eab90b0952aa",
+    "bundle_sha256": "3c69515b34e17014de7ac39fe295c271a60435f3baaf1ed27522adfc685bad46",
+    "sft_repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-sft",
+    "grpo_best_repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-grpo-best-val",
+    "grpo_final_repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-grpo-final",
+    "timeout": "3h",
+    "flavor": "l40sx1",
+    "resume_prefix": null,
+    "resume_revision": null,
+    "group_size": 6,
+    "temperature": 1.0,
+    "retry_temperature": 1.15,
+    "job_id": "6af6a6c20f431c4f7b56fab9",
+    "url": "https://huggingface.co/jobs/Revanth-ml/6af6a6c20f431c4f7b56fab9"
+  },
+  "source_revision": "c28a459859bcdeeaebdfe3695ec68a9d17478ad6",
+  "source_stage1_adapter_sha256": "b286392a2d979af730b6c9fcd1c2a14369a2f859bcc691526478d0e8220a2f07",
+  "stage1_summary": {
+    "accepted": 40,
+    "accepted_by_kind": {
+      "conflict": 15,
+      "incident": 15,
+      "consistent": 5,
+      "abstain": 5
+    },
+    "draws": {
+      "conflict": 55,
+      "incident": 71,
+      "consistent": 5,
+      "abstain": 17
+    },
+    "fallbacks": 0,
+    "cycle_offset": 0
+  },
+  "validation": [
+    {
+      "step": 20,
+      "exact_outcome": 0.7375,
+      "predicted_abstention_rate": 0.2625,
+      "safe": true,
+      "selected": true,
+      "early_stop": false,
+      "best_step": 20,
+      "best_accuracy": 0.7375
+    },
+    {
+      "step": 40,
+      "exact_outcome": 0.8,
+      "predicted_abstention_rate": 0.25,
+      "safe": true,
+      "selected": true,
+      "early_stop": false,
+      "best_step": 40,
+      "best_accuracy": 0.8
+    }
+  ],
+  "before": "RUNNING",
+  "after": "CANCELED",
+  "reason": "Planned exact 40-update stage-boundary continuation; diagnostic + SFT + baseline evaluation consumed part of the first capped allocation. Do not repeat these phases; Stage 2 uses a fresh optimizer by the original recipe. Any preliminary Stage-2 attempts in this first allocation are archived and excluded from the continued run."
+}

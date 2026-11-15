@@ -1,0 +1,591 @@
+{
+  "test_synth": {
+    "by_kind": {
+      "consistent": {
+        "n": 80,
+        "correct": 80
+      },
+      "incident": {
+        "n": 60,
+        "correct": 37
+      },
+      "conflict": {
+        "n": 200,
+        "correct": 174
+      },
+      "abstain": {
+        "n": 60,
+        "correct": 50
+      }
+    },
+    "failure_modes": {
+      "status_and_value": 42,
+      "value_only": 5,
+      "invalid_protocol": 4,
+      "status_only": 8
+    },
+    "value_only_correct": 349,
+    "failed_items": [
+      {
+        "task_id": "test_synth-0021-hi",
+        "language": "hi",
+        "kind": "incident",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0021-te",
+        "language": "te",
+        "kind": "incident",
+        "failure_mode": "value_only"
+      },
+      {
+        "task_id": "test_synth-0022-hi",
+        "language": "hi",
+        "kind": "incident",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0023-en",
+        "language": "en",
+        "kind": "incident",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0023-te",
+        "language": "te",
+        "kind": "incident",
+        "failure_mode": "value_only"
+      },
+      {
+        "task_id": "test_synth-0024-hi",
+        "language": "hi",
+        "kind": "incident",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0025-en",
+        "language": "en",
+        "kind": "incident",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0025-hi",
+        "language": "hi",
+        "kind": "incident",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0025-hinglish",
+        "language": "hinglish",
+        "kind": "incident",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0026-hi",
+        "language": "hi",
+        "kind": "incident",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0027-hi",
+        "language": "hi",
+        "kind": "incident",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0028-hi",
+        "language": "hi",
+        "kind": "incident",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0028-te",
+        "language": "te",
+        "kind": "incident",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0029-hi",
+        "language": "hi",
+        "kind": "incident",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0029-hinglish",
+        "language": "hinglish",
+        "kind": "incident",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0030-hi",
+        "language": "hi",
+        "kind": "incident",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0031-hi",
+        "language": "hi",
+        "kind": "incident",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0031-hinglish",
+        "language": "hinglish",
+        "kind": "incident",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0031-te",
+        "language": "te",
+        "kind": "incident",
+        "failure_mode": "value_only"
+      },
+      {
+        "task_id": "test_synth-0032-hi",
+        "language": "hi",
+        "kind": "incident",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0033-hi",
+        "language": "hi",
+        "kind": "incident",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0033-te",
+        "language": "te",
+        "kind": "incident",
+        "failure_mode": "value_only"
+      },
+      {
+        "task_id": "test_synth-0034-hi",
+        "language": "hi",
+        "kind": "incident",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0036-en",
+        "language": "en",
+        "kind": "conflict",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0037-en",
+        "language": "en",
+        "kind": "conflict",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0037-hinglish",
+        "language": "hinglish",
+        "kind": "conflict",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0038-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0038-hinglish",
+        "language": "hinglish",
+        "kind": "conflict",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0039-hinglish",
+        "language": "hinglish",
+        "kind": "conflict",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0044-en",
+        "language": "en",
+        "kind": "conflict",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0044-hinglish",
+        "language": "hinglish",
+        "kind": "conflict",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0045-hinglish",
+        "language": "hinglish",
+        "kind": "conflict",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0046-en",
+        "language": "en",
+        "kind": "conflict",
+        "failure_mode": "invalid_protocol"
+      },
+      {
+        "task_id": "test_synth-0046-hinglish",
+        "language": "hinglish",
+        "kind": "conflict",
+        "failure_mode": "value_only"
+      },
+      {
+        "task_id": "test_synth-0047-hinglish",
+        "language": "hinglish",
+        "kind": "conflict",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0050-hinglish",
+        "language": "hinglish",
+        "kind": "conflict",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0051-hinglish",
+        "language": "hinglish",
+        "kind": "conflict",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0052-en",
+        "language": "en",
+        "kind": "conflict",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0052-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0052-hinglish",
+        "language": "hinglish",
+        "kind": "conflict",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0055-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "test_synth-0067-te",
+        "language": "te",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "test_synth-0068-en",
+        "language": "en",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "test_synth-0068-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "test_synth-0068-hinglish",
+        "language": "hinglish",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "test_synth-0068-te",
+        "language": "te",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "test_synth-0073-hinglish",
+        "language": "hinglish",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "test_synth-0074-te",
+        "language": "te",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "test_synth-0079-en",
+        "language": "en",
+        "kind": "conflict",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0086-te",
+        "language": "te",
+        "kind": "abstain",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0088-te",
+        "language": "te",
+        "kind": "abstain",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0090-en",
+        "language": "en",
+        "kind": "abstain",
+        "failure_mode": "invalid_protocol"
+      },
+      {
+        "task_id": "test_synth-0090-te",
+        "language": "te",
+        "kind": "abstain",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0092-en",
+        "language": "en",
+        "kind": "abstain",
+        "failure_mode": "invalid_protocol"
+      },
+      {
+        "task_id": "test_synth-0092-te",
+        "language": "te",
+        "kind": "abstain",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0094-te",
+        "language": "te",
+        "kind": "abstain",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0096-en",
+        "language": "en",
+        "kind": "abstain",
+        "failure_mode": "invalid_protocol"
+      },
+      {
+        "task_id": "test_synth-0096-te",
+        "language": "te",
+        "kind": "abstain",
+        "failure_mode": "status_and_value"
+      },
+      {
+        "task_id": "test_synth-0098-te",
+        "language": "te",
+        "kind": "abstain",
+        "failure_mode": "status_and_value"
+      }
+    ]
+  },
+  "repo_style": {
+    "by_kind": {
+      "conflict": {
+        "n": 100,
+        "correct": 68
+      }
+    },
+    "failure_modes": {
+      "status_only": 32
+    },
+    "value_only_correct": 100,
+    "failed_items": [
+      {
+        "task_id": "repo_style-0005-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0006-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0007-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0008-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0009-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0010-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0011-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0012-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0013-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0014-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0015-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0016-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0017-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0018-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0019-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0020-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0021-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0022-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0023-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0024-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0025-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0026-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0027-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0028-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0029-hi",
+        "language": "hi",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0007-te",
+        "language": "te",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0009-te",
+        "language": "te",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0015-te",
+        "language": "te",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0019-te",
+        "language": "te",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0021-te",
+        "language": "te",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0022-te",
+        "language": "te",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      },
+      {
+        "task_id": "repo_style-0025-te",
+        "language": "te",
+        "kind": "conflict",
+        "failure_mode": "status_only"
+      }
+    ]
+  }
+}

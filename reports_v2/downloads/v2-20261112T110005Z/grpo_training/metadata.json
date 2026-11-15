@@ -1,0 +1,44 @@
+{
+  "attempted_groups": 808,
+  "active_groups": 340,
+  "acceptance_rate": 0.4207920792079208,
+  "data_dir": "data_v2",
+  "stages": [
+    {
+      "stage": 1,
+      "requested_steps": 120,
+      "completed_steps": 120,
+      "metrics": {
+        "train_runtime": 5168.0398,
+        "train_samples_per_second": 0.093,
+        "train_steps_per_second": 0.023,
+        "total_flos": 0.0,
+        "train_loss": 0.0005286091938614846
+      }
+    },
+    {
+      "stage": 2,
+      "requested_steps": 220,
+      "completed_steps": 220,
+      "metrics": {
+        "train_runtime": 12122.4623,
+        "train_samples_per_second": 0.073,
+        "train_steps_per_second": 0.018,
+        "total_flos": 0.0,
+        "train_loss": 0.00356332581828941
+      }
+    }
+  ],
+  "status": "complete",
+  "early_stop": null,
+  "adapter_l1_change": 3173.2159868478775,
+  "reference_l1_change": 0.0,
+  "peak_reserved_gib": 12.791015625,
+  "wall_seconds": 17622.14517068863,
+  "max_context_length": 4096,
+  "max_new_tokens_per_turn": 192,
+  "group_size": 4,
+  "temperature": 0.8,
+  "retry_temperature": 0.95,
+  "beta": 0.04
+}

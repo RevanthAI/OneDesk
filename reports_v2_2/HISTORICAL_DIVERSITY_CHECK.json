@@ -1,0 +1,12 @@
+{
+  "groups": 72,
+  "zero_variance_groups": 66,
+  "unique_assistant_sequence_counts_in_zero_variance_groups": {
+    "1": 62,
+    "2": 3,
+    "3": 1
+  },
+  "zero_variance_groups_with_distinct_sequences": 4,
+  "interpretation": "Equal scalar rewards do not imply identical generated assistant sequences or establish distribution entropy collapse.",
+  "source": "reports_v2_1/downloads/v2-1-20261112T173923Z/grpo_training/stage1"
+}

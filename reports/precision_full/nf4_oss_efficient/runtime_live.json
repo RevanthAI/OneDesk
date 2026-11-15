@@ -1,0 +1,17 @@
+{
+  "device_map": {
+    "": "cuda:0"
+  },
+  "model": "CohereLabs/tiny-aya-fire",
+  "revision": "73500c80fcb6c8bea3e830c21d5d2920249a0e1a",
+  "gpu": "NVIDIA GeForce RTX 2070",
+  "compute_dtype": "float16",
+  "peak_vram_allocated_gib": 2.5341787338256836,
+  "peak_vram_reserved_gib": 3.05859375,
+  "oom_splits": 0,
+  "generated_tokens": 11847,
+  "input_tokens": 178239,
+  "generation_seconds": 883.398477463983,
+  "generated_tokens_per_second": 13.41070909926151,
+  "generation_batches": 192
+}

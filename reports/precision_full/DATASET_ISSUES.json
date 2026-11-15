@@ -1,0 +1,30 @@
+{
+  "kind": "known_domain_validity_defect",
+  "frozen_dataset": "data/holdout_repo_style_100_frozen.jsonl",
+  "out_of_range_percentage_items": 17,
+  "unique_cases": 5,
+  "examples": [
+    {
+      "task_id": "repo_style-0005-en",
+      "param_name": "circuit_breaker_pct",
+      "gold_value": 10011
+    },
+    {
+      "task_id": "repo_style-0011-en",
+      "param_name": "circuit_breaker_pct",
+      "gold_value": 10023
+    },
+    {
+      "task_id": "repo_style-0017-en",
+      "param_name": "circuit_breaker_pct",
+      "gold_value": 10035
+    },
+    {
+      "task_id": "repo_style-0023-en",
+      "param_name": "circuit_breaker_pct",
+      "gold_value": 10047
+    }
+  ],
+  "data_modified": false,
+  "required_next_version": "realistic parameter bounds and source provenance"
+}

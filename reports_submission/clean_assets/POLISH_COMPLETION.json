@@ -1,0 +1,23 @@
+{
+  "polishes_completed": 4,
+  "protected_files_unchanged": 19,
+  "dataset_card_license": "cc-by-4.0",
+  "original_code_license": "Apache-2.0",
+  "model_license_unchanged": "cc-by-nc-4.0",
+  "all_requested_build_commands_passed": true,
+  "multilingual_chart_visually_checked": true,
+  "collection_url_auto_update_verified_with_mocked_publish": true,
+  "network_calls": 0,
+  "inference_or_paid_jobs": false,
+  "file_sha256": {
+    "scripts/build_clean_charts.py": "f7e9d61939da120710f5cafb037ee849410f5cc47b3a56a74fff3ef15128c9b1",
+    "scripts/build_clean_report.py": "62a5e7067a3092a3939648d1e5c4419245d7d86cb4ed4cd1eba476a022c5abad",
+    "scripts/prepare_hf_repos.py": "d222b2d7fc67e55fc63925928ed05e4149edeca3b02ec266ae19bd798777c398",
+    "scripts/verify_clean_assets.py": "788b52815cf533fd060295d6c76e8623a057757faedab8a5bad877ad761ff431",
+    "REPORT.md": "0ca6f8f12dd6c00cf2da64f5fdc140d45bb7a38fd5475364a46c602fd4aee746",
+    "figures/2_multilingual_reach.png": "2963ab9f53d10a398c3317da80b8476168fc717e602702d7346aa260c3577801",
+    "figures/2_multilingual_reach.svg": "8cbbd12e34cd2f9c491205177361dcf97a21806d23205f802c126d93fef4eb4f",
+    "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "LICENSE-DATA.md": "c1c98db8be680ad90a9bec3768879f7d85c40f4a0879d66ab346888345de5342"
+  }
+}

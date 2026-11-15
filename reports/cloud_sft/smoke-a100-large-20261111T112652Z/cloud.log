@@ -1,0 +1,174 @@
+Using Python 3.12.12 environment at: /usr/local
+Resolved 13 packages in 138ms
+Downloading hf-xet (4.1MiB)
+ Downloaded hf-xet
+Prepared 13 packages in 123ms
+Installed 13 packages in 11ms
+ + certifi==2026.10.23
+ + charset-normalizer==3.5.2
+ + filelock==4.2.10
+ + fsspec==2026.9.0
+ + hf-xet==1.8.0
+ + huggingface-hub==0.36.2
+ + idna==3.20
+ + packaging==26.3
+ + pyyaml==6.0.3
+ + requests==2.34.2
+ + tqdm==4.70.1
+ + typing-extensions==4.16.0
+ + urllib3==2.8.0
+
+cloud_bootstrap.sh:   0%|          | 0.00/749 [00:00<?, ?B/s][Acloud_bootstrap.sh: 100%|██████████| 749/749 [00:00<00:00, 3.49MB/s]
+Using Python 3.12.12 environment at: /usr/local
+Resolved 25 packages in 320ms
+Downloading sympy (6.0MiB)
+Downloading networkx (2.0MiB)
+Downloading setuptools (1.2MiB)
+Downloading torch (847.9MiB)
+Downloading nvidia-cufft-cu12 (184.2MiB)
+Downloading triton (148.4MiB)
+Downloading nvidia-cusparse-cu12 (274.9MiB)
+Downloading nvidia-cuda-nvrtc-cu12 (84.0MiB)
+Downloading nvidia-cuda-cupti-cu12 (9.8MiB)
+Downloading nvidia-cufile-cu12 (1.1MiB)
+Downloading nvidia-cublas-cu12 (566.8MiB)
+Downloading nvidia-cusolver-cu12 (255.1MiB)
+Downloading nvidia-cusparselt-cu12 (273.9MiB)
+Downloading nvidia-curand-cu12 (60.7MiB)
+Downloading nvidia-nvjitlink-cu12 (37.4MiB)
+Downloading nvidia-cudnn-cu12 (674.0MiB)
+Downloading nvidia-nccl-cu12 (307.4MiB)
+ Downloaded nvidia-cufile-cu12
+ Downloaded setuptools
+ Downloaded networkx
+ Downloaded nvidia-cuda-cupti-cu12
+ Downloaded triton
+ Downloaded nvidia-cuda-nvrtc-cu12
+ Downloaded sympy
+ Downloaded nvidia-nvjitlink-cu12
+ Downloaded nvidia-curand-cu12
+ Downloaded nvidia-cufft-cu12
+ Downloaded nvidia-nccl-cu12
+ Downloaded nvidia-cusparse-cu12
+ Downloaded nvidia-cusparselt-cu12
+ Downloaded nvidia-cusolver-cu12
+ Downloaded nvidia-cublas-cu12
+ Downloaded nvidia-cudnn-cu12
+ Downloaded torch
+Prepared 22 packages in 29.57s
+Installed 22 packages in 244ms
+ + jinja2==3.1.6
+ + markupsafe==3.0.3
+ + mpmath==1.3.0
+ + networkx==3.7
+ + nvidia-cublas-cu12==12.8.4.1
+ + nvidia-cuda-cupti-cu12==12.8.90
+ + nvidia-cuda-nvrtc-cu12==12.8.93
+ + nvidia-cuda-runtime-cu12==12.8.90
+ + nvidia-cudnn-cu12==9.10.2.21
+ + nvidia-cufft-cu12==11.3.3.83
+ + nvidia-cufile-cu12==1.13.1.3
+ + nvidia-curand-cu12==10.3.9.90
+ + nvidia-cusolver-cu12==11.7.3.90
+ + nvidia-cusparse-cu12==12.5.8.93
+ + nvidia-cusparselt-cu12==0.7.1
+ + nvidia-nccl-cu12==2.27.3
+ + nvidia-nvjitlink-cu12==12.8.93
+ + nvidia-nvtx-cu12==12.8.90
+ + setuptools==78.1.0
+ + sympy==1.14.0
+ + torch==2.8.0+cu128
+ + triton==3.4.0
+Using Python 3.12.12 environment at: /usr/local
+Resolved 43 packages in 234ms
+Downloading transformers (11.4MiB)
+Downloading numpy (16.0MiB)
+Downloading tokenizers (3.1MiB)
+ Downloaded tokenizers
+ Downloaded numpy
+ Downloaded transformers
+Prepared 8 packages in 823ms
+Installed 8 packages in 64ms
+ + accelerate==1.15.0
+ + numpy==2.5.4
+ + peft==0.17.1
+ + psutil==7.2.2
+ + regex==2026.11.9
+ + safetensors==0.8.0
+ + tokenizers==0.22.2
+ + transformers==4.57.6
+
+cloud_bundle.zip:   0%|          | 0.00/894k [00:00<?, ?B/s][Acloud_bundle.zip: 100%|██████████| 894k/894k [00:01<00:00, 859kB/s]
+
+tokenizer_config.json:   0%|          | 0.00/8.17k [00:00<?, ?B/s][Atokenizer_config.json: 100%|██████████| 8.17k/8.17k [00:00<00:00, 27.1MB/s]
+
+tokenizer.json:   0%|          | 0.00/21.4M [00:00<?, ?B/s][A
+tokenizer.json: 100%|██████████| 21.4M/21.4M [00:01<00:00, 16.7MB/s][Atokenizer.json: 100%|██████████| 21.4M/21.4M [00:01<00:00, 16.0MB/s]
+
+special_tokens_map.json:   0%|          | 0.00/567 [00:00<?, ?B/s][Aspecial_tokens_map.json: 100%|██████████| 567/567 [00:00<00:00, 5.11MB/s]
+
+config.json:   0%|          | 0.00/1.96k [00:00<?, ?B/s][Aconfig.json: 100%|██████████| 1.96k/1.96k [00:00<00:00, 13.0MB/s]
+`torch_dtype` is deprecated! Use `dtype` instead!
+
+model.safetensors.index.json:   0%|          | 0.00/23.6k [00:00<?, ?B/s][Amodel.safetensors.index.json: 100%|██████████| 23.6k/23.6k [00:00<00:00, 92.0MB/s]
+
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s][A
+model-00002-of-00002.safetensors:   0%|          | 0.00/1.71G [00:00<?, ?B/s][A
+model-00001-of-00002.safetensors:   0%|          | 0.00/4.99G [00:00<?, ?B/s][A
+model-00002-of-00002.safetensors:  16%|█▌        | 268M/1.71G [00:02<00:13, 107MB/s][A
+model-00002-of-00002.safetensors:  35%|███▌      | 604M/1.71G [00:03<00:06, 174MB/s][A
+model-00002-of-00002.safetensors:  60%|██████    | 1.02G/1.71G [00:05<00:02, 234MB/s][A
+model-00001-of-00002.safetensors:   3%|▎         | 134M/4.99G [00:05<03:01, 26.8MB/s][A
+model-00001-of-00002.safetensors:  15%|█▌        | 768M/4.99G [00:06<00:27, 153MB/s] [A
+model-00002-of-00002.safetensors:  86%|████████▋ | 1.48G/1.71G [00:07<00:01, 197MB/s][Amodel-00002-of-00002.safetensors: 100%|██████████| 1.71G/1.71G [00:07<00:00, 215MB/s]
+
+Fetching 2 files:  50%|█████     | 1/2 [00:08<00:08,  8.26s/it][A
+model-00001-of-00002.safetensors:  24%|██▍       | 1.21G/4.99G [00:08<00:21, 178MB/s][A
+model-00001-of-00002.safetensors:  46%|████▌     | 2.28G/4.99G [00:09<00:08, 332MB/s][A
+model-00001-of-00002.safetensors:  70%|██████▉   | 3.49G/4.99G [00:10<00:02, 520MB/s][A
+model-00001-of-00002.safetensors: 100%|██████████| 4.99G/4.99G [00:11<00:00, 713MB/s][Amodel-00001-of-00002.safetensors: 100%|██████████| 4.99G/4.99G [00:12<00:00, 414MB/s]
+
+Fetching 2 files: 100%|██████████| 2/2 [00:12<00:00,  6.20s/it][AFetching 2 files: 100%|██████████| 2/2 [00:12<00:00,  6.20s/it]
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.31s/it][ALoading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.13it/s]
+
+generation_config.json:   0%|          | 0.00/132 [00:00<?, ?B/s][Ageneration_config.json: 100%|██████████| 132/132 [00:00<00:00, 1.04MB/s]
+trainable params: 30,228,480 || all params: 3,379,456,000 || trainable%: 0.8945
+{"event": "sft_step", "step": 1, "loss": 0.7097500562667847, "grad_norm": 1.9161728620529175, "seconds": 1.303419996984303, "supervised_tokens": 82, "samples_seen": 1, "learning_rate": 0.0001}
+{"event": "sft_step", "step": 2, "loss": 0.3889094293117523, "grad_norm": 1.4913816452026367, "seconds": 0.4862241809896659, "supervised_tokens": 144, "samples_seen": 2, "learning_rate": 8.535533905932738e-05}
+{"event": "sft_step", "step": 3, "loss": 0.16964101791381836, "grad_norm": 1.0216445922851562, "seconds": 0.48408876699977554, "supervised_tokens": 144, "samples_seen": 3, "learning_rate": 5e-05}
+{"event": "sft_step", "step": 4, "loss": 0.1357502043247223, "grad_norm": 0.8305772542953491, "seconds": 0.4829389250080567, "supervised_tokens": 82, "samples_seen": 4, "learning_rate": 1.4644660940672627e-05}
+{"event": "sft_step", "step": 5, "loss": 0.11416842043399811, "grad_norm": 0.5586406588554382, "seconds": 0.5273064100183547, "supervised_tokens": 130, "samples_seen": 5, "learning_rate": 0.0}
+{"event": "batch_smoke", "batch_size": 1, "steps": 5, "padded_length": 1536, "gradient_accumulation": 1, "status": "passed", "mean_seconds_per_step": 0.4951395707539632, "examples_per_second": 2.019632562344535, "supervised_tokens_per_second": 252.4540702930669, "first_loss": 0.7097500562667847, "last_loss": 0.11416842043399811, "adapter_l1_change": 6218.020851016045, "peak_allocated_gib": 7.242656707763672, "peak_reserved_gib": 7.498046875}
+{"event": "sft_step", "step": 1, "loss": 0.5419561862945557, "grad_norm": 1.492153525352478, "seconds": 0.7313005219912156, "supervised_tokens": 226, "samples_seen": 2, "learning_rate": 0.0001}
+{"event": "sft_step", "step": 2, "loss": 0.4061957895755768, "grad_norm": 1.4212977886199951, "seconds": 0.6808375950204208, "supervised_tokens": 226, "samples_seen": 4, "learning_rate": 8.535533905932738e-05}
+{"event": "sft_step", "step": 3, "loss": 0.20161093771457672, "grad_norm": 0.8098970055580139, "seconds": 0.6881798660033382, "supervised_tokens": 334, "samples_seen": 6, "learning_rate": 5e-05}
+{"event": "sft_step", "step": 4, "loss": 0.12072020769119263, "grad_norm": 0.44972410798072815, "seconds": 0.6841485289914999, "supervised_tokens": 334, "samples_seen": 8, "learning_rate": 1.4644660940672627e-05}
+{"event": "sft_step", "step": 5, "loss": 0.08124810457229614, "grad_norm": 0.412015438079834, "seconds": 0.6844281239900738, "supervised_tokens": 334, "samples_seen": 10, "learning_rate": 0.0}
+{"event": "batch_smoke", "batch_size": 2, "steps": 5, "padded_length": 1536, "gradient_accumulation": 1, "status": "passed", "mean_seconds_per_step": 0.6843985285013332, "examples_per_second": 2.922273962773583, "supervised_tokens_per_second": 448.569053285745, "first_loss": 0.5419561862945557, "last_loss": 0.08124810457229614, "adapter_l1_change": 6583.284961700439, "peak_allocated_gib": 7.890935897827148, "peak_reserved_gib": 8.185546875}
+{"event": "sft_step", "step": 1, "loss": 0.5180020332336426, "grad_norm": 1.420082688331604, "seconds": 1.360194405016955, "supervised_tokens": 452, "samples_seen": 4, "learning_rate": 0.0001}
+{"event": "sft_step", "step": 2, "loss": 0.3404986262321472, "grad_norm": 1.236269235610962, "seconds": 1.3114003380178474, "supervised_tokens": 668, "samples_seen": 8, "learning_rate": 8.535533905932738e-05}
+{"event": "sft_step", "step": 3, "loss": 0.1648104190826416, "grad_norm": 0.7240545153617859, "seconds": 1.3108198120025918, "supervised_tokens": 620, "samples_seen": 12, "learning_rate": 5e-05}
+{"event": "sft_step", "step": 4, "loss": 0.10666229575872421, "grad_norm": 0.40032389760017395, "seconds": 1.3033508530061226, "supervised_tokens": 500, "samples_seen": 16, "learning_rate": 1.4644660940672627e-05}
+{"event": "sft_step", "step": 5, "loss": 0.07727338373661041, "grad_norm": 0.32623839378356934, "seconds": 1.308256905991584, "supervised_tokens": 622, "samples_seen": 20, "learning_rate": 0.0}
+{"event": "batch_smoke", "batch_size": 4, "steps": 5, "padded_length": 1536, "gradient_accumulation": 1, "status": "passed", "mean_seconds_per_step": 1.3084569772545365, "examples_per_second": 3.057035935864686, "supervised_tokens_per_second": 460.4660378396183, "first_loss": 0.5180020332336426, "last_loss": 0.07727338373661041, "adapter_l1_change": 6650.689717411995, "peak_allocated_gib": 9.187494277954102, "peak_reserved_gib": 9.515625}
+{"event": "sft_step", "step": 1, "loss": 0.4565097689628601, "grad_norm": 1.2862434387207031, "seconds": 2.5667729310225695, "supervised_tokens": 1120, "samples_seen": 8, "learning_rate": 0.0001}
+{"event": "sft_step", "step": 2, "loss": 0.3483843505382538, "grad_norm": 1.2608506679534912, "seconds": 2.512476867006626, "supervised_tokens": 1120, "samples_seen": 16, "learning_rate": 8.535533905932738e-05}
+{"event": "sft_step", "step": 3, "loss": 0.15658673644065857, "grad_norm": 0.6355494856834412, "seconds": 2.513102996017551, "supervised_tokens": 1168, "samples_seen": 24, "learning_rate": 5e-05}
+{"event": "sft_step", "step": 4, "loss": 0.10944557189941406, "grad_norm": 0.3883565664291382, "seconds": 2.5099835750006605, "supervised_tokens": 1072, "samples_seen": 32, "learning_rate": 1.4644660940672627e-05}
+{"event": "sft_step", "step": 5, "loss": 0.07596966624259949, "grad_norm": 0.3480331003665924, "seconds": 2.511481460009236, "supervised_tokens": 1046, "samples_seen": 40, "learning_rate": 0.0}
+{"event": "batch_smoke", "batch_size": 8, "steps": 5, "padded_length": 1536, "gradient_accumulation": 1, "status": "passed", "mean_seconds_per_step": 2.5117612245085184, "examples_per_second": 3.185016124120388, "supervised_tokens_per_second": 438.5369075898259, "first_loss": 0.4565097689628601, "last_loss": 0.07596966624259949, "adapter_l1_change": 7134.131350278854, "peak_allocated_gib": 11.780611038208008, "peak_reserved_gib": 12.20703125}
+{"event": "sft_step", "step": 1, "loss": 0.44526106119155884, "grad_norm": 1.2765698432922363, "seconds": 4.9279344149981625, "supervised_tokens": 2240, "samples_seen": 16, "learning_rate": 0.0001}
+{"event": "sft_step", "step": 2, "loss": 0.3572557866573334, "grad_norm": 1.2556543350219727, "seconds": 4.8863243230152875, "supervised_tokens": 2240, "samples_seen": 32, "learning_rate": 8.535533905932738e-05}
+{"event": "sft_step", "step": 3, "loss": 0.16321057081222534, "grad_norm": 0.6452929973602295, "seconds": 4.890124237979762, "supervised_tokens": 2240, "samples_seen": 48, "learning_rate": 5e-05}
+{"event": "sft_step", "step": 4, "loss": 0.10048782080411911, "grad_norm": 0.3500077724456787, "seconds": 4.891358016990125, "supervised_tokens": 2240, "samples_seen": 64, "learning_rate": 1.4644660940672627e-05}
+{"event": "sft_step", "step": 5, "loss": 0.07707308977842331, "grad_norm": 0.3392620384693146, "seconds": 4.890868583985139, "supervised_tokens": 2240, "samples_seen": 80, "learning_rate": 0.0}
+{"event": "batch_smoke", "batch_size": 16, "steps": 5, "padded_length": 1536, "gradient_accumulation": 1, "status": "passed", "mean_seconds_per_step": 4.889668790492578, "examples_per_second": 3.272205273107707, "supervised_tokens_per_second": 458.108738235079, "first_loss": 0.44526106119155884, "last_loss": 0.07707308977842331, "adapter_l1_change": 7375.4727556705475, "peak_allocated_gib": 16.96684455871582, "peak_reserved_gib": 17.55859375}
+{"event": "sft_step", "step": 1, "loss": 0.44526106119155884, "grad_norm": 1.274553894996643, "seconds": 9.736128383985488, "supervised_tokens": 4480, "samples_seen": 32, "learning_rate": 0.0001}
+{"event": "sft_step", "step": 2, "loss": 0.35724255442619324, "grad_norm": 1.2527592182159424, "seconds": 9.64417045400478, "supervised_tokens": 4480, "samples_seen": 64, "learning_rate": 8.535533905932738e-05}
+{"event": "sft_step", "step": 3, "loss": 0.16319875419139862, "grad_norm": 0.6433940529823303, "seconds": 9.6450803510088, "supervised_tokens": 4480, "samples_seen": 96, "learning_rate": 5e-05}
+{"event": "sft_step", "step": 4, "loss": 0.10063565522432327, "grad_norm": 0.34864187240600586, "seconds": 9.647091504011769, "supervised_tokens": 4480, "samples_seen": 128, "learning_rate": 1.4644660940672627e-05}
+{"event": "sft_step", "step": 5, "loss": 0.07698161900043488, "grad_norm": 0.33821576833724976, "seconds": 9.653114687011112, "supervised_tokens": 4480, "samples_seen": 160, "learning_rate": 0.0}
+{"event": "batch_smoke", "batch_size": 32, "steps": 5, "padded_length": 1536, "gradient_accumulation": 1, "status": "passed", "mean_seconds_per_step": 9.647364249009115, "examples_per_second": 3.316968155658343, "supervised_tokens_per_second": 464.375541792168, "first_loss": 0.44526106119155884, "last_loss": 0.07698161900043488, "adapter_l1_change": 7397.162450551987, "peak_allocated_gib": 27.339311599731445, "peak_reserved_gib": 28.28125}
+{"event": "complete", "mode": "smoke", "status": "smoke_complete"}

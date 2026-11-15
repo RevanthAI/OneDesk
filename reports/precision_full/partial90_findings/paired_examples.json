@@ -1,0 +1,120 @@
+[
+  {
+    "task_id": "test_synth-0000-en",
+    "question": "Audit the documented max_retries for kyc-verifier against slack-mcp; report the effective setting and any stale page.",
+    "gold_value": 4,
+    "expected_status": "answered",
+    "nf4_final": "<final_answer>{\"status\":\"answered\",\"value\":\"max_retries = 4\",\"cites\":[\"SLACK-TS-001\"]}</final_answer>",
+    "fp16_final": "<final_answer>{\"status\":\"conflict_resolved\",\"value\":\"4\",\"cites\":[\"SLACK-TS-001\"],\"stale_source\":\"None\"}</final_answer>",
+    "nf4_errors": [
+      "missing_or_extra_final_fields",
+      "required_evidence_missing",
+      "wrong_value"
+    ],
+    "fp16_errors": [
+      "required_evidence_missing",
+      "wrong_status"
+    ]
+  },
+  {
+    "task_id": "test_synth-0000-hi",
+    "question": "kyc-verifier ke max_retries ka prabhaavi maan kya hai? Puraane nirdesh ko slack-mcp ke pramaan se milaakar bataaiye.",
+    "gold_value": 4,
+    "expected_status": "answered",
+    "nf4_final": "<final_answer>{\"status\":\"conflict_resolved\",\"value\":\"max_retries ka prabhaavi maan kaise hota hai: max_retries ka prabhaavi maan kaise hota hai, is ka samna kyc-verifier ka `max_retries` paramater se hota hai. `max_retries` ka moolya `timeout_sec` se bhi jodh sakta hai, jaise ki `max_retries: timeout_sec`. `max_retries` ka moolya kaise hota hai, is ka samna kyc-verifier ka `max_retries` paramater se hota hai. `max_retries` ka moolya kaise hota hai, is ka samna kyc-verifier ka `max_retries` paramater se hota hai. `max_retries` ka moolya kaise hota hai, is ka samna kyc-verifier ka `max_retries` paramater se hota hai. `max_retries` ka moolya kaise hota hai, is ka samna kyc-verifier ka `max_retries` paramater se hota hai. `max_retries` ka moolya kaise hota hai, is ka samna kyc-verifier ka `max_retries` paramater se hota hai. `max_retries` ka moolya kaise hota hai, is ka samna kyc-verifier ka `max_retries` paramater se hota hai. `max_retries` ka moolya kaise hota hai, is ka samna kyc-verifier ka `max_retries` paramater se hota hai. `max_retries` ka moolya kaise hota",
+    "fp16_final": "<final_answer>{\"status\":\"conflict_resolved\",\"value\":\"KYC-Verifier ka `max_retries` paramater ka prabhaavi maan `maxRetries` hai, jo unki `timeout_sec` se 10 gune mein set kiya ja sakta hai. 10 gune ka matlab hai ki KYC-Verifier 10 baar tak retry karega, aur pratyek retry ke baad unki `timeout_sec` 10 gune se badh jaati hai. 10 gune ka matlab hai ki KYC-Verifier unki `timeout_sec` se 10 gune tak retry karega, aur pratyek retry ke baad unki `timeout_sec` 10 gune se badh jaati hai. 10 gune ka matlab hai ki KYC-Verifier unki `timeout_sec` se 10 gune tak retry karega, aur pratyek retry ke baad unki `timeout_sec` 10 gune se badh jaati hai. 10 gune ka matlab hai ki KYC-Verifier unki `timeout_sec` se 10 gune tak retry karega, aur pratyek retry ke baad unki `timeout_sec` 10 gune se badh jaati hai. 10 gune ka matlab hai ki KYC-Verifier unki `timeout_sec` se 10 gune tak retry karega, aur pratyek retry ke baad unki `timeout_sec` 10 gune se badh jaati hai. 10 gune ka matlab hai ki KYC-Verifier unki `timeout_sec` se 10 gune tak retry karega, aur pratyek retry ke baad unki `timeout_sec` 10 gune se badh jaati hai. 10 gune ka matlab hai ki KYC-Verifier",
+    "nf4_errors": [
+      "empty_search_result",
+      "no_parseable_final_json",
+      "required_evidence_missing"
+    ],
+    "fp16_errors": [
+      "empty_search_result",
+      "no_parseable_final_json",
+      "required_evidence_missing"
+    ]
+  },
+  {
+    "task_id": "test_synth-0000-hinglish",
+    "question": "Hey, kyc-verifier pe max_retries actually kitna configured hai? Runbook vs slack-mcp reconcile karke outdated page flag karna.",
+    "gold_value": 4,
+    "expected_status": "answered",
+    "nf4_final": "<final_answer>{\"status\":\"conflict_resolved\",\"value\":\"max_retries = 3\",\"cites\":[\"search_notion('runbook max_retries configuration')\",\"search_slack('runbook max_retries configuration')\"],\"stale_source\":\"search_notion('runbook max_retries configuration')\"}</final_answer>",
+    "fp16_final": "<final_answer>{\"status\":\"conflict_resolved\",\"value\":null,\"cites\":[\"search_slack:runbook vs slack-mcp reconcile max_retries kitna configured hai\"], \"stale_source\":null}</final_answer>",
+    "nf4_errors": [
+      "empty_search_result",
+      "required_evidence_missing",
+      "unretrieved_citations",
+      "wrong_status",
+      "wrong_value"
+    ],
+    "fp16_errors": [
+      "empty_search_result",
+      "required_evidence_missing",
+      "unretrieved_citations",
+      "wrong_status",
+      "wrong_value"
+    ]
+  },
+  {
+    "task_id": "test_synth-0000-te",
+    "question": "kyc-verifier lo amalulo unna max_retries viluva telapandi. Runbook vivaralanu slack-mcp aadharaalatho polchandi.",
+    "gold_value": 4,
+    "expected_status": "answered",
+    "nf4_final": "<final_answer>{\"status\":\"conflict_resolved\",\"value\":\"The Kyc-Verifier service has a max_retries value of 0, indicating it will not retry failed requests.\",\"cites\":[\"retrieved from the service's configuration in the Notion database\"], \"stale_source\":\"runbook-2023-10-01\"} </final_answer>",
+    "fp16_final": "<final_answer>{\"status\":\"conflict_resolved\",\"value\":null,\"cites\":[\"search_slack:query=kyc-verifier max_retries failed runbook\"],\"stale_source\":null}</final_answer>",
+    "nf4_errors": [
+      "empty_search_result",
+      "required_evidence_missing",
+      "unretrieved_citations",
+      "wrong_status",
+      "wrong_value"
+    ],
+    "fp16_errors": [
+      "empty_search_result",
+      "required_evidence_missing",
+      "unretrieved_citations",
+      "wrong_status",
+      "wrong_value"
+    ]
+  },
+  {
+    "task_id": "test_synth-0001-en",
+    "question": "Audit the documented batch_size_mb for kyc-verifier against slack-mcp; report the effective setting and any stale page.",
+    "gold_value": 160,
+    "expected_status": "answered",
+    "nf4_final": "<final_answer>{\"status\":\"conflict_resolved\",\"value\":\"batch_size_mb = 1024 MB\",\"cites\":[\"search_notion\",\"search_slack\",\"query_db\",\"inspect_schema\"],\"stale_source\":null}</final_answer>",
+    "fp16_final": "<final_answer>{\"status\":\"conflict_resolved\",\"value\":\"160\",\"cites\":[\"SLACK-TS-003\"],\"stale_source\":\"None\"}</final_answer>",
+    "nf4_errors": [
+      "empty_search_result",
+      "required_evidence_missing",
+      "unretrieved_citations",
+      "wrong_status",
+      "wrong_value"
+    ],
+    "fp16_errors": [
+      "required_evidence_missing",
+      "wrong_status"
+    ]
+  },
+  {
+    "task_id": "test_synth-0002-hinglish",
+    "question": "Hey, settlement-engine pe rate_limit_rpm actually kitna configured hai? Runbook vs github-mcp reconcile karke outdated page flag karna.",
+    "gold_value": 600,
+    "expected_status": "answered",
+    "nf4_final": "<final_answer>{\"status\":\"answered\",\"value\":600,\"cites\":[\"retrieved evidence ID: 1\"]}</final_answer>",
+    "fp16_final": "<final_answer>{\"status\":\"conflict_resolved\",\"value\":null,\"cites\":[\"github-mcp: search_github_prs returned empty results\"], \"stale_source\":null}</final_answer>",
+    "nf4_errors": [
+      "missing_or_extra_final_fields",
+      "required_evidence_missing",
+      "unretrieved_citations"
+    ],
+    "fp16_errors": [
+      "empty_search_result",
+      "required_evidence_missing",
+      "unretrieved_citations",
+      "wrong_status",
+      "wrong_value"
+    ]
+  }
+]

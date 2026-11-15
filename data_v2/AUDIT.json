@@ -1,0 +1,320 @@
+{
+  "causal_claim": "The audit identified plausible confounds, not proven causes of the prior accuracy or zero-variance groups.",
+  "datasets": {
+    "holdout_repo_style_100_frozen": {
+      "incident_subtypes": {
+        "config_audit": 4,
+        "payload_lb": 4,
+        "payload_mib": 3,
+        "sla_penalty": 4
+      },
+      "injected_duplicate_controls": 15,
+      "input": 115,
+      "kept": 100,
+      "kinds": {
+        "abstain": 15,
+        "conflict": 50,
+        "consistent": 20,
+        "incident": 15
+      },
+      "languages": {
+        "en": 25,
+        "hi": 25,
+        "hinglish": 25,
+        "te": 25
+      },
+      "method": "Real CuratorKIT ExactDeduplicator over model-visible messages",
+      "oracle_verified": 100,
+      "quality_claim": "Injected exact-duplicate controls only; no claim of semantic paraphrase filtering or natural-data quality gains.",
+      "rejected": 15,
+      "scripts": {
+        "en:latin": 25,
+        "hi:latin": 12,
+        "hi:native": 13,
+        "hinglish:latin": 25,
+        "te:latin": 12,
+        "te:native": 13
+      },
+      "semantic_cases": 26,
+      "semantic_dedup": false
+    },
+    "holdout_synth_400_frozen": {
+      "incident_subtypes": {
+        "config_audit": 16,
+        "payload_lb": 16,
+        "payload_mib": 12,
+        "sla_penalty": 16
+      },
+      "injected_duplicate_controls": 60,
+      "input": 460,
+      "kept": 400,
+      "kinds": {
+        "abstain": 60,
+        "conflict": 200,
+        "consistent": 80,
+        "incident": 60
+      },
+      "languages": {
+        "en": 100,
+        "hi": 100,
+        "hinglish": 100,
+        "te": 100
+      },
+      "method": "Real CuratorKIT ExactDeduplicator over model-visible messages",
+      "oracle_verified": 400,
+      "quality_claim": "Injected exact-duplicate controls only; no claim of semantic paraphrase filtering or natural-data quality gains.",
+      "rejected": 60,
+      "scripts": {
+        "en:latin": 100,
+        "hi:latin": 50,
+        "hi:native": 50,
+        "hinglish:latin": 100,
+        "te:latin": 50,
+        "te:native": 50
+      },
+      "semantic_cases": 100,
+      "semantic_dedup": false
+    },
+    "train_grpo_stage1": {
+      "incident_subtypes": {
+        "config_audit": 24,
+        "payload_lb": 24,
+        "payload_mib": 28,
+        "sla_penalty": 24
+      },
+      "injected_duplicate_controls": 60,
+      "input": 460,
+      "kept": 400,
+      "kinds": {
+        "abstain": 100,
+        "conflict": 100,
+        "consistent": 100,
+        "incident": 100
+      },
+      "languages": {
+        "en": 100,
+        "hi": 100,
+        "hinglish": 100,
+        "te": 100
+      },
+      "method": "Real CuratorKIT ExactDeduplicator over model-visible messages",
+      "oracle_verified": 400,
+      "quality_claim": "Injected exact-duplicate controls only; no claim of semantic paraphrase filtering or natural-data quality gains.",
+      "rejected": 60,
+      "scripts": {
+        "en:latin": 100,
+        "hi:latin": 50,
+        "hi:native": 50,
+        "hinglish:latin": 100,
+        "te:latin": 50,
+        "te:native": 50
+      },
+      "semantic_cases": 100,
+      "semantic_dedup": false
+    },
+    "train_grpo_stage2": {
+      "incident_subtypes": {
+        "config_audit": 32,
+        "payload_lb": 28,
+        "payload_mib": 28,
+        "sla_penalty": 32
+      },
+      "injected_duplicate_controls": 72,
+      "input": 552,
+      "kept": 480,
+      "kinds": {
+        "abstain": 120,
+        "conflict": 120,
+        "consistent": 120,
+        "incident": 120
+      },
+      "languages": {
+        "en": 120,
+        "hi": 120,
+        "hinglish": 120,
+        "te": 120
+      },
+      "method": "Real CuratorKIT ExactDeduplicator over model-visible messages",
+      "oracle_verified": 480,
+      "quality_claim": "Injected exact-duplicate controls only; no claim of semantic paraphrase filtering or natural-data quality gains.",
+      "rejected": 72,
+      "scripts": {
+        "en:latin": 120,
+        "hi:latin": 60,
+        "hi:native": 60,
+        "hinglish:latin": 120,
+        "te:latin": 60,
+        "te:native": 60
+      },
+      "semantic_cases": 120,
+      "semantic_dedup": false
+    },
+    "train_sft_240": {
+      "incident_subtypes": {
+        "config_audit": 16,
+        "payload_lb": 16,
+        "payload_mib": 12,
+        "sla_penalty": 16
+      },
+      "injected_duplicate_controls": 36,
+      "input": 276,
+      "kept": 240,
+      "kinds": {
+        "abstain": 60,
+        "conflict": 60,
+        "consistent": 60,
+        "incident": 60
+      },
+      "languages": {
+        "en": 60,
+        "hi": 60,
+        "hinglish": 60,
+        "te": 60
+      },
+      "method": "Real CuratorKIT ExactDeduplicator over model-visible messages",
+      "oracle_verified": 240,
+      "quality_claim": "Injected exact-duplicate controls only; no claim of semantic paraphrase filtering or natural-data quality gains.",
+      "rejected": 36,
+      "scripts": {
+        "en:latin": 60,
+        "hi:latin": 30,
+        "hi:native": 30,
+        "hinglish:latin": 60,
+        "te:latin": 30,
+        "te:native": 30
+      },
+      "semantic_cases": 60,
+      "semantic_dedup": false
+    },
+    "val_train_80": {
+      "incident_subtypes": {
+        "config_audit": 4,
+        "payload_lb": 8,
+        "payload_mib": 4,
+        "sla_penalty": 4
+      },
+      "injected_duplicate_controls": 12,
+      "input": 92,
+      "kept": 80,
+      "kinds": {
+        "abstain": 20,
+        "conflict": 20,
+        "consistent": 20,
+        "incident": 20
+      },
+      "languages": {
+        "en": 20,
+        "hi": 20,
+        "hinglish": 20,
+        "te": 20
+      },
+      "method": "Real CuratorKIT ExactDeduplicator over model-visible messages",
+      "oracle_verified": 80,
+      "quality_claim": "Injected exact-duplicate controls only; no claim of semantic paraphrase filtering or natural-data quality gains.",
+      "rejected": 12,
+      "scripts": {
+        "en:latin": 20,
+        "hi:latin": 10,
+        "hi:native": 10,
+        "hinglish:latin": 20,
+        "te:latin": 10,
+        "te:native": 10
+      },
+      "semantic_cases": 20,
+      "semantic_dedup": false
+    }
+  },
+  "disjoint_splits": {
+    "holdout_synth_400_frozen vs holdout_repo_style_100_frozen": {
+      "case_id_overlap": 0,
+      "incident_id_overlap": 0,
+      "service_parameter_overlap": 0
+    },
+    "train_grpo_stage1 vs holdout_repo_style_100_frozen": {
+      "case_id_overlap": 0,
+      "incident_id_overlap": 0,
+      "service_parameter_overlap": 0
+    },
+    "train_grpo_stage1 vs holdout_synth_400_frozen": {
+      "case_id_overlap": 0,
+      "incident_id_overlap": 0,
+      "service_parameter_overlap": 0
+    },
+    "train_grpo_stage1 vs train_grpo_stage2": {
+      "case_id_overlap": 0,
+      "incident_id_overlap": 0,
+      "service_parameter_overlap": 0
+    },
+    "train_grpo_stage1 vs val_train_80": {
+      "case_id_overlap": 0,
+      "incident_id_overlap": 0,
+      "service_parameter_overlap": 0
+    },
+    "train_grpo_stage2 vs holdout_repo_style_100_frozen": {
+      "case_id_overlap": 0,
+      "incident_id_overlap": 0,
+      "service_parameter_overlap": 0
+    },
+    "train_grpo_stage2 vs holdout_synth_400_frozen": {
+      "case_id_overlap": 0,
+      "incident_id_overlap": 0,
+      "service_parameter_overlap": 0
+    },
+    "train_grpo_stage2 vs val_train_80": {
+      "case_id_overlap": 0,
+      "incident_id_overlap": 0,
+      "service_parameter_overlap": 0
+    },
+    "train_sft_240 vs holdout_repo_style_100_frozen": {
+      "case_id_overlap": 0,
+      "incident_id_overlap": 0,
+      "service_parameter_overlap": 0
+    },
+    "train_sft_240 vs holdout_synth_400_frozen": {
+      "case_id_overlap": 0,
+      "incident_id_overlap": 0,
+      "service_parameter_overlap": 0
+    },
+    "train_sft_240 vs train_grpo_stage1": {
+      "case_id_overlap": 0,
+      "incident_id_overlap": 0,
+      "service_parameter_overlap": 0
+    },
+    "train_sft_240 vs train_grpo_stage2": {
+      "case_id_overlap": 0,
+      "incident_id_overlap": 0,
+      "service_parameter_overlap": 0
+    },
+    "train_sft_240 vs val_train_80": {
+      "case_id_overlap": 0,
+      "incident_id_overlap": 0,
+      "service_parameter_overlap": 0
+    },
+    "val_train_80 vs holdout_repo_style_100_frozen": {
+      "case_id_overlap": 0,
+      "incident_id_overlap": 0,
+      "service_parameter_overlap": 0
+    },
+    "val_train_80 vs holdout_synth_400_frozen": {
+      "case_id_overlap": 0,
+      "incident_id_overlap": 0,
+      "service_parameter_overlap": 0
+    }
+  },
+  "inference_claim": "No v2 model accuracy is available; no attempt is made to force SFT below an arbitrary accuracy threshold.",
+  "oracle_rewards": {
+    "1.0": 60,
+    "1.3": 112,
+    "1.5": 68
+  },
+  "paid_jobs_launched": false,
+  "repo_style_partial_translations": 4,
+  "repo_style_semantic_cases": 26,
+  "reserved_cases": 20,
+  "schema_version": 2,
+  "training_allocated_cases": 300,
+  "training_launched": false,
+  "training_requested_total": 320,
+  "training_world_incidents": 80,
+  "training_world_services": 60
+}

@@ -1,0 +1,13 @@
+{
+  "status": "incomplete_live_snapshot",
+  "revision": "267d7662f32443c65b71dd002601b80bc5f0500a",
+  "attempted": 48,
+  "accepted": 14,
+  "acceptance_rate": 0.2916666666666667,
+  "all_negative_skipped": 2,
+  "zero_variance_skipped": 32,
+  "accepted_with_mixed_outcomes": 12,
+  "accepted_with_all_correct_outcomes": 2,
+  "accepted_with_format_errors": 1,
+  "snapshot_root": "/home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/reports_v2_2/live_downloads/warmup-20261113T055708Z"
+}

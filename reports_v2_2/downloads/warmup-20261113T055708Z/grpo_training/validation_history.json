@@ -1,0 +1,22 @@
+[
+  {
+    "step": 20,
+    "exact_outcome": 0.7375,
+    "predicted_abstention_rate": 0.2625,
+    "safe": true,
+    "selected": true,
+    "early_stop": false,
+    "best_step": 20,
+    "best_accuracy": 0.7375
+  },
+  {
+    "step": 40,
+    "exact_outcome": 0.8,
+    "predicted_abstention_rate": 0.25,
+    "safe": true,
+    "selected": true,
+    "early_stop": false,
+    "best_step": 40,
+    "best_accuracy": 0.8
+  }
+]

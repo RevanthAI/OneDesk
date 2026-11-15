@@ -1,0 +1,21 @@
+{
+  "train_grpo_stage1.jsonl": "b44e67d78d2abc921583c535a10c3a2bd790aca8fd43723e87151c0c962b7768",
+  "case_pool_manifest.json": "51612d5c14ed2a9fcf930825d042da23ad59870665ced07a54a0c6c558b3e0e3",
+  "SOURCE_SHA256SUMS": "ed792d6c48cc7fab43e3d886b9f9ef37f21711ffbd0b68a04e52a575c5d88bd4",
+  "REVIEW_SAMPLES.md": "0962fb5dabbb7fc58f667f27d27fb9fa81f8beef8e3a4ca775ce2e661e352748",
+  "holdout_synth_400_frozen.jsonl": "82b92badc6f1fdc71bba41a876db4adf9f19633108b26331297227a7587ac50b",
+  "token_length_audit.json": "936b456679fed055e3e2f1953011bbe3d86be296788972d55d8a52d998cf1d41",
+  "train_sft_240.jsonl": "96402f7d8ce8f05ee98aee212f1af9ac7a2b51fef1098e2beda3e395b90e1932",
+  "holdout_repo_style_100_frozen.jsonl": "c6d808482bb85143b08eda51e6703f13f9f0817dd0b30a90ca3cd2d81e8b3469",
+  "DATA_REVIEW.md": "db2435e2ec48c3731c055ded02dd6d9b9e94167c48f452cf3cd040e58eae475b",
+  "curation_rejections.jsonl": "622e3bf8fce40796c64c6b3683bba441e096272ebf02fb83e3a430ae45f5acf2",
+  "curation_funnel.json": "a1e8630f4cc9244ee96d2ab41ab811918417da1b510ee987b54bb9902dcef3da",
+  "train_sft_agenttune_trajectories.jsonl": "63265574e26aad81ee4d136b461eacd7fcf8dcd283a87231bcb181a7e2db1674",
+  "train_grpo_stage2.jsonl": "8d7f5236f1fad9450f5ae3ecb81e83b9acda96f01d548225787b7f7eb5754977",
+  "val_train_80.jsonl": "4eb608f1391596afe2ad62f67e9c5a68e5b396838b8c97f130638d9510f3b254",
+  "SHA256SUMS": "e5da4b5882086a56061cf33202caf5c32ff13f35e3f1e262c4dd2edd8bba670a",
+  "world_repo_style.json": "e0cc20b5d5ccc5e1dc6ab8042390077d4fc040760c9aae74508e95e665a19df6",
+  "world_train.json": "664c892b8cf7971a8da92a6f2e5f1e6e1ece0103e73479af4e20c427a4cf68cb",
+  "AUDIT.json": "5316e6e04bb476181e826ba9a23229440595f9e892ac628cd50b8be00fe1e35b",
+  "world_test_synth.json": "664177831119ebd56744a45791a43510600294bcca87d4176b4f45c50eab3985"
+}

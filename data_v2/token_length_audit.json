@@ -1,0 +1,10 @@
+{
+  "model": "CohereLabs/tiny-aya-fire",
+  "tokenizer_source": "local cached tokenizer; no model inference",
+  "rows": 240,
+  "min_tokens": 979,
+  "max_tokens": 2359,
+  "mean_tokens": 1646.4541666666667,
+  "above_legacy_1536": 136,
+  "recommended_untruncated_budget": 2560
+}

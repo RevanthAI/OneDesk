@@ -1,0 +1,116 @@
+[
+  {
+    "task_id": "repo_style-0000-en",
+    "question": "Audit the documented timeout_sec for fastapi-case-00 against github-mcp; report the effective setting and any stale page.",
+    "gold_value": 10001,
+    "expected_status": "conflict_resolved",
+    "nf4_final": "<final_answer>{\"status\":\"answered\",\"value\":\"timeout_sec = 10001\",\"cites\":[\"PR-REALSTYLE-00\"]}</final_answer>",
+    "fp16_final": "<final_answer>{\"status\":\"answered\",\"value\":\"timeout_sec = 10001\",\"cites\":[\"PR-REALSTYLE-00\"]}</final_answer>",
+    "nf4_errors": [
+      "missing_or_extra_final_fields",
+      "required_evidence_missing",
+      "wrong_status",
+      "wrong_value"
+    ],
+    "fp16_errors": [
+      "missing_or_extra_final_fields",
+      "required_evidence_missing",
+      "wrong_status",
+      "wrong_value"
+    ]
+  },
+  {
+    "task_id": "repo_style-0001-en",
+    "question": "Audit the documented max_retries for pydantic-case-00 against github-mcp; report the effective setting and any stale page.",
+    "gold_value": 10003,
+    "expected_status": "conflict_resolved",
+    "nf4_final": "<final_answer>{\"status\":\"answered\",\"value\":\"max_retries = 10003\",\"cites\":[\"PR-REALSTYLE-01\"]}</final_answer>",
+    "fp16_final": "<final_answer>{\"status\":\"answered\",\"value\":\"max_retries = 10003\",\"cites\":[\"PR-REALSTYLE-01\"]}</final_answer>",
+    "nf4_errors": [
+      "missing_or_extra_final_fields",
+      "required_evidence_missing",
+      "wrong_status",
+      "wrong_value"
+    ],
+    "fp16_errors": [
+      "missing_or_extra_final_fields",
+      "required_evidence_missing",
+      "wrong_status",
+      "wrong_value"
+    ]
+  },
+  {
+    "task_id": "repo_style-0005-en",
+    "question": "Audit the documented circuit_breaker_pct for litellm-case-01 against github-mcp; report the effective setting and any stale page.",
+    "gold_value": 10011,
+    "expected_status": "conflict_resolved",
+    "nf4_final": "<final_answer>{\"status\":\"answered\",\"value\":\"circuit_breaker_pct = 10011\",\"cites\":[\"PR-REALSTYLE-05\"]}</final_answer>",
+    "fp16_final": "<final_answer>{\"status\":\"conflict_resolved\",\"value\":null,\"cites\":[\"github-mcp:search_github_prs:litellm-case-01 circuit_breaker_pct stale page\"], \"stale_source\":\"github-mcp:search_github_prs:litellm-case-01 circuit_breaker_pct stale page\"}</final_answer>",
+    "nf4_errors": [
+      "missing_or_extra_final_fields",
+      "required_evidence_missing",
+      "wrong_status",
+      "wrong_value"
+    ],
+    "fp16_errors": [
+      "empty_search_result",
+      "required_evidence_missing",
+      "unretrieved_citations",
+      "wrong_value"
+    ]
+  },
+  {
+    "task_id": "repo_style-0011-en",
+    "question": "Audit the documented circuit_breaker_pct for litellm-case-03 against github-mcp; report the effective setting and any stale page.",
+    "gold_value": 10023,
+    "expected_status": "conflict_resolved",
+    "nf4_final": "<final_answer>{\"status\":\"answered\",\"value\":\"circuit_breaker_pct = 10023\",\"cites\":[\"PR-REALSTYLE-11\"]}</final_answer>",
+    "fp16_final": "<final_answer>{\"status\":\"conflict_resolved\",\"value\":\"circuit_breaker_pct = 10023\",\"cites\":[\"PR-REALSTYLE-11\"],\"stale_source\":\"PR-REALSTYLE-11\"}</final_answer>",
+    "nf4_errors": [
+      "missing_or_extra_final_fields",
+      "required_evidence_missing",
+      "wrong_status",
+      "wrong_value"
+    ],
+    "fp16_errors": [
+      "required_evidence_missing",
+      "wrong_value"
+    ]
+  },
+  {
+    "task_id": "repo_style-0017-en",
+    "question": "Audit the documented circuit_breaker_pct for litellm-case-05 against github-mcp; report the effective setting and any stale page.",
+    "gold_value": 10035,
+    "expected_status": "conflict_resolved",
+    "nf4_final": "<final_answer>{\"status\":\"answered\",\"value\":\"circuit_breaker_pct = 10035\",\"cites\":[\"PR-REALSTYLE-17\"]}</final_answer>",
+    "fp16_final": "<final_answer>{\"status\":\"conflict_resolved\",\"value\":\"circuit_breaker_pct = 10035\",\"cites\":[\"PR-REALSTYLE-17\"],\"stale_source\":\"PR-REALSTYLE-17\"}</final_answer>",
+    "nf4_errors": [
+      "missing_or_extra_final_fields",
+      "required_evidence_missing",
+      "wrong_status",
+      "wrong_value"
+    ],
+    "fp16_errors": [
+      "required_evidence_missing",
+      "wrong_value"
+    ]
+  },
+  {
+    "task_id": "repo_style-0023-en",
+    "question": "Audit the documented circuit_breaker_pct for litellm-case-07 against github-mcp; report the effective setting and any stale page.",
+    "gold_value": 10047,
+    "expected_status": "conflict_resolved",
+    "nf4_final": "<final_answer>{\"status\":\"answered\",\"value\":\"circuit_breaker_pct = 10047\",\"cites\":[\"PR-REALSTYLE-23\"]}</final_answer>",
+    "fp16_final": "<final_answer>{\"status\":\"conflict_resolved\",\"value\":\"circuit_breaker_pct = 10047\",\"cites\":[\"PR-REALSTYLE-23\"],\"stale_source\":\"PR-REALSTYLE-23\"}</final_answer>",
+    "nf4_errors": [
+      "missing_or_extra_final_fields",
+      "required_evidence_missing",
+      "wrong_status",
+      "wrong_value"
+    ],
+    "fp16_errors": [
+      "required_evidence_missing",
+      "wrong_value"
+    ]
+  }
+]

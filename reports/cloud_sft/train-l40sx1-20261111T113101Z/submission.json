@@ -1,0 +1,37 @@
+{
+  "mode": "train",
+  "flavor": "l40sx1",
+  "timeout": "30m",
+  "run_repo": "Revanth-ml/driftguard-mcp-training-runs",
+  "run_prefix": "train-l40sx1-20261111T113101Z",
+  "bundle_revision": "c4f1edbc854b948415027e0eb87580afd21d529f",
+  "adapter_repo": "Revanth-ml/driftguard-tiny-aya-fire-sft",
+  "merged_repo": "Revanth-ml/driftguard-tiny-aya-fire-sft-merged",
+  "bundle": {
+    "archive_sha256": "9426e0716b27fa5ce58b18068211acbb2d44c542a28f94b72ae22d68cf4bc094",
+    "files": 294,
+    "bytes": 896731,
+    "included_holdouts": false,
+    "included_env": false
+  },
+  "arguments": [
+    "--mode",
+    "train",
+    "--output",
+    "/workspace/output",
+    "--run-repo",
+    "Revanth-ml/driftguard-mcp-training-runs",
+    "--run-prefix",
+    "train-l40sx1-20261111T113101Z",
+    "--batch-size",
+    "8",
+    "--effective-batch",
+    "16",
+    "--epochs",
+    "1.5",
+    "--adapter-repo",
+    "Revanth-ml/driftguard-tiny-aya-fire-sft",
+    "--merged-repo",
+    "Revanth-ml/driftguard-tiny-aya-fire-sft-merged"
+  ]
+}

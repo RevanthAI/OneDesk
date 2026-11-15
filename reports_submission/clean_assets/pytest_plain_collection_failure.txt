@@ -1,0 +1,21 @@
+
+==================================== ERRORS ====================================
+______________ ERROR collecting tests_v2/test_active_advantage.py ______________
+import file mismatch:
+imported module 'test_active_advantage' has this __file__ attribute:
+  /home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/tests/test_active_advantage.py
+which is not the same as the test file we want to collect:
+  /home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/tests_v2/test_active_advantage.py
+HINT: remove __pycache__ / .pyc files and/or use a unique basename for your test file modules
+_______________ ERROR collecting tests_v2/test_reward_hacking.py _______________
+import file mismatch:
+imported module 'test_reward_hacking' has this __file__ attribute:
+  /home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/tests/test_reward_hacking.py
+which is not the same as the test file we want to collect:
+  /home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/tests_v2/test_reward_hacking.py
+HINT: remove __pycache__ / .pyc files and/or use a unique basename for your test file modules
+=========================== short test summary info ============================
+ERROR tests_v2/test_active_advantage.py
+ERROR tests_v2/test_reward_hacking.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 2 errors during collection !!!!!!!!!!!!!!!!!!!!
+2 errors in 13.06s

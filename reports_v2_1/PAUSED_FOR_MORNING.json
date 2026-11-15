@@ -1,0 +1,36 @@
+{
+  "status": "paused_by_user",
+  "requested_at": 1794513304.4244797,
+  "reason": "User requested save, stop all queued/active experiment jobs, and continue in the morning",
+  "jobs": [
+    {
+      "job_id": "6af59651ab34849891af075a",
+      "before": "CANCELED",
+      "after": "CANCELED",
+      "url": "https://huggingface.co/jobs/Revanth-ml/6af59651ab34849891af075a",
+      "run_prefix": "v2-20261112T103309Z"
+    },
+    {
+      "job_id": "6af59c409737d9a9e0940742",
+      "before": "COMPLETED",
+      "after": "COMPLETED",
+      "url": "https://huggingface.co/jobs/Revanth-ml/6af59c409737d9a9e0940742",
+      "run_prefix": "v2-20261112T110005Z"
+    },
+    {
+      "job_id": "6af5f9d80f431c4f7b55fbe9",
+      "before": "CANCELED",
+      "after": "CANCELED",
+      "url": "https://huggingface.co/jobs/Revanth-ml/6af5f9d80f431c4f7b55fbe9",
+      "run_prefix": "v2-1-20261112T173923Z"
+    },
+    {
+      "job_id": "6af6141d5f2f1b7284b8a934",
+      "before": "SCHEDULING",
+      "after": "CANCELED",
+      "url": "https://huggingface.co/jobs/Revanth-ml/6af6141d5f2f1b7284b8a934",
+      "run_prefix": "v2-1-20261112T193129Z"
+    }
+  ],
+  "automatic_relaunch": false
+}

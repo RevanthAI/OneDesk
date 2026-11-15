@@ -1,0 +1,58 @@
+{
+  "status": "complete",
+  "cloud": {
+    "stage": "COMPLETED",
+    "message": null,
+    "job_id": "6af6cd0e0f431c4f7b571c65",
+    "updated_at": 1794566613.093041
+  },
+  "models": {
+    "SFT_WARMUP": {
+      "repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-sft",
+      "revision": "72aafc56b1506a81a7cb12930e95f8f2f17d03d5",
+      "local_path": "/home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/checkpoints_v2_2/sft_warmup_adapter",
+      "sha256": "bc362ae46f670c2d24ffe3ebc02d22df45aeebce8515ceb2873c5c7319442dc6"
+    },
+    "GRPO_BEST_VAL": {
+      "repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-grpo-best-val",
+      "revision": "016676680121b4dd90ec6026978de7ee1cdb1271",
+      "local_path": "/home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/checkpoints_v2_2/grpo_best_val_adapter",
+      "sha256": "b286392a2d979af730b6c9fcd1c2a14369a2f859bcc691526478d0e8220a2f07"
+    },
+    "GRPO_FINAL": {
+      "repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-grpo-final",
+      "revision": "b006ec346e48807afd23030abf17b599adfcf71f",
+      "local_path": "/home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/checkpoints_v2_2/grpo_final_adapter",
+      "sha256": "16b135a64f95c3fb74c83a9fd59a3e3c55a1adff48db998549cdaad410e764b8"
+    }
+  },
+  "approved_data_unchanged": true,
+  "protected_v2_reports_unchanged": true,
+  "release": {
+    "path": "/home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/reports_v2_2/driftguard_v2_1_release.zip",
+    "sha256": "16b641afeaa9d81c5c8d7d591235f3f71c3bcb5342120ad0ddc3330e71a09b38",
+    "files": 636
+  },
+  "postprocessing": {
+    "completed_at_utc": "2026-11-13T10:53:58.959653+00:00",
+    "analysis_only": true,
+    "additional_model_inference": false,
+    "tests": {
+      "tests": 120,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "frozen_files_unchanged": 19,
+    "figures_visually_verified": [
+      "comparison.png",
+      "validation_progress.png",
+      "sampling_diversity.png",
+      "grounding_tradeoffs.png"
+    ],
+    "postprocessor_sha256": {
+      "src_v2_2/finalize.py": "59228d6502fc3391548d9d4c99673431b1f47a65376bcebb251b1408a1addbf7",
+      "src_v2_2/write_findings.py": "2bbd3cd23611343bdd1479c29049889aab4fb55aa08779743affdd6e09f12883"
+    }
+  }
+}

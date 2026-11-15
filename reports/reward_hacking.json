@@ -1,0 +1,26 @@
+{
+  "AlwaysAbstainPolicy": {
+    "specified": 0.1925,
+    "evidence_gated": -0.02000000000000001
+  },
+  "DumpAllNumbersPolicy": {
+    "specified": 0.05,
+    "evidence_gated": -0.2
+  },
+  "TrustOnlyNotionLazyPolicy": {
+    "specified": -0.045,
+    "evidence_gated": -0.36
+  },
+  "SpamAllToolsThenGuessPolicy": {
+    "specified": 0.05,
+    "evidence_gated": -0.2
+  },
+  "HallucinateCitationsWithoutToolsPolicy": {
+    "specified": 0.05,
+    "evidence_gated": -0.2
+  },
+  "HonestOraclePolicy": {
+    "specified": 1.355,
+    "evidence_gated": 1.355
+  }
+}

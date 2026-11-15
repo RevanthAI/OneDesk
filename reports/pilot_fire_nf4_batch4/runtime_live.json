@@ -1,0 +1,13 @@
+{
+  "model": "CohereLabs/tiny-aya-fire",
+  "revision": "73500c80fcb6c8bea3e830c21d5d2920249a0e1a",
+  "gpu": "NVIDIA GeForce RTX 2070",
+  "compute_dtype": "float16",
+  "peak_vram_allocated_gib": 2.9987521171569824,
+  "peak_vram_reserved_gib": 3.25,
+  "generated_tokens": 3640,
+  "input_tokens": 44434,
+  "generation_seconds": 148.08712608500173,
+  "generated_tokens_per_second": 24.580124526899436,
+  "generation_batches": 12
+}

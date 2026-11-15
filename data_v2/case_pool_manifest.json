@@ -1,0 +1,2252 @@
+{
+  "train_grpo1": [
+    {
+      "case_id": "train_grpo1-0000",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "sla_hours",
+      "service_name": "metrics-agent"
+    },
+    {
+      "case_id": "train_grpo1-0001",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "batch_size_mb",
+      "service_name": "fee-engine"
+    },
+    {
+      "case_id": "train_grpo1-0002",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "timeout_sec",
+      "service_name": "mandate-store"
+    },
+    {
+      "case_id": "train_grpo1-0003",
+      "incident_id": "INC-V2-TR-015",
+      "kind": "incident",
+      "param_name": "recovery_cost_mib_usd",
+      "service_name": "export-worker"
+    },
+    {
+      "case_id": "train_grpo1-0004",
+      "incident_id": "INC-V2-TR-016",
+      "kind": "incident",
+      "param_name": "sla_penalty_usd",
+      "service_name": "loyalty-api"
+    },
+    {
+      "case_id": "train_grpo1-0005",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "sla_hours",
+      "service_name": "media-worker"
+    },
+    {
+      "case_id": "train_grpo1-0006",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "ledger-writer"
+    },
+    {
+      "case_id": "train_grpo1-0007",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "rate_limit_rpm",
+      "service_name": "signing-gateway"
+    },
+    {
+      "case_id": "train_grpo1-0008",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "batch_size_mb",
+      "service_name": "event-router"
+    },
+    {
+      "case_id": "train_grpo1-0009",
+      "incident_id": "INC-V2-TR-017",
+      "kind": "incident",
+      "param_name": "max_retries",
+      "service_name": "product-catalog"
+    },
+    {
+      "case_id": "train_grpo1-0010",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "batch_size_mb",
+      "service_name": "vendor-router"
+    },
+    {
+      "case_id": "train_grpo1-0011",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "max_retries",
+      "service_name": "dispute-api"
+    },
+    {
+      "case_id": "train_grpo1-0012",
+      "incident_id": "INC-V2-TR-018",
+      "kind": "incident",
+      "param_name": "recovery_cost_lb_usd",
+      "service_name": "limit-manager"
+    },
+    {
+      "case_id": "train_grpo1-0013",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "batch_size_mb",
+      "service_name": "consent-api"
+    },
+    {
+      "case_id": "train_grpo1-0014",
+      "incident_id": "INC-V2-TR-019",
+      "kind": "incident",
+      "param_name": "recovery_cost_mib_usd",
+      "service_name": "loyalty-api"
+    },
+    {
+      "case_id": "train_grpo1-0015",
+      "incident_id": "INC-V2-TR-020",
+      "kind": "incident",
+      "param_name": "sla_penalty_usd",
+      "service_name": "product-catalog"
+    },
+    {
+      "case_id": "train_grpo1-0016",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "order-router"
+    },
+    {
+      "case_id": "train_grpo1-0017",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "forex-relay"
+    },
+    {
+      "case_id": "train_grpo1-0018",
+      "incident_id": "INC-V2-TR-021",
+      "kind": "incident",
+      "param_name": "sla_hours",
+      "service_name": "fee-engine"
+    },
+    {
+      "case_id": "train_grpo1-0019",
+      "incident_id": "INC-V2-TR-022",
+      "kind": "incident",
+      "param_name": "recovery_cost_lb_usd",
+      "service_name": "mandate-store"
+    },
+    {
+      "case_id": "train_grpo1-0020",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "timeout_sec",
+      "service_name": "transfer-ledger"
+    },
+    {
+      "case_id": "train_grpo1-0021",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "timeout_sec",
+      "service_name": "fee-engine"
+    },
+    {
+      "case_id": "train_grpo1-0022",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "max_retries",
+      "service_name": "ledger-writer"
+    },
+    {
+      "case_id": "train_grpo1-0023",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "rate_limit_rpm",
+      "service_name": "forex-coordinator"
+    },
+    {
+      "case_id": "train_grpo1-0024",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "timeout_sec",
+      "service_name": "payout-worker"
+    },
+    {
+      "case_id": "train_grpo1-0025",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "sla_hours",
+      "service_name": "biometric-hedger"
+    },
+    {
+      "case_id": "train_grpo1-0026",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "sla_hours",
+      "service_name": "notification-hub"
+    },
+    {
+      "case_id": "train_grpo1-0027",
+      "incident_id": "INC-V2-TR-023",
+      "kind": "incident",
+      "param_name": "recovery_cost_mib_usd",
+      "service_name": "identity-worker"
+    },
+    {
+      "case_id": "train_grpo1-0028",
+      "incident_id": "INC-V2-TR-024",
+      "kind": "incident",
+      "param_name": "sla_penalty_usd",
+      "service_name": "dispute-api"
+    },
+    {
+      "case_id": "train_grpo1-0029",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "rate_limit_rpm",
+      "service_name": "loyalty-api"
+    },
+    {
+      "case_id": "train_grpo1-0030",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "max_retries",
+      "service_name": "biometric-gate"
+    },
+    {
+      "case_id": "train_grpo1-0031",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "sla_hours",
+      "service_name": "search-indexer"
+    },
+    {
+      "case_id": "train_grpo1-0032",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "rate_limit_rpm",
+      "service_name": "fraud-router"
+    },
+    {
+      "case_id": "train_grpo1-0033",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "batch_size_mb",
+      "service_name": "fx-router"
+    },
+    {
+      "case_id": "train_grpo1-0034",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "profile-store"
+    },
+    {
+      "case_id": "train_grpo1-0035",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "sla_hours",
+      "service_name": "ledger-writer"
+    },
+    {
+      "case_id": "train_grpo1-0036",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "max_retries",
+      "service_name": "coupon-engine"
+    },
+    {
+      "case_id": "train_grpo1-0037",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "rate_limit_rpm",
+      "service_name": "order-router"
+    },
+    {
+      "case_id": "train_grpo1-0038",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "tax-engine"
+    },
+    {
+      "case_id": "train_grpo1-0039",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "max_retries",
+      "service_name": "mandate-store"
+    },
+    {
+      "case_id": "train_grpo1-0040",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "rate_limit_rpm",
+      "service_name": "webhook-dispatcher"
+    },
+    {
+      "case_id": "train_grpo1-0041",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "max_retries",
+      "service_name": "search-indexer"
+    },
+    {
+      "case_id": "train_grpo1-0042",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "timeout_sec",
+      "service_name": "biometric-bridge"
+    },
+    {
+      "case_id": "train_grpo1-0043",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "sla_hours",
+      "service_name": "policy-router"
+    },
+    {
+      "case_id": "train_grpo1-0044",
+      "incident_id": "INC-V2-TR-025",
+      "kind": "incident",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "signing-gateway"
+    },
+    {
+      "case_id": "train_grpo1-0045",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "sla_hours",
+      "service_name": "loyalty-api"
+    },
+    {
+      "case_id": "train_grpo1-0046",
+      "incident_id": "INC-V2-TR-026",
+      "kind": "incident",
+      "param_name": "recovery_cost_lb_usd",
+      "service_name": "inventory-sync"
+    },
+    {
+      "case_id": "train_grpo1-0047",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "rate_limit_rpm",
+      "service_name": "credit-router"
+    },
+    {
+      "case_id": "train_grpo1-0048",
+      "incident_id": "INC-V2-TR-027",
+      "kind": "incident",
+      "param_name": "recovery_cost_mib_usd",
+      "service_name": "policy-router"
+    },
+    {
+      "case_id": "train_grpo1-0049",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "bank-feed"
+    },
+    {
+      "case_id": "train_grpo1-0050",
+      "incident_id": "INC-V2-TR-028",
+      "kind": "incident",
+      "param_name": "sla_penalty_usd",
+      "service_name": "fx-router"
+    },
+    {
+      "case_id": "train_grpo1-0051",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "max_retries",
+      "service_name": "auth-proxy"
+    },
+    {
+      "case_id": "train_grpo1-0052",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "timeout_sec",
+      "service_name": "biometric-reconciler"
+    },
+    {
+      "case_id": "train_grpo1-0053",
+      "incident_id": "INC-V2-TR-029",
+      "kind": "incident",
+      "param_name": "timeout_sec",
+      "service_name": "document-store"
+    },
+    {
+      "case_id": "train_grpo1-0054",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "timeout_sec",
+      "service_name": "session-cache"
+    },
+    {
+      "case_id": "train_grpo1-0055",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "max_retries",
+      "service_name": "document-store"
+    },
+    {
+      "case_id": "train_grpo1-0056",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "batch_size_mb",
+      "service_name": "identity-worker"
+    },
+    {
+      "case_id": "train_grpo1-0057",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "max_retries",
+      "service_name": "biometric-validator"
+    },
+    {
+      "case_id": "train_grpo1-0058",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "payout-worker"
+    },
+    {
+      "case_id": "train_grpo1-0059",
+      "incident_id": "INC-V2-TR-030",
+      "kind": "incident",
+      "param_name": "recovery_cost_lb_usd",
+      "service_name": "tax-engine"
+    },
+    {
+      "case_id": "train_grpo1-0060",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "rate_limit_rpm",
+      "service_name": "event-router"
+    },
+    {
+      "case_id": "train_grpo1-0061",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "sla_hours",
+      "service_name": "dispute-api"
+    },
+    {
+      "case_id": "train_grpo1-0062",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "timeout_sec",
+      "service_name": "identity-broker"
+    },
+    {
+      "case_id": "train_grpo1-0063",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "rate_limit_rpm",
+      "service_name": "mandate-store"
+    },
+    {
+      "case_id": "train_grpo1-0064",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "sla_hours",
+      "service_name": "consent-api"
+    },
+    {
+      "case_id": "train_grpo1-0065",
+      "incident_id": "INC-V2-TR-031",
+      "kind": "incident",
+      "param_name": "recovery_cost_mib_usd",
+      "service_name": "vendor-router"
+    },
+    {
+      "case_id": "train_grpo1-0066",
+      "incident_id": "INC-V2-TR-032",
+      "kind": "incident",
+      "param_name": "sla_penalty_usd",
+      "service_name": "inventory-sync"
+    },
+    {
+      "case_id": "train_grpo1-0067",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "batch_size_mb",
+      "service_name": "wire-dispatch"
+    },
+    {
+      "case_id": "train_grpo1-0068",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "max_retries",
+      "service_name": "biometric-vault"
+    },
+    {
+      "case_id": "train_grpo1-0069",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "max_retries",
+      "service_name": "tax-engine"
+    },
+    {
+      "case_id": "train_grpo1-0070",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "rate_limit_rpm",
+      "service_name": "media-worker"
+    },
+    {
+      "case_id": "train_grpo1-0071",
+      "incident_id": "INC-V2-TR-033",
+      "kind": "incident",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "notification-hub"
+    },
+    {
+      "case_id": "train_grpo1-0072",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "batch_size_mb",
+      "service_name": "reconciliation-worker"
+    },
+    {
+      "case_id": "train_grpo1-0073",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "max_retries",
+      "service_name": "biometric-dispatcher"
+    },
+    {
+      "case_id": "train_grpo1-0074",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "batch_size_mb",
+      "service_name": "customer-vault"
+    },
+    {
+      "case_id": "train_grpo1-0075",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "max_retries",
+      "service_name": "order-router"
+    },
+    {
+      "case_id": "train_grpo1-0076",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "timeout_sec",
+      "service_name": "policy-router"
+    },
+    {
+      "case_id": "train_grpo1-0077",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "sla_hours",
+      "service_name": "biometric-broker"
+    },
+    {
+      "case_id": "train_grpo1-0078",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "timeout_sec",
+      "service_name": "event-router"
+    },
+    {
+      "case_id": "train_grpo1-0079",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "max_retries",
+      "service_name": "token-service"
+    },
+    {
+      "case_id": "train_grpo1-0080",
+      "incident_id": "INC-V2-TR-034",
+      "kind": "incident",
+      "param_name": "recovery_cost_lb_usd",
+      "service_name": "auth-proxy"
+    },
+    {
+      "case_id": "train_grpo1-0081",
+      "incident_id": "INC-V2-TR-035",
+      "kind": "incident",
+      "param_name": "recovery_cost_mib_usd",
+      "service_name": "reconciliation-store"
+    },
+    {
+      "case_id": "train_grpo1-0082",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "sla_hours",
+      "service_name": "receipt-worker"
+    },
+    {
+      "case_id": "train_grpo1-0083",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "batch_size_mb",
+      "service_name": "billing-api"
+    },
+    {
+      "case_id": "train_grpo1-0084",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "timeout_sec",
+      "service_name": "consent-api"
+    },
+    {
+      "case_id": "train_grpo1-0085",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "sla_hours",
+      "service_name": "biometric-relay"
+    },
+    {
+      "case_id": "train_grpo1-0086",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "max_retries",
+      "service_name": "vendor-router"
+    },
+    {
+      "case_id": "train_grpo1-0087",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "rate_limit_rpm",
+      "service_name": "billing-api"
+    },
+    {
+      "case_id": "train_grpo1-0088",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "notification-worker"
+    },
+    {
+      "case_id": "train_grpo1-0089",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "auth-proxy"
+    },
+    {
+      "case_id": "train_grpo1-0090",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "rate_limit_rpm",
+      "service_name": "token-service"
+    },
+    {
+      "case_id": "train_grpo1-0091",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "invoice-store"
+    },
+    {
+      "case_id": "train_grpo1-0092",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "rate_limit_rpm",
+      "service_name": "biometric-coordinator"
+    },
+    {
+      "case_id": "train_grpo1-0093",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "timeout_sec",
+      "service_name": "customer-vault"
+    },
+    {
+      "case_id": "train_grpo1-0094",
+      "incident_id": "INC-V2-TR-036",
+      "kind": "incident",
+      "param_name": "sla_penalty_usd",
+      "service_name": "order-router"
+    },
+    {
+      "case_id": "train_grpo1-0095",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "max_retries",
+      "service_name": "routing-proxy"
+    },
+    {
+      "case_id": "train_grpo1-0096",
+      "incident_id": "INC-V2-TR-037",
+      "kind": "incident",
+      "param_name": "sla_hours",
+      "service_name": "upi-gateway"
+    },
+    {
+      "case_id": "train_grpo1-0097",
+      "incident_id": "INC-V2-TR-038",
+      "kind": "incident",
+      "param_name": "recovery_cost_lb_usd",
+      "service_name": "wire-dispatch"
+    },
+    {
+      "case_id": "train_grpo1-0098",
+      "incident_id": "INC-V2-TR-039",
+      "kind": "incident",
+      "param_name": "recovery_cost_mib_usd",
+      "service_name": "order-router"
+    },
+    {
+      "case_id": "train_grpo1-0099",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "timeout_sec",
+      "service_name": "audit-stream"
+    }
+  ],
+  "train_grpo2": [
+    {
+      "case_id": "train_grpo2-0000",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "batch_size_mb",
+      "service_name": "refund-worker"
+    },
+    {
+      "case_id": "train_grpo2-0001",
+      "incident_id": "INC-V2-TR-040",
+      "kind": "incident",
+      "param_name": "sla_penalty_usd",
+      "service_name": "export-worker"
+    },
+    {
+      "case_id": "train_grpo2-0002",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "swift-hedger"
+    },
+    {
+      "case_id": "train_grpo2-0003",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "sla_hours",
+      "service_name": "customer-vault"
+    },
+    {
+      "case_id": "train_grpo2-0004",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "max_retries",
+      "service_name": "analytics-sink"
+    },
+    {
+      "case_id": "train_grpo2-0005",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "batch_size_mb",
+      "service_name": "ledger-writer"
+    },
+    {
+      "case_id": "train_grpo2-0006",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "batch_size_mb",
+      "service_name": "metrics-agent"
+    },
+    {
+      "case_id": "train_grpo2-0007",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "batch_size_mb",
+      "service_name": "search-indexer"
+    },
+    {
+      "case_id": "train_grpo2-0008",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "rate_limit_rpm",
+      "service_name": "email-relay"
+    },
+    {
+      "case_id": "train_grpo2-0009",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "timeout_sec",
+      "service_name": "swift-gate"
+    },
+    {
+      "case_id": "train_grpo2-0010",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "sla_hours",
+      "service_name": "inventory-sync"
+    },
+    {
+      "case_id": "train_grpo2-0011",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "rate_limit_rpm",
+      "service_name": "transfer-ledger"
+    },
+    {
+      "case_id": "train_grpo2-0012",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "max_retries",
+      "service_name": "identity-broker"
+    },
+    {
+      "case_id": "train_grpo2-0013",
+      "incident_id": "INC-V2-TR-041",
+      "kind": "incident",
+      "param_name": "rate_limit_rpm",
+      "service_name": "attachment-api"
+    },
+    {
+      "case_id": "train_grpo2-0014",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "rate_limit_rpm",
+      "service_name": "session-cache"
+    },
+    {
+      "case_id": "train_grpo2-0015",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "analytics-sink"
+    },
+    {
+      "case_id": "train_grpo2-0016",
+      "incident_id": "INC-V2-TR-042",
+      "kind": "incident",
+      "param_name": "recovery_cost_lb_usd",
+      "service_name": "search-indexer"
+    },
+    {
+      "case_id": "train_grpo2-0017",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "rate_limit_rpm",
+      "service_name": "fee-engine"
+    },
+    {
+      "case_id": "train_grpo2-0018",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "swift-bridge"
+    },
+    {
+      "case_id": "train_grpo2-0019",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "max_retries",
+      "service_name": "debit-processor"
+    },
+    {
+      "case_id": "train_grpo2-0020",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "rate_limit_rpm",
+      "service_name": "checkout-api"
+    },
+    {
+      "case_id": "train_grpo2-0021",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "session-cache"
+    },
+    {
+      "case_id": "train_grpo2-0022",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "batch_size_mb",
+      "service_name": "transfer-ledger"
+    },
+    {
+      "case_id": "train_grpo2-0023",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "rate_limit_rpm",
+      "service_name": "policy-router"
+    },
+    {
+      "case_id": "train_grpo2-0024",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "wire-dispatch"
+    },
+    {
+      "case_id": "train_grpo2-0025",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "batch_size_mb",
+      "service_name": "swift-reconciler"
+    },
+    {
+      "case_id": "train_grpo2-0026",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "fraud-router"
+    },
+    {
+      "case_id": "train_grpo2-0027",
+      "incident_id": "INC-V2-TR-043",
+      "kind": "incident",
+      "param_name": "recovery_cost_mib_usd",
+      "service_name": "invoice-store"
+    },
+    {
+      "case_id": "train_grpo2-0028",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "sla_hours",
+      "service_name": "merchant-api"
+    },
+    {
+      "case_id": "train_grpo2-0029",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "batch_size_mb",
+      "service_name": "product-catalog"
+    },
+    {
+      "case_id": "train_grpo2-0030",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "max_retries",
+      "service_name": "profile-store"
+    },
+    {
+      "case_id": "train_grpo2-0031",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "max_retries",
+      "service_name": "swift-validator"
+    },
+    {
+      "case_id": "train_grpo2-0032",
+      "incident_id": "INC-V2-TR-044",
+      "kind": "incident",
+      "param_name": "sla_penalty_usd",
+      "service_name": "account-vault"
+    },
+    {
+      "case_id": "train_grpo2-0033",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "timeout_sec",
+      "service_name": "media-worker"
+    },
+    {
+      "case_id": "train_grpo2-0034",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "sla_hours",
+      "service_name": "payout-worker"
+    },
+    {
+      "case_id": "train_grpo2-0035",
+      "incident_id": "INC-V2-TR-045",
+      "kind": "incident",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "payment-worker"
+    },
+    {
+      "case_id": "train_grpo2-0036",
+      "incident_id": "INC-V2-TR-046",
+      "kind": "incident",
+      "param_name": "recovery_cost_lb_usd",
+      "service_name": "shipment-router"
+    },
+    {
+      "case_id": "train_grpo2-0037",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "sla_hours",
+      "service_name": "reconciliation-worker"
+    },
+    {
+      "case_id": "train_grpo2-0038",
+      "incident_id": "INC-V2-TR-047",
+      "kind": "incident",
+      "param_name": "recovery_cost_mib_usd",
+      "service_name": "search-indexer"
+    },
+    {
+      "case_id": "train_grpo2-0039",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "max_retries",
+      "service_name": "swift-vault"
+    },
+    {
+      "case_id": "train_grpo2-0040",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "timeout_sec",
+      "service_name": "merchant-api"
+    },
+    {
+      "case_id": "train_grpo2-0041",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "max_retries",
+      "service_name": "settlement-worker"
+    },
+    {
+      "case_id": "train_grpo2-0042",
+      "incident_id": "INC-V2-TR-048",
+      "kind": "incident",
+      "param_name": "sla_penalty_usd",
+      "service_name": "settlement-worker"
+    },
+    {
+      "case_id": "train_grpo2-0043",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "timeout_sec",
+      "service_name": "refund-worker"
+    },
+    {
+      "case_id": "train_grpo2-0044",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "rate_limit_rpm",
+      "service_name": "merchant-api"
+    },
+    {
+      "case_id": "train_grpo2-0045",
+      "incident_id": "INC-V2-TR-049",
+      "kind": "incident",
+      "param_name": "batch_size_mb",
+      "service_name": "cart-ledger"
+    },
+    {
+      "case_id": "train_grpo2-0046",
+      "incident_id": "INC-V2-TR-050",
+      "kind": "incident",
+      "param_name": "recovery_cost_lb_usd",
+      "service_name": "balance-worker"
+    },
+    {
+      "case_id": "train_grpo2-0047",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "rate_limit_rpm",
+      "service_name": "swift-dispatcher"
+    },
+    {
+      "case_id": "train_grpo2-0048",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "rate_limit_rpm",
+      "service_name": "auth-proxy"
+    },
+    {
+      "case_id": "train_grpo2-0049",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "max_retries",
+      "service_name": "swift-broker"
+    },
+    {
+      "case_id": "train_grpo2-0050",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "batch_size_mb",
+      "service_name": "credit-router"
+    },
+    {
+      "case_id": "train_grpo2-0051",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "timeout_sec",
+      "service_name": "cart-ledger"
+    },
+    {
+      "case_id": "train_grpo2-0052",
+      "incident_id": "INC-V2-TR-051",
+      "kind": "incident",
+      "param_name": "recovery_cost_mib_usd",
+      "service_name": "merchant-api"
+    },
+    {
+      "case_id": "train_grpo2-0053",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "max_retries",
+      "service_name": "upi-gateway"
+    },
+    {
+      "case_id": "train_grpo2-0054",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "timeout_sec",
+      "service_name": "token-service"
+    },
+    {
+      "case_id": "train_grpo2-0055",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "sla_hours",
+      "service_name": "identity-worker"
+    },
+    {
+      "case_id": "train_grpo2-0056",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "balance-worker"
+    },
+    {
+      "case_id": "train_grpo2-0057",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "inventory-sync"
+    },
+    {
+      "case_id": "train_grpo2-0058",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "max_retries",
+      "service_name": "notification-worker"
+    },
+    {
+      "case_id": "train_grpo2-0059",
+      "incident_id": "INC-V2-TR-052",
+      "kind": "incident",
+      "param_name": "sla_penalty_usd",
+      "service_name": "balance-worker"
+    },
+    {
+      "case_id": "train_grpo2-0060",
+      "incident_id": "INC-V2-TR-053",
+      "kind": "incident",
+      "param_name": "rate_limit_rpm",
+      "service_name": "search-indexer"
+    },
+    {
+      "case_id": "train_grpo2-0061",
+      "incident_id": "INC-V2-TR-054",
+      "kind": "incident",
+      "param_name": "recovery_cost_lb_usd",
+      "service_name": "payment-worker"
+    },
+    {
+      "case_id": "train_grpo2-0062",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "rate_limit_rpm",
+      "service_name": "swift-relay"
+    },
+    {
+      "case_id": "train_grpo2-0063",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "max_retries",
+      "service_name": "inventory-sync"
+    },
+    {
+      "case_id": "train_grpo2-0064",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "batch_size_mb",
+      "service_name": "notification-hub"
+    },
+    {
+      "case_id": "train_grpo2-0065",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "rate_limit_rpm",
+      "service_name": "product-catalog"
+    },
+    {
+      "case_id": "train_grpo2-0066",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "swift-coordinator"
+    },
+    {
+      "case_id": "train_grpo2-0067",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "fx-router"
+    },
+    {
+      "case_id": "train_grpo2-0068",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "rate_limit_rpm",
+      "service_name": "balance-worker"
+    },
+    {
+      "case_id": "train_grpo2-0069",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "max_retries",
+      "service_name": "transfer-ledger"
+    },
+    {
+      "case_id": "train_grpo2-0070",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "rate_limit_rpm",
+      "service_name": "escrow-hedger"
+    },
+    {
+      "case_id": "train_grpo2-0071",
+      "incident_id": "INC-V2-TR-055",
+      "kind": "incident",
+      "param_name": "recovery_cost_mib_usd",
+      "service_name": "audit-stream"
+    },
+    {
+      "case_id": "train_grpo2-0072",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "sla_hours",
+      "service_name": "backup-worker"
+    },
+    {
+      "case_id": "train_grpo2-0073",
+      "incident_id": "INC-V2-TR-056",
+      "kind": "incident",
+      "param_name": "sla_penalty_usd",
+      "service_name": "fee-engine"
+    },
+    {
+      "case_id": "train_grpo2-0074",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "rate_limit_rpm",
+      "service_name": "notification-worker"
+    },
+    {
+      "case_id": "train_grpo2-0075",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "max_retries",
+      "service_name": "limit-manager"
+    },
+    {
+      "case_id": "train_grpo2-0076",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "batch_size_mb",
+      "service_name": "fraud-router"
+    },
+    {
+      "case_id": "train_grpo2-0077",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "batch_size_mb",
+      "service_name": "merchant-api"
+    },
+    {
+      "case_id": "train_grpo2-0078",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "sla_hours",
+      "service_name": "tax-engine"
+    },
+    {
+      "case_id": "train_grpo2-0079",
+      "incident_id": "INC-V2-TR-057",
+      "kind": "incident",
+      "param_name": "max_retries",
+      "service_name": "fraud-router"
+    },
+    {
+      "case_id": "train_grpo2-0080",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "escrow-gate"
+    },
+    {
+      "case_id": "train_grpo2-0081",
+      "incident_id": "INC-V2-TR-058",
+      "kind": "incident",
+      "param_name": "recovery_cost_lb_usd",
+      "service_name": "profile-store"
+    },
+    {
+      "case_id": "train_grpo2-0082",
+      "incident_id": "INC-V2-TR-059",
+      "kind": "incident",
+      "param_name": "recovery_cost_mib_usd",
+      "service_name": "refund-worker"
+    },
+    {
+      "case_id": "train_grpo2-0083",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "batch_size_mb",
+      "service_name": "upi-gateway"
+    },
+    {
+      "case_id": "train_grpo2-0084",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "sla_hours",
+      "service_name": "account-vault"
+    },
+    {
+      "case_id": "train_grpo2-0085",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "batch_size_mb",
+      "service_name": "tax-engine"
+    },
+    {
+      "case_id": "train_grpo2-0086",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "sla_hours",
+      "service_name": "audit-stream"
+    },
+    {
+      "case_id": "train_grpo2-0087",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "sla_hours",
+      "service_name": "routing-proxy"
+    },
+    {
+      "case_id": "train_grpo2-0088",
+      "incident_id": "INC-V2-TR-060",
+      "kind": "incident",
+      "param_name": "sla_penalty_usd",
+      "service_name": "wire-dispatch"
+    },
+    {
+      "case_id": "train_grpo2-0089",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "max_retries",
+      "service_name": "reconciliation-store"
+    },
+    {
+      "case_id": "train_grpo2-0090",
+      "incident_id": "INC-V2-TR-061",
+      "kind": "incident",
+      "param_name": "sla_hours",
+      "service_name": "balance-worker"
+    },
+    {
+      "case_id": "train_grpo2-0091",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "rate_limit_rpm",
+      "service_name": "notification-hub"
+    },
+    {
+      "case_id": "train_grpo2-0092",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "rate_limit_rpm",
+      "service_name": "shipment-router"
+    },
+    {
+      "case_id": "train_grpo2-0093",
+      "incident_id": "INC-V2-TR-062",
+      "kind": "incident",
+      "param_name": "recovery_cost_lb_usd",
+      "service_name": "settlement-worker"
+    },
+    {
+      "case_id": "train_grpo2-0094",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "batch_size_mb",
+      "service_name": "profile-store"
+    },
+    {
+      "case_id": "train_grpo2-0095",
+      "incident_id": "INC-V2-TR-063",
+      "kind": "incident",
+      "param_name": "recovery_cost_mib_usd",
+      "service_name": "event-router"
+    },
+    {
+      "case_id": "train_grpo2-0096",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "batch_size_mb",
+      "service_name": "order-router"
+    },
+    {
+      "case_id": "train_grpo2-0097",
+      "incident_id": "INC-V2-TR-064",
+      "kind": "incident",
+      "param_name": "sla_penalty_usd",
+      "service_name": "reconciliation-store"
+    },
+    {
+      "case_id": "train_grpo2-0098",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "transfer-ledger"
+    },
+    {
+      "case_id": "train_grpo2-0099",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "sla_hours",
+      "service_name": "fx-router"
+    },
+    {
+      "case_id": "train_grpo2-0100",
+      "incident_id": "INC-V2-TR-065",
+      "kind": "incident",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "debit-processor"
+    },
+    {
+      "case_id": "train_grpo2-0101",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "max_retries",
+      "service_name": "escrow-bridge"
+    },
+    {
+      "case_id": "train_grpo2-0102",
+      "incident_id": "INC-V2-TR-066",
+      "kind": "incident",
+      "param_name": "recovery_cost_lb_usd",
+      "service_name": "transfer-ledger"
+    },
+    {
+      "case_id": "train_grpo2-0103",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "max_retries",
+      "service_name": "email-relay"
+    },
+    {
+      "case_id": "train_grpo2-0104",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "timeout_sec",
+      "service_name": "notification-worker"
+    },
+    {
+      "case_id": "train_grpo2-0105",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "sla_hours",
+      "service_name": "session-cache"
+    },
+    {
+      "case_id": "train_grpo2-0106",
+      "incident_id": "INC-V2-TR-067",
+      "kind": "incident",
+      "param_name": "recovery_cost_mib_usd",
+      "service_name": "metrics-agent"
+    },
+    {
+      "case_id": "train_grpo2-0107",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "rate_limit_rpm",
+      "service_name": "payout-worker"
+    },
+    {
+      "case_id": "train_grpo2-0108",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "identity-worker"
+    },
+    {
+      "case_id": "train_grpo2-0109",
+      "incident_id": "INC-V2-TR-068",
+      "kind": "incident",
+      "param_name": "sla_penalty_usd",
+      "service_name": "refund-worker"
+    },
+    {
+      "case_id": "train_grpo2-0110",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "coupon-engine"
+    },
+    {
+      "case_id": "train_grpo2-0111",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "rate_limit_rpm",
+      "service_name": "escrow-reconciler"
+    },
+    {
+      "case_id": "train_grpo2-0112",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "timeout_sec",
+      "service_name": "debit-processor"
+    },
+    {
+      "case_id": "train_grpo2-0113",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "max_retries",
+      "service_name": "loyalty-api"
+    },
+    {
+      "case_id": "train_grpo2-0114",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "token-service"
+    },
+    {
+      "case_id": "train_grpo2-0115",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "timeout_sec",
+      "service_name": "escrow-validator"
+    },
+    {
+      "case_id": "train_grpo2-0116",
+      "incident_id": "INC-V2-TR-069",
+      "kind": "incident",
+      "param_name": "batch_size_mb",
+      "service_name": "inventory-sync"
+    },
+    {
+      "case_id": "train_grpo2-0117",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "sla_hours",
+      "service_name": "vendor-router"
+    },
+    {
+      "case_id": "train_grpo2-0118",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "sla_hours",
+      "service_name": "signing-gateway"
+    },
+    {
+      "case_id": "train_grpo2-0119",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "rate_limit_rpm",
+      "service_name": "analytics-sink"
+    }
+  ],
+  "train_reserved": [
+    {
+      "case_id": "train_reserved-0000",
+      "incident_id": "INC-V2-TR-075",
+      "kind": "incident",
+      "param_name": "recovery_cost_mib_usd",
+      "service_name": "profile-store"
+    },
+    {
+      "case_id": "train_reserved-0001",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "timeout_sec",
+      "service_name": "profile-store"
+    },
+    {
+      "case_id": "train_reserved-0002",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "timeout_sec",
+      "service_name": "metrics-agent"
+    },
+    {
+      "case_id": "train_reserved-0003",
+      "incident_id": "INC-V2-TR-076",
+      "kind": "incident",
+      "param_name": "sla_penalty_usd",
+      "service_name": "media-worker"
+    },
+    {
+      "case_id": "train_reserved-0004",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "max_retries",
+      "service_name": "shipment-router"
+    },
+    {
+      "case_id": "train_reserved-0005",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "timeout_sec",
+      "service_name": "fx-router"
+    },
+    {
+      "case_id": "train_reserved-0006",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "max_retries",
+      "service_name": "audit-stream"
+    },
+    {
+      "case_id": "train_reserved-0007",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "upi-gateway"
+    },
+    {
+      "case_id": "train_reserved-0008",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "attachment-api"
+    },
+    {
+      "case_id": "train_reserved-0009",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "max_retries",
+      "service_name": "escrow-relay"
+    },
+    {
+      "case_id": "train_reserved-0010",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "sla_hours",
+      "service_name": "checkout-api"
+    },
+    {
+      "case_id": "train_reserved-0011",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "timeout_sec",
+      "service_name": "product-catalog"
+    },
+    {
+      "case_id": "train_reserved-0012",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "batch_size_mb",
+      "service_name": "limit-manager"
+    },
+    {
+      "case_id": "train_reserved-0013",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "sla_hours",
+      "service_name": "notification-worker"
+    },
+    {
+      "case_id": "train_reserved-0014",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "escrow-coordinator"
+    },
+    {
+      "case_id": "train_reserved-0015",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "batch_size_mb",
+      "service_name": "auth-proxy"
+    },
+    {
+      "case_id": "train_reserved-0016",
+      "incident_id": "INC-V2-TR-077",
+      "kind": "incident",
+      "param_name": "batch_size_mb",
+      "service_name": "checkout-api"
+    },
+    {
+      "case_id": "train_reserved-0017",
+      "incident_id": "INC-V2-TR-078",
+      "kind": "incident",
+      "param_name": "recovery_cost_lb_usd",
+      "service_name": "notification-worker"
+    },
+    {
+      "case_id": "train_reserved-0018",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "customer-vault"
+    },
+    {
+      "case_id": "train_reserved-0019",
+      "incident_id": "INC-V2-TR-079",
+      "kind": "incident",
+      "param_name": "recovery_cost_mib_usd",
+      "service_name": "coupon-engine"
+    }
+  ],
+  "train_sft": [
+    {
+      "case_id": "train_sft-0000",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "batch_size_mb",
+      "service_name": "loyalty-api"
+    },
+    {
+      "case_id": "train_sft-0001",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "sla_hours",
+      "service_name": "payment-worker"
+    },
+    {
+      "case_id": "train_sft-0002",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "batch_size_mb",
+      "service_name": "email-relay"
+    },
+    {
+      "case_id": "train_sft-0003",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "sla_hours",
+      "service_name": "reconciliation-store"
+    },
+    {
+      "case_id": "train_sft-0004",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "cart-ledger"
+    },
+    {
+      "case_id": "train_sft-0005",
+      "incident_id": "INC-V2-TR-000",
+      "kind": "incident",
+      "param_name": "sla_penalty_usd",
+      "service_name": "token-service"
+    },
+    {
+      "case_id": "train_sft-0006",
+      "incident_id": "INC-V2-TR-001",
+      "kind": "incident",
+      "param_name": "timeout_sec",
+      "service_name": "fraud-router"
+    },
+    {
+      "case_id": "train_sft-0007",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "timeout_sec",
+      "service_name": "vendor-router"
+    },
+    {
+      "case_id": "train_sft-0008",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "rate_limit_rpm",
+      "service_name": "forex-hedger"
+    },
+    {
+      "case_id": "train_sft-0009",
+      "incident_id": "INC-V2-TR-002",
+      "kind": "incident",
+      "param_name": "recovery_cost_lb_usd",
+      "service_name": "debit-processor"
+    },
+    {
+      "case_id": "train_sft-0010",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "timeout_sec",
+      "service_name": "order-router"
+    },
+    {
+      "case_id": "train_sft-0011",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "event-router"
+    },
+    {
+      "case_id": "train_sft-0012",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "sla_hours",
+      "service_name": "forex-gate"
+    },
+    {
+      "case_id": "train_sft-0013",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "max_retries",
+      "service_name": "merchant-api"
+    },
+    {
+      "case_id": "train_sft-0014",
+      "incident_id": "INC-V2-TR-003",
+      "kind": "incident",
+      "param_name": "recovery_cost_mib_usd",
+      "service_name": "upi-gateway"
+    },
+    {
+      "case_id": "train_sft-0015",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "rate_limit_rpm",
+      "service_name": "reconciliation-worker"
+    },
+    {
+      "case_id": "train_sft-0016",
+      "incident_id": "INC-V2-TR-004",
+      "kind": "incident",
+      "param_name": "sla_penalty_usd",
+      "service_name": "identity-broker"
+    },
+    {
+      "case_id": "train_sft-0017",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "forex-bridge"
+    },
+    {
+      "case_id": "train_sft-0018",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "timeout_sec",
+      "service_name": "routing-proxy"
+    },
+    {
+      "case_id": "train_sft-0019",
+      "incident_id": "INC-V2-TR-005",
+      "kind": "incident",
+      "param_name": "batch_size_mb",
+      "service_name": "shipment-router"
+    },
+    {
+      "case_id": "train_sft-0020",
+      "incident_id": "INC-V2-TR-006",
+      "kind": "incident",
+      "param_name": "recovery_cost_lb_usd",
+      "service_name": "attachment-api"
+    },
+    {
+      "case_id": "train_sft-0021",
+      "incident_id": "INC-V2-TR-007",
+      "kind": "incident",
+      "param_name": "recovery_cost_mib_usd",
+      "service_name": "ledger-writer"
+    },
+    {
+      "case_id": "train_sft-0022",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "sla_hours",
+      "service_name": "order-router"
+    },
+    {
+      "case_id": "train_sft-0023",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "audit-stream"
+    },
+    {
+      "case_id": "train_sft-0024",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "forex-reconciler"
+    },
+    {
+      "case_id": "train_sft-0025",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "sla_hours",
+      "service_name": "identity-broker"
+    },
+    {
+      "case_id": "train_sft-0026",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "sla_hours",
+      "service_name": "export-worker"
+    },
+    {
+      "case_id": "train_sft-0027",
+      "incident_id": "INC-V2-TR-008",
+      "kind": "incident",
+      "param_name": "sla_penalty_usd",
+      "service_name": "session-cache"
+    },
+    {
+      "case_id": "train_sft-0028",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "timeout_sec",
+      "service_name": "attachment-api"
+    },
+    {
+      "case_id": "train_sft-0029",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "max_retries",
+      "service_name": "account-vault"
+    },
+    {
+      "case_id": "train_sft-0030",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "max_retries",
+      "service_name": "attachment-api"
+    },
+    {
+      "case_id": "train_sft-0031",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "forex-validator"
+    },
+    {
+      "case_id": "train_sft-0032",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "rate_limit_rpm",
+      "service_name": "account-vault"
+    },
+    {
+      "case_id": "train_sft-0033",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "max_retries",
+      "service_name": "event-router"
+    },
+    {
+      "case_id": "train_sft-0034",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "sla_hours",
+      "service_name": "bank-feed"
+    },
+    {
+      "case_id": "train_sft-0035",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "max_retries",
+      "service_name": "metrics-agent"
+    },
+    {
+      "case_id": "train_sft-0036",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "rate_limit_rpm",
+      "service_name": "limit-manager"
+    },
+    {
+      "case_id": "train_sft-0037",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "forex-vault"
+    },
+    {
+      "case_id": "train_sft-0038",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "max_retries",
+      "service_name": "receipt-worker"
+    },
+    {
+      "case_id": "train_sft-0039",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "batch_size_mb",
+      "service_name": "bank-feed"
+    },
+    {
+      "case_id": "train_sft-0040",
+      "incident_id": "INC-V2-TR-009",
+      "kind": "incident",
+      "param_name": "rate_limit_rpm",
+      "service_name": "refund-worker"
+    },
+    {
+      "case_id": "train_sft-0041",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "max_retries",
+      "service_name": "payment-worker"
+    },
+    {
+      "case_id": "train_sft-0042",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "batch_size_mb",
+      "service_name": "document-store"
+    },
+    {
+      "case_id": "train_sft-0043",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "rate_limit_rpm",
+      "service_name": "reconciliation-store"
+    },
+    {
+      "case_id": "train_sft-0044",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "checkout-api"
+    },
+    {
+      "case_id": "train_sft-0045",
+      "incident_id": "INC-V2-TR-010",
+      "kind": "incident",
+      "param_name": "recovery_cost_lb_usd",
+      "service_name": "token-service"
+    },
+    {
+      "case_id": "train_sft-0046",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "rate_limit_rpm",
+      "service_name": "settlement-worker"
+    },
+    {
+      "case_id": "train_sft-0047",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "rate_limit_rpm",
+      "service_name": "forex-dispatcher"
+    },
+    {
+      "case_id": "train_sft-0048",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "rate_limit_rpm",
+      "service_name": "document-store"
+    },
+    {
+      "case_id": "train_sft-0049",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "max_retries",
+      "service_name": "backup-worker"
+    },
+    {
+      "case_id": "train_sft-0050",
+      "incident_id": "INC-V2-TR-011",
+      "kind": "incident",
+      "param_name": "recovery_cost_mib_usd",
+      "service_name": "billing-api"
+    },
+    {
+      "case_id": "train_sft-0051",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "batch_size_mb",
+      "service_name": "policy-router"
+    },
+    {
+      "case_id": "train_sft-0052",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "rate_limit_rpm",
+      "service_name": "debit-processor"
+    },
+    {
+      "case_id": "train_sft-0053",
+      "incident_id": "INC-V2-TR-012",
+      "kind": "incident",
+      "param_name": "sla_penalty_usd",
+      "service_name": "email-relay"
+    },
+    {
+      "case_id": "train_sft-0054",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "batch_size_mb",
+      "service_name": "forex-broker"
+    },
+    {
+      "case_id": "train_sft-0055",
+      "incident_id": "INC-V2-TR-013",
+      "kind": "incident",
+      "param_name": "sla_hours",
+      "service_name": "limit-manager"
+    },
+    {
+      "case_id": "train_sft-0056",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "max_retries",
+      "service_name": "customer-vault"
+    },
+    {
+      "case_id": "train_sft-0057",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "batch_size_mb",
+      "service_name": "receipt-worker"
+    },
+    {
+      "case_id": "train_sft-0058",
+      "incident_id": "INC-V2-TR-014",
+      "kind": "incident",
+      "param_name": "recovery_cost_lb_usd",
+      "service_name": "reconciliation-worker"
+    },
+    {
+      "case_id": "train_sft-0059",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "merchant-api"
+    }
+  ],
+  "train_val": [
+    {
+      "case_id": "train_val-0000",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "webhook-dispatcher"
+    },
+    {
+      "case_id": "train_val-0001",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "batch_size_mb",
+      "service_name": "escrow-vault"
+    },
+    {
+      "case_id": "train_val-0002",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "batch_size_mb",
+      "service_name": "invoice-store"
+    },
+    {
+      "case_id": "train_val-0003",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "batch_size_mb",
+      "service_name": "export-worker"
+    },
+    {
+      "case_id": "train_val-0004",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "batch_size_mb",
+      "service_name": "dispute-api"
+    },
+    {
+      "case_id": "train_val-0005",
+      "incident_id": "INC-V2-TR-070",
+      "kind": "incident",
+      "param_name": "recovery_cost_lb_usd",
+      "service_name": "product-catalog"
+    },
+    {
+      "case_id": "train_val-0006",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "timeout_sec",
+      "service_name": "ledger-writer"
+    },
+    {
+      "case_id": "train_val-0007",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "batch_size_mb",
+      "service_name": "escrow-dispatcher"
+    },
+    {
+      "case_id": "train_val-0008",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "batch_size_mb",
+      "service_name": "account-vault"
+    },
+    {
+      "case_id": "train_val-0009",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "sla_hours",
+      "service_name": "settlement-worker"
+    },
+    {
+      "case_id": "train_val-0010",
+      "incident_id": "INC-V2-TR-071",
+      "kind": "incident",
+      "param_name": "recovery_cost_mib_usd",
+      "service_name": "debit-processor"
+    },
+    {
+      "case_id": "train_val-0011",
+      "incident_id": null,
+      "kind": "abstain",
+      "param_name": "batch_size_mb",
+      "service_name": "escrow-broker"
+    },
+    {
+      "case_id": "train_val-0012",
+      "incident_id": "INC-V2-TR-072",
+      "kind": "incident",
+      "param_name": "sla_penalty_usd",
+      "service_name": "coupon-engine"
+    },
+    {
+      "case_id": "train_val-0013",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "sla_hours",
+      "service_name": "auth-proxy"
+    },
+    {
+      "case_id": "train_val-0014",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "batch_size_mb",
+      "service_name": "session-cache"
+    },
+    {
+      "case_id": "train_val-0015",
+      "incident_id": null,
+      "kind": "conflict",
+      "param_name": "circuit_breaker_pct",
+      "service_name": "limit-manager"
+    },
+    {
+      "case_id": "train_val-0016",
+      "incident_id": "INC-V2-TR-073",
+      "kind": "incident",
+      "param_name": "batch_size_mb",
+      "service_name": "debit-processor"
+    },
+    {
+      "case_id": "train_val-0017",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "sla_hours",
+      "service_name": "billing-api"
+    },
+    {
+      "case_id": "train_val-0018",
+      "incident_id": "INC-V2-TR-074",
+      "kind": "incident",
+      "param_name": "recovery_cost_lb_usd",
+      "service_name": "notification-hub"
+    },
+    {
+      "case_id": "train_val-0019",
+      "incident_id": null,
+      "kind": "consistent",
+      "param_name": "sla_hours",
+      "service_name": "coupon-engine"
+    }
+  ]
+}

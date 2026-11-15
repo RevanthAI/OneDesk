@@ -1,0 +1,95 @@
+{
+  "test_synth": {
+    "counts": {
+      "items": 400,
+      "parseable_final_json": 347,
+      "raw_json_status_correct": 129,
+      "wrong_final_keys": 222,
+      "empty_search_results": 116,
+      "strict_final_valid": 35,
+      "raw_json_value_correct": 101,
+      "raw_json_status_and_value_correct": 15,
+      "tool_error_results": 98,
+      "all_required_evidence_retrieved": 1
+    },
+    "examples": {
+      "malformed_output": {
+        "task_id": "test_synth-0000-en",
+        "question": "Audit the documented max_retries for kyc-verifier against slack-mcp; report the effective setting and any stale page.",
+        "raw_final": "<final_answer>{\"status\":\"answered\",\"value\":\"max_retries = 4\",\"cites\":[\"SLACK-TS-001\"]}</final_answer>",
+        "tool_calls": 1,
+        "expected_status": "answered",
+        "gold_value": 4
+      },
+      "final_answer": {
+        "task_id": "test_synth-0000-hinglish",
+        "question": "Hey, kyc-verifier pe max_retries actually kitna configured hai? Runbook vs slack-mcp reconcile karke outdated page flag karna.",
+        "raw_final": "<final_answer>{\"status\":\"conflict_resolved\",\"value\":\"max_retries = 3\",\"cites\":[\"search_notion('runbook max_retries configuration')\",\"search_slack('runbook max_retries configuration')\"],\"stale_source\":\"search_notion('runbook max_retries configuration')\"}</final_answer>",
+        "tool_calls": 1,
+        "expected_status": "answered",
+        "gold_value": 4
+      },
+      "tool_budget_exhausted": {
+        "task_id": "test_synth-0032-hi",
+        "question": "INC-TS-32 ka samay-aadhaarit kul jurmaana nirdhaarit kijiye: db-mcp ke samay se time-mcp dwaara avadhi ghanton mein aur math-mcp dwaara avadhi guna penalty_rate_per_hour.",
+        "raw_final": "",
+        "tool_calls": 6,
+        "expected_status": "answered",
+        "gold_value": 168.0
+      }
+    },
+    "by_kind": {
+      "consistent": {
+        "items": 80,
+        "strict_correct": 0
+      },
+      "incident": {
+        "items": 60,
+        "strict_correct": 0
+      },
+      "conflict": {
+        "items": 200,
+        "strict_correct": 0
+      },
+      "abstain": {
+        "items": 60,
+        "strict_correct": 0
+      }
+    }
+  },
+  "repo_style": {
+    "counts": {
+      "items": 100,
+      "parseable_final_json": 86,
+      "wrong_final_keys": 62,
+      "raw_json_status_correct": 39,
+      "empty_search_results": 47,
+      "strict_final_valid": 8,
+      "raw_json_value_correct": 11
+    },
+    "examples": {
+      "malformed_output": {
+        "task_id": "repo_style-0000-en",
+        "question": "Audit the documented timeout_sec for fastapi-case-00 against github-mcp; report the effective setting and any stale page.",
+        "raw_final": "<final_answer>{\"status\":\"answered\",\"value\":\"timeout_sec = 10001\",\"cites\":[\"PR-REALSTYLE-00\"]}</final_answer>",
+        "tool_calls": 1,
+        "expected_status": "conflict_resolved",
+        "gold_value": 10001
+      },
+      "final_answer": {
+        "task_id": "repo_style-0008-hi",
+        "question": "litellm-case-02 ke rate_limit_rpm ka prabhaavi maan kya hai? Puraane nirdesh ko github-mcp ke pramaan se milaakar bataaiye.",
+        "raw_final": "<final_answer>{\"status\":\"conflict_resolved\",\"value\":\"Rate limit RPM (requests per minute) sets a hard cap on how many API calls a service can make within a minute. This prevents overloading the system, ensures fair usage, and maintains performance. In the context of `litellm-case-02`, it likely prevents sudden spikes in API calls, ensuring stable service availability.\",\"cites\":[\"github-pr-123456789\", \"github-pr-987654321\"], \"stale_source\": \"github-pr-123456789\"}</final_answer>",
+        "tool_calls": 1,
+        "expected_status": "conflict_resolved",
+        "gold_value": 10017
+      }
+    },
+    "by_kind": {
+      "conflict": {
+        "items": 100,
+        "strict_correct": 0
+      }
+    }
+  }
+}

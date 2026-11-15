@@ -1,0 +1,12 @@
+{
+  "adapter": {
+    "repo": "Revanth-ml/driftguard-tiny-aya-fire-sft",
+    "revision": "b0d0d072311e62e31eb6258ad8ce987e8bf7926d",
+    "local_path": "/home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/checkpoints/tiny-aya-fire-sft-adapter"
+  },
+  "merged": {
+    "repo": "Revanth-ml/driftguard-tiny-aya-fire-sft-merged",
+    "revision": "9747926dfe35d4a7ff10761c8caec3c1714496b2",
+    "local_path": "/home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/checkpoints/tiny-aya-fire-sft-merged"
+  }
+}

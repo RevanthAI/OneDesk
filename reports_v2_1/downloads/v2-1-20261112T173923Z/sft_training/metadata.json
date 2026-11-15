@@ -1,0 +1,62 @@
+{
+  "num_train_epochs": 4,
+  "optimizer_steps": 120,
+  "effective_batch_size": 8,
+  "learning_rate": 0.00015,
+  "schedule": "cosine with six-step warmup",
+  "samples_seen": 960,
+  "max_seq_length": 2560,
+  "truncated_conversations": 0,
+  "selected_step": 120,
+  "selected_validation_accuracy": 0.7375,
+  "validation": [
+    {
+      "step": 30,
+      "epoch": 1,
+      "exact_outcome": 0.525,
+      "predicted_abstention_rate": 0.15,
+      "adapter": "reports_v2_1/sft_training/epoch1/adapter"
+    },
+    {
+      "step": 60,
+      "epoch": 2,
+      "exact_outcome": 0.675,
+      "predicted_abstention_rate": 0.2375,
+      "adapter": "reports_v2_1/sft_training/epoch2/adapter"
+    },
+    {
+      "step": 90,
+      "epoch": 3,
+      "exact_outcome": 0.65,
+      "predicted_abstention_rate": 0.225,
+      "adapter": "reports_v2_1/sft_training/epoch3/adapter"
+    },
+    {
+      "step": 120,
+      "epoch": 4,
+      "exact_outcome": 0.7375,
+      "predicted_abstention_rate": 0.225,
+      "adapter": "reports_v2_1/sft_training/epoch4/adapter"
+    }
+  ],
+  "warm_start_gate": {
+    "passed": true,
+    "criterion": "Paired semantic-case bootstrap accuracy-change lower 95% bound > 0 versus the v2 15-step SFT validation baseline",
+    "accuracy": 0.7375,
+    "paired_change": {
+      "estimate": 0.5125,
+      "ci95": [
+        0.3,
+        0.7125
+      ],
+      "clusters": 20
+    },
+    "exploratory": true,
+    "selection_caveat": "Four epoch checkpoints were selected on this same validation set; this is an operational gate, not an independent confirmatory significance test.",
+    "selected_sft_abstention_rate": 0.225,
+    "abstention_safe": true
+  },
+  "validation_loss_before": {
+    "validation_loss": 0.7270778007805347
+  }
+}

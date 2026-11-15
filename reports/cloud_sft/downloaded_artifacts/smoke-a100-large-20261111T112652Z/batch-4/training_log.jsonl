@@ -1,0 +1,5 @@
+{"step": 1, "loss": 0.5180020332336426, "grad_norm": 1.420082688331604, "seconds": 1.360194405016955, "supervised_tokens": 452, "samples_seen": 4, "learning_rate": 0.0001}
+{"step": 2, "loss": 0.3404986262321472, "grad_norm": 1.236269235610962, "seconds": 1.3114003380178474, "supervised_tokens": 668, "samples_seen": 8, "learning_rate": 8.535533905932738e-05}
+{"step": 3, "loss": 0.1648104190826416, "grad_norm": 0.7240545153617859, "seconds": 1.3108198120025918, "supervised_tokens": 620, "samples_seen": 12, "learning_rate": 5e-05}
+{"step": 4, "loss": 0.10666229575872421, "grad_norm": 0.40032389760017395, "seconds": 1.3033508530061226, "supervised_tokens": 500, "samples_seen": 16, "learning_rate": 1.4644660940672627e-05}
+{"step": 5, "loss": 0.07727338373661041, "grad_norm": 0.32623839378356934, "seconds": 1.308256905991584, "supervised_tokens": 622, "samples_seen": 20, "learning_rate": 0.0}

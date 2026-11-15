@@ -1,0 +1,23 @@
+{
+  "repo": "Revanth-ml/driftguard-mcp-v2-runs",
+  "revision": "c42cbc5265e02c0c37aa9e59c00ce772de5b4c1f",
+  "run_directory": "/home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/reports_v2/downloads/v2-20261112T110005Z",
+  "status": {
+    "job_id": "6af59c409737d9a9e0940742",
+    "stage": "COMPLETED",
+    "message": null,
+    "url": "https://huggingface.co/jobs/Revanth-ml/6af59c409737d9a9e0940742"
+  },
+  "models": {
+    "SFT": {
+      "repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-sft",
+      "revision": "f8bd317a9f84746328af7d078a49cc08a64f0086",
+      "local_path": "/home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/checkpoints_v2/sft_adapter"
+    },
+    "GRPO": {
+      "repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-grpo",
+      "revision": "c313816cc3ae46c4e3dd5ebc1d61cbff22ec05c4",
+      "local_path": "/home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/checkpoints_v2/grpo_adapter"
+    }
+  }
+}

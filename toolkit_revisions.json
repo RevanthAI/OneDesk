@@ -1,0 +1,14 @@
+{
+  "AgentTune": {
+    "url": "https://github.com/Lexsi-Labs/AgentTune",
+    "commit": "e56a1094b65cbf7c2c0b26d0db2ac4dffffa693a"
+  },
+  "AuditKIT": {
+    "url": "https://github.com/Lexsi-Labs/AuditKIT",
+    "commit": "fe6083e7487dfe7326ffd473be57481b52fdd9fb"
+  },
+  "CuratorKIT": {
+    "url": "https://github.com/Lexsi-Labs/CuratorKIT",
+    "commit": "d6f2e44edede9b78d5fe5189096f64d3ed798724"
+  }
+}

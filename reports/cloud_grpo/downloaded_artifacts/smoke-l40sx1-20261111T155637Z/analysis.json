@@ -1,0 +1,26 @@
+{
+  "stage_statistics": {
+    "stage1": {
+      "batches": 5,
+      "episodes": 20,
+      "mean_reward": 0.9850000000000001,
+      "mean_specified_reward": 1.0100000000000002,
+      "zero_variance_fraction": 0.4,
+      "sampled_outcome_accuracy": 0.85,
+      "completion_reasons": {
+        "final_answer": 19,
+        "malformed_output": 1
+      },
+      "by_kind": {
+        "incident": 8,
+        "abstain": 8,
+        "conflict": 4
+      },
+      "by_language": {
+        "hi": 4,
+        "hinglish": 8,
+        "te": 8
+      }
+    }
+  }
+}

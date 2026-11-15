@@ -1,0 +1,99 @@
+{
+  "train_sft_400": {
+    "input": 400,
+    "kept": 400,
+    "rejected": 0,
+    "method": "CuratorKIT ExactDeduplicator; prompt plus active schemas",
+    "semantic_dedup": false,
+    "oracle_verified": 400,
+    "languages": {
+      "en": 100,
+      "hi": 100,
+      "hinglish": 100,
+      "te": 100
+    },
+    "task_kinds": {
+      "consistent": 80,
+      "incident": 60,
+      "conflict": 200,
+      "abstain": 60
+    }
+  },
+  "train_grpo_stage1": {
+    "input": 400,
+    "kept": 400,
+    "rejected": 0,
+    "method": "CuratorKIT ExactDeduplicator; prompt plus active schemas",
+    "semantic_dedup": false,
+    "oracle_verified": 400,
+    "languages": {
+      "en": 100,
+      "hi": 100,
+      "hinglish": 100,
+      "te": 100
+    },
+    "task_kinds": {
+      "consistent": 160,
+      "incident": 120,
+      "conflict": 80,
+      "abstain": 40
+    }
+  },
+  "train_grpo_stage2": {
+    "input": 400,
+    "kept": 400,
+    "rejected": 0,
+    "method": "CuratorKIT ExactDeduplicator; prompt plus active schemas",
+    "semantic_dedup": false,
+    "oracle_verified": 400,
+    "languages": {
+      "en": 100,
+      "hi": 100,
+      "hinglish": 100,
+      "te": 100
+    },
+    "task_kinds": {
+      "consistent": 80,
+      "incident": 40,
+      "conflict": 220,
+      "abstain": 60
+    }
+  },
+  "holdout_synth_400_frozen": {
+    "input": 400,
+    "kept": 400,
+    "rejected": 0,
+    "method": "CuratorKIT ExactDeduplicator; prompt plus active schemas",
+    "semantic_dedup": false,
+    "oracle_verified": 400,
+    "languages": {
+      "en": 100,
+      "hi": 100,
+      "hinglish": 100,
+      "te": 100
+    },
+    "task_kinds": {
+      "consistent": 80,
+      "incident": 60,
+      "conflict": 200,
+      "abstain": 60
+    }
+  },
+  "holdout_repo_style_100_frozen": {
+    "input": 100,
+    "kept": 100,
+    "rejected": 0,
+    "method": "CuratorKIT ExactDeduplicator; prompt plus active schemas",
+    "semantic_dedup": false,
+    "oracle_verified": 100,
+    "languages": {
+      "en": 25,
+      "hi": 25,
+      "hinglish": 25,
+      "te": 25
+    },
+    "task_kinds": {
+      "conflict": 100
+    }
+  }
+}

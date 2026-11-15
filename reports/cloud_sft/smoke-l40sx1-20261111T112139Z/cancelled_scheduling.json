@@ -1,0 +1,5 @@
+{
+  "job_id": "6af44fd5ab34849891ae072d",
+  "reason": "L40S capacity unavailable; A100 sizing fallback",
+  "last_status": "JobStatus(stage='SCHEDULING', message='Waiting for requested hardware to become available')"
+}

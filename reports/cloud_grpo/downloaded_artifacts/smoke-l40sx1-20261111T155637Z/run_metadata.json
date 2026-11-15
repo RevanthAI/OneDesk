@@ -1,0 +1,64 @@
+{
+  "mode": "smoke",
+  "model": "CohereLabs/tiny-aya-fire",
+  "base_revision": "73500c80fcb6c8bea3e830c21d5d2920249a0e1a",
+  "sft_repo": "Revanth-ml/driftguard-tiny-aya-fire-sft",
+  "sft_revision": "b0d0d072311e62e31eb6258ad8ce987e8bf7926d",
+  "seed": 20261111,
+  "group_size": 4,
+  "temperature": 0.8,
+  "top_p": 1.0,
+  "top_k": 0,
+  "beta": 0.04,
+  "learning_rate": 5e-06,
+  "reward_mode": "evidence_gated",
+  "reward_diagnostic": "specified",
+  "algorithm": "live multi-turn episode GRPO; assistant-only sampled-token loss; SFT reference adapter",
+  "agenttune": "upstream TrlAgenticGrpo train/data/save lifecycle with project TRL0.23 live rollout and sparse loss compatibility backend",
+  "started_at": 1794412650.5860088,
+  "gpu": "NVIDIA L40S",
+  "gpu_memory_gib": 44.39215087890625,
+  "stage_sizes": [
+    360,
+    360
+  ],
+  "validation_case_ids": [
+    "train-0014",
+    "train-0025",
+    "train-0036",
+    "train-0045",
+    "train-0046",
+    "train-0053",
+    "train-0058",
+    "train-0081",
+    "train-0082",
+    "train-0084"
+  ],
+  "training_source_hashes": {
+    "train_grpo_stage1.jsonl": "ac9a066588db779fb37f866858d0592cf64560e214cc87be2ffcffb4c86b589d",
+    "train_grpo_stage2.jsonl": "88b917119182c1941a49078fd02352a356cdd3eb79ae02350c95670b095a010a",
+    "world_train.json": "2f68a305b5eeb515442f6564a9fb2399b5f5291bd2172e4697d9b29a1594cf44"
+  },
+  "trainable_parameters": 30228480,
+  "adapter_l1_change": 266.6678320392966,
+  "reference_l1_change": 0.0,
+  "mixed_reward_batches": 3,
+  "rollout_batches": 5,
+  "stages": [
+    {
+      "stage": 1,
+      "steps": 5,
+      "metrics": {
+        "train_runtime": 106.4505,
+        "train_samples_per_second": 0.188,
+        "train_steps_per_second": 0.047,
+        "total_flos": 0.0,
+        "train_loss": -0.00045152701522219727
+      }
+    }
+  ],
+  "validation_before": null,
+  "status": "smoke_passed",
+  "finished_at": 1794412779.3846474,
+  "peak_vram_reserved_gib": 7.923828125
+}

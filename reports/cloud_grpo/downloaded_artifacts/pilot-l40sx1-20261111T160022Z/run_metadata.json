@@ -1,0 +1,86 @@
+{
+  "mode": "pilot",
+  "model": "CohereLabs/tiny-aya-fire",
+  "base_revision": "73500c80fcb6c8bea3e830c21d5d2920249a0e1a",
+  "sft_repo": "Revanth-ml/driftguard-tiny-aya-fire-sft",
+  "sft_revision": "b0d0d072311e62e31eb6258ad8ce987e8bf7926d",
+  "seed": 20261111,
+  "group_size": 4,
+  "temperature": 0.8,
+  "top_p": 1.0,
+  "top_k": 0,
+  "beta": 0.04,
+  "learning_rate": 5e-06,
+  "reward_mode": "evidence_gated",
+  "reward_diagnostic": "specified",
+  "algorithm": "live multi-turn episode GRPO; assistant-only sampled-token loss; SFT reference adapter",
+  "agenttune": "upstream TrlAgenticGrpo train/data/save lifecycle with project TRL0.23 live rollout and sparse loss compatibility backend",
+  "started_at": 1794412881.2000976,
+  "gpu": "NVIDIA L40S",
+  "gpu_memory_gib": 44.39215087890625,
+  "stage_sizes": [
+    360,
+    360
+  ],
+  "validation_case_ids": [
+    "train-0014",
+    "train-0025",
+    "train-0036",
+    "train-0045",
+    "train-0046",
+    "train-0053",
+    "train-0058",
+    "train-0081",
+    "train-0082",
+    "train-0084"
+  ],
+  "training_source_hashes": {
+    "train_grpo_stage1.jsonl": "ac9a066588db779fb37f866858d0592cf64560e214cc87be2ffcffb4c86b589d",
+    "train_grpo_stage2.jsonl": "88b917119182c1941a49078fd02352a356cdd3eb79ae02350c95670b095a010a",
+    "world_train.json": "2f68a305b5eeb515442f6564a9fb2399b5f5291bd2172e4697d9b29a1594cf44"
+  },
+  "trainable_parameters": 30228480,
+  "adapter_l1_change": 1104.732531964779,
+  "reference_l1_change": 0.0,
+  "mixed_reward_batches": 21,
+  "rollout_batches": 60,
+  "stages": [
+    {
+      "stage": 1,
+      "steps": 20,
+      "metrics": {
+        "train_runtime": 437.1295,
+        "train_samples_per_second": 0.183,
+        "train_steps_per_second": 0.046,
+        "total_flos": 0.0,
+        "train_loss": 8.99221556722063e-05
+      }
+    },
+    {
+      "stage": 2,
+      "steps": 40,
+      "metrics": {
+        "train_runtime": 835.1374,
+        "train_samples_per_second": 0.192,
+        "train_steps_per_second": 0.048,
+        "total_flos": 0.0,
+        "train_loss": 5.111614049759239e-05
+      }
+    }
+  ],
+  "validation_before": {
+    "label": "before",
+    "n": 40,
+    "exact_outcome": 1.0,
+    "mean_reward": 1.46
+  },
+  "validation_after": {
+    "label": "after",
+    "n": 40,
+    "exact_outcome": 1.0,
+    "mean_reward": 1.46
+  },
+  "status": "pilot_complete",
+  "finished_at": 1794414599.303021,
+  "peak_vram_reserved_gib": 8.80078125
+}

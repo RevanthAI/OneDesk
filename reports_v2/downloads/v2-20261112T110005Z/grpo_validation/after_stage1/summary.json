@@ -1,0 +1,158 @@
+{
+  "validation": {
+    "n": 80,
+    "metrics": {
+      "exact_outcome": {
+        "estimate": 0.4375,
+        "ci95": [
+          0.2375,
+          0.625
+        ],
+        "denominator": 80.0,
+        "clusters": 20
+      },
+      "stale_catch": {
+        "estimate": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "denominator": 20.0,
+        "clusters": 20
+      },
+      "verified_citation_f1": {
+        "estimate": 0.5366666666666667,
+        "ci95": [
+          0.37017452485380115,
+          0.6964956140350878
+        ],
+        "denominator": 60.0,
+        "clusters": 20
+      },
+      "distractor_immunity": {
+        "estimate": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "denominator": 40.0,
+        "clusters": 20
+      },
+      "successful_tool_calls": {
+        "estimate": 1.4,
+        "ci95": [
+          0.875,
+          1.9782941437444537
+        ],
+        "denominator": 35.0,
+        "clusters": 20
+      },
+      "format_valid": {
+        "estimate": 0.9875,
+        "ci95": [
+          0.9625,
+          1.0
+        ],
+        "denominator": 80.0,
+        "clusters": 20
+      },
+      "stale_value_returned": {
+        "estimate": 0.75,
+        "ci95": [
+          0.5,
+          1.0
+        ],
+        "denominator": 20.0,
+        "clusters": 20
+      },
+      "required_chain_compliance": {
+        "estimate": 0.36666666666666664,
+        "ci95": [
+          0.18181818181818182,
+          0.5625
+        ],
+        "denominator": 60.0,
+        "clusters": 20
+      },
+      "abstention_precision": {
+        "estimate": 0.64,
+        "ci95": [
+          0.23529411764705882,
+          1.0
+        ],
+        "denominator": 25.0,
+        "clusters": 20
+      },
+      "abstention_recall": {
+        "estimate": 0.8,
+        "ci95": [
+          0.5,
+          1.0
+        ],
+        "denominator": 20.0,
+        "clusters": 20
+      },
+      "unplugged_recall": {
+        "estimate": 0.5,
+        "ci95": [
+          0.25,
+          0.75
+        ],
+        "denominator": 8.0,
+        "clusters": 20
+      },
+      "accuracy_by_language": {
+        "en": {
+          "estimate": 0.55,
+          "ci95": [
+            0.35,
+            0.75
+          ],
+          "denominator": 20.0,
+          "clusters": 20
+        },
+        "hi": {
+          "estimate": 0.4,
+          "ci95": [
+            0.2,
+            0.6
+          ],
+          "denominator": 20.0,
+          "clusters": 20
+        },
+        "hinglish": {
+          "estimate": 0.4,
+          "ci95": [
+            0.2,
+            0.6
+          ],
+          "denominator": 20.0,
+          "clusters": 20
+        },
+        "te": {
+          "estimate": 0.4,
+          "ci95": [
+            0.2,
+            0.6
+          ],
+          "denominator": 20.0,
+          "clusters": 20
+        }
+      }
+    },
+    "auditkit_headline": {
+      "driftguard_exact_outcome": 0.4375,
+      "driftguard_evidence_f1_all_items": 0.4025,
+      "tool_call_precision_name": 0.7854166666666667,
+      "tool_call_recall_name": 0.6479166666666667,
+      "tool_call_f1_name": 0.6958333333333333,
+      "tool_call_exact_name": 0.375,
+      "tool_call_validity": 1.0,
+      "redundant_tool_calls": 0.0
+    },
+    "completion_reasons": {
+      "final_answer": 79,
+      "malformed_output": 1
+    }
+  }
+}

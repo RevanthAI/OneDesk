@@ -1,0 +1,16 @@
+{
+  "run_repo": "Revanth-ml/driftguard-mcp-v2-runs",
+  "run_prefix": "v2-20261112T103309Z",
+  "bundle_revision": "954c93ef1b1ddf25c522eb270c5983f9b4597a37",
+  "bundle_sha256": "0f455aabdb3b30708c71bd8e2e39bb216263efa982b36e4957330832f44c9c50",
+  "dataset_repo": "Revanth-ml/driftguard-mcp-v2-data",
+  "dataset_revision": "97917b6fc7c5800f69afacb2b251926e7a21596d",
+  "sft_repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-sft",
+  "grpo_repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-grpo",
+  "timeout": "12h",
+  "flavor": "l40sx1",
+  "namespace": "Revanth-ml",
+  "phase": "all",
+  "job_id": "6af59651ab34849891af075a",
+  "url": "https://huggingface.co/jobs/Revanth-ml/6af59651ab34849891af075a"
+}

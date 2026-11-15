@@ -1,0 +1,22 @@
+{
+  "completed_at_utc": "2026-11-13T10:53:58.959653+00:00",
+  "analysis_only": true,
+  "additional_model_inference": false,
+  "tests": {
+    "tests": 120,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "frozen_files_unchanged": 19,
+  "figures_visually_verified": [
+    "comparison.png",
+    "validation_progress.png",
+    "sampling_diversity.png",
+    "grounding_tradeoffs.png"
+  ],
+  "postprocessor_sha256": {
+    "src_v2_2/finalize.py": "59228d6502fc3391548d9d4c99673431b1f47a65376bcebb251b1408a1addbf7",
+    "src_v2_2/write_findings.py": "2bbd3cd23611343bdd1479c29049889aab4fb55aa08779743affdd6e09f12883"
+  }
+}

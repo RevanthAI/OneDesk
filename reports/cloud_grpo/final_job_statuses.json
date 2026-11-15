@@ -1,0 +1,16 @@
+[
+  {
+    "job_id": "6af4911e9737d9a9e093136b",
+    "mode": "pilot",
+    "flavor": "l40sx1",
+    "stage": "COMPLETED",
+    "message": null
+  },
+  {
+    "job_id": "6af4903f9737d9a9e09312af",
+    "mode": "smoke",
+    "flavor": "l40sx1",
+    "stage": "COMPLETED",
+    "message": null
+  }
+]

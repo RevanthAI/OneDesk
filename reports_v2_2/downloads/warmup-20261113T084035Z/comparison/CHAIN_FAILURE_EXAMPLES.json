@@ -1,0 +1,310 @@
+[
+  {
+    "split": "test_synth",
+    "task_id": "holdout_synth-0023-te",
+    "kind": "conflict",
+    "incident_subtype": null,
+    "question": "treasury-router lo deploy ayina production batch_size_mb nirdhaarinchandi; nirvahana patram ni release saakshyaalatho saripolchi kaalam chellina page soochinchandi.",
+    "prediction": {
+      "status": "conflict_resolved",
+      "value": 344,
+      "cites": [
+        "NOTION-V2-TS-141",
+        "SLACK-V2-TS-141"
+      ],
+      "stale_source": "NOTION-V2-TS-141"
+    },
+    "gold_cites": [
+      "NOTION-V2-TS-141",
+      "PR-V2-TS-141",
+      "SLACK-V2-TS-141"
+    ],
+    "missing_servers": [
+      "github-mcp"
+    ],
+    "called_servers": [
+      "notion-mcp",
+      "slack-mcp"
+    ],
+    "calls": [
+      {
+        "server": "notion-mcp",
+        "tool": "search_notion",
+        "arguments": {
+          "query": "treasury-router batch_size_mb current configuration runbook"
+        }
+      },
+      {
+        "server": "slack-mcp",
+        "tool": "search_slack",
+        "arguments": {
+          "query": "treasury-router batch_size_mb"
+        }
+      }
+    ]
+  },
+  {
+    "split": "test_synth",
+    "task_id": "holdout_synth-0043-hinglish",
+    "kind": "conflict",
+    "incident_subtype": null,
+    "question": "Production review mein statement-worker ka max_retries verify karna hai; release evidence se jo doc purana nikle use flag karo.",
+    "prediction": {
+      "status": "conflict_resolved",
+      "value": 11,
+      "cites": [
+        "NOTION-V2-TS-043",
+        "SLACK-V2-TS-043"
+      ],
+      "stale_source": "NOTION-V2-TS-043"
+    },
+    "gold_cites": [
+      "NOTION-V2-TS-043",
+      "PR-V2-TS-043",
+      "SLACK-V2-TS-043"
+    ],
+    "missing_servers": [
+      "github-mcp"
+    ],
+    "called_servers": [
+      "notion-mcp",
+      "slack-mcp"
+    ],
+    "calls": [
+      {
+        "server": "notion-mcp",
+        "tool": "search_notion",
+        "arguments": {
+          "query": "statement-worker max_retries current configuration runbook"
+        }
+      },
+      {
+        "server": "slack-mcp",
+        "tool": "search_slack",
+        "arguments": {
+          "query": "statement-worker max_retries"
+        }
+      }
+    ]
+  },
+  {
+    "split": "test_synth",
+    "task_id": "holdout_synth-0074-hi",
+    "kind": "conflict",
+    "incident_subtype": null,
+    "question": "transfer-worker में production rate_limit_rpm का प्रभावी मान निर्धारित कीजिए। संचालन निर्देशों को जारी deployment के प्रमाण से मिलाकर पुराने पन्ने का उल्लेख कीजिए।",
+    "prediction": {
+      "status": "conflict_resolved",
+      "value": 3980,
+      "cites": [
+        "NOTION-V2-TS-128",
+        "SLACK-V2-TS-128"
+      ],
+      "stale_source": "NOTION-V2-TS-128"
+    },
+    "gold_cites": [
+      "NOTION-V2-TS-128",
+      "PR-V2-TS-128",
+      "SLACK-V2-TS-128"
+    ],
+    "missing_servers": [
+      "github-mcp"
+    ],
+    "called_servers": [
+      "notion-mcp",
+      "slack-mcp"
+    ],
+    "calls": [
+      {
+        "server": "notion-mcp",
+        "tool": "search_notion",
+        "arguments": {
+          "query": "transfer-worker rate_limit_rpm current configuration runbook"
+        }
+      },
+      {
+        "server": "slack-mcp",
+        "tool": "search_slack",
+        "arguments": {
+          "query": "transfer-worker rate_limit_rpm"
+        }
+      }
+    ]
+  },
+  {
+    "split": "repo_style",
+    "task_id": "holdout_repo_style-0020-hi",
+    "kind": "conflict",
+    "incident_subtype": null,
+    "question": "django-cache-backend में production max_retries का प्रभावी मान निर्धारित कीजिए। संचालन निर्देशों को जारी deployment के प्रमाण से मिलाकर पुराने पन्ने का उल्लेख कीजिए।",
+    "prediction": {
+      "status": "conflict_resolved",
+      "value": 6,
+      "cites": [
+        "NOTION-V2-OSS-103",
+        "SLACK-V2-OSS-103"
+      ],
+      "stale_source": "NOTION-V2-OSS-103"
+    },
+    "gold_cites": [
+      "NOTION-V2-OSS-103",
+      "PR-V2-OSS-103",
+      "SLACK-V2-OSS-103"
+    ],
+    "missing_servers": [
+      "github-mcp"
+    ],
+    "called_servers": [
+      "notion-mcp",
+      "slack-mcp"
+    ],
+    "calls": [
+      {
+        "server": "notion-mcp",
+        "tool": "search_notion",
+        "arguments": {
+          "query": "django-cache-backend max_retries current configuration runbook"
+        }
+      },
+      {
+        "server": "slack-mcp",
+        "tool": "search_slack",
+        "arguments": {
+          "query": "django-cache-backend max_retries"
+        }
+      }
+    ]
+  },
+  {
+    "split": "repo_style",
+    "task_id": "holdout_repo_style-0020-te",
+    "kind": "conflict",
+    "incident_subtype": null,
+    "question": "django-cache-backend లో అమలైన production max_retries విలువను నిర్ధారించండి. నిర్వహణ పత్రాన్ని release ఆధారాలతో పరిశీలించి కాలం చెల్లిన పేజీని సూచించండి.",
+    "prediction": {
+      "status": "conflict_resolved",
+      "value": 6,
+      "cites": [
+        "NOTION-V2-OSS-103",
+        "SLACK-V2-OSS-103"
+      ],
+      "stale_source": "NOTION-V2-OSS-103"
+    },
+    "gold_cites": [
+      "NOTION-V2-OSS-103",
+      "PR-V2-OSS-103",
+      "SLACK-V2-OSS-103"
+    ],
+    "missing_servers": [
+      "github-mcp"
+    ],
+    "called_servers": [
+      "notion-mcp",
+      "slack-mcp"
+    ],
+    "calls": [
+      {
+        "server": "notion-mcp",
+        "tool": "search_notion",
+        "arguments": {
+          "query": "django-cache-backend max_retries current configuration runbook"
+        }
+      },
+      {
+        "server": "slack-mcp",
+        "tool": "search_slack",
+        "arguments": {
+          "query": "django-cache-backend max_retries"
+        }
+      }
+    ]
+  },
+  {
+    "split": "repo_style",
+    "task_id": "holdout_repo_style-0022-en",
+    "kind": "conflict",
+    "incident_subtype": null,
+    "question": "Determine the deployed max_retries of litellm-router-proxy, checking the operational documentation against the release trail. Identify any superseded page.",
+    "prediction": {
+      "status": "conflict_resolved",
+      "value": 12,
+      "cites": [
+        "NOTION-V2-OSS-007",
+        "SLACK-V2-OSS-007"
+      ],
+      "stale_source": "NOTION-V2-OSS-007"
+    },
+    "gold_cites": [
+      "NOTION-V2-OSS-007",
+      "PR-V2-OSS-007",
+      "SLACK-V2-OSS-007"
+    ],
+    "missing_servers": [
+      "github-mcp"
+    ],
+    "called_servers": [
+      "notion-mcp",
+      "slack-mcp"
+    ],
+    "calls": [
+      {
+        "server": "notion-mcp",
+        "tool": "search_notion",
+        "arguments": {
+          "query": "litellm-router-proxy max_retries current configuration runbook"
+        }
+      },
+      {
+        "server": "slack-mcp",
+        "tool": "search_slack",
+        "arguments": {
+          "query": "litellm-router-proxy max_retries"
+        }
+      }
+    ]
+  },
+  {
+    "split": "repo_style",
+    "task_id": "holdout_repo_style-0022-hi",
+    "kind": "conflict",
+    "incident_subtype": null,
+    "question": "litellm-router-proxy में production max_retries का प्रभावी मान निर्धारित कीजिए। संचालन निर्देशों को जारी deployment के प्रमाण से मिलाकर पुराने पन्ने का उल्लेख कीजिए।",
+    "prediction": {
+      "status": "conflict_resolved",
+      "value": 12,
+      "cites": [
+        "NOTION-V2-OSS-007",
+        "SLACK-V2-OSS-007"
+      ],
+      "stale_source": "NOTION-V2-OSS-007"
+    },
+    "gold_cites": [
+      "NOTION-V2-OSS-007",
+      "PR-V2-OSS-007",
+      "SLACK-V2-OSS-007"
+    ],
+    "missing_servers": [
+      "github-mcp"
+    ],
+    "called_servers": [
+      "notion-mcp",
+      "slack-mcp"
+    ],
+    "calls": [
+      {
+        "server": "notion-mcp",
+        "tool": "search_notion",
+        "arguments": {
+          "query": "litellm-router-proxy max_retries current configuration runbook"
+        }
+      },
+      {
+        "server": "slack-mcp",
+        "tool": "search_slack",
+        "arguments": {
+          "query": "litellm-router-proxy max_retries"
+        }
+      }
+    ]
+  }
+]

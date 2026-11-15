@@ -1,0 +1,345 @@
+{
+  "run_id": "be19f40f32b54399",
+  "fingerprint": "be19f40f32b54399",
+  "headline": {
+    "driftguard_exact_outcome": 1.0,
+    "driftguard_evidence_f1_all_items": 1.0,
+    "tool_call_precision_name": 1.0,
+    "tool_call_recall_name": 1.0,
+    "tool_call_f1_name": 1.0,
+    "tool_call_exact_name": 1.0,
+    "tool_call_validity": 1.0,
+    "redundant_tool_calls": 0.0
+  },
+  "stats": {
+    "driftguard_exact_outcome": {
+      "name": "driftguard_exact_outcome",
+      "count": 1,
+      "mean": 1.0,
+      "stderr": 0.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "values": [
+        1.0
+      ]
+    },
+    "driftguard_evidence_f1_all_items": {
+      "name": "driftguard_evidence_f1_all_items",
+      "count": 1,
+      "mean": 1.0,
+      "stderr": 0.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "values": [
+        1.0
+      ]
+    },
+    "tool_call_precision_name": {
+      "name": "tool_call_precision_name",
+      "count": 1,
+      "mean": 1.0,
+      "stderr": 0.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "values": [
+        1.0
+      ]
+    },
+    "tool_call_recall_name": {
+      "name": "tool_call_recall_name",
+      "count": 1,
+      "mean": 1.0,
+      "stderr": 0.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "values": [
+        1.0
+      ]
+    },
+    "tool_call_f1_name": {
+      "name": "tool_call_f1_name",
+      "count": 1,
+      "mean": 1.0,
+      "stderr": 0.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "values": [
+        1.0
+      ]
+    },
+    "tool_call_exact_name": {
+      "name": "tool_call_exact_name",
+      "count": 1,
+      "mean": 1.0,
+      "stderr": 0.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "values": [
+        1.0
+      ]
+    },
+    "tool_call_validity": {
+      "name": "tool_call_validity",
+      "count": 1,
+      "mean": 1.0,
+      "stderr": 0.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "values": [
+        1.0
+      ]
+    },
+    "redundant_tool_calls": {
+      "name": "redundant_tool_calls",
+      "count": 1,
+      "mean": 0.0,
+      "stderr": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "values": [
+        0.0
+      ]
+    }
+  },
+  "predictions": [
+    {
+      "run_id": "be19f40f32b54399",
+      "task": "generative",
+      "sample_id": "train-0035-en",
+      "prompt": "What is email-relay rate_limit_rpm now? Verify the runbook using github-mcp.",
+      "raw_output": "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 401, \"cites\": [\"NOTION-TR-050\", \"PR-TR-050\"], \"stale_source\": \"NOTION-TR-050\"}</final_answer>",
+      "parsed_answer": "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 401, \"cites\": [\"NOTION-TR-050\", \"PR-TR-050\"], \"stale_source\": \"NOTION-TR-050\"}</final_answer>",
+      "expected": "401",
+      "correct": true,
+      "score": 1.0,
+      "choice_likelihoods": null,
+      "context": {
+        "trace": {
+          "messages": [
+            {
+              "role": "system",
+              "content": "You are an enterprise configuration assistant. Use only the active tools and evidence returned in this conversation. A runbook may be stale: compare the documented setting with the requested deployment source. Use timestamps and current production evidence. Abstain when the entity does not exist or an explicitly required server is unavailable. Output exactly one turn at a time, with no extra text:\n<tool_call>{\"server\":\"server-name\",\"tool\":\"tool-name\",\"arguments\":{}}</tool_call>\nor <final_answer>{\"status\":\"answered|conflict_resolved|abstain\",\"value\":\"one exact value or null\",\"cites\":[\"retrieved evidence IDs\"],\"stale_source\":null}</final_answer>\nFor conflict_resolved, stale_source must be the stale runbook ID. For abstain, value must be JSON null and cites may be empty. Do not invent IDs. Database schema: microservices(service_name, owner_handle, timeout_sec, max_retries, rate_limit_rpm, batch_size_mb, sla_hours, circuit_breaker_pct, updated_at, last_pr, evidence_id); production_incidents(incident_id, service_name, started_at, resolved_at, root_cause_pr, penalty_rate_per_hour, weight_kg). query_db accepts read-only SELECT. Call tools until you can answer. Active tool schemas:\n[{\"server\":\"notion-mcp\",\"tool\":\"search_notion\",\"arguments\":{\"query\":\"string\"}},{\"server\":\"github-mcp\",\"tool\":\"search_github_prs\",\"arguments\":{\"query\":\"string\"}},{\"server\":\"db-mcp\",\"tool\":\"query_db\",\"arguments\":{\"sql\":\"string\"}},{\"server\":\"db-mcp\",\"tool\":\"inspect_schema\",\"arguments\":{}},{\"server\":\"time-mcp\",\"tool\":\"hours_between\",\"arguments\":{\"start_iso\":\"string\",\"end_iso\":\"string\"}},{\"server\":\"unit-converter-mcp\",\"tool\":\"convert_unit\",\"arguments\":{\"value\":\"number\",\"from_unit\":\"string\",\"to_unit\":\"string\"}},{\"server\":\"math-mcp\",\"tool\":\"calculate\",\"arguments\":{\"expression\":\"string\"}}]"
+            },
+            {
+              "role": "user",
+              "content": "What is email-relay rate_limit_rpm now? Verify the runbook using github-mcp."
+            },
+            {
+              "role": "assistant",
+              "content": "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"email-relay rate_limit_rpm\"}}</tool_call>"
+            },
+            {
+              "role": "user",
+              "content": "Tool result: [{\"page_id\": \"NOTION-TR-050\", \"title\": \"email-relay rate_limit_rpm\", \"updated_at\": \"2026-02-10T09:00:00+00:00\", \"snippet\": \"email-relay rate_limit_rpm = 201. Documented configuration at publication. Later deployment records may supersede this runbook.\"}]"
+            },
+            {
+              "role": "assistant",
+              "content": "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"email-relay rate_limit_rpm\"}}</tool_call>"
+            },
+            {
+              "role": "user",
+              "content": "Tool result: [{\"pr_id\": \"PR-TR-050\", \"service_name\": \"email-relay\", \"merged_at\": \"2026-09-18T09:00:00+00:00\", \"summary\": \"rate_limit_rpm = 401; merged and deployed. Previous value 201.\"}]"
+            },
+            {
+              "role": "assistant",
+              "content": "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 401, \"cites\": [\"NOTION-TR-050\", \"PR-TR-050\"], \"stale_source\": \"NOTION-TR-050\"}</final_answer>"
+            }
+          ],
+          "tool_calls": [
+            [
+              {
+                "name": "notion-mcp__search_notion",
+                "arguments": {
+                  "query": "email-relay rate_limit_rpm"
+                }
+              }
+            ],
+            [
+              {
+                "name": "github-mcp__search_github_prs",
+                "arguments": {
+                  "query": "email-relay rate_limit_rpm"
+                }
+              }
+            ]
+          ]
+        }
+      },
+      "metadata": {
+        "scores": [
+          {
+            "name": "driftguard_exact_outcome",
+            "value": 1.0,
+            "kind": "benchmark",
+            "data_type": "numeric",
+            "direction": "maximize",
+            "weight": 1.0,
+            "source": "sdk"
+          },
+          {
+            "name": "driftguard_evidence_f1_all_items",
+            "value": 1.0,
+            "kind": "benchmark",
+            "data_type": "numeric",
+            "direction": "maximize",
+            "weight": 1.0,
+            "source": "sdk"
+          },
+          {
+            "name": "tool_call_precision_name",
+            "value": 1.0,
+            "kind": "agent",
+            "data_type": "numeric",
+            "direction": "maximize",
+            "weight": 1.0,
+            "source": "sdk",
+            "metadata": {
+              "n_expected": 2,
+              "n_predicted": 2,
+              "n_matched": 2,
+              "predicted": [
+                {
+                  "name": "notion-mcp__search_notion",
+                  "arguments": {
+                    "query": "email-relay rate_limit_rpm"
+                  }
+                },
+                {
+                  "name": "github-mcp__search_github_prs",
+                  "arguments": {
+                    "query": "email-relay rate_limit_rpm"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "tool_call_recall_name",
+            "value": 1.0,
+            "kind": "agent",
+            "data_type": "numeric",
+            "direction": "maximize",
+            "weight": 1.0,
+            "source": "sdk"
+          },
+          {
+            "name": "tool_call_f1_name",
+            "value": 1.0,
+            "kind": "agent",
+            "data_type": "numeric",
+            "direction": "maximize",
+            "weight": 1.0,
+            "source": "sdk"
+          },
+          {
+            "name": "tool_call_exact_name",
+            "value": 1.0,
+            "kind": "agent",
+            "data_type": "numeric",
+            "direction": "maximize",
+            "weight": 1.0,
+            "source": "sdk"
+          },
+          {
+            "name": "tool_call_validity",
+            "value": 1.0,
+            "kind": "agent",
+            "data_type": "numeric",
+            "direction": "maximize",
+            "weight": 1.0,
+            "source": "sdk",
+            "metadata": {
+              "n_calls": 2,
+              "n_invalid": 0
+            }
+          },
+          {
+            "name": "redundant_tool_calls",
+            "value": 0.0,
+            "kind": "agent",
+            "data_type": "numeric",
+            "direction": "minimize",
+            "weight": 1.0,
+            "source": "sdk",
+            "metadata": {
+              "n_calls": 2,
+              "n_duplicates": 0
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "num_fewshot": null,
+    "limit": null,
+    "seed": null,
+    "trials": 1,
+    "batch_size": "auto",
+    "concurrency": 1,
+    "split": null,
+    "temperature": 0.0,
+    "top_p": null,
+    "top_k": null,
+    "max_tokens": null,
+    "stop_sequences": null,
+    "presence_penalty": null,
+    "frequency_penalty": null,
+    "num_completions": null,
+    "best_of": null,
+    "timeout": null,
+    "max_retries": 3,
+    "retry_delay": 1.0,
+    "judge_model": null,
+    "judge_prompt_version": null,
+    "track_performance": true,
+    "chat_template_kwargs": null,
+    "extra": {},
+    "failed_as_zero": false
+  },
+  "model_spec": "precomputed",
+  "errors": [],
+  "unscored": {},
+  "failed_count": 0,
+  "experiment_name": null,
+  "tags": [],
+  "perf": {
+    "latency_ms": {
+      "count": 0,
+      "mean": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "std": 0.0
+    },
+    "throughput": {
+      "rps": 0.0,
+      "total_requests": 0,
+      "total_time_ms": 0.0,
+      "output_tokens_per_sec": 0.0,
+      "total_tokens_per_sec": 0.0
+    }
+  },
+  "model_size": {
+    "is_local": false,
+    "model_name": "precomputed"
+  },
+  "token_usage": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0
+  },
+  "metadata": {
+    "inputs": []
+  }
+}

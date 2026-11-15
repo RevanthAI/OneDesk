@@ -1,0 +1,6 @@
+case_id,exact_outcome,format_valid,kind,kind_saturated_fallback,language,mean_reward,mean_specified_reward,mean_tool_calls,optimizer_update_eligible,peak_vram_reserved_gib,reward_std,rollout_batch,sampled_tokens,sampling_temperature,seconds,stage,step,task_id,verified_citation_f1,wall_time,zero_variance_fraction,zero_variance_skipped
+train_grpo1-0005,0.25,1.0,consistent,False,en,0.11499998718500137,0.3025,3.0,True,7.9453125,0.6299999952316284,1,775,0.8,42.85673697600032,stage1,0,train_grpo1-0005-en,0.5416666666666666,1794483412.1748242,0.0,False
+train_grpo1-0027,0.25,0.5,incident,False,en,-0.17500002682209015,-0.1125,2.0,True,8.791015625,1.0404325723648071,2,610,0.8,29.20745638399967,stage1,1,train_grpo1-0027-en,0.41666666666666663,1794483443.8548918,0.0,False
+train_grpo1-0055,0.0,0.5,conflict,False,en,-0.5,-0.375,3.0,True,8.875,0.3464101552963257,3,672,0.8,28.15046656099912,stage1,2,train_grpo1-0055-en,0.125,1794483473.5768108,0.0,False
+train_grpo1-0093,0.5,1.0,abstain,False,en,0.3400000035762787,0.465,1.5,True,8.87890625,0.6243930459022522,4,370,0.8,18.983167026000956,stage1,3,train_grpo1-0093-en,0.0,1794483494.9087358,0.0,False
+train_grpo1-0083,0.0,0.5,consistent,False,hi,-0.5,-0.375,2.25,True,8.87890625,0.3464101552963257,5,534,0.8,32.3731139119991,stage1,4,train_grpo1-0083-hi,0.25,1794483528.9512398,0.0,False

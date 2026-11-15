@@ -1,0 +1,8 @@
+{
+  "tests_passed": 21,
+  "synthetic_episodes": 400,
+  "repo_style_episodes": 100,
+  "frozen_prompt_match": true,
+  "duplicate_episodes": 0,
+  "max_tool_calls": 6
+}

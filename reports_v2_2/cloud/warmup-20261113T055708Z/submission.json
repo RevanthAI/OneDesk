@@ -1,0 +1,17 @@
+{
+  "namespace": "Revanth-ml",
+  "run_repo": "Revanth-ml/driftguard-mcp-warmup-runs",
+  "run_prefix": "warmup-20261113T055708Z",
+  "bundle_revision": "d79e121819357250f3c5bd8bf1e2eab90b0952aa",
+  "bundle_sha256": "3c69515b34e17014de7ac39fe295c271a60435f3baaf1ed27522adfc685bad46",
+  "sft_repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-sft",
+  "grpo_best_repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-grpo-best-val",
+  "grpo_final_repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-grpo-final",
+  "timeout": "3h",
+  "flavor": "l40sx1",
+  "resume_prefix": null,
+  "resume_revision": null,
+  "group_size": 6,
+  "temperature": 1.0,
+  "retry_temperature": 1.15
+}

@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "accepted_updates": 5,
+  "attempted_groups": 9,
+  "acceptance_rate": 0.5555555555555556,
+  "prior_g4_acceptance_rate": 0.08333333333333333,
+  "finite_gradients": true,
+  "peak_reserved_gib": 9.859375,
+  "criterion": "5 genuine updates, finite gradients, acceptance strictly higher than prior 6/72 pilot (operational comparison; warmup and exploration differ)"
+}

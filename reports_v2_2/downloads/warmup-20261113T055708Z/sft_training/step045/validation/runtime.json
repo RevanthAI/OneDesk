@@ -1,0 +1,11 @@
+{
+  "dtype": "bfloat16",
+  "quantization": null,
+  "gpu": "NVIDIA L40S",
+  "generated_tokens": 12082,
+  "generation_seconds": 175.92648140299912,
+  "tokens_per_second": 68.67641473669597,
+  "oom_splits": 0,
+  "peak_reserved_gib": 15.87890625,
+  "wall_seconds": 185.8710491180002
+}

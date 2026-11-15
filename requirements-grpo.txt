@@ -1,0 +1,5 @@
+-r requirements-sft.txt
+trl==0.23.1
+datasets==4.8.5
+matplotlib==3.10.7
+tensorboard==2.20.0

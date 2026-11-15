@@ -1,0 +1,22 @@
+{
+  "bundle_revision": "3c9fc4546b011111ed1df60b85c694d6a87c1781",
+  "bundle_sha256": "6a40cbc5dac69e3f3d94af6eedad0336b7ed79b35f1d5fe320bf83ba77da2961",
+  "numerical_runtime_matches_launch": {
+    "reward.py": true,
+    "active_advantage.py": true,
+    "grpo_core.py": true,
+    "grpo_rollout.py": true,
+    "agenttune_sft_backend.py": true,
+    "agenttune_grpo_backend.py": true,
+    "training.py": true,
+    "evaluation_core.py": true,
+    "backend.py": true,
+    "evaluate_auditkit.py": true,
+    "mcp_env.py": true,
+    "v2_env.py": true,
+    "mcp_adapter.py": true,
+    "preflight.py": true,
+    "pipeline.py": true
+  },
+  "post_launch_changes": "Local retrieval, documentation, diagnostics and publication helpers only"
+}

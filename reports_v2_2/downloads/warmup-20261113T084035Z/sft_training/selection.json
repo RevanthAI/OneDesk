@@ -1,0 +1,33 @@
+{
+  "best": {
+    "accuracy": 0.675,
+    "step": 60,
+    "path": "reports_v2_2/sft_training/step060/adapter"
+  },
+  "validation": [
+    {
+      "step": 30,
+      "epoch": 1.0,
+      "exact_outcome": 0.525,
+      "format_valid": 1.0,
+      "predicted_abstention_rate": 0.15,
+      "adapter": "reports_v2_2/sft_training/step030/adapter"
+    },
+    {
+      "step": 45,
+      "epoch": 1.5,
+      "exact_outcome": 0.5875,
+      "format_valid": 1.0,
+      "predicted_abstention_rate": 0.2125,
+      "adapter": "reports_v2_2/sft_training/step045/adapter"
+    },
+    {
+      "step": 60,
+      "epoch": 2.0,
+      "exact_outcome": 0.675,
+      "format_valid": 1.0,
+      "predicted_abstention_rate": 0.2375,
+      "adapter": "reports_v2_2/sft_training/step060/adapter"
+    }
+  ]
+}

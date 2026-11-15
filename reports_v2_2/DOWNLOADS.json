@@ -1,0 +1,26 @@
+{
+  "repo": "Revanth-ml/driftguard-mcp-warmup-runs",
+  "revision": "27a8628d8c3907f55eeaea8edad07d0ed6f0266d",
+  "run_directory": "/home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/reports_v2_2/downloads/warmup-20261113T084035Z",
+  "models": {
+    "SFT_WARMUP": {
+      "repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-sft",
+      "revision": "72aafc56b1506a81a7cb12930e95f8f2f17d03d5",
+      "local_path": "/home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/checkpoints_v2_2/sft_warmup_adapter",
+      "sha256": "bc362ae46f670c2d24ffe3ebc02d22df45aeebce8515ceb2873c5c7319442dc6"
+    },
+    "GRPO_BEST_VAL": {
+      "repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-grpo-best-val",
+      "revision": "016676680121b4dd90ec6026978de7ee1cdb1271",
+      "local_path": "/home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/checkpoints_v2_2/grpo_best_val_adapter",
+      "sha256": "b286392a2d979af730b6c9fcd1c2a14369a2f859bcc691526478d0e8220a2f07"
+    },
+    "GRPO_FINAL": {
+      "repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-grpo-final",
+      "revision": "b006ec346e48807afd23030abf17b599adfcf71f",
+      "local_path": "/home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/checkpoints_v2_2/grpo_final_adapter",
+      "sha256": "16b135a64f95c3fb74c83a9fd59a3e3c55a1adff48db998549cdaad410e764b8"
+    }
+  },
+  "frozen_files_unchanged": 19
+}

@@ -1,0 +1,17 @@
+{
+  "source_revision": "ebb8a90da671fc1a631aa50c4275f807f75bf19a",
+  "validation_by_kind": {
+    "45": {
+      "conflict": 0.6,
+      "incident": 0.8,
+      "consistent": 0.25,
+      "abstain": 0.7
+    },
+    "60": {
+      "conflict": 0.65,
+      "incident": 0.8,
+      "consistent": 0.3,
+      "abstain": 0.95
+    }
+  }
+}

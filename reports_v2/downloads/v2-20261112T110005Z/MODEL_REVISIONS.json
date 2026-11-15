@@ -1,0 +1,10 @@
+{
+  "SFT": {
+    "repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-sft",
+    "revision": "f8bd317a9f84746328af7d078a49cc08a64f0086"
+  },
+  "GRPO": {
+    "repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-grpo",
+    "revision": "c313816cc3ae46c4e3dd5ebc1d61cbff22ec05c4"
+  }
+}

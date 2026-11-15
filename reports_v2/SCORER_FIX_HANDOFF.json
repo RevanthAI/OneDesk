@@ -1,0 +1,6 @@
+{
+  "source_job": "6af59651ab34849891af075a",
+  "source_prefix": "v2-20261112T103309Z",
+  "reason": "Preserve valid Base/SFT artifacts; FP32 temperature scaling before all GRPO phases",
+  "requested_stop_at": "B_sft_evaluation"
+}

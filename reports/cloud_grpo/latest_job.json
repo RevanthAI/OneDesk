@@ -1,0 +1,29 @@
+{
+  "mode": "pilot",
+  "flavor": "l40sx1",
+  "timeout": "90m",
+  "namespace": "Revanth-ml",
+  "run_repo": "Revanth-ml/driftguard-mcp-grpo-runs",
+  "run_prefix": "pilot-l40sx1-20261111T160022Z",
+  "bundle_revision": "e6a25dddc2493e41f7ab65fe763c09312d43ae7b",
+  "bundle_sha256": "6d1e60a19323888b625ad039980fc6fe8a01d16034694434019768a63063d2b5",
+  "arguments": [
+    "--mode",
+    "pilot",
+    "--output",
+    "/workspace/output",
+    "--run-repo",
+    "Revanth-ml/driftguard-mcp-grpo-runs",
+    "--run-prefix",
+    "pilot-l40sx1-20261111T160022Z",
+    "--stage1-steps",
+    "20",
+    "--stage2-steps",
+    "40",
+    "--adapter-repo",
+    "Revanth-ml/driftguard-tiny-aya-fire-grpo-pilot"
+  ],
+  "adapter_repo": "Revanth-ml/driftguard-tiny-aya-fire-grpo-pilot",
+  "job_id": "6af4911e9737d9a9e093136b",
+  "url": "https://huggingface.co/jobs/Revanth-ml/6af4911e9737d9a9e093136b"
+}

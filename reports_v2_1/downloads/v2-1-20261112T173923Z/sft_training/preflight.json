@@ -1,0 +1,11 @@
+{
+  "data_dir": "data_v2",
+  "sft_examples": 240,
+  "validation_examples": 80,
+  "sft_semantic_cases": 60,
+  "validation_semantic_cases": 20,
+  "max_seq_length": 2560,
+  "max_actual_tokens": 2543,
+  "truncated_conversations": 0,
+  "sft_epochs": 1
+}

@@ -1,0 +1,185 @@
+{
+  "test_synth": {
+    "n": 90,
+    "reference_cohort_n": 400,
+    "partial": true,
+    "metrics": {
+      "exact_outcome": {
+        "nf4": 0.0,
+        "fp16": 0.0,
+        "paired_delta": {
+          "estimate": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "denominator": 90.0,
+          "clusters": 23
+        }
+      },
+      "format_valid": {
+        "nf4": 0.18888888888888888,
+        "fp16": 0.16666666666666666,
+        "paired_delta": {
+          "estimate": -0.022222222222222223,
+          "ci95": [
+            -0.13636363636363635,
+            0.08695652173913043
+          ],
+          "denominator": 90.0,
+          "clusters": 23
+        }
+      },
+      "raw_value": {
+        "nf4": 0.18888888888888888,
+        "fp16": 0.13333333333333333,
+        "paired_delta": {
+          "estimate": -0.05555555555555555,
+          "ci95": [
+            -0.13043478260869565,
+            0.022222222222222223
+          ],
+          "denominator": 90.0,
+          "clusters": 23
+        }
+      },
+      "raw_status": {
+        "nf4": 0.32222222222222224,
+        "fp16": 0.15555555555555556,
+        "paired_delta": {
+          "estimate": -0.16666666666666666,
+          "ci95": [
+            -0.2777777777777778,
+            -0.056818181818181816
+          ],
+          "denominator": 90.0,
+          "clusters": 23
+        }
+      },
+      "raw_status_value": {
+        "nf4": 0.16666666666666666,
+        "fp16": 0.08888888888888889,
+        "paired_delta": {
+          "estimate": -0.07777777777777778,
+          "ci95": [
+            -0.1511627906976744,
+            -0.010869565217391304
+          ],
+          "denominator": 90.0,
+          "clusters": 23
+        }
+      },
+      "stale_catch": {
+        "nf4": null,
+        "fp16": null,
+        "paired_delta": {
+          "estimate": null,
+          "ci95": [
+            null,
+            null
+          ]
+        }
+      },
+      "verified_citation_f1": {
+        "nf4": 0.029629629629629627,
+        "fp16": 0.03518518518518518,
+        "paired_delta": {
+          "estimate": 0.005555555555555554,
+          "ci95": [
+            -0.024074074074074078,
+            0.03598484848484848
+          ],
+          "denominator": 90.0,
+          "clusters": 23
+        }
+      },
+      "distractor_immunity": {
+        "nf4": 1.0,
+        "fp16": 1.0,
+        "paired_delta": {
+          "estimate": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "denominator": 46.0,
+          "clusters": 12
+        }
+      }
+    },
+    "failures": {
+      "nf4": {
+        "missing_or_extra_final_fields": 44,
+        "required_evidence_missing": 89,
+        "wrong_value": 65,
+        "empty_search_result": 43,
+        "no_parseable_final_json": 8,
+        "unretrieved_citations": 54,
+        "wrong_status": 53,
+        "quoted_null": 5,
+        "tool_execution_error": 9
+      },
+      "fp16": {
+        "required_evidence_missing": 90,
+        "wrong_status": 48,
+        "empty_search_result": 49,
+        "no_parseable_final_json": 25,
+        "unretrieved_citations": 44,
+        "wrong_value": 50,
+        "tool_budget_exhausted": 3,
+        "tool_execution_error": 10,
+        "missing_or_extra_final_fields": 17
+      }
+    },
+    "breakdown": {
+      "language": {
+        "en": {
+          "n": 23,
+          "nf4_format": 0.30434782608695654,
+          "fp16_format": 0.34782608695652173,
+          "nf4_outcome": 0.0,
+          "fp16_outcome": 0.0
+        },
+        "hi": {
+          "n": 23,
+          "nf4_format": 0.21739130434782608,
+          "fp16_format": 0.043478260869565216,
+          "nf4_outcome": 0.0,
+          "fp16_outcome": 0.0
+        },
+        "hinglish": {
+          "n": 22,
+          "nf4_format": 0.13636363636363635,
+          "fp16_format": 0.0,
+          "nf4_outcome": 0.0,
+          "fp16_outcome": 0.0
+        },
+        "te": {
+          "n": 22,
+          "nf4_format": 0.09090909090909091,
+          "fp16_format": 0.2727272727272727,
+          "nf4_outcome": 0.0,
+          "fp16_outcome": 0.0
+        }
+      },
+      "kind": {
+        "consistent": {
+          "n": 80,
+          "nf4_format": 0.1625,
+          "fp16_format": 0.175,
+          "nf4_outcome": 0.0,
+          "fp16_outcome": 0.0
+        },
+        "incident": {
+          "n": 10,
+          "nf4_format": 0.4,
+          "fp16_format": 0.1,
+          "nf4_outcome": 0.0,
+          "fp16_outcome": 0.0
+        }
+      }
+    },
+    "format_improved": 13,
+    "format_regressed": 15
+  }
+}

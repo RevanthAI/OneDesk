@@ -1,0 +1,12 @@
+{
+  "source": {
+    "selection": "Highest stage-end validation accuracy only; holdouts not evaluated",
+    "validation_accuracy": 0.4375,
+    "local_path": "/home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/checkpoints_v2/grpo_stage1_adapter",
+    "source_repo": "Revanth-ml/driftguard-mcp-v2-runs",
+    "source_revision": "c42cbc5265e02c0c37aa9e59c00ce772de5b4c1f",
+    "source_path": "v2-20261112T110005Z/grpo_training/stage1/last_safe_adapter/",
+    "adapter_sha256": "6c850168acbba2a15292ecf3c08622402cab2a571fc173766e9e2763ef57aafa"
+  },
+  "validation_accuracy": 0.4375
+}

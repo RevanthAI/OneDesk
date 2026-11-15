@@ -1,0 +1,169 @@
+{
+  "project": "OneDesk",
+  "dpi": 300,
+  "source": "Existing saved JSON only; no inference",
+  "charts": [
+    {
+      "name": "1_headline_success",
+      "values": {
+        "Base": [
+          0.5,
+          0.0,
+          0.0,
+          69.0
+        ],
+        "Warmup SFT \u00b7 60 steps": [
+          72.5,
+          64.0,
+          74.0,
+          100.0
+        ],
+        "Final OneDesk \u00b7 selected update 40": [
+          75.75,
+          71.0,
+          79.0,
+          100.0
+        ]
+      },
+      "cohort": "Frozen data_v2 holdouts; displayed labels round exact estimates",
+      "png_sha256": "64594a3676fc1a418a889a4449cf6319df62e04c674f38008f3b915a42a92386",
+      "svg_sha256": "27cba9ae79a43f652b33bbed7a2720fa578900d59592456efe43a4d1a30b636f"
+    },
+    {
+      "name": "2_multilingual_reach",
+      "values": {
+        "test_synth": {
+          "Base": [
+            0.0,
+            0.0,
+            0.0,
+            2.0
+          ],
+          "Warmup SFT \u00b7 60 steps": [
+            77.0,
+            76.0,
+            66.0,
+            71.0
+          ],
+          "Final OneDesk \u00b7 selected update 40": [
+            77.0,
+            83.0,
+            69.0,
+            74.0
+          ]
+        },
+        "repo_style": {
+          "Base": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "Warmup SFT \u00b7 60 steps": [
+            64.0,
+            64.0,
+            64.0,
+            64.0
+          ],
+          "Final OneDesk \u00b7 selected update 40": [
+            72.0,
+            68.0,
+            72.0,
+            72.0
+          ]
+        }
+      },
+      "png_sha256": "2963ab9f53d10a398c3317da80b8476168fc717e602702d7346aa260c3577801",
+      "svg_sha256": "8cbbd12e34cd2f9c491205177361dcf97a21806d23205f802c126d93fef4eb4f"
+    },
+    {
+      "name": "3_training_journey",
+      "accuracy": [
+        17.5,
+        77.25,
+        72.5,
+        75.75
+      ],
+      "strict_catch": [
+        0.0,
+        63.5,
+        74.0,
+        79.0
+      ],
+      "false_refusal_answerable": [
+        73.23529411764706,
+        0.5882352941176471,
+        5.0,
+        5.588235294117647
+      ],
+      "catch_control": [
+        63.5,
+        52.0,
+        30.0
+      ],
+      "catch_final": [
+        79.0,
+        62.0,
+        70.0
+      ],
+      "png_sha256": "7c1a3d3a5078c64b8f64e6e4fdb77ef2f48b192fe352d1cad012274455e4254d",
+      "svg_sha256": "41bd4e631f591db1d0cfee22ef8b4fe3878c6132f80b9b79ec31f23d1e84eb3d"
+    },
+    {
+      "name": "4_cost_and_privacy_roi",
+      "scenarios": [
+        {
+          "key": "edge",
+          "name": "Local workstation \u00b7 RTX 2070 NF4",
+          "detail": "3.15 GiB measured \u00b7 on-premises option",
+          "cost": 8.0,
+          "basis": "Electricity only: 175 W, $0.10/kWh; measured v1 NF4 speed"
+        },
+        {
+          "key": "l40s",
+          "name": "Self-hosted L40S \u00b7 BF16",
+          "detail": "~1,471 audits/hour \u00b7 VPC deployment option",
+          "cost": 122.36,
+          "basis": "Measured offline BF16 throughput; $1.80/GPU-hour"
+        },
+        {
+          "key": "t4",
+          "name": "Cloud T4 \u00b7 scenario",
+          "detail": "VPC deployment option \u00b7 assumed throughput",
+          "cost": 228.57,
+          "basis": "Unmeasured T4; edge-latency proxy at $0.50/GPU-hour"
+        },
+        {
+          "key": "gpt4o",
+          "name": "Closed API \u00b7 GPT-4o",
+          "detail": "External API processing",
+          "cost": 1316.66,
+          "basis": "Historical uncached rates: $2.50/M input + $10/M output"
+        },
+        {
+          "key": "claude",
+          "name": "Closed API \u00b7 Claude 3.5 Sonnet",
+          "detail": "Historical API comparison",
+          "cost": 1625.98,
+          "basis": "Historical $3/M input + $15/M output; retired endpoint"
+        }
+      ],
+      "input_basis": {
+        "input_tokens": 4653.332,
+        "output_tokens": 153.322,
+        "local_seconds_per_episode": 16.456702504932007,
+        "l40s_mixed_cohort_seconds_per_episode": 2.4472452166551726,
+        "local_gpu_hours_per_1000": 4.571306251370002,
+        "l40s_gpu_hours_per_1000": 0.6797903379597702,
+        "t4_measured": false,
+        "gpt4o_historical_usd_per_1000": 13.16655,
+        "sonnet35_historical_usd_per_1000": 16.259826,
+        "electricity_power_kw": 0.175,
+        "electricity_usd_per_kwh": 0.1,
+        "api_quality_measured": false
+      },
+      "png_sha256": "52ea3bd9de8004acf349b53ecb3b2bc8da55abc0027135a275b1e168617ecdb7",
+      "svg_sha256": "7c819e27a4c36672ae1e50b8930dae42fd8240fbe594ef353010d66269dfa915"
+    }
+  ]
+}

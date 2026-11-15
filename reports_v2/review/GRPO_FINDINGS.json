@@ -1,0 +1,196 @@
+{
+  "holdouts": {
+    "test_synth": {
+      "predicted_abstain": 309,
+      "expected_abstain": 60,
+      "n": 400,
+      "by_kind": {
+        "consistent": {
+          "n": 80,
+          "correct": 10.0
+        },
+        "incident": {
+          "n": 60,
+          "correct": 0.0
+        },
+        "conflict": {
+          "n": 200,
+          "correct": 0.0
+        },
+        "abstain": {
+          "n": 60,
+          "correct": 60.0
+        }
+      },
+      "paired_accuracy_change": {
+        "estimate": 0.025,
+        "ci95": [
+          -0.04,
+          0.095
+        ],
+        "clusters": 100
+      }
+    },
+    "repo_style": {
+      "predicted_abstain": 85,
+      "expected_abstain": 15,
+      "n": 100,
+      "by_kind": {
+        "consistent": {
+          "n": 20,
+          "correct": 0.0
+        },
+        "incident": {
+          "n": 15,
+          "correct": 0.0
+        },
+        "conflict": {
+          "n": 50,
+          "correct": 0.0
+        },
+        "abstain": {
+          "n": 15,
+          "correct": 15.0
+        }
+      },
+      "paired_accuracy_change": {
+        "estimate": -0.01,
+        "ci95": [
+          -0.14,
+          0.14
+        ],
+        "clusters": 26
+      }
+    }
+  },
+  "validation_scores": [
+    0.225,
+    0.4375,
+    0.2625
+  ],
+  "validation_paired_changes": {
+    "SFT_to_stage1": {
+      "estimate": 0.2125,
+      "ci95": [
+        0.0625,
+        0.3875
+      ],
+      "clusters": 20
+    },
+    "stage1_to_stage2": {
+      "estimate": -0.175,
+      "ci95": [
+        -0.375,
+        0.0125
+      ],
+      "clusters": 20
+    },
+    "SFT_to_final": {
+      "estimate": 0.0375,
+      "ci95": [
+        -0.1375,
+        0.225
+      ],
+      "clusters": 20
+    }
+  },
+  "sampling": {
+    "stage1": {
+      "attempted_groups": 153,
+      "accepted_groups": 120,
+      "skipped_groups": 33,
+      "acceptance_rate": 0.7843137254901961,
+      "kind_fallback_events": 0,
+      "sampling_temperatures": {
+        "0.8": 153
+      },
+      "mean_attempted_reward": -0.1235457546181149,
+      "skipped_outcome_composition": {
+        "all_outcomes_wrong": 25,
+        "all_outcomes_correct": 8
+      },
+      "skipped_uniform_rewards": {
+        "-0.8": 1,
+        "1": 8,
+        "-0.2": 24
+      },
+      "attempted_by_kind": {
+        "consistent": 32,
+        "incident": 45,
+        "conflict": 38,
+        "abstain": 38
+      },
+      "accepted_by_kind": {
+        "consistent": 30,
+        "incident": 30,
+        "conflict": 30,
+        "abstain": 30
+      },
+      "final_sampler": {
+        "accepted": 120,
+        "accepted_by_kind": {
+          "consistent": 30,
+          "incident": 30,
+          "conflict": 30,
+          "abstain": 30
+        },
+        "saturated": [],
+        "draws": {
+          "consistent": 32,
+          "incident": 45,
+          "conflict": 38,
+          "abstain": 38
+        }
+      }
+    },
+    "stage2": {
+      "attempted_groups": 655,
+      "accepted_groups": 220,
+      "skipped_groups": 435,
+      "acceptance_rate": 0.33587786259541985,
+      "kind_fallback_events": 0,
+      "sampling_temperatures": {
+        "0.8": 648,
+        "0.95": 7
+      },
+      "mean_attempted_reward": 0.1962251905971811,
+      "skipped_outcome_composition": {
+        "all_outcomes_wrong": 253,
+        "all_outcomes_correct": 182
+      },
+      "skipped_uniform_rewards": {
+        "-0.2": 253,
+        "1": 182
+      },
+      "attempted_by_kind": {
+        "consistent": 85,
+        "incident": 233,
+        "conflict": 98,
+        "abstain": 239
+      },
+      "accepted_by_kind": {
+        "consistent": 55,
+        "incident": 55,
+        "conflict": 55,
+        "abstain": 55
+      },
+      "final_sampler": {
+        "accepted": 220,
+        "accepted_by_kind": {
+          "consistent": 55,
+          "incident": 55,
+          "conflict": 55,
+          "abstain": 55
+        },
+        "saturated": [],
+        "draws": {
+          "consistent": 85,
+          "incident": 233,
+          "conflict": 98,
+          "abstain": 239
+        }
+      }
+    }
+  },
+  "interpretation": "Final policy collapsed toward abstention; no statistically supported overall accuracy gain over SFT"
+}
