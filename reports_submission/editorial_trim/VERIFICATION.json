@@ -1,0 +1,45 @@
+{
+  "task": "CPU-only editorial trim and text overlap audit",
+  "source_full_report_commit": "aa4f922101d0797057673455de63a405ce2acf4c",
+  "tests": {
+    "passed": 120,
+    "warnings": 1,
+    "log": "reports_submission/editorial_trim/pytest_output.txt"
+  },
+  "protected_files": 19,
+  "readme_report_byte_identical": true,
+  "word_counts": {
+    "README.md": 1564,
+    "REPORT.md": 1564,
+    "docs/FULL_REPORT.md": 3889
+  },
+  "full_report_original_content_preserved": true,
+  "all_six_images_present_in_each_report": true,
+  "all_local_markdown_links_exist": true,
+  "python_examples_ast_and_shell_syntax_checked": true,
+  "asset_verification": "reports_submission/clean_assets/ASSET_VERIFICATION.json",
+  "exact_prompt_overlap": {
+    "count": 0,
+    "denominator": 500,
+    "task_ids": []
+  },
+  "pairwise_identifier_checks": 15,
+  "gold_scalar_overlap": {
+    "count": 32,
+    "denominator_nonnull": 425,
+    "fraction_nonnull": 0.07529411764705882,
+    "null_holdout_rows": 75,
+    "unique_repeated_values": 8,
+    "by_kind": {
+      "consistent": 8,
+      "incident": 24
+    }
+  },
+  "no_gpu_inference_training_or_cloud_jobs": true,
+  "sha256": {
+    "README.md": "9b4ce711ddea28823dacd637f3f3f6bd6ab5c6802dd3829b8506b101fa042c31",
+    "REPORT.md": "9b4ce711ddea28823dacd637f3f3f6bd6ab5c6802dd3829b8506b101fa042c31",
+    "docs/FULL_REPORT.md": "f3879cd514b7fe7285732860031e43f533358c0f2a2baba7cfaf1bb920c1bd7e",
+    "reports_submission/TEXT_LEAK_AUDIT.json": "7b02c711e1df759e52f2e93a82133e971a3169fc17e883ea8c92d77beccdacb0"
+  }
+}

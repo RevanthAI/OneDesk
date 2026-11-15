@@ -1,8 +1,8 @@
 {
   "project": "OneDesk",
-  "words": 3699,
-  "sha256": "a87838c7a3694f3432fc727fc0698d89f2c50f46d37f6699fd282ed96adc6c6c",
-  "source": "Saved benchmark JSON only",
+  "words": 1564,
+  "sha256": "9b4ce711ddea28823dacd637f3f3f6bd6ab5c6802dd3829b8506b101fa042c31",
+  "source": "Saved results plus CPU TEXT_LEAK_AUDIT",
   "no_inference": true,
   "no_paid_jobs": true
 }

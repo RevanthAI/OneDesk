@@ -1,122 +1,152 @@
-"""Build OneDesk's judge-facing report from existing evidence, without inference."""
+"""Build the concise OneDesk README/report; retain detailed evidence in docs/."""
 from pathlib import Path
 import json
-from publication_markdown import publication as published_state, format_gfm, sync_publication_links, url_link
-from clean_report_data import (ROOT, PROJECT_NAME, BASE, BASE_REVISION, summaries, table, ci,
-                               percent, fmt, read, rows, protect, language_examples, data_manifest, roi, registry, digest)
+import re
+from clean_report_data import (ROOT, BASE, summaries, table, ci, percent, language_examples, roi, protect, digest)
+from publication_markdown import publication as published_state, format_gfm, url_link
+from text_leak_check import summary as audit_summary
+
+FINAL_REPO='Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val'
+
+
+def update_full_report(audit):
+    """Only add/update the audit note in the preserved complete snapshot."""
+    path=ROOT/'docs/FULL_REPORT.md'
+    if not path.exists():
+        raise FileNotFoundError('Preserve the complete report in docs/FULL_REPORT.md before trimming.')
+    text=path.read_text()
+    begin='<!-- TEXT_LEAK_AUDIT:BEGIN -->';end='<!-- TEXT_LEAK_AUDIT:END -->'
+    note=begin+'\n\n### CPU Text-Level Overlap Check\n\n'+audit_summary(audit)+'\n\nExact counts, nearest matches and scalar-collision examples: [TEXT_LEAK_AUDIT.json](../reports_submission/TEXT_LEAK_AUDIT.json).\n\n'+end+'\n\n'
+    if begin in text:
+        text=re.sub(re.escape(begin)+r'.*?'+re.escape(end)+r'\n*',lambda m:note,text,flags=re.S)
+    else:
+        text=text.replace('## 4. Experiments Run, What Failed, and How We Found the Winning Recipe',note+'## 4. Experiments Run, What Failed, and How We Found the Winning Recipe',1)
+    path.write_text(format_gfm(text))
 
 
 def build(publication=None, output_path=None):
-    protect();ss=summaries();final=ss['Final OneDesk · selected update 40'];warm=ss['Warmup SFT · 60 steps'];full=ss['Full SFT · 120 steps']
-    pieces=[]
-    def add(text):pieces.append(text.strip()+'\n')
-    add(f'# {PROJECT_NAME}: One Multilingual Workspace to Query Your Entire Company’s Knowledge Base')
-    add(f'*Turning a 3.35B Local Model (`{BASE}`) into a Unified Enterprise Assistant Across Notion, GitHub, Slack, and Live SQL Databases — Track 3: Agentic Fine-Tuning*')
+    protect();ss=summaries();final=ss['Final OneDesk · selected update 40']
+    audit=json.loads((ROOT/'reports_submission/TEXT_LEAK_AUDIT.json').read_text())
+    pub=publication if publication is not None else published_state()
+    parts=[]
+    def add(text):parts.append(text.strip()+'\n')
+    add('# OneDesk (formerly DriftGuard-MCP): One Multilingual Workspace to Query Your Company’s Knowledge Base')
+    add('*Track 3: Agentic Fine-Tuning — Problem Statements Covered: **1, 2, 4, 5, 6, and 9***')
+    add(f'**Which model to use:** [{FINAL_REPO}](https://huggingface.co/{FINAL_REPO}) *(Base: `{BASE}` 3.35B · Full tables & checksums in [docs/FULL_REPORT.md](docs/FULL_REPORT.md) and [SUBMISSION_DOSSIER.md](SUBMISSION_DOSSIER.md))*')
+    add('**Declaration of work done outside the hackathon:** **None.** All world generators, synthetic datasets, CuratorKIT/AgentTune/AuditKIT integrations, training runs, and evaluations were built from scratch during the hackathon window.')
+    add('**Naming note:** *OneDesk is an open-source hackathon research prototype (formerly named `DriftGuard-MCP`, which is why internal Python classes retain the `DriftGuard*` prefix) and is unrelated to the commercial OneDesk helpdesk software.*')
     add('## ⚡ For Judges: 60-Second Overview')
-    add(table(['What matters','OneDesk'],[
-        ['The vision','One internal workspace: ask in English, Hindi (Devanagari/Latin), Hinglish or Telugu (native/Latin), and reconcile company wikis, code PRs, chat threads and databases into a current, cited answer.'],
-        ['The core challenge','A wiki may be stale after yesterday’s PR or hotfix; the newest document may be `[STAGING-ONLY]`. OneDesk checks production scope, reconciles evidence, flags outdated pages, runs SQL/time/unit/math chains, and handles unavailable sources.'],
-        ['Headline results','Base → final: **0.5% → 75.8% synthetic accuracy**, **0.0% → 71.0% repo-style accuracy**, and **100% valid final response format** on all 500 holdouts. Strict outdated-doc catch: **79.0%**, beating four-epoch SFT’s 63.5% by **15.5 percentage points** on synthetic conflicts.'],
-        ['On-premises & affordable','A local NF4 deployment measured **3.15 GiB VRAM** with $0 API fees (v1 adapter). The measured L40S serving scenario costs **$1.22/1,000 audits**, about 10.8× below the historical GPT-4o token-price scenario. On-premises deployment keeps model processing local; connector/logging controls define the privacy boundary.'],
-        ['What we built','A facts-first multilingual benchmark, real AgentTune SFT/live GRPO, CuratorKIT deduplication, AuditKIT evaluation, and a documented diagnosis and recovery from RL abstention collapse.']]))
+    add(table(['',''],[
+        ['**Claim**','A local 3.35B model checks Notion, GitHub, Slack and SQL for current, cited answers in English, Hindi, Hinglish or Telugu.'],
+        ['**Result**','Exact accuracy **0.5% → 75.8%** (synthetic, n=400), **0.0% → 71.0%** (repo-style, n=100); **100%** valid final format.'],
+        ['**Strongest at**','Stale docs: **79.0% vs 63.5%** full SFT; **+15.5 pp [+5.5, +26.0]** synthetic and **+10.0 pp [+2.0, +20.4]** repo-style.'],
+        ['**Caveat**','Full SFT is more accurate overall (**77.3% / 76.0%**); synthetic chain compliance trades off (**86.5% vs 97.4%**); all benchmark data is synthetic.'],
+        ['**Cost & Compute**','**$1.22/1k audits** on L40S vs historical GPT-4o **$13.17**; v1 local NF4: **3.15 GiB**, $0 API fees; recorded compute **~12.05 L40S h**, **~$21.80** list-rate lower bound.']]))
     add('![Headline Results](figures/1_headline_success.png)')
-    add('**Read the charts:** exact accuracy means the right structured status **and** exact normalized value. Strict outdated-doc catch additionally requires the correct stale-page ID and all gold sources retrieved and cited. Values are rounded for presentation; exact results and 95% intervals follow below.')
-    add('## 1. Problem Statement and Approach, in Brief\n\n### How Company Teams Use OneDesk')
-    add('An engineer checks a runbook, another announces a hotfix in Slack, and production settings change through a GitHub PR. Meanwhile an operations teammate needs an incident cost from SQL. Finding the answer requires knowing which source applies, which deployment is current, and whether a document is even about production. Global teams ask those questions in different languages and scripts.\n\nOneDesk gives that workflow one interface. Its small multilingual agent searches across the available tools, checks scope and timestamps, and returns a compact answer with evidence IDs the employee can follow.')
-    add('> **Employee query, Hinglish:** “Bhai, `loyalty-api` ka actual production `batch_size_mb` kya hai? Runbook aur deployment updates match karke outdated page flag karo.”')
-    add('1. **Wiki lookup.** The production Notion runbook says **154 MB** and identifies Slack `#deployments` as its tracking channel. A newer staging page says **286 MB**; the agent must ignore it for this production request.\n2. **Deployment verification.** Follow the observed tracking hint to Slack, or check GitHub and Slack when the deployment trail spans both. In this frozen example, the production Slack record updates the value to **16 MB**.\n3. **Verified answer.** Return **16**, cite `NOTION-V2-TR-105` and `SLACK-V2-TR-105`, and flag the Notion page as outdated. The next team member can see why the answer differs from the wiki.')
-    add('''Compact protocol example for `train_sft-0000-hinglish`:
-
-```xml
+    add('## 1. Problem Statement & Approach')
+    add('A Hinglish employee asks for `loyalty-api`’s actual production `batch_size_mb`: the runbook says 154, a newer staging-only distractor says 286, and the production Slack update says 16. This `train_sft-0000-hinglish` protocol example shows the tool calls, cited answer and stale-page flag; the first query is shortened for readability.')
+    add('''```xml
 <tool_call>{"server":"notion-mcp","tool":"search_notion","arguments":{"query":"loyalty-api batch_size_mb"}}</tool_call>
 <tool_call>{"server":"slack-mcp","tool":"search_slack","arguments":{"query":"loyalty-api batch_size_mb"}}</tool_call>
 <final_answer>{"status":"conflict_resolved","value":16,"cites":["NOTION-V2-TR-105","SLACK-V2-TR-105"],"stale_source":"NOTION-V2-TR-105"}</final_answer>
 ```''')
-    add('These values come from the frozen `train_sft-0000-hinglish` example; the first search query is shortened for this compact illustration. Cross-channel tasks require an additional PR/hotfix check; incident tasks begin by discovering their service or timestamps in SQL.')
-    add('### Unified 9-Server MCP Workspace\n\n![Unified 9-Server MCP Workspace](figures/0_workspace_architecture.png)')
-    add('`db-mcp.query_db(sql)` executes actual SELECT queries against an episode-isolated, in-memory SQLite snapshot. The model receives rows or SQLite errors as its next observation. Time, conversion and arithmetic tools perform actual deterministic calculations. Search returns up to three ranked records, mixing production, newer staging-only records and siblings. The model’s structured tool turns are executed and fed back before it chooses the next action.')
-    add('### Six language and script styles — verbatim frozen prompts')
-    add(table(['Style','Example prompt'],[[r['language']+':'+r['script'],r['question']] for r in language_examples()]))
+    add('![Unified 9-Server MCP Workspace](figures/0_workspace_architecture.png)')
+    selected={r['language']+':'+r['script']:r for r in language_examples()}
+    add(table(['Script style','Frozen example'],[[key,selected[key]['question']] for key in ('en:latin','te:native')]))
+    add('All six script styles: [full report](docs/FULL_REPORT.md#six-language-and-script-styles--verbatim-frozen-prompts).')
     add('![Multilingual Reach](figures/2_multilingual_reach.png)')
-    add('## 2. Hackathon Repos Used: Which Ones, For What, and Which Features')
+    add('## 2. Hackathon Repos Used')
     add('![Lexsi Toolkit Pipeline](figures/0_toolkit_pipeline.png)')
-    add(table(['Toolkit','Features actually used','Code and output'],[
-        ['**CuratorKIT 0.1.21** · `d6f2e44e`','`DataSample`, `ExactDeduplicator.run`: **1,955 candidates → 1,700 tasks**, with all **255 exact duplicate controls** rejected and logged.','`src/v2_dataset.py:curate`; `data_v2/curation_funnel.json`, `curation_rejections.jsonl`'],
-        ['**AgentTune 1.1.4** · `e56a1094`','`Step`, `Trajectory`, `TrajectoryDataset`; `SFTTrainerBase` via `DriftGuardSFTTrainer`; `TrlAgenticGrpo` wrapper with `MCPGRPOTrainer` for executed multi-turn MCP rollouts.','`src_v2_2/toolkits.py`, `agenttune_sft_backend.py`, `agenttune_grpo_backend.py`, `training.py`'],
-        ['**AuditKIT 1.1.7** · `fe6083e7`','`episodes_from_agenttune`, `FunctionScorer`, `ToolCallF1(arg_mode="name")`, `ToolCallValidity`, `RedundantToolCalls`; matched **580-episode checkpoint comparisons** (80 validation + 500 holdouts).','`src_v2_2/evaluate_auditkit.py`, `evaluation_core.py`; JSON summaries and raw episodes']]))
-    add('**Compatibility engineering:** we bridged AgentTune’s `_generate_single_turn` expectation to the installed TRL 0.23.1 live-rollout hook; loaded dependency-light `agenttune.agentic` leaf modules to avoid unrelated optional imports; and added explicit BF16 autocast around unwrapped PEFT decoder scoring. AgentTune retains its data/train/save lifecycle, TRL owns optimization, and our backend supplies full tool episodes and assistant-only loss masks. Issue-ready details and exact commits are in [SUBMISSION_DOSSIER.md](SUBMISSION_DOSSIER.md#5-chaining-the-three-lexsi-labs-repositories--upstream-findings).')
+    add(table(['Toolkit','Role and features'],[
+        ['**CuratorKIT 0.1.21**','`DataSample` + `ExactDeduplicator.run`: **1,955 → 1,700** tasks; 255 injected exact duplicates rejected.'],
+        ['**AgentTune 1.1.4**','`Step`/`Trajectory` serialization, `SFTTrainerBase` warmup and `TrlAgenticGrpo` lifecycle with executed live MCP rollouts.'],
+        ['**AuditKIT 1.1.7**','580 episodes/checkpoint: trajectory import, outcome/citation scorers and native tool-selection, validity and redundancy metrics.']]))
+    add('Compatibility fixes:\n\n- Bridge AgentTune’s missing `_generate_single_turn` hook to TRL 0.23.1 live rollouts.\n- Load dependency-light `agenttune.agentic` leaf modules instead of eager optional stacks.\n- Explicit BF16 autocast for unwrapped PEFT decoder log-probability scoring.')
     add('## 3. Data Creation, Curation & Evaluation Strategy')
-    add('### Facts first, then language\n\nWe built a company world with **60 microservices**, **80 production incidents**, configuration histories, runbooks and deployment trails. Structured Python facts come first, so every gold value, timestamp and evidence ID is deterministic. The oracle executes the same tools available to the model and verifies its trajectories before text templates render each query in four language/register groups and six script styles.')
-    add(table(['Scenario','What the agent must do'],[
-        ['Consistent knowledge','Verify that the production wiki and deployment agree, despite staging-only and sibling distractors.'],
-        ['Conflicting / outdated documents','Find the latest production setting in GitHub or Slack, compare it with the runbook, and flag/cite the stale page. Some trails span all three sources.'],
-        ['Database & calculation chains','Discover incident fields through read-only SQLite, then compute hours or convert kg→lb / decimal GB→MiB, and use math for the exact rounded cost. Config-audit incidents discover the service before checking its deployment.'],
-        ['Safe refusal','Abstain when the entity does not exist or the explicitly required SQL server is unplugged, rather than inventing evidence or silently substituting another source.']]))
-    add('### Tested split separation and context sizing\n\nAcross the **six splits and 1,700 rendered tasks**, tests enforce **zero shared case IDs**, **zero shared `(service, parameter)` pairs**, and **zero shared incident IDs**. The train world contains 320 semantic cases: 300 allocated to the four train/validation pools and 20 reserved. Holdout worlds use separate namespaces.\n\nThe token audit found a maximum **2,359 tokens**; a 1,536-token limit would truncate **136/240** SFT conversations. We therefore used **2,560 tokens for SFT**, asserted **zero truncated trajectories**, and allowed **4,096 context tokens at evaluation**, with 192 generated tokens per turn and six tool calls.')
-    add('### Four dimensions of evaluation\n\n1. **Exact answer accuracy:** the expected status and exact normalized scalar agree.\n2. **Strict outdated-doc catch:** the answer is right, the outdated page is flagged, and every gold source was actually retrieved **and** cited.\n3. **Verified citations and tool chains:** citation F1 credits only retrieved evidence; required-chain checks identify missing utilities or deployment channels; AuditKIT checks tool selection, validity and redundancy.\n4. **Refusal calibration:** precision/recall distinguish necessary refusals from refusing answerable questions and missing an unplugged-source constraint.\n\nWe bootstrap **10,000 times by semantic case**, keeping translated versions together. The validation, synthetic and repo-style cohorts contain **20**, **100** and **26** semantic cases respectively.')
-    add('## 4. Experiments Run, What Failed, and How We Found the Winning Recipe')
+    add(table(['Scenario','Required behavior'],[
+        ['Consistent knowledge','Match production scope; verify agreement despite staging/sibling distractors.'],
+        ['Outdated documents','Reconcile Notion against newer PR/hotfix evidence; identify and cite the stale page.'],
+        ['Database/calculation chains','Execute SQLite SELECT; derive duration or convert kg→lb / GB→MiB; calculate rounded incident cost.'],
+        ['Safe refusal','Abstain for absent entities or an unavailable explicitly required database.']]))
+    add(audit_summary(audit)+' A **2,560-token SFT window preserves every trajectory (0 truncations)**; evaluation uses 4,096 tokens, with [full split/token details and the audit](docs/FULL_REPORT.md#cpu-text-level-overlap-check).')
+    add('- **Exact accuracy:** correct status plus normalized scalar.\n- **Strict stale catch:** correct answer, correct stale page, every gold source retrieved and cited.\n- **Citation/tool compliance:** verified citation F1, required-server checks and AuditKIT metrics.\n- **Refusal calibration:** necessary versus false refusals, including unplugged-source recall.')
+    add('## 4. Experiments Run, What Failed & Winning Recipe')
     add('![Training Journey](figures/3_training_journey.png)')
-    add('### Too little warmup: the lazy refusal trap\n\nA deliberately compact **15-step SFT** reached **15.0% synthetic accuracy**. We then ran **340 GRPO updates**. In unsuccessful rollout groups, a lazy `abstain` could get a smaller penalty than a malformed tool attempt or stale answer. That made refusal comparatively attractive. The final policy refused **309/400 synthetic queries (77.3%)**, including **249/340 answerable queries (73.2%)**. Strict outdated-doc catch fell to **0%**.\n\nRL initially helped: at update 120, validation rose **22.50% → 43.75%** (+21.25 pp, 95% CI **[+6.25, +38.75]**) and synthetic holdout rose **15.00% → 26.25%** (+11.25 pp **[+5.00, +18.00]**). Continuing without a collapse-aware selection rule lost that gain.')
-    add('### Too little rollout variety: the clone bottleneck\n\nFour epochs of SFT (**120 steps**) produced a strong baseline: **77.3% synthetic / 76.0% repo-style accuracy**. But its RL pilot found only **6 useful groups out of 72 (8.3% acceptance)**. Of 66 groups with zero reward variance, **62 had completely identical assistant-token sequences**. A strong imitation model left little useful variation in that pilot. Its strict outdated-doc catch was **63.5% synthetic**, even though overall accuracy was high.')
-    add('### The working recipe: protocol warmup + selective anti-collapse RL\n\nWe stopped SFT at **two epochs / 60 steps**, reaching **72.5% synthetic accuracy** with **100% valid final format**. We then sampled six rollouts per group at a higher exploration temperature, penalized false refusals, rewarded useful evidence gathering, and updated only when rewards varied and an answerable group contained a **positive evidence or success anchor**. A positive anchor need not be a completely correct answer.\n\nThe five-update smoke accepted **5/9 groups (55.6%)**. The complete run accepted **80/342 (23.4%)**—**2.8×** the historical four-epoch pilot’s acceptance rate—and completed **40 + 40 updates**. Validation at updates 20/40/60/80 was **73.75 / 80.00 / 76.25 / 78.75%**. We selected **update 40** by validation; predicted validation abstention was **25.0%**, matching its true prevalence, and no >40% collapse guard fired.\n\nThe selected OneDesk agent reached **75.8% synthetic**, **71.0% repo-style** and **80.0% validation** accuracy. Strict outdated-doc catch reached **79.0% synthetic / 62.0% repo-style**: **+15.5 pp [+5.5, +26.0]** and **+10.0 pp [+1.96, +20.41]** over the full four-epoch control. Stage 2’s final update 80 was saved separately; the published headline belongs to the selected update 40.')
-    add('### Master results — exact accuracy (%) with 95% case-bootstrap intervals')
-    add(table(['Checkpoint','Synthetic · n=400','Repo-style · n=100','Validation · n=80'],[[name]+[ci(summary[split]['metrics']['exact_outcome']) for split in ('test_synth','repo_style','validation')] for name,summary in ss.items()]))
-    add('### Multilingual breakdown — exact accuracy (%)')
-    for split,title in [('test_synth','Synthetic holdout'),('repo_style','Repo-style holdout')]:
-        add('**'+title+'**')
-        keys=['Base','Warmup SFT · 60 steps','Full SFT · 120 steps','Final OneDesk · selected update 40']
-        add(table(['Language','Base','Warmup SFT','Full 4-epoch SFT','Final OneDesk'],[[lang]+[percent(ss[key][split]['metrics']['accuracy_by_language'][lang]['estimate']) for key in keys] for lang in ('en','hi','hinglish','te')]))
-    add('### AuditKIT tool-calling table')
-    toolrows=[]
-    for split,title in [('test_synth','Synthetic'),('repo_style','Repo-style')]:
-        for key,label in [('Base','Base'),('Full SFT · 120 steps','Full SFT'),('Final OneDesk · selected update 40','Final OneDesk')]:
-            h=ss[key][split]['auditkit_headline'];m=ss[key][split]['metrics']
-            toolrows.append([title,label]+[percent(h[name]) if h.get(name) is not None else '—' for name in ['tool_call_precision_name','tool_call_recall_name','tool_call_f1_name','tool_call_validity','redundant_tool_calls']]+[percent(m['verified_citation_f1']['estimate']),percent(m['required_chain_compliance']['estimate'])])
-    add(table(['Cohort','Model','Tool precision %','Recall %','F1 %','Validity %','Redundancy % ↓','Verified cite F1 %','Required chain %'],toolrows))
-    add('In the AuditKIT table, — means the native metric is absent from that saved headline, rather than a zero score.')
-    add('Full SFT is the strongest overall-accuracy control; OneDesk’s selected RL agent is strongest on the **complete stale-document detection contract**. The master table and separate chain metric make that distinction visible.')
-    add('### Enterprise ROI & Privacy')
+    add('### Lazy Refusal Trap\n\nOnly 15 SFT steps left a weak starting policy. Long RL then favored comparatively less-penalized refusal over malformed or stale answers. At 340 updates it refused **77.3%** of synthetic queries and caught **0%** of stale docs.')
+    add('### Clone Bottleneck\n\nFull four-epoch SFT reached **77.3% / 76.0%** holdout accuracy. Its RL pilot accepted only **6/72 groups (8.3%)**; 62 of 66 rejected zero-variance groups had identical token sequences. Strict synthetic stale catch was **63.5%**, exposing a gap beyond overall accuracy.')
+    add('### Winning Recipe\n\nTwo-epoch protocol warmup followed by anti-collapse, positive-anchor G6 GRPO completed **80 active updates**, accepting **23.4%** of groups. Validation selected update **40** at **80.0%** accuracy, with no abstention-collapse guard triggered. Selected holdout accuracy reached **75.8% / 71.0%**, and strict stale catch **79.0% / 62.0%**.')
+    keys=[('Base','Base'),('Warmup SFT · 60 steps','Warmup SFT · 60 steps'),('Final OneDesk · selected update 40','Final OneDesk · GRPO update 40'),('Full SFT · 120 steps','Full 4-Epoch SFT · 120 steps')]
+    add(table(['Checkpoint','Synthetic % [95% CI]','Repo-style % [95% CI]','Validation % [95% CI]'],[[label]+[ci(ss[key][sp]['metrics']['exact_outcome']) for sp in ('test_synth','repo_style','validation')] for key,label in keys]))
+    add('[Full seven-checkpoint, multilingual and AuditKIT tables](docs/FULL_REPORT.md).')
     add('![Cost and Privacy ROI](figures/4_cost_and_privacy_roi.png)')
-    add(table(['Deployment option','Monthly / 100,000 audits','Per 1,000 audits','Basis'],[[r['name'],f"${r['cost']:,.2f}",f"${r['cost']/100:.2f}",r['basis']] for r in roi()]))
-    add('For the selected agent, saved multi-turn holdout traces average **4,653.332 input tokens** and **153.322 decoded output tokens** per audit. The API scenario applies historical uncached rates to that volume. The L40S result uses the recorded **1,419.402 seconds / 580 evaluation episodes**, about **1,471 audits/hour**, at **$1.80/hour**. Local electricity assumes **175 W × $0.10/kWh** and the recorded v1 RTX 2070 runtime; it has no API token bill. On-premises deployment can keep model processing and evidence inside company infrastructure. A self-hosted cloud model can instead be deployed under an organization’s VPC controls.')
-    add('## 5. Models Used and Their Licenses')
-    add(table(['Model family / artifact','Purpose','License'],[
-        [f'`{BASE}` · 3.35B dense open weights','Base student and all fresh SFT starts; pinned revision `'+BASE_REVISION+'`','CC BY-NC 4.0'],
-        ['Warmup, selected GRPO, final-update and full SFT LoRA adapters','Trained rank-16 / alpha-32 adapters on the pinned base','CC BY-NC 4.0; retain base attribution and terms'],
-        ['V1 adapter/merged model, v1 pilot and v2 weak/collapsed controls','Historical experiments and negative-result controls','CC BY-NC 4.0; scores refer to their own cohorts']]))
-    add('Gold facts are generated deterministically in Python, rather than by a teacher model.')
-    add('## 6. Datasets and Benchmarks Used and Their Licenses')
-    add(table(['Frozen data_v2 artifact','Rows','Semantic cases','SHA-256'],[[f"`{d['file']}`",d['rows'],d['cases'],f"`{d['sha256']}`"] for d in data_manifest()]))
-    add('**Total: 1,700 rendered tasks.** Our original synthetic benchmark data is licensed under **CC-BY-4.0**; attribution: **OneDesk contributors / Revanth-ml**. Original project code is licensed under **Apache-2.0**. See [dataset licensing](LICENSE-DATA.md) and the [code license](LICENSE). Model weights and adapters remain **CC BY-NC 4.0**; third-party code retains its own license. The frozen data and its checksum manifest remain unchanged.')
-    receipt=publication if publication is not None else published_state()
-    mapping=receipt.get('repo_mapping',{})
-    add('## 7. Model Artifacts Public, as an HF Collection')
-    add('**Publication status:** '+('Public collections and repositories are linked below.' if receipt.get('complete') else 'Collection links will appear here after publication.'))
-    add('**Model Collection:** '+url_link(receipt['model_collection_url']))
-    records=registry()
-    add(table(['Artifact','Hugging Face repository','Pinned weight revision'],[[r['label'],'https://huggingface.co/'+mapping.get(r['repo_id'],r['repo_id']),f"`{r['revision']}`"] for r in records if r['repo_type']=='model']))
-    add('Use the **warmup GRPO best-val** repository for the selected final agent. The final-update adapter is an ablation with no separate full holdout evaluation; its card does not borrow update 40’s scores.')
-    add('## 8. Data Artifacts Public, as an HF Collection')
-    add('**Data Collection:** '+url_link(receipt['data_collection_url']))
-    add(table(['Repository','Contents'],[['https://huggingface.co/datasets/'+mapping.get(r['repo_id'],r['repo_id']),r['label']] for r in records if r['repo_type']=='dataset']))
-    add('The frozen data repository contains the benchmark JSONL and manifests. Run repositories contain provenance, raw trajectories, evaluation summaries and training diagnostics. Human-readable model and dataset cards are available under [hf_cards/](hf_cards/).')
+    add(table(['Serving option','USD /1k audits','USD /100k audits'],[[r['name'],f"${r['cost']/100:.2f}",f"${r['cost']:,.2f}"] for r in roi() if r['key'] in ('edge','l40s','gpt4o')]))
+    add('**Hackathon Compute Used:** recorded **12.05 L40S hours + 2.35 A100 minutes ≈ $21.80** continuous list-rate lower bound.\n\nIncludes observed training/evaluation work; excludes uncovered setup/charged intervals and minute rounding, so it is not an invoice total ([accounting](reports_submission/COMPUTE_ACCOUNTING.json)).')
+    add('## 5–8. Models, Datasets & Public HF Collections')
+    add(f'- **Primary Final Model:** [{FINAL_REPO}](https://huggingface.co/{FINAL_REPO}) (base: [{BASE}](https://huggingface.co/{BASE}), rev `73500c80`).\n- **Public Model Collection (all 9 artifacts & controls):** '+url_link(pub['model_collection_url'])+'.\n- **Public Data Collection (frozen benchmark & rollout journals):** '+url_link(pub['data_collection_url'])+'.\n- **Licenses:** model weights/adapters `CC-BY-NC-4.0` · synthetic data `CC-BY-4.0` ([LICENSE-DATA.md](LICENSE-DATA.md)) · code `Apache-2.0` ([LICENSE](LICENSE)).')
+    add('[Nine-row revision table, six split hashes and all 19 protected-file checksums](docs/FULL_REPORT.md#5-models-used-and-their-licenses).')
     add('## 9. With More Credits: Approach, Before and After Results')
-    add('**Next experiment — targets, not measured results.** Extra credits would fund a controlled sweep and a fresh confirmation cohort, focusing on missing three-server evidence and unplugged-DB errors. The following “after” column is an explicit research target; it is not an extrapolated or achieved score.')
-    add(table(['Priority','Measured starting point','Proposed change','Target after a future run'],[
-        ['Complete deployment trail','Final chain compliance: **86.47% synthetic / 74.12% repo-style**','Require all task-authoritative deployment evidence in successful conflict traces; add hard three-source examples','**>96% chain compliance**, without reducing exact accuracy'],
-        ['Unplugged database handling','Final unplugged recall: **'+percent(final['test_synth']['metrics']['unplugged_recall']['estimate'],2)+'% synthetic / '+percent(final['repo_style']['metrics']['unplugged_recall']['estimate'],2)+'% repo-style**','Oversample source-unavailable cases and contrast “missing entity” versus “source offline”','Higher unplugged recall with fewer false refusals; verify on fresh cases'],
-        ['Overall answer accuracy','Final: **75.75% synthetic / 71.00% repo-style**','Sweep reward/chain balance, warmup length and sampling under matched compute; retain validation-only selection','**83%+ accuracy** as an aspirational target, not a prediction'],
-        ['Scientific confirmation','One completed selected recipe; repeated validation use','Multiple random seeds and an untouched, source-backed evaluation cohort','Replicated paired improvements and narrower uncertainty']]))
-    add('### Reproducibility commands\n\nThese commands rebuild documentation and run CPU-only regression checks; they do not start training or inference. The publish command is shown separately and changes remote visibility only when explicitly invoked.')
-    add('```bash\n.venv/bin/python scripts/build_clean_charts.py\n.venv/bin/python scripts/build_clean_report.py\n.venv/bin/python scripts/prepare_hf_repos.py --dry-run\nCUDA_VISIBLE_DEVICES=\'\' .venv/bin/python -m pytest tests tests_v2 tests_v2_1 tests_v2_2 -q\n.venv/bin/python -c "from src_v2_2.manage import protected; print(protected())"\n\n# When ready: publish existing artifacts/cards and create public collections.\n.venv/bin/python scripts/prepare_hf_repos.py --publish\n# Optional rename (same account; recorded original revisions stay documented):\n# .venv/bin/python scripts/prepare_hf_repos.py --publish --rename-prefix onedesk\n```')
-    add('**Teammates tagged:** [@Revanth-ml](https://huggingface.co/Revanth-ml).\n\n**Detailed reference:** [SUBMISSION_DOSSIER.md](SUBMISSION_DOSSIER.md). Saved evidence: [full seven-checkpoint comparison](reports_v2_2/downloads/warmup-20261113T084035Z/comparison/EXPERIMENT_REPORT.md), [paired trade-offs](reports_v2_2/downloads/warmup-20261113T084035Z/comparison/FINDINGS.md), and [chart source values](figures/CHART_DATA.json). Published artifacts use `onedesk` repository names; immutable task IDs and historical provenance retain their original experiment identifiers.')
-    add('## 10. Honest Limitations')
-    add('- **Benchmark scope:** the Notion/GitHub/Slack records and repo-style examples are constructed fixtures, not live company integrations or independently verified historical Git changes. SQL and utility calls execute for real, but the nine logical MCP interfaces run in-process over local snapshots.\n- **Artificial split and language structure:** configuration integers are divided by modulo-3 residue across worlds. Disjoint identifiers prevent tested case overlap, but shared templates and structural shortcuts remain possible. Native/Latin prompts are template translations, not independent human-reviewed language datasets.\n- **Selection and uncertainty:** translations are clustered, validation has only 20 semantic cases, and checkpoints were repeatedly selected on it. Overall GRPO-minus-warmup holdout gains have paired 95% intervals that include zero: **+3.25 pp [−2.50, +9.00] synthetic**, **+7.00 pp [−5.00, +20.00] repo-style**. A fresh confirmation set and multiple seeds are needed.\n- **Which checkpoint to choose:** full four-epoch SFT has higher overall accuracy (**77.25% / 76.00%**). Selected OneDesk GRPO is better on strict stale catch (**79.00% / 62.00%**), but required-chain compliance fell from warmup **93.82% / 90.59%** to **86.47% / 74.12%**. It still misses some unplugged sources and unnecessarily refuses some answerable tasks. The rule checks server calls, not causal use of every observation.\n- **Exploration explanation:** shorter warmup, G4→G6 and higher temperatures changed together. Zero reward variance is not identical text, and identical sampled sequences are not a full-distribution entropy measurement. The recipe avoided the earlier abstention collapse in this run; no universal causal fix is claimed.\n- **Cost and privacy:** local 3.15 GiB and speed measurements are from the v1 NF4 adapter, while v2 quality/throughput was measured in BF16. T4 throughput and API accuracy were not measured; API prices are historical, Claude 3.5 Sonnet is retired, and costs exclude hardware amortization/operations. Privacy depends on the deployment, access controls, connectors and logs; it is not guaranteed by the model.\n- **Licenses and scope:** model weights and adapters retain CC BY-NC 4.0 noncommercial terms; original synthetic data is CC-BY-4.0 and original project code is Apache-2.0. Third-party licenses still apply. No public Gradio application is established by these artifacts. Future 83%+/96% numbers are targets only.')
-    text=format_gfm(sync_publication_links('\n'.join(pieces)+'\n',receipt.get('repo_mapping')))
-    output=Path(output_path) if output_path is not None else ROOT/'REPORT.md'
-    output.write_text(text)
-    metadata=dict(project=PROJECT_NAME,words=len(text.split()),sha256=digest(output),source='Saved benchmark JSON only',no_inference=True,no_paid_jobs=True)
-    target=output.parent if output_path is not None else ROOT/'reports_submission/clean_assets';target.mkdir(exist_ok=True);(target/'REPORT_METADATA.json').write_text(json.dumps(metadata,indent=2)+'\n')
-    protect();print(json.dumps(metadata));return text
+    add('**Targets, not measured results:**')
+    add(table(['Priority','Measured before','Next change','Future target'],[
+        ['Complete evidence','Chain: **86.47% / 74.12%**','Enforce three-server completeness; harder audit trails','**>96%** chain compliance'],
+        ['Unplugged DB','Recall: **'+percent(final['test_synth']['metrics']['unplugged_recall']['estimate'],2)+'% / '+percent(final['repo_style']['metrics']['unplugged_recall']['estimate'],2)+'%**','Oversample unavailable-source contrasts','Fewer missed/false refusals'],
+        ['Overall accuracy','**75.75% / 71.00%**','Matched-compute warmup/reward/sampling sweep','**83%+**, aspirational'],
+        ['Confirmation','One selected recipe','Multiple seeds; fresh source-backed cohort','Replicated paired gains']]))
+    add('## 10. Repo Layout & Run Instructions')
+    add('''```text
+├── src_v2_2/          # Final MCP runtime, AgentTune backends and AuditKIT scorer
+├── src/              # v2 facts-first generator, oracle and CuratorKIT pipeline
+├── data_v2/          # Frozen 1,700 tasks, worlds and SHA-256 manifest
+├── checkpoints_v2_2/ # sft_warmup_adapter, grpo_best_val_adapter, grpo_final_adapter
+├── figures/          # Benchmark charts and static architecture diagrams
+├── docs/             # FULL_REPORT.md: complete tables and checksums
+└── tests_v2_2/       # Final-recipe tests; 120 tests total across four test folders
+```''')
+    add('From the project root with the pinned toolkits/dependencies installed; use fresh output paths. The training/evaluation modules expose Python functions, so the commands below call those functions directly; GPU stages need suitable CUDA hardware.')
+    add('''```bash
+# CPU data curation: new directory, never overwrite frozen data_v2/.
+python -c "from src.v2_dataset import build; build('data_rebuild')"
+
+# GPU: two-epoch SFT warmup, then live 40+40-update GRPO.
+python - <<'PYTHON'
+from src_v2_2.training import run_sft, run_grpo
+adapter, metadata = run_sft('runs/repro_sft')
+run_grpo(adapter, 'runs/repro_grpo', metadata)
+PYTHON
+
+# GPU: AuditKIT on validation and both frozen holdouts.
+python - <<'PYTHON'
+from peft import PeftModel
+from src_v2_2.backend import load_base
+from src_v2_2.evaluate_auditkit import evaluate
+model, tokenizer = load_base()
+model = PeftModel.from_pretrained(model, 'runs/repro_grpo/best_val_adapter')
+evaluate(model, tokenizer, 'runs/repro_eval',
+         splits=('validation', 'test_synth', 'repo_style'))
+PYTHON
+
+# Download selected weights, then run one local NF4 example (GPU).
+python - <<'PYTHON'
+from huggingface_hub import snapshot_download
+snapshot_download('Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val',
+    revision='016676680121b4dd90ec6026978de7ee1cdb1271',
+    local_dir='checkpoints_v2_2/grpo_best_val_adapter')
+PYTHON
+python -m src_v2_2.local_demo --adapter checkpoints_v2_2/grpo_best_val_adapter
+
+# CPU audit and complete regression suite.
+python scripts/text_leak_check.py
+CUDA_VISIBLE_DEVICES='' python -m pytest tests tests_v2 tests_v2_1 tests_v2_2 -q
+```''')
+    add('## 11. Honest Limitations & Teammates Tagged')
+    add('- Constructed fixtures, modulo-3 configuration values and correlated template translations; no verified live-OSS transfer. Scalar answers recur across different facts, as the [text audit](reports_submission/TEXT_LEAK_AUDIT.json) reports.\n- Overall GRPO-over-warmup holdout gain intervals include zero; repeated validation selection and one run need fresh confirmation.\n- Prefer **full SFT for overall accuracy**, selected **GRPO for strict stale catch**; chain completeness, incident reasoning and unplugged-DB handling still need work.\n- Warmup length, group size and temperature changed together; zero variance does not prove full-distribution entropy collapse.\n- Local VRAM/speed is measured on the **v1 NF4 adapter**; v2 results are BF16. ROI excludes hardware/operations, uses historical API prices, and does not establish equal API accuracy; privacy requires appropriate connectors and logging.\n- Model weights retain noncommercial terms; third-party licenses apply. No public Gradio app is established, and future targets are unmeasured.')
+    add('**Teammates tagged:** [@Revanth-ml](https://huggingface.co/Revanth-ml).')
+    text=format_gfm('\n'.join(parts))
+    output=Path(output_path) if output_path is not None else ROOT/'REPORT.md';output.write_text(text)
+    if output_path is None:
+        (ROOT/'README.md').write_bytes(output.read_bytes());update_full_report(audit)
+    target=output.parent if output_path is not None else ROOT/'reports_submission/clean_assets';target.mkdir(exist_ok=True)
+    meta=dict(project='OneDesk',words=len(text.split()),sha256=digest(output),source='Saved results plus CPU TEXT_LEAK_AUDIT',no_inference=True,no_paid_jobs=True)
+    (target/'REPORT_METADATA.json').write_text(json.dumps(meta,indent=2)+'\n')
+    protect();print(json.dumps(meta));return text
 
 if __name__=='__main__':build()

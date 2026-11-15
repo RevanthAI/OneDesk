@@ -40,12 +40,18 @@ def main():
             assert all(abs(x-300)<1 for x in im.info['dpi'])
             figures.append(dict(path=str(png.relative_to(ROOT)),size=list(im.size),dpi=list(im.info['dpi'])))
     report=(ROOT/'REPORT.md').read_text()
-    assert report.startswith('# OneDesk:') and 'SangamKB' not in report
-    assert [int(x) for x in re.findall(r'^## (\d+)\.',report,re.M)]==list(range(1,11))
-    assert 'targets, not measured results' in report
+    assert report.startswith('# OneDesk (formerly DriftGuard-MCP):') and 'SangamKB' not in report
+    assert [int(x) for x in re.findall(r'^## (\d+)\.',report,re.M)]==[1,2,3,4,9,10,11]
+    assert '## 5–8. Models, Datasets & Public HF Collections' in report
+    assert 'targets, not measured results' in report.casefold()
     assert MODEL_COLLECTION_URL in report and DATA_COLLECTION_URL in report
     assert 'pending `--publish`' not in report and '```mermaid' not in report
-    assert '**CC-BY-4.0**' in report and '**Apache-2.0**' in report
+    assert '`CC-BY-4.0`' in report and '`Apache-2.0`' in report
+    assert (ROOT/'README.md').read_bytes()==(ROOT/'REPORT.md').read_bytes()
+    full=(ROOT/'docs/FULL_REPORT.md').read_text()
+    assert len(re.findall(r'!\[[^\]]*\]\(\.\./figures/[^)]+\)',full))==6
+    assert 'All 19 Protected Dataset Checksums' in full
+    assert 'CPU Text-Level Overlap Check' in full and '32/425' in full
     chart=json.loads((ROOT/'figures/CHART_DATA.json').read_text())['charts'][1]['values']
     for split,expected in [('test_synth',[77.,76.,66.,71.]),('repo_style',[64.,64.,64.,64.])]:
         assert len(chart[split])==3
