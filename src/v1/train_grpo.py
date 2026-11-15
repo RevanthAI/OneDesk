@@ -29,7 +29,7 @@ def main():
         if not torch.cuda.is_available() or not torch.cuda.is_bf16_supported():raise RuntimeError('BF16-capable cloud GPU required')
         torch.manual_seed(metadata['seed']);torch.set_num_threads(8)
         stages,validation,world=load_curriculum()
-        metadata.update(gpu=torch.cuda.get_device_name(0),gpu_memory_gib=torch.cuda.get_device_properties(0).total_memory/2**30,stage_sizes=[len(s) for s in stages],validation_case_ids=sorted({t['case_id'] for t in validation}),training_source_hashes={f:hashlib.sha256(Path('data',f).read_bytes()).hexdigest() for f in ('train_grpo_stage1.jsonl','train_grpo_stage2.jsonl','world_train.json')})
+        metadata.update(gpu=torch.cuda.get_device_name(0),gpu_memory_gib=torch.cuda.get_device_properties(0).total_memory/2**30,stage_sizes=[len(s) for s in stages],validation_case_ids=sorted({t['case_id'] for t in validation}),training_source_hashes={f:hashlib.sha256(Path('docs/archive/data_v1',f).read_bytes()).hexdigest() for f in ('train_grpo_stage1.jsonl','train_grpo_stage2.jsonl','world_train.json')})
         (out/'run_metadata.json').write_text(json.dumps(metadata,indent=2));persist()
         tokenizer=AutoTokenizer.from_pretrained(SFT_REPO,revision=SFT_REVISION,token=os.environ.get('HF_TOKEN'),padding_side='left')
         if tokenizer.pad_token_id is None:tokenizer.pad_token=tokenizer.eos_token

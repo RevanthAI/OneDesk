@@ -7,7 +7,7 @@ from .data import write_json
 from .manage import protected
 
 
-def finalize(root=Path('reports_v2_2')):
+def finalize(root=Path('reports/v2_2')):
     root=Path(root)
     completion=json.loads((root/'COMPLETION.json').read_text())
     if completion['status']!='complete':raise ValueError('Refuse to present an incomplete pipeline as completed')
@@ -83,4 +83,4 @@ def finalize(root=Path('reports_v2_2')):
     return str(report.resolve())
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--root',type=Path,default=Path('reports_v2_2'));a=p.parse_args();print(finalize(a.root))
+    p=argparse.ArgumentParser();p.add_argument('--root',type=Path,default=Path('reports/v2_2'));a=p.parse_args();print(finalize(a.root))

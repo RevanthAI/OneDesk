@@ -13,8 +13,8 @@ from huggingface_hub import HfApi
 
 def package(output):
     root=Path.cwd();entries=[]
-    entries += sorted(Path('src').glob('*.py'))
-    entries += [Path('data/train_sft_400.jsonl'),Path('data/SHA256SUMS'),Path('docs/archive/cloud_bootstrap.sh'),Path('toolkit_revisions.json')]
+    entries += sorted(Path('src').glob('*.py'))+sorted(Path('src/v1').glob('*.py'))
+    entries += [Path('docs/archive/data_v1/train_sft_400.jsonl'),Path('docs/archive/data_v1/SHA256SUMS'),Path('docs/archive/cloud_bootstrap.sh'),Path('toolkit_revisions.json')]
     entries += sorted(Path('vendor/AgentTune/src').rglob('*.py'))
     entries += [p for p in (Path('vendor/AgentTune/README.md'),Path('vendor/AgentTune/LICENSE')) if p.exists()]
     output.parent.mkdir(parents=True,exist_ok=True)
@@ -32,7 +32,7 @@ def main():
     api=HfApi(token=token);namespace=api.whoami()['name']
     repo=namespace+'/driftguard-mcp-training-runs';adapter=namespace+'/driftguard-tiny-aya-fire-sft';merged=namespace+'/driftguard-tiny-aya-fire-sft-merged'
     prefix=args.prefix or args.mode+'-'+args.flavor+'-'+datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
-    local=Path('reports/cloud_sft')/prefix;local.mkdir(parents=True,exist_ok=True)
+    local=Path('reports/v1/cloud_sft')/prefix;local.mkdir(parents=True,exist_ok=True)
     bundle=local/'cloud_bundle.zip';info=package(bundle);(local/'bundle_manifest.json').write_text(json.dumps(info,indent=2))
     api.create_repo(repo,repo_type='dataset',private=True,exist_ok=True)
     if args.mode=='train':
@@ -52,7 +52,7 @@ def main():
     try:
         job=api.run_job(image='ghcr.io/astral-sh/uv:python3.12-bookworm',command=command,env={'RUN_REPO':repo,'BUNDLE_REVISION':revision,'TRAIN_ARGS':json.dumps(arguments)},secrets={'HF_TOKEN':token},flavor=args.flavor,timeout=args.timeout)
         record.update(job_id=job.id,namespace=namespace,url=getattr(job,'url',None))
-        (local/'job.json').write_text(json.dumps(record,indent=2));Path('reports/cloud_sft/latest_job.json').write_text(json.dumps(record,indent=2))
+        (local/'job.json').write_text(json.dumps(record,indent=2));Path('reports/v1/cloud_sft/latest_job.json').write_text(json.dumps(record,indent=2))
         print(json.dumps(record,indent=2))
     except Exception as e:
         record['error_type']=type(e).__name__;record['http_status']=getattr(getattr(e,'response',None),'status_code',None);record['error']=str(e).replace(token,'[REDACTED]')[:1400]

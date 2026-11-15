@@ -10,7 +10,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.patches import Patch, FancyBboxPatch, FancyArrowPatch
-from clean_report_data import ROOT, summaries, rows, roi, fmt, protect, digest
+from clean_report_data import ROOT, summaries, combined_holdouts, rows, roi, fmt, protect, digest
 
 BASE = '#94a3b8'
 SFT = '#3b82f6'
@@ -25,7 +25,7 @@ def style():
                          'axes.labelsize': 12, 'xtick.labelsize': 11, 'ytick.labelsize': 12,
                          'legend.fontsize': 11, 'figure.facecolor': 'white', 'axes.facecolor': 'white',
                          'text.color': INK, 'axes.labelcolor': INK, 'xtick.color': INK, 'ytick.color': INK,
-                         'svg.fonttype': 'none', 'savefig.facecolor': 'white'})
+                         'svg.fonttype': 'none', 'svg.hashsalt': PROJECT_NAME, 'savefig.facecolor': 'white'})
 
 
 def clean(ax, horizontal=False):
@@ -48,7 +48,9 @@ def labels(ax, bars, currency=False, horizontal=False):
 
 def save(fig, name, metadata):
     fig.savefig(OUT / (name+'.png'), dpi=300, bbox_inches='tight', pad_inches=.22)
-    fig.savefig(OUT / (name+'.svg'), dpi=300, bbox_inches='tight', pad_inches=.22)
+    svg=OUT / (name+'.svg')
+    fig.savefig(svg, dpi=300, bbox_inches='tight', pad_inches=.22, metadata={'Date':None})
+    svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')
     plt.close(fig)
     return dict(name=name, **metadata, png_sha256=digest(OUT/(name+'.png')), svg_sha256=digest(OUT/(name+'.svg')))
 
@@ -113,20 +115,24 @@ def toolkit_diagram():
 
 
 def headline(ss):
-    fig, ax = plt.subplots(figsize=(16, 8))
-    fig.subplots_adjust(top=.73, bottom=.20, left=.07, right=.99)
-    fig.suptitle(f'{PROJECT_NAME}: From Near-Zero Base Model to Reliable Company Knowledge Agent', fontsize=20, weight='bold', y=.97)
-    fig.text(.5, .91, 'Performance across 500 held-out company queries (Synthetic & Repo-Style Benchmarks)', ha='center', fontsize=14)
-    keys = ['Base', 'Warmup SFT · 60 steps', 'Final OneDesk · selected update 40']
-    names = ['Untrained Base Model\n(Tiny Aya Fire 3.35B)', 'Warmup Fine-Tuning\n(2-Epoch SFT)', f'Final {PROJECT_NAME} Agent\n(Warmup + Smart RL)']
-    x=np.arange(4); width=.24; data={}
-    for offset, (key, name, color) in enumerate(zip(keys,names,[BASE,SFT,FINAL])):
-        sm=ss[key]; vals=[100*sm['test_synth']['metrics']['exact_outcome']['estimate'],100*sm['repo_style']['metrics']['exact_outcome']['estimate'],100*sm['test_synth']['metrics']['stale_catch']['estimate'],100*sm['test_synth']['metrics']['format_valid']['estimate']]
-        labels(ax, ax.bar(x+(offset-1)*width, vals, width, color=color, label=name, zorder=3));data[key]=vals
-    ax.set(xticks=x, xticklabels=['Synthetic\naccuracy', 'Repo-style\naccuracy', 'Catching outdated docs\n(synthetic conflicts)', 'Valid response format\n(synthetic)'], ylim=(0,114), ylabel='Queries meeting the metric (%)')
-    clean(ax);fig.legend(*ax.get_legend_handles_labels(),loc='upper center',bbox_to_anchor=(.53,.86),ncol=3,frameon=False)
-    fig.text(.07,.045,'Accuracy = correct status + exact value. Strict outdated-doc catch also requires the stale page and all gold citations.\n500 holdouts = 400 synthetic + 100 repo-style; the last two metrics use the indicated synthetic subsets.',fontsize=11)
-    return save(fig,'1_headline_success',dict(values=data,cohort='Frozen data_v2 holdouts; displayed labels round exact estimates'))
+    pooled=combined_holdouts(ss)
+    fig, ax = plt.subplots(figsize=(18, 9))
+    fig.subplots_adjust(top=.73, bottom=.21, left=.065, right=.99)
+    fig.suptitle(f'{PROJECT_NAME}: Combined Holdout Benchmark', fontsize=23, weight='bold', y=.97)
+    fig.text(.5,.915,'500 held-out queries · 400 synthetic + 100 repo-style · four training stages',ha='center',fontsize=15)
+    keys=['Base','Warmup SFT · 60 steps','Full SFT · 120 steps','Final OneDesk · selected update 40']
+    names=['Untrained Base (3.35B)','Warmup SFT (2-Epoch)','Full SFT (4-Epoch)',f'{PROJECT_NAME} Final (Warmup + RL)']
+    metrics=['exact_outcome','stale_catch','verified_citation_f1','format_valid']
+    colors=[BASE,'#60a5fa','#2563eb',FINAL]
+    x=np.arange(4);width=.19;data={}
+    for offset,(key,name,color) in enumerate(zip(keys,names,colors)):
+        vals=[100*pooled[key][metric]['estimate'] for metric in metrics]
+        labels(ax,ax.bar(x+(offset-1.5)*width,vals,width,color=color,label=name,zorder=3));data[key]=vals
+    ax.set(xticks=x,xticklabels=['Exact answer accuracy\n(n=500)','Strict stale-doc catch\n(n=250 conflicts)','Verified citation F1\n(n=425)','Valid tool & final format*\n(n=500)'],ylim=(0,117),ylabel='Score (%)')
+    ax.annotate('+14.4 pp vs Full SFT!',xy=(1+1.5*width,84),xytext=(1.15,105),ha='center',fontsize=14,weight='bold',color=FINAL,arrowprops={'arrowstyle':'->','color':FINAL,'lw':1.7})
+    clean(ax);fig.legend(*ax.get_legend_handles_labels(),loc='upper center',bbox_to_anchor=(.53,.855),ncol=4,frameon=False,fontsize=12)
+    fig.text(.065,.055,'Scores are pooled using each metric’s eligible-task count, not an equal average of the two splits.\n*Format bars measure structured final-answer validity; AuditKIT separately confirms 100% tool-call validity for all trained stages.\nStrict stale catch requires the correct answer, stale-page flag, and every gold source retrieved and cited.',fontsize=11)
+    return save(fig,'1_headline_success',dict(values=data,metrics=metrics,pooled=pooled,cohort='Combined 500-query frozen holdout; metric-specific denominators'))
 
 
 def multilingual(ss):
@@ -193,7 +199,7 @@ def cost():
     ax.axvline(0,color='#cbd5e1',linewidth=.8)
     fig.text(.37,.12,'Electricity-only edge cost excludes hardware, CPU and operations. Cloud cost assumes on-demand use.\nVPC/on-premises deployment controls the data boundary; privacy depends on connectors and logging.',fontsize=11)
     fig.text(.37,.045,'Local: measured v1 NF4 speed, 175 W × $0.10/kWh. L40S: measured v2 BF16 batch throughput.\nT4: unmeasured proxy. APIs: historical uncached prices; Claude 3.5 Sonnet is retired. No API accuracy comparison.',fontsize=11)
-    return save(fig,'4_cost_and_privacy_roi',dict(scenarios=data,input_basis=__import__('clean_report_data').read('reports_submission/ROI_SCENARIOS.json')))
+    return save(fig,'4_cost_and_privacy_roi',dict(scenarios=data,input_basis=__import__('clean_report_data').read('reports/submission/ROI_SCENARIOS.json')))
 
 
 def main():

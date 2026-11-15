@@ -15,7 +15,7 @@ def main():
     p=argparse.ArgumentParser()
     for name in ('run-repo','run-prefix','sft-repo','grpo-best-repo','grpo-final-repo'):p.add_argument('--'+name,required=True)
     p.add_argument('--stage1-prefix');p.add_argument('--stage1-revision');p.add_argument('--resume-step',type=int,choices=(20,30));p.add_argument('--group-size',type=int,choices=(6,),default=6);p.add_argument('--temperature',type=float,default=1.);p.add_argument('--retry-temperature',type=float,default=1.15);a=p.parse_args()
-    api=HfApi(token=os.environ['HF_TOKEN']);out=Path('reports_v2_2');out.mkdir(exist_ok=True);started=time.time();torch.manual_seed(20261113);torch.set_num_threads(8)
+    api=HfApi(token=os.environ['HF_TOKEN']);out=Path('reports/v2_2');out.mkdir(exist_ok=True);started=time.time();torch.manual_seed(20261113);torch.set_num_threads(8)
     snapshot=lambda:{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in Path('data_v2').iterdir() if p.is_file()}
     frozen=snapshot();write_json(out/'APPROVED_DATA_LOCK.json',frozen)
     write_json(out/'RUN_CONFIG.json',dict(recipe='v2.1 protocol warmup follow-up (isolated v2_2 runtime)',model=MODEL,revision=REVISION,dataset_hashes=verify(),sft_epochs=2,sft_steps=60,sft_candidates=[45,60],sft_validation_steps=[30,45,60],sft_effective_batch=8,sft_lr=1.5e-4,sft_scheduler_horizon=120,sft_max_seq_length=2560,grpo_steps=[40,40],grpo_lr=5e-6,beta=.04,group_size=a.group_size,temperature=a.temperature,retry_temperature=a.retry_temperature,validation_every=20,abstention_stop_above=.40,max_context_length=4096,max_new_tokens_per_turn=192,compute_dtype='bfloat16',quantization=None,grpo_soft_deadline_seconds_from_pipeline_start=8700,stage1_source_prefix=a.stage1_prefix,stage1_source_revision=a.stage1_revision))

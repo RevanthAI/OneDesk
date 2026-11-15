@@ -8,7 +8,7 @@
       "active_tools": 7,
       "routing_distractors": 2,
       "png_sha256": "ef2e4cc413f8b65d7d73a0e6a3b78b42ceb14e469c28b49589edfc7c8eb071c3",
-      "svg_sha256": "89f3c39fb14f4de050c52d179f1cb378dd6daa9ac971b8260fea6652dc0c7a4a"
+      "svg_sha256": "793981dfec31cf7c9d8550b483990978541a10061f74c77a1fcde5d18f489474"
     },
     {
       "name": "0_toolkit_pipeline",
@@ -19,7 +19,7 @@
         "AuditKIT 1.1.7"
       ],
       "png_sha256": "e0218d2723e6772620756844a71faba2ad4840a1044e7efa684d99ae7f30c047",
-      "svg_sha256": "dc4ab6790b8195e39fb172383bbb6b66c11c344cea9a4ae862d6a80658e9b3a6"
+      "svg_sha256": "43634648eca7ccabec84f04d797ed2c4ebba38b9f7314d423b23ffa27d301942"
     }
   ]
 }

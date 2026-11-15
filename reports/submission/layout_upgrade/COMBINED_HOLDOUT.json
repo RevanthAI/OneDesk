@@ -1,0 +1,115 @@
+{
+  "method": "Eligible-task-denominator weighted per-task metric means; not equal split weighting. Confidence intervals remain split-specific.",
+  "scores": {
+    "Base": {
+      "exact_outcome": {
+        "estimate": 0.004,
+        "denominator": 500.0
+      },
+      "stale_catch": {
+        "estimate": 0.0,
+        "denominator": 250.0
+      },
+      "verified_citation_f1": {
+        "estimate": 0.0,
+        "denominator": 425.0
+      },
+      "format_valid": {
+        "estimate": 0.7,
+        "denominator": 500.0
+      },
+      "required_chain_compliance": {
+        "estimate": 0.0,
+        "denominator": 425.0
+      },
+      "native_tool_call_validity": {
+        "test_synth": null,
+        "repo_style": null
+      }
+    },
+    "Warmup SFT \u00b7 60 steps": {
+      "exact_outcome": {
+        "estimate": 0.708,
+        "denominator": 500.0
+      },
+      "stale_catch": {
+        "estimate": 0.704,
+        "denominator": 250.0
+      },
+      "verified_citation_f1": {
+        "estimate": 0.8825882352941177,
+        "denominator": 425.0
+      },
+      "format_valid": {
+        "estimate": 1.0,
+        "denominator": 500.0
+      },
+      "required_chain_compliance": {
+        "estimate": 0.9317647058823529,
+        "denominator": 425.0
+      },
+      "native_tool_call_validity": {
+        "test_synth": 1.0,
+        "repo_style": 1.0
+      }
+    },
+    "Full SFT \u00b7 120 steps": {
+      "exact_outcome": {
+        "estimate": 0.77,
+        "denominator": 500.0
+      },
+      "stale_catch": {
+        "estimate": 0.612,
+        "denominator": 250.0
+      },
+      "verified_citation_f1": {
+        "estimate": 0.931764705882353,
+        "denominator": 425.0
+      },
+      "format_valid": {
+        "estimate": 1.0,
+        "denominator": 500.0
+      },
+      "required_chain_compliance": {
+        "estimate": 0.9764705882352941,
+        "denominator": 425.0
+      },
+      "native_tool_call_validity": {
+        "test_synth": 1.0,
+        "repo_style": 1.0
+      }
+    },
+    "Final OneDesk \u00b7 selected update 40": {
+      "exact_outcome": {
+        "estimate": 0.748,
+        "denominator": 500.0
+      },
+      "stale_catch": {
+        "estimate": 0.756,
+        "denominator": 250.0
+      },
+      "verified_citation_f1": {
+        "estimate": 0.8755294117647059,
+        "denominator": 425.0
+      },
+      "format_valid": {
+        "estimate": 1.0,
+        "denominator": 500.0
+      },
+      "required_chain_compliance": {
+        "estimate": 0.84,
+        "denominator": 425.0
+      },
+      "native_tool_call_validity": {
+        "test_synth": 1.0,
+        "repo_style": 1.0
+      }
+    }
+  },
+  "summary_sha256": {
+    "reports/v2_2/prior_v2/base/summary.json": "a15a9177a55698ae9541e783a92e609e152e1603c3d6dec507a963ca987dcd4f",
+    "reports/v2_2/sft_evaluation/summary.json": "d5a5743e6693e9b3fbe0c97250ba73a7233c98f392cec2081be5b332a9ee9c81",
+    "reports/v2_2/sft_full_evaluation/summary.json": "c28f6f35a8295079ff6db53c3aa8d06b4be66ad050557862b8309d6245dc6a4c",
+    "reports/v2_2/grpo_evaluation/summary.json": "39bf0e72b4be432a0a8ffcc968e1dbba6f31315ee3dbd435ddf10bddd7286776"
+  }
+}

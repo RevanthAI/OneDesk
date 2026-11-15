@@ -8,7 +8,7 @@ from src.compare_precision import check_configs,features,load_run,compare
 from src.oracle_solver import run_oracle
 from src.mcp_env import MCPEnv
 
-def frozen_tasks():return [json.loads(l) for l in Path('data/holdout_synth_400_frozen.jsonl').read_text().splitlines()]
+def frozen_tasks():return [json.loads(l) for l in Path('docs/archive/data_v1/holdout_synth_400_frozen.jsonl').read_text().splitlines()]
 
 def test_balanced_pilot_and_translation_pairing():
     tasks=frozen_tasks();subset=select_tasks(tasks,8)
@@ -30,8 +30,8 @@ def test_partial_episodes_rejected(tmp_path):
 
 def test_end_to_end_paired_findings_with_simulated_traces(tmp_path):
     tasks=select_tasks(frozen_tasks(),8)
-    world=json.loads(Path('data/world_test_synth.json').read_text())
-    base={'model':'test-only','revision':'test','quantization':'4bit','max_new_tokens':384,'max_tool_calls':6,'seed':42,'temperature':0.,'dataset_hashes':verify_manifest(Path('data')),'limit':0,'sample_per_language':8,'worlds':['test_synth'],'batch_size':1}
+    world=json.loads(Path('docs/archive/data_v1/world_test_synth.json').read_text())
+    base={'model':'test-only','revision':'test','quantization':'4bit','max_new_tokens':384,'max_tool_calls':6,'seed':42,'temperature':0.,'dataset_hashes':verify_manifest(Path('docs/archive/data_v1')),'limit':0,'sample_per_language':8,'worlds':['test_synth'],'batch_size':1}
     reference=tmp_path/'nf4';candidate=tmp_path/'fp16'
     for path,q in [(reference,'4bit'),(candidate,'fp16')]:
         path.mkdir();(path/'run_config.json').write_text(json.dumps(dict(base,quantization=q)));(path/'runtime.json').write_text('{}')

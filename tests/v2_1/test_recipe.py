@@ -1,3 +1,4 @@
+from src.layout import relocated_path
 import copy,json,statistics
 from collections import Counter
 from pathlib import Path
@@ -102,8 +103,8 @@ def test_warmstart_gate_does_not_accept_equal_baseline():
 def test_frozen_inputs_and_old_reports_unchanged():
     import hashlib
     sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
-    data=json.loads(Path('reports_v2_1/APPROVED_DATA_LOCK.json').read_text());assert data=={p.name:sha(p) for p in Path('data_v2').iterdir() if p.is_file()}
-    for name,digest in json.loads(Path('reports_v2_1/PROTECTED_V2_LOCK.json').read_text()).items():assert sha(Path(name))==digest,name
+    data=json.loads(Path('reports/v2_1/APPROVED_DATA_LOCK.json').read_text());assert data=={p.name:sha(p) for p in Path('data_v2').iterdir() if p.is_file()}
+    for name,digest in json.loads(Path('reports/v2_1/PROTECTED_V2_LOCK.json').read_text()).items():assert sha(relocated_path(name))==digest,name
 
 
 @pytest.mark.parametrize('group_size',[4,6])

@@ -67,6 +67,6 @@ models/
 # Reconstruct pinned upstream dependencies using toolkit_revisions.json.
 vendor/
 
-# Intentionally do NOT ignore reports*/downloads/: canonical report aliases
+# Intentionally do NOT ignore reports/**/downloads/: canonical report evidence
 # resolve into those trees. Source, tests, configs, space, Markdown, JSON/JSONL,
 # manifests, PNG/SVG/HTML plots and TensorBoard logs remain eligible for Git.

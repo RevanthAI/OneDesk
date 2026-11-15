@@ -13,7 +13,7 @@ def materialize():
         if not line.startswith('120000 '):continue
         name=line.split('\t',1)[1];path=ROOT/name
         if not path.is_symlink():continue
-        if not name.startswith(('reports/','reports_v2/','reports_v2_1/','reports_v2_2/')):
+        if not name.startswith(('reports/v1/','reports/v2/','reports/v2_1/','reports/v2_2/')):
             raise ValueError('Unexpected symlink outside report trees: '+name)
         target=path.resolve(strict=True);relative=target.relative_to(ROOT)
         with tempfile.TemporaryDirectory(prefix='.onedesk-portable-',dir=path.parent) as td:
@@ -24,6 +24,6 @@ def materialize():
     protect();return records
 
 if __name__=='__main__':
-    records=materialize();output=ROOT/'reports_submission/publishing_sync';output.mkdir(exist_ok=True)
+    records=materialize();output=ROOT/'reports/submission/publishing_sync';output.mkdir(exist_ok=True)
     (output/'MATERIALIZED_LINKS.json').write_text(json.dumps(records,indent=2)+'\n')
     print(json.dumps({'materialized_report_links':len(records),'protected_files':19}))

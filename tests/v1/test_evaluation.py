@@ -29,8 +29,8 @@ def test_cluster_bootstrap_and_undefined():
 def test_manifest_and_prompt_label_separation():
     import json
     from pathlib import Path
-    hashes=verify_manifest(Path('data'));assert 'holdout_synth_400_frozen.jsonl' in hashes
-    for line in Path('data/holdout_synth_400_frozen.jsonl').read_text().splitlines():
+    hashes=verify_manifest(Path('docs/archive/data_v1'));assert 'holdout_synth_400_frozen.jsonl' in hashes
+    for line in Path('docs/archive/data_v1/holdout_synth_400_frozen.jsonl').read_text().splitlines():
         task=json.loads(line)
         assert all(key not in str(task['prompt']) for key in ('gold_value','gold_cites','oracle_optimal_steps','expected_status'))
 

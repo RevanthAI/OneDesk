@@ -50,7 +50,7 @@ def test_original_artifacts_and_frozen_data_preserved():
 
 def test_seven_way_comparison_includes_validation_and_paired_clusters(tmp_path,monkeypatch):
     from src_v2_2.compare import compare
-    template=Path('reports_v2_2')
+    template=Path('reports/v2_2')
     mapping=['prior_v2/base','prior_v2/sft','stage1_evaluation','prior_v2/grpo','sft_evaluation','grpo_evaluation','sft_full_evaluation']
     for name in mapping:
         original=template/('prior_v2/sft' if name in ('stage1_evaluation','sft_evaluation','grpo_evaluation') else name)

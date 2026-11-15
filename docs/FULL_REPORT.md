@@ -66,8 +66,8 @@ These values come from the frozen `train_sft-0000-hinglish` example; the first s
 | Toolkit | Features actually used | Code and output |
 | --- | --- | --- |
 | **CuratorKIT 0.1.21** · `d6f2e44e` | `DataSample`, `ExactDeduplicator.run`: **1,955 candidates → 1,700 tasks**, with all **255 exact duplicate controls** rejected and logged. | `src/v2_dataset.py:curate`; `data_v2/curation_funnel.json`, `curation_rejections.jsonl` |
-| **AgentTune 1.1.4** · `e56a1094` | `Step`, `Trajectory`, `TrajectoryDataset`; `SFTTrainerBase` via `DriftGuardSFTTrainer`; `TrlAgenticGrpo` wrapper with `MCPGRPOTrainer` for executed multi-turn MCP rollouts. | `src_v2_2/toolkits.py`, `agenttune_sft_backend.py`, `agenttune_grpo_backend.py`, `training.py` |
-| **AuditKIT 1.1.7** · `fe6083e7` | `episodes_from_agenttune`, `FunctionScorer`, `ToolCallF1(arg_mode="name")`, `ToolCallValidity`, `RedundantToolCalls`; matched **580-episode checkpoint comparisons** (80 validation + 500 holdouts). | `src_v2_2/evaluate_auditkit.py`, `evaluation_core.py`; JSON summaries and raw episodes |
+| **AgentTune 1.1.4** · `e56a1094` | `Step`, `Trajectory`, `TrajectoryDataset`; `SFTTrainerBase` via `DriftGuardSFTTrainer`; `TrlAgenticGrpo` wrapper with `MCPGRPOTrainer` for executed multi-turn MCP rollouts. | `src/v2_2/toolkits.py`, `agenttune_sft_backend.py`, `agenttune_grpo_backend.py`, `training.py` |
+| **AuditKIT 1.1.7** · `fe6083e7` | `episodes_from_agenttune`, `FunctionScorer`, `ToolCallF1(arg_mode="name")`, `ToolCallValidity`, `RedundantToolCalls`; matched **580-episode checkpoint comparisons** (80 validation + 500 holdouts). | `src/v2_2/evaluate_auditkit.py`, `evaluation_core.py`; JSON summaries and raw episodes |
 
 **Compatibility engineering:** we bridged AgentTune’s `_generate_single_turn` expectation to the installed TRL 0.23.1 live-rollout hook; loaded dependency-light `agenttune.agentic` leaf modules to avoid unrelated optional imports; and added explicit BF16 autocast around unwrapped PEFT decoder scoring. AgentTune retains its data/train/save lifecycle, TRL owns optimization, and our backend supplies full tool episodes and assistant-only loss masks. Issue-ready details and exact commits are in [SUBMISSION_DOSSIER.md](SUBMISSION_DOSSIER.md#5-chaining-the-three-lexsi-labs-repositories--upstream-findings).
 
@@ -105,7 +105,7 @@ We bootstrap **10,000 times by semantic case**, keeping translated versions toge
 
 The CPU text audit found **0/500 exact holdout prompt duplicates**, with mean nearest-train 5-word Jaccard **0.001189 raw / 0.001189 entity-masked**; including shared system/tool instructions raises raw similarity to **0.901369**. All 15 split pairs have zero shared case IDs, service/parameter pairs or incident IDs, but **32/425 non-null holdout scalar answers recur** (8 numbers) on different facts; no service/parameter/gold-value tuple overlaps.
 
-Exact counts, nearest matches and scalar-collision examples: [TEXT_LEAK_AUDIT.json](../reports_submission/TEXT_LEAK_AUDIT.json).
+Exact counts, nearest matches and scalar-collision examples: [TEXT_LEAK_AUDIT.json](../reports/submission/TEXT_LEAK_AUDIT.json).
 
 <!-- TEXT_LEAK_AUDIT:END -->
 
@@ -248,7 +248,7 @@ Use the **warmup GRPO best-val** repository for the selected final agent. The fi
 | [Revanth-ml/onedesk-mcp-training-runs](https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-training-runs) | Recorded experiment artifacts |
 | [Revanth-ml/onedesk-mcp-grpo-runs](https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-grpo-runs) | Recorded experiment artifacts |
 
-The frozen data repository contains the benchmark JSONL and manifests. Run repositories contain provenance, raw trajectories, evaluation summaries and training diagnostics. Human-readable model and dataset cards are available under [hf_cards/](../hf_cards/).
+The frozen data repository contains the benchmark JSONL and manifests. Run repositories contain provenance, raw trajectories, evaluation summaries and training diagnostics. Human-readable model and dataset cards are available under [docs/hf_cards/](hf_cards).
 
 ## 9. With More Credits: Approach, Before and After Results
 
@@ -269,7 +269,7 @@ These commands rebuild documentation and run CPU-only regression checks; they do
 .venv/bin/python scripts/build_clean_charts.py
 .venv/bin/python scripts/build_clean_report.py
 .venv/bin/python scripts/prepare_hf_repos.py --dry-run
-CUDA_VISIBLE_DEVICES='' .venv/bin/python -m pytest tests tests_v2 tests_v2_1 tests_v2_2 -q
+CUDA_VISIBLE_DEVICES='' .venv/bin/python -m pytest tests -q
 .venv/bin/python -c "from src_v2_2.manage import protected; print(protected())"
 
 # When ready: publish existing artifacts/cards and create public collections.
@@ -280,7 +280,7 @@ CUDA_VISIBLE_DEVICES='' .venv/bin/python -m pytest tests tests_v2 tests_v2_1 tes
 
 **Teammates tagged:** [@Revanth-ml](https://huggingface.co/Revanth-ml).
 
-**Detailed reference:** [SUBMISSION_DOSSIER.md](SUBMISSION_DOSSIER.md). Saved evidence: [full seven-checkpoint comparison](../reports_v2_2/downloads/warmup-20261113T084035Z/comparison/EXPERIMENT_REPORT.md), [paired trade-offs](../reports_v2_2/downloads/warmup-20261113T084035Z/comparison/FINDINGS.md), and [chart source values](../figures/CHART_DATA.json). Published artifacts use `onedesk` repository names; immutable task IDs and historical provenance retain their original experiment identifiers.
+**Detailed reference:** [SUBMISSION_DOSSIER.md](SUBMISSION_DOSSIER.md). Saved evidence: [full seven-checkpoint comparison](../reports/v2_2/downloads/warmup-20261113T084035Z/comparison/EXPERIMENT_REPORT.md), [paired trade-offs](../reports/v2_2/downloads/warmup-20261113T084035Z/comparison/FINDINGS.md), and [chart source values](../figures/CHART_DATA.json). Published artifacts use `onedesk` repository names; immutable task IDs and historical provenance retain their original experiment identifiers.
 
 ## 10. Honest Limitations
 

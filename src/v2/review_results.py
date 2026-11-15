@@ -10,11 +10,11 @@ def rows(path):return [json.loads(x) for x in Path(path).read_text().splitlines(
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 def review(sync=False):
-    root=Path('reports_v2');job=json.loads((root/'LATEST_JOB.json').read_text());cloud=root/'cloud'/job['run_prefix'];download=json.loads((cloud/'downloads.json').read_text())
+    root=Path('reports/v2');job=json.loads((root/'LATEST_JOB.json').read_text());cloud=root/'cloud'/job['run_prefix'];download=json.loads((cloud/'downloads.json').read_text())
     assert json.loads((root/'COMPLETION.json').read_text())['status']=='complete'
     verify();frozen=json.loads((root/'APPROVED_DATA_LOCK.json').read_text());assert frozen=={p.name:sha(p) for p in Path('data_v2').iterdir() if p.is_file()}
     manifest=json.loads((cloud/'bundle_manifest.json').read_text());core=['reward.py','active_advantage.py','grpo_core.py','grpo_rollout.py','agenttune_sft_backend.py','agenttune_grpo_backend.py','training.py','evaluation_core.py','backend.py','evaluate_auditkit.py','mcp_env.py','v2_env.py','mcp_adapter.py','preflight.py','pipeline.py']
-    checks={n:sha(Path('src_v2',n))==manifest['files']['src_v2/'+n] for n in core}
+    checks={n:sha(Path('src/v2',n))==manifest['files']['src/v2/'+n] for n in core}
     if not all(checks.values()):raise ValueError('Published numerical runtime differs from the trained bundle')
     write_json(root/'SOURCE_PROVENANCE.json',dict(bundle_revision=job['bundle_revision'],bundle_sha256=job['bundle_sha256'],numerical_runtime_matches_launch=checks,post_launch_changes='Local retrieval, documentation, diagnostics and publication helpers only'))
     summaries={m:json.loads((root/f'v2_{m}_fire'/'summary.json').read_text()) for m in ('base','sft','grpo')};metrics={m:{w:rows(root/f'v2_{m}_fire'/(w+'_metrics.jsonl')) for w in ('test_synth','repo_style')} for m in summaries}
@@ -72,7 +72,7 @@ def review(sync=False):
         write_json(root/'JOB_FINAL_STATUS.json',final_status)
         pattern=job['run_prefix']+'/grpo_training/stage1/last_safe_adapter/'
         folder=Path(snapshot_download(job['run_repo'],repo_type='dataset',revision=download['revision'],token=api.token,local_dir=str(root/'downloads/stage1_candidate'),allow_patterns=[pattern+'**']))/pattern
-        target=Path('checkpoints_v2/grpo_stage1_adapter')
+        target=Path('checkpoints/v2/grpo_stage1_adapter')
         if target.exists() and (target/'adapter_model.safetensors').exists() and sha(target/'adapter_model.safetensors')!=sha(folder/'adapter_model.safetensors'):raise ValueError('Existing stage-one adapter differs; refuse overwrite')
         shutil.copytree(folder,target,dirs_exist_ok=True)
         write_json(root/'SELECTED_STAGE1.json',dict(selection='Highest stage-end validation accuracy only; holdouts not evaluated',validation_accuracy=vs[1],local_path=str(target.resolve()),source_repo=job['run_repo'],source_revision=download['revision'],source_path=pattern,adapter_sha256=sha(target/'adapter_model.safetensors')))

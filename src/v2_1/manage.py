@@ -5,14 +5,15 @@ import requests
 from dotenv import load_dotenv
 from huggingface_hub import HfApi,snapshot_download
 from .data import verify,write_json
+from src.layout import relocated_path
 
 def terminal_stage(stage):return stage in ('COMPLETED','CANCELED','ERROR','DELETED','FAILED')
 
 def protected():
     digest=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
-    for path,value in json.loads(Path('reports_v2_1/PROTECTED_V2_LOCK.json').read_text()).items():
-        if digest(Path(path))!=value:raise ValueError('Protected v2 report changed: '+path)
-    data=json.loads(Path('reports_v2_1/APPROVED_DATA_LOCK.json').read_text());assert data=={p.name:digest(p) for p in Path('data_v2').iterdir() if p.is_file()};verify();return len(data)
+    for path,value in json.loads(Path('reports/v2_1/PROTECTED_V2_LOCK.json').read_text()).items():
+        if digest(relocated_path(path))!=value:raise ValueError('Protected v2 report changed: '+path)
+    data=json.loads(Path('reports/v2_1/APPROVED_DATA_LOCK.json').read_text());assert data=={p.name:digest(p) for p in Path('data_v2').iterdir() if p.is_file()};verify();return len(data)
 
 def retry(function):
     for attempt in range(8):
@@ -24,25 +25,25 @@ def retry(function):
             print(json.dumps(dict(event='client_network_retry',attempt=attempt+1,error_type=type(error).__name__)),flush=True);time.sleep(15)
 
 def download(api,record,models=True):
-    revision=retry(lambda:api.repo_info(record['run_repo'],repo_type='dataset')).sha;folder=Path('reports_v2_1/downloads')
+    revision=retry(lambda:api.repo_info(record['run_repo'],repo_type='dataset')).sha;folder=Path('reports/v2_1/downloads')
     retry(lambda:snapshot_download(record['run_repo'],repo_type='dataset',revision=revision,token=api.token,local_dir=str(folder),allow_patterns=[record['run_prefix']+'/**'],ignore_patterns=['**/*.safetensors','**/*.pt','**/*.bin','**/tokenizer.json','**/reference/**']))
-    run=folder/record['run_prefix'];root=Path('reports_v2_1')
+    run=folder/record['run_prefix'];root=Path('reports/v2_1')
     for path in run.iterdir():
         target=root/path.name
         if target.is_symlink():target.unlink()
         if not target.exists():target.symlink_to(path.resolve(),target_is_directory=path.is_dir())
-    alias=Path('reports/v2_1_comparison')
+    alias=Path('reports/v1/v2_1_comparison')
     if not alias.exists() and not alias.is_symlink():alias.symlink_to((root/'comparison').resolve(),target_is_directory=True)
     artifacts={}
     if models:
         for label,info in json.loads((run/'MODEL_REVISIONS.json').read_text()).items():
-            path=Path('checkpoints_v2_1')/(label.lower()+'_adapter');retry(lambda:snapshot_download(info['repo'],revision=info['revision'],token=api.token,local_dir=str(path)))
+            path=Path('checkpoints/v2_1')/(label.lower()+'_adapter');retry(lambda:snapshot_download(info['repo'],revision=info['revision'],token=api.token,local_dir=str(path)))
             if not (path/'adapter_model.safetensors').exists():raise ValueError('Missing adapter weight')
             artifacts[label]=dict(info,local_path=str(path.resolve()),sha256=hashlib.sha256((path/'adapter_model.safetensors').read_bytes()).hexdigest())
     count=protected();write_json(root/'DOWNLOADS.json',dict(repo=record['run_repo'],revision=revision,run_directory=str(run.resolve()),models=artifacts,frozen_files_unchanged=count));return run,artifacts
 
 def release():
-    root=Path('reports_v2_1');files=set(Path('src_v2_1').glob('*.py'))|set(Path('tests_v2_1').glob('*.py'))|set(Path('data_v2').iterdir())|{Path('docs/archive/README_v2_1.md'),Path('docs/archive/cloud_v2_1_bootstrap.sh'),Path('toolkit_revisions.json')}
+    root=Path('reports/v2_1');files={Path('src/__init__.py'),Path('src/layout.py')}|set(Path('src/v2_1').glob('*.py'))|set(Path('tests/v2_1').glob('*.py'))|set(Path('data_v2').iterdir())|{Path('docs/archive/README_v2_1.md'),Path('docs/archive/cloud_v2_1_bootstrap.sh'),Path('toolkit_revisions.json')}
     for lib in ('AgentTune','AuditKIT'):files.update(Path('vendor',lib,'src').rglob('*.py'));files.update(Path('vendor',lib).glob('LICENSE*'))
     for folder in ('comparison','sft_evaluation','grpo_evaluation','stage1_diagnostic','grpo_training','prior_v2'):
         for p in (root/folder).rglob('*'):
@@ -56,13 +57,13 @@ def release():
         manifest={}
         for p in sorted(files):
             if not p.is_file():continue
-            if p.name=='.env' or p.parts[0] in ('src','reports_v2','data'):raise ValueError('Forbidden release path')
+            if p.name=='.env' or p.as_posix().startswith(('src/v1/','docs/archive/data_v1/','reports/v1/')):raise ValueError('Forbidden release path')
             archive.write(p,p.as_posix());manifest[str(p)]=hashlib.sha256(p.read_bytes()).hexdigest()
         archive.writestr('RELEASE_MANIFEST.json',json.dumps(manifest,indent=2)+'\n')
     return dict(path=str(path.resolve()),sha256=hashlib.sha256(path.read_bytes()).hexdigest(),files=len(manifest))
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('action',choices=('status','logs','download','watch'));p.add_argument('--models',action='store_true');a=p.parse_args();load_dotenv(Path.cwd().parent/'.env');api=HfApi(token=os.getenv('HUGGINGFACE_TOKEN') or os.getenv('HF_TOKEN'));record=json.loads(Path('reports_v2_1/LATEST_JOB.json').read_text());local=Path('reports_v2_1/cloud',record['run_prefix']);stop=threading.Event()
+    p=argparse.ArgumentParser();p.add_argument('action',choices=('status','logs','download','watch'));p.add_argument('--models',action='store_true');a=p.parse_args();load_dotenv(Path.cwd().parent/'.env');api=HfApi(token=os.getenv('HUGGINGFACE_TOKEN') or os.getenv('HF_TOKEN'));record=json.loads(Path('reports/v2_1/LATEST_JOB.json').read_text());local=Path('reports/v2_1/cloud',record['run_prefix']);stop=threading.Event()
     def status():
         j=retry(lambda:api.inspect_job(job_id=record['job_id'],namespace=record['namespace']));value=dict(stage=j.status.stage,message=j.status.message,job_id=j.id,updated_at=time.time());write_json(local/'last_status.json',value);return value
     def logs():
@@ -90,5 +91,5 @@ def main():
             download(api,record,models=False);raise RuntimeError('Cloud job ended with '+current['stage'])
     run,models=download(api,record,models=a.models or a.action=='watch');completion=json.loads((run/'COMPLETION.json').read_text());result=dict(status=completion['status'],cloud=current,models=models,approved_data_unchanged=True,protected_v2_reports_unchanged=True)
     if completion['status']=='complete':result['release']=release()
-    write_json('reports_v2_1/LOCAL_COMPLETION.json',result);print(json.dumps(result,indent=2),flush=True)
+    write_json('reports/v2_1/LOCAL_COMPLETION.json',result);print(json.dumps(result,indent=2),flush=True)
 if __name__=='__main__':main()

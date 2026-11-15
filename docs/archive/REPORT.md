@@ -108,7 +108,7 @@ Two-epoch protocol warmup followed by anti-collapse, positive-anchor G6 GRPO com
 
 **Hackathon Compute Used:** recorded **12.05 L40S hours + 2.35 A100 minutes ≈ $21.80** continuous list-rate lower bound.
 
-Includes observed training/evaluation work; excludes uncovered setup/charged intervals and minute rounding, so it is not an invoice total ([accounting](../../reports_submission/COMPUTE_ACCOUNTING.json)).
+Includes observed training/evaluation work; excludes uncovered setup/charged intervals and minute rounding, so it is not an invoice total ([accounting](../../reports/submission/COMPUTE_ACCOUNTING.json)).
 
 ## 5–8. Models, Datasets & Public HF Collections
 
@@ -133,13 +133,13 @@ Includes observed training/evaluation work; excludes uncovered setup/charged int
 ## 10. Repo Layout & Run Instructions
 
 ```text
-├── src_v2_2/          # Final MCP runtime, AgentTune backends and AuditKIT scorer
+├── src/v2_2/          # Final MCP runtime, AgentTune backends and AuditKIT scorer
 ├── src/              # v2 facts-first generator, oracle and CuratorKIT pipeline
 ├── data_v2/          # Frozen 1,700 tasks, worlds and SHA-256 manifest
-├── checkpoints_v2_2/ # sft_warmup_adapter, grpo_best_val_adapter, grpo_final_adapter
+├── checkpoints/v2_2/ # sft_warmup_adapter, grpo_best_val_adapter, grpo_final_adapter
 ├── figures/          # Benchmark charts and static architecture diagrams
 ├── docs/             # FULL_REPORT.md: complete tables and checksums
-└── tests_v2_2/       # Final-recipe tests; 120 tests total across four test folders
+└── tests/v2_2/       # Final-recipe tests; 120 tests total across four test folders
 ```
 
 From the project root with the pinned toolkits/dependencies installed; use fresh output paths. The training/evaluation modules expose Python functions, so the commands below call those functions directly; GPU stages need suitable CUDA hardware.
@@ -171,18 +171,18 @@ python - <<'PYTHON'
 from huggingface_hub import snapshot_download
 snapshot_download('Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val',
     revision='016676680121b4dd90ec6026978de7ee1cdb1271',
-    local_dir='checkpoints_v2_2/grpo_best_val_adapter')
+    local_dir='checkpoints/v2_2/grpo_best_val_adapter')
 PYTHON
-python -m src_v2_2.local_demo --adapter checkpoints_v2_2/grpo_best_val_adapter
+python -m src.v2_2.local_demo --adapter checkpoints/v2_2/grpo_best_val_adapter
 
 # CPU audit and complete regression suite.
 python scripts/text_leak_check.py
-CUDA_VISIBLE_DEVICES='' python -m pytest tests tests_v2 tests_v2_1 tests_v2_2 -q
+CUDA_VISIBLE_DEVICES='' python -m pytest tests -q
 ```
 
 ## 11. Honest Limitations & Teammates Tagged
 
-- Constructed fixtures, modulo-3 configuration values and correlated template translations; no verified live-OSS transfer. Scalar answers recur across different facts, as the [text audit](../../reports_submission/TEXT_LEAK_AUDIT.json) reports.
+- Constructed fixtures, modulo-3 configuration values and correlated template translations; no verified live-OSS transfer. Scalar answers recur across different facts, as the [text audit](../../reports/submission/TEXT_LEAK_AUDIT.json) reports.
 - Overall GRPO-over-warmup holdout gain intervals include zero; repeated validation selection and one run need fresh confirmation.
 - Prefer **full SFT for overall accuracy**, selected **GRPO for strict stale catch**; chain completeness, incident reasoning and unplugged-DB handling still need work.
 - Warmup length, group size and temperature changed together; zero variance does not prove full-distribution entropy collapse.

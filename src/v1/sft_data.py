@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 
 
-def load_training_rows(path='data/train_sft_400.jsonl', manifest='data/SHA256SUMS'):
+def load_training_rows(path='docs/archive/data_v1/train_sft_400.jsonl', manifest='docs/archive/data_v1/SHA256SUMS'):
     path=Path(path)
     expected={line.split('  ',1)[1]:line.split('  ',1)[0] for line in Path(manifest).read_text().splitlines()}
     if hashlib.sha256(path.read_bytes()).hexdigest()!=expected[path.name]:raise ValueError('training hash mismatch')

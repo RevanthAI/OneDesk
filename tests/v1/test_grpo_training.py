@@ -50,7 +50,7 @@ def test_live_rollout_preserves_sampled_ids_and_masks_tool_results():
     from src.oracle_solver import run_oracle
     from src.mcp_env import MCPEnv
     stages,_,world=load_curriculum();task=next(t for t in stages[0] if t['kind']=='conflict')
-    tokenizer=AutoTokenizer.from_pretrained('checkpoints/tiny-aya-fire-sft-adapter',local_files_only=True)
+    tokenizer=AutoTokenizer.from_pretrained('checkpoints/v1/tiny-aya-fire-sft-adapter',local_files_only=True)
     with MCPEnv(world,task['active_mcps']) as env:oracle=run_oracle(task,env)
     turns=[m['content'] for m in oracle['messages'] if m['role']=='assistant']
     class Replay(torch.nn.Module):

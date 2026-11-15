@@ -35,7 +35,7 @@ def analyze(root):
         for sample in samples:
             assert len(sample['input_ids'])==len(sample['assistant_mask'])
             assert sum(sample['assistant_mask'])==sample['sampled_tokens']
-        source=Path('data',f'train_grpo_{folder.name}.jsonl')
+        source=Path('docs/archive/data_v1',f'train_grpo_{folder.name}.jsonl')
         if source.exists():
             from .reward import outcome_ok
             task_lookup={t['task_id']:t for t in map(json.loads,source.read_text().splitlines())}

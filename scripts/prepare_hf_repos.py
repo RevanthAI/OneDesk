@@ -14,7 +14,7 @@ from publication_markdown import publication, format_gfm, sync_publication_links
 from clean_report_data import (ROOT, PROJECT_NAME, BASE, BASE_REVISION, registry, read, rows,
                                ci, percent, table, data_manifest, protect, digest)
 
-CARDS = ROOT / 'hf_cards'
+CARDS = ROOT / 'docs/hf_cards'
 TAGS = ['agenttune','curatorkit','auditkit','mcp','grpo','tool-calling','multilingual','tiny-aya-fire']
 
 
@@ -261,7 +261,7 @@ def generate(prefix=None):
     (CARDS/'PLAN.json').write_text(json.dumps(value,indent=2)+'\n')
     index='# OneDesk — prepared Hugging Face cards\n\nLocal generation and dry-run do not use network calls or credentials. All remote operations require explicit `--publish`.\n'
     index+='\n'+collection_links(published)+'\n'
-    index+=table(['Type','Published repository','Prepared card'],[[r['repo_type'],'https://huggingface.co/'+('datasets/' if r['repo_type']=='dataset' else '')+r['target_repo_id'],'['+r['label']+']('+str(Path(r['card']).relative_to('hf_cards'))+')'] for r in plan])
+    index+=table(['Type','Published repository','Prepared card'],[[r['repo_type'],'https://huggingface.co/'+('datasets/' if r['repo_type']=='dataset' else '')+r['target_repo_id'],'['+r['label']+']('+str(Path(r['card']).relative_to('docs/hf_cards'))+')'] for r in plan])
     index+='\n```bash\n.venv/bin/python scripts/prepare_hf_repos.py --dry-run\n# When ready:\n.venv/bin/python scripts/prepare_hf_repos.py --publish\n# Optional OneDesk rename:\n# .venv/bin/python scripts/prepare_hf_repos.py --publish --rename-prefix onedesk\n```\n\nPublishing makes the listed run repositories and their existing contents public; review PLAN.json and those repositories before invoking it. Two historical planned-but-untrained v2.1 model names are intentionally excluded. Original synthetic datasets are CC-BY-4.0; original project code is Apache-2.0; model weights/adapters retain CC BY-NC 4.0. Collections are created only by publish; URLs are saved to PUBLISH_RECEIPT.json and printed. Publication automatically updates both collection URLs in README.md.\n'
     (CARDS/'README.md').write_text(format_gfm(index));protect();return value
 
@@ -358,7 +358,7 @@ def main(argv=None):
     elif args.publish:
         print(json.dumps(publish(plan),indent=2))
     else:
-        print(json.dumps(dict(project=PROJECT_NAME,mode='dry-run',network_calls=0,models=plan['models'],datasets=plan['datasets'],rename_prefix=args.rename_prefix,plan='hf_cards/PLAN.json',collections={'model':publication()['model_collection_url'],'data':publication()['data_collection_url']}),indent=2))
+        print(json.dumps(dict(project=PROJECT_NAME,mode='dry-run',network_calls=0,models=plan['models'],datasets=plan['datasets'],rename_prefix=args.rename_prefix,plan='docs/hf_cards/PLAN.json',collections={'model':publication()['model_collection_url'],'data':publication()['data_collection_url']}),indent=2))
     return plan
 
 if __name__=='__main__':main()

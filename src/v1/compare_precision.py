@@ -41,7 +41,7 @@ def features(task,episode):
     return dict(base,raw_value=float('value' in obj and normalize_val(obj['value'])==normalize_val(task['gold_value'])),raw_status=float(obj.get('status')==task['expected_status']),raw_status_value=float('value' in obj and outcome_ok(obj,task)),evidence_complete=float(bool(task['gold_cites']) and set(task['gold_cites'])<=set(episode['retrieved_ids'])),errors=sorted(set(errors)))
 
 def load_run(path,config,world,allow_partial=False):
-    tasks=[json.loads(l) for l in (Path('data')/FILES[world]).read_text().splitlines()]
+    tasks=[json.loads(l) for l in (Path('docs/archive/data_v1')/FILES[world]).read_text().splitlines()]
     tasks=select_tasks(tasks,config.get('sample_per_language',0))
     if config['limit']:tasks=tasks[:config['limit']]
     episodes=[json.loads(l) for l in (path/(world+'_episodes.jsonl')).read_text().splitlines()]
@@ -62,7 +62,7 @@ def mean(rows,key):
 def format_rate(v):return 'N/A' if v is None else f'{100*v:.2f}%'
 
 def compare(reference,candidate,output,worlds_override=None,allow_partial=False):
-    hashes=verify_manifest(Path('data'))
+    hashes=verify_manifest(Path('docs/archive/data_v1'))
     a=json.loads((reference/'run_config.json').read_text());b=json.loads((candidate/'run_config.json').read_text());check_configs(a,b,ignore_worlds=worlds_override is not None)
     if a['dataset_hashes']!=hashes:raise ValueError('run dataset hashes differ from current frozen manifest')
     worlds=worlds_override or a.get('worlds',list(FILES));summary={};all_examples=[]

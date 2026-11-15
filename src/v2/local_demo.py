@@ -11,8 +11,8 @@ from .evaluation_core import run_batch,measure
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--adapter',default='checkpoints_v2/grpo_adapter');p.add_argument('--split',choices=('validation','test_synth','repo_style'),default='test_synth');p.add_argument('--task-id');p.add_argument('--language',default='en');p.add_argument('--kind',default='conflict');p.add_argument('--output',default='reports_v2/local_deployment_example.json');a=p.parse_args()
-    if not Path(a.adapter,'adapter_model.safetensors').is_file():raise FileNotFoundError('Download the v2 adapter first: python -m src_v2.manage download --models')
+    p=argparse.ArgumentParser();p.add_argument('--adapter',default='checkpoints/v2/grpo_adapter');p.add_argument('--split',choices=('validation','test_synth','repo_style'),default='test_synth');p.add_argument('--task-id');p.add_argument('--language',default='en');p.add_argument('--kind',default='conflict');p.add_argument('--output',default='reports/v2/local_deployment_example.json');a=p.parse_args()
+    if not Path(a.adapter,'adapter_model.safetensors').is_file():raise FileNotFoundError('Download the v2 adapter first: python -m src.v2.manage download --models')
     if not torch.cuda.is_available():raise RuntimeError('CUDA GPU required')
     load_dotenv(Path.cwd().parent/'.env');token=os.getenv('HUGGINGFACE_TOKEN') or os.getenv('HF_TOKEN')
     import transformers.integrations.sdpa_attention as sdpa

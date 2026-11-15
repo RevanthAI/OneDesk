@@ -79,7 +79,7 @@ CuratorKIT 0.1.21 exact-deduplicates model-visible prompts. AgentTune 1.1.4 runs
 
 - Base: `CohereLabs/tiny-aya-fire` at `73500c80fcb6c8bea3e830c21d5d2920249a0e1a`.
 - Saved weight revision in this repository: `b0d0d072311e62e31eb6258ad8ce987e8bf7926d`.
-- Local artifact path in the project: `checkpoints/tiny-aya-fire-sft-adapter`.
+- Local artifact path in the project: `checkpoints/v1/tiny-aya-fire-sft-adapter`.
 - Owner and teammate: [@Revanth-ml](https://huggingface.co/Revanth-ml).
 - Companion frozen data: [onedesk-mcp-v2-data](https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-v2-data).
 - Final study logs: [onedesk-mcp-warmup-runs](https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-warmup-runs).

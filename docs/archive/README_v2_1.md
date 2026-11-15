@@ -1,6 +1,6 @@
 # DriftGuard v2.1 anti-collapse experiment
 
-Runtime: src_v2_1/. Results: reports_v2_1/. Adapters: checkpoints_v2_1/. The complete progression report is also exposed at reports/v2_1_comparison/EXPERIMENT_REPORT.md. All old v2 reports and all 19 files in data_v2 are protected by byte-hash snapshots. No frozen dataset is regenerated.
+Runtime: src/v2_1/. Results: reports/v2_1/. Adapters: checkpoints/v2_1/. The complete progression report is also exposed at reports/v2_1_comparison/EXPERIMENT_REPORT.md. All old v2 reports and all 19 files in data_v2 are protected by byte-hash snapshots. No frozen dataset is regenerated.
 
 One private Hugging Face L40S job reevaluates the saved v2 stage-one adapter on validation, trains fresh Tiny Aya Fire for 4 SFT epochs (120 updates, effective batch 8, LR 1.5e-4 cosine, max length 2560), selects validation-best SFT, checks its paired validation improvement against v2 SFT, then runs bounded anti-collapse GRPO (60+60 active updates, LR 5e-6, beta .05). Validation at cumulative steps 30/60/90/120 selects a safe best checkpoint and stops predicted abstention above 40%. The stronger SFT is the eligible zero-update fallback. Any zero-update selection is explicitly labeled rather than claimed as RL improvement.
 
@@ -10,7 +10,7 @@ Anti-collapse rewards keep both older reward modes intact. False abstention is -
 
 Accepted requests follow conflict, incident, consistent, conflict, incident, conflict, incident, abstain across both stages. A 32-attempt kind budget uses .95 on attempts 17–32. Answerable fallbacks never become extra abstention updates; bounded no-anchor exhaustion preserves validation-best policy and reports early stopping.
 
-Use `python -m src_v2_1.cloud_job` to launch and `python -m src_v2_1.manage watch` for resilient logs, automatic reports/model download and preservation checks. Model training and evaluation run only on Hugging Face; local tests and report analysis do not execute a full model. A job has an eight-hour timeout. Repositories remain private; no public publishing is performed.
+Use `python -m src.v2_1.cloud_job` to launch and `python -m src.v2_1.manage watch` for resilient logs, automatic reports/model download and preservation checks. Model training and evaluation run only on Hugging Face; local tests and report analysis do not execute a full model. A job has an eight-hour timeout. Repositories remain private; no public publishing is performed.
 
 AlwaysAbstain averages -.5725 on the frozen 15%-abstention holdouts, -.3875 on balanced validation and -.61875 under the nominal 7:1 curriculum. A universal <-.50 claim across all mixes would be false. The old v2 collapse findings remain unchanged; the stage-one diagnostic is an addendum in this experiment.
 

@@ -27,7 +27,7 @@ def upload(output,args):
 
 
 def config_for(batch,steps,output,accumulation=1):
-    return SFTConfig(model=ModelConfig(name_or_path=MODEL,precision='bf16',max_seq_length=1536,peft_enabled=True,lora_rank=16,lora_alpha=32,lora_dropout=.05,target_modules=['q_proj','k_proj','v_proj','o_proj','gate_proj','up_proj','down_proj'],gradient_checkpointing=True,trust_remote_code=False),dataset=DatasetConfig(name='data/train_sft_400.jsonl',task_type='chat_completion'),train=TrainingConfig(per_device_batch_size=batch,gradient_accumulation_steps=accumulation,max_steps=steps,learning_rate=1e-4,bf16=True,fp16=False,assistant_only_loss=True,gradient_checkpointing=True,eval_interval=10000,save_interval=10000,load_best_model_at_end=False),logging=LoggingConfig(output_dir=str(output),loggers=[],log_interval=1))
+    return SFTConfig(model=ModelConfig(name_or_path=MODEL,precision='bf16',max_seq_length=1536,peft_enabled=True,lora_rank=16,lora_alpha=32,lora_dropout=.05,target_modules=['q_proj','k_proj','v_proj','o_proj','gate_proj','up_proj','down_proj'],gradient_checkpointing=True,trust_remote_code=False),dataset=DatasetConfig(name='docs/archive/data_v1/train_sft_400.jsonl',task_type='chat_completion'),train=TrainingConfig(per_device_batch_size=batch,gradient_accumulation_steps=accumulation,max_steps=steps,learning_rate=1e-4,bf16=True,fp16=False,assistant_only_loss=True,gradient_checkpointing=True,eval_interval=10000,save_interval=10000,load_best_model_at_end=False),logging=LoggingConfig(output_dir=str(output),loggers=[],log_interval=1))
 
 
 def main():
@@ -42,7 +42,7 @@ def main():
         if tokenizer.pad_token_id is None:tokenizer.pad_token=tokenizer.eos_token
         source=load_training_rows();train_raw,val_raw=case_split(source)
         train=[encode_trajectory(r,tokenizer) for r in train_raw];validation=[encode_trajectory(r,tokenizer) for r in val_raw]
-        metadata.update(training_examples=len(train),validation_examples=len(validation),train_case_ids=sorted({r['case_id'] for r in train}),validation_case_ids=sorted({r['case_id'] for r in validation}),max_actual_tokens=max(len(r['input_ids']) for r in train+validation),supervised_tokens=sum(sum(x!=-100 for x in r['labels']) for r in train),source_sha256=hashlib.sha256(Path('data/train_sft_400.jsonl').read_bytes()).hexdigest())
+        metadata.update(training_examples=len(train),validation_examples=len(validation),train_case_ids=sorted({r['case_id'] for r in train}),validation_case_ids=sorted({r['case_id'] for r in validation}),max_actual_tokens=max(len(r['input_ids']) for r in train+validation),supervised_tokens=sum(sum(x!=-100 for x in r['labels']) for r in train),source_sha256=hashlib.sha256(Path('docs/archive/data_v1/train_sft_400.jsonl').read_bytes()).hexdigest())
         (output/'run_metadata.json').write_text(json.dumps(metadata,indent=2));upload(output,args)
         base=AutoModelForCausalLM.from_pretrained(MODEL,revision=REVISION,token=token,torch_dtype=torch.bfloat16,attn_implementation='sdpa',device_map={'':'cuda:0'})
         base.config.use_cache=False;base.gradient_checkpointing_enable(gradient_checkpointing_kwargs={'use_reentrant':False})

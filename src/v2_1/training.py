@@ -48,7 +48,7 @@ def run_sft(output,persist=None):
             return metrics
     trainer=EpochTrainer(config,model,tok,encoded,val,output,accumulation=1);before=trainer.evaluate();trainer.train();assert trainer.samples_seen==960 and len(trainer.history)==120
     export_adapter(model,tok,output/'final_adapter','SFT final epoch 4');selected=output/'best_adapter';shutil.copytree(best['path'],selected,dirs_exist_ok=True)
-    baseline=read_rows('reports_v2_1/prior_v2/sft/validation_metrics.jsonl');selected_rows=read_rows(output/f'epoch{best["step"]//30}/validation/validation_metrics.jsonl');gate=warm_start_gate(baseline,selected_rows);gate['selected_sft_abstention_rate']=sum(r['predicted_abstain'] for r in selected_rows)/len(selected_rows);gate['abstention_safe']=gate['selected_sft_abstention_rate']<=.40;gate['passed']=gate['passed'] and gate['abstention_safe']
+    baseline=read_rows('reports/v2_1/prior_v2/sft/validation_metrics.jsonl');selected_rows=read_rows(output/f'epoch{best["step"]//30}/validation/validation_metrics.jsonl');gate=warm_start_gate(baseline,selected_rows);gate['selected_sft_abstention_rate']=sum(r['predicted_abstain'] for r in selected_rows)/len(selected_rows);gate['abstention_safe']=gate['selected_sft_abstention_rate']<=.40;gate['passed']=gate['passed'] and gate['abstention_safe']
     meta=dict(num_train_epochs=4,optimizer_steps=120,effective_batch_size=8,learning_rate=1.5e-4,schedule='cosine with six-step warmup',samples_seen=960,max_seq_length=2560,truncated_conversations=0,selected_step=best['step'],selected_validation_accuracy=best['accuracy'],validation=validations,warm_start_gate=gate,validation_loss_before=before)
     write_json(output/'metadata.json',meta)
     if persist:persist()

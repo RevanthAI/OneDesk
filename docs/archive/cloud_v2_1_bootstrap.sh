@@ -13,4 +13,4 @@ cd /workspace
 export PYTHONPATH=/workspace/vendor/AgentTune/src:/workspace/vendor/AuditKIT/src:/workspace
 export TOKENIZERS_PARALLELISM=false
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
-python -u -m src_v2_1.pipeline "$@"
+python -u -m src.v2_1.pipeline "$@"

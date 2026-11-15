@@ -1,0 +1,13 @@
+{
+  "project": "OneDesk",
+  "mode": "dry-run",
+  "network_calls": 0,
+  "models": 9,
+  "datasets": 6,
+  "rename_prefix": null,
+  "plan": "docs/hf_cards/PLAN.json",
+  "collections": {
+    "model": "https://huggingface.co/collections/Revanth-ml/onedesk-models-and-experimental-controls-6af97221a617ddc3326204a6",
+    "data": "https://huggingface.co/collections/Revanth-ml/onedesk-data-and-experiment-evidence-6af97225c0f1dc548b9ba8ce"
+  }
+}

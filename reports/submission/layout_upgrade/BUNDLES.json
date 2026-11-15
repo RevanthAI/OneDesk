@@ -1,0 +1,32 @@
+[
+  {
+    "module": "src.v1.cloud_sft_job",
+    "files": 312,
+    "canonical_entrypoint_present": true,
+    "cloud_calls": 0
+  },
+  {
+    "module": "src.v1.cloud_grpo_job",
+    "files": 314,
+    "canonical_entrypoint_present": true,
+    "cloud_calls": 0
+  },
+  {
+    "module": "src.v2.cloud_job",
+    "files": 421,
+    "canonical_entrypoint_present": true,
+    "cloud_calls": 0
+  },
+  {
+    "module": "src.v2_1.cloud_job",
+    "files": 438,
+    "canonical_entrypoint_present": true,
+    "cloud_calls": 0
+  },
+  {
+    "module": "src.v2_2.cloud_job",
+    "files": 465,
+    "canonical_entrypoint_present": true,
+    "cloud_calls": 0
+  }
+]

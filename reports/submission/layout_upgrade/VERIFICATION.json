@@ -1,0 +1,25 @@
+{
+  "tests_passed": 120,
+  "protected_files": 19,
+  "source_paths_preserved": 14,
+  "all_source_bytes_unchanged": true,
+  "source_manifest_matching_entries": 12,
+  "pre_existing_source_mismatches": [
+    "src/active_advantage.py",
+    "src/agenttune_grpo_backend.py"
+  ],
+  "historical_files_unchanged": 2454,
+  "canonical_cli_and_legacy_imports_verified": true,
+  "five_bundles_checked_without_cloud_calls": true,
+  "current_markdown_links_valid": true,
+  "hf_cards_dry_run_network_calls": 0,
+  "pooled_metric_denominators": [
+    500,
+    250,
+    425,
+    500,
+    425
+  ],
+  "headline_png_svg_300_dpi": true,
+  "no_benchmark_model_inference_training_or_cloud_jobs": true
+}

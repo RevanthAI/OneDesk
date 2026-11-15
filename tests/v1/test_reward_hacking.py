@@ -38,9 +38,9 @@ def test_adversarial_comparison():
         scores[name]={mode:statistics.mean(score_episode(t,e,mode) for t,e in zip(tasks,episodes)) for mode in ('specified','evidence_gated')}
         table.append(f'| {name} | {scores[name]["specified"]:.4f} | {scores[name]["evidence_gated"]:.4f} |')
     print('\n'+'\n'.join(table))
-    Path('reports').mkdir(exist_ok=True)
-    Path('reports/reward_hacking.md').write_text('\n'.join(table)+'\n')
-    Path('reports/reward_hacking.json').write_text(json.dumps(scores,indent=2))
+    Path('reports/v1').mkdir(exist_ok=True)
+    Path('reports/v1/reward_hacking.md').write_text('\n'.join(table)+'\n')
+    Path('reports/v1/reward_hacking.json').write_text(json.dumps(scores,indent=2))
     assert scores['HonestOraclePolicy']['specified']>1.3
     assert all(scores['HonestOraclePolicy']['specified']>scores[n]['specified'] for n in POLICIES[:-1])
     assert all(scores[n]['evidence_gated']<0.10 for n in POLICIES[:-1])
@@ -93,9 +93,9 @@ def test_mental_math_skip_utility_policy(subtype):
 
 
 def test_anti_collapse_always_abstain_penalty():
-    from tests_v2_1.test_recipe import test_anti_collapse_always_abstain_holdout_mix
+    from tests.v2_1.test_recipe import test_anti_collapse_always_abstain_holdout_mix
     test_anti_collapse_always_abstain_holdout_mix()
 
 def test_anti_collapse_failed_group_ranking():
-    from tests_v2_1.test_recipe import test_dense_bridge_beats_lazy_stale_and_false_abstention
+    from tests.v2_1.test_recipe import test_dense_bridge_beats_lazy_stale_and_false_abstention
     test_dense_bridge_beats_lazy_stale_and_false_abstention()

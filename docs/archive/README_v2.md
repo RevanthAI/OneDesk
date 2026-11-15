@@ -1,8 +1,8 @@
 # DriftGuard-MCP v2
 
-**Measured result:** all 340 updates completed, but final GRPO collapsed toward abstention and achieved 0% stale catch on both holdouts. See [the experiment report](../../reports_v2/EXPERIMENT_REPORT.md) and [GRPO findings](../../reports_v2/GRPO_FINDINGS.md).
+**Measured result:** all 340 updates completed, but final GRPO collapsed toward abstention and achieved 0% stale catch on both holdouts. See [the experiment report](../../reports/v2/EXPERIMENT_REPORT.md) and [GRPO findings](../../reports/v2/GRPO_FINDINGS.md).
 
-This is the independent runtime for the approved, immutable `data_v2/` release. `src_v2/` does not import legacy `src/`, and all new reports live in `reports_v2/`. The earlier `data/`, `src/`, `reports/`, model checkpoints and measured v1 results remain available as historical material, not inputs to this experiment.
+This is the independent runtime for the approved, immutable `data_v2/` release. `src/v2/` does not import legacy `src/`, and all new reports live in `reports/v2/`. The earlier `data/`, `src/`, `reports/`, model checkpoints and measured v1 results remain available as historical material, not inputs to this experiment.
 
 ## Approved experiment
 
@@ -23,7 +23,7 @@ The evidence-gated reward requires successful utility calls for SLA and payload 
 
 ```bash
 .venv/bin/python -m pytest -q
-.venv/bin/python -m src_v2.cloud_job --timeout 12h
+.venv/bin/python -m src.v2.cloud_job --timeout 12h
 ```
 
 The Hugging Face token is read from the existing parent `.env` and passed as a Job secret, never bundled. Repositories remain private. The job cap is 12 hours, a maximum listed L40S hardware-time charge of $21.60 at $1.80/hour; actual billing and remaining account credit must be checked in Hugging Face. See [Jobs pricing](https://huggingface.co/docs/hub/jobs-pricing).
@@ -34,14 +34,14 @@ The oracle and reference trajectories are deterministic fixtures, not model beha
 
 ## Publication allowlist
 
-Publish `src_v2/`, `data_v2/`, `README_v2.md`, `requirements_v2.txt`, `toolkit_revisions.json`, the pinned toolkit licenses/source references, and selected `reports_v2/` reports/plots. Omit legacy `src/`, `data/`, `reports/` and heavyweight model/optimizer files from a source publication; link the private/public model and run repositories as appropriate. Do not delete historical results or expose `.env`.
+Publish `src/v2/`, `data_v2/`, `README_v2.md`, `requirements_v2.txt`, `toolkit_revisions.json`, the pinned toolkit licenses/source references, and selected `reports/v2/` reports/plots. Omit legacy `src/`, `data/`, `reports/` and heavyweight model/optimizer files from a source publication; link the private/public model and run repositories as appropriate. Do not delete historical results or expose `.env`.
 
 ## Local use after cloud training
 
-Download both exported adapters and reports with `python -m src_v2.manage download --models`. Adapter weights require the pinned Tiny Aya Fire base weights; this is a LoRA distribution, not a merged checkpoint.
+Download both exported adapters and reports with `python -m src.v2.manage download --models`. Adapter weights require the pinned Tiny Aya Fire base weights; this is a LoRA distribution, not a merged checkpoint.
 
-The optional RTX 2070 deployment command is `python -m src_v2.local_demo --adapter checkpoints_v2/grpo_adapter`. It uses NF4 weights, FP16 computation, batch one and the Turing SDPA compatibility setting. It is intentionally separate from the matched cloud BF16 benchmark. No local model inference is run as part of this cloud experiment.
+The optional RTX 2070 deployment command is `python -m src.v2.local_demo --adapter checkpoints/v2/grpo_adapter`. It uses NF4 weights, FP16 computation, batch one and the Turing SDPA compatibility setting. It is intentionally separate from the matched cloud BF16 benchmark. No local model inference is run as part of this cloud experiment.
 
 The release archive carries the pinned AgentTune/AuditKIT Python sources and their licenses. For a fresh source checkout, install `requirements_v2.txt` with the CUDA-compatible PyTorch wheel and expose `vendor/AgentTune/src` and `vendor/AuditKIT/src` on `PYTHONPATH`, as the cloud bootstrap does. Local NF4 use additionally requires bitsandbytes; it is not a dependency of the matched BF16 cloud experiment.
 
-`python -m src_v2.finish --wait` waits for the current cloud job, retrieves both adapters and reports, verifies all 340 active updates, and creates the final v2-only source/report archive. It does not run inference or publish publicly.
+`python -m src.v2.finish --wait` waits for the current cloud job, retrieves both adapters and reports, verifies all 340 active updates, and creates the final v2-only source/report archive. It does not run inference or publish publicly.

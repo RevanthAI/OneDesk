@@ -1,0 +1,370 @@
+{
+  "protected_before": 19,
+  "source_hash_status": {
+    "src/v2_world.py": {
+      "expected": "ea0d791a3cbb11795628f552c501f559a8267e1d8ae5e392256a25f276d662e5",
+      "actual": "ea0d791a3cbb11795628f552c501f559a8267e1d8ae5e392256a25f276d662e5",
+      "matched_before": true,
+      "unchanged_after_move": true
+    },
+    "src/v2_tasks.py": {
+      "expected": "44e5b29aacf1b778007cd4cd3da4e7822a25fa73b35d4585a48fe5cf36e6325a",
+      "actual": "44e5b29aacf1b778007cd4cd3da4e7822a25fa73b35d4585a48fe5cf36e6325a",
+      "matched_before": true,
+      "unchanged_after_move": true
+    },
+    "src/v2_env.py": {
+      "expected": "b849e2f7d4c7bc9a8cedd65c5054275cee520ff2a4dccb8d2393b36f2ffc4235",
+      "actual": "b849e2f7d4c7bc9a8cedd65c5054275cee520ff2a4dccb8d2393b36f2ffc4235",
+      "matched_before": true,
+      "unchanged_after_move": true
+    },
+    "src/v2_oracle.py": {
+      "expected": "6a9088c3abcb23c1c42747e3d14938d213a06b97b9cc0204656efb3068bf4d22",
+      "actual": "6a9088c3abcb23c1c42747e3d14938d213a06b97b9cc0204656efb3068bf4d22",
+      "matched_before": true,
+      "unchanged_after_move": true
+    },
+    "src/v2_dataset.py": {
+      "expected": "02935069fae535dab290a84c043194bea252aebe3cf7cd571d483f42ca5a6bc7",
+      "actual": "02935069fae535dab290a84c043194bea252aebe3cf7cd571d483f42ca5a6bc7",
+      "matched_before": true,
+      "unchanged_after_move": true
+    },
+    "src/v2_review.py": {
+      "expected": "c9d1a5821f92ffcbb15ec528b2a784aeb0900271c0a7fb27732856cabc5b2084",
+      "actual": "c9d1a5821f92ffcbb15ec528b2a784aeb0900271c0a7fb27732856cabc5b2084",
+      "matched_before": true,
+      "unchanged_after_move": true
+    },
+    "src/world_generator.py": {
+      "expected": "69af71e5ab9895c4e0f2ddb26fee78eecdaf30a26a1ebee334893a5b3c565551",
+      "actual": "69af71e5ab9895c4e0f2ddb26fee78eecdaf30a26a1ebee334893a5b3c565551",
+      "matched_before": true,
+      "unchanged_after_move": true
+    },
+    "src/mcp_env.py": {
+      "expected": "1a510b3789190e442f6ba0684bc556d2a244317bca515c89981a86bb17fd80ba",
+      "actual": "1a510b3789190e442f6ba0684bc556d2a244317bca515c89981a86bb17fd80ba",
+      "matched_before": true,
+      "unchanged_after_move": true
+    },
+    "src/mcp_adapter.py": {
+      "expected": "9046db97e1167ee12772e556905a25185f7f63c7733f1c3f2002986eef7d6d5c",
+      "actual": "9046db97e1167ee12772e556905a25185f7f63c7733f1c3f2002986eef7d6d5c",
+      "matched_before": true,
+      "unchanged_after_move": true
+    },
+    "src/oracle_solver.py": {
+      "expected": "1eff714385059378e6de7acda79f8bb1c5f487bf988dd62d0a20329d631db842",
+      "actual": "1eff714385059378e6de7acda79f8bb1c5f487bf988dd62d0a20329d631db842",
+      "matched_before": true,
+      "unchanged_after_move": true
+    },
+    "src/dataset_builder.py": {
+      "expected": "f3636a720ebf4cee88c7c7a4cdaa0a01d3f88be4f29a4940fc7a8632b37fa276",
+      "actual": "f3636a720ebf4cee88c7c7a4cdaa0a01d3f88be4f29a4940fc7a8632b37fa276",
+      "matched_before": true,
+      "unchanged_after_move": true
+    },
+    "src/real_repo_world.py": {
+      "expected": "116cbcf36050f720e937f3f8089d3d354b9e31e2c644634425ca2bbe82898907",
+      "actual": "116cbcf36050f720e937f3f8089d3d354b9e31e2c644634425ca2bbe82898907",
+      "matched_before": true,
+      "unchanged_after_move": true
+    },
+    "src/active_advantage.py": {
+      "expected": "fc6b9a0e19132f95c78c251e4b3fbbf13711c23073447a155452e7f0d30296c2",
+      "actual": "d49101e5762b8d54da8f0de6f7701c09c8e650d57ce4cfca816d2ae3b7b0edc0",
+      "matched_before": false,
+      "unchanged_after_move": true
+    },
+    "src/agenttune_grpo_backend.py": {
+      "expected": "0fb06a8712ba965476b2fffe434a6d9bea501196aa6f421ed0e0f9442c44bcb0",
+      "actual": "b6c85e38a4455bc222ed35fe27f1f8758a8bfd421379e85e4139cf89d95179a2",
+      "matched_before": false,
+      "unchanged_after_move": true
+    }
+  },
+  "moves": [
+    [
+      "checkpoints/tiny-aya-fire-sft-merged",
+      "checkpoints/v1/tiny-aya-fire-sft-merged"
+    ],
+    [
+      "checkpoints/tiny-aya-fire-sft-adapter",
+      "checkpoints/v1/tiny-aya-fire-sft-adapter"
+    ],
+    [
+      "checkpoints/tiny-aya-fire-grpo-pilot-adapter",
+      "checkpoints/v1/tiny-aya-fire-grpo-pilot-adapter"
+    ],
+    [
+      "reports/IMPLEMENTATION_NOTES.md",
+      "reports/v1/IMPLEMENTATION_NOTES.md"
+    ],
+    [
+      "reports/base_fire_nf4",
+      "reports/v1/base_fire_nf4"
+    ],
+    [
+      "reports/v2_grpo_fire",
+      "reports/v1/v2_grpo_fire"
+    ],
+    [
+      "reports/precision_full",
+      "reports/v1/precision_full"
+    ],
+    [
+      "reports/SOURCE_SHA256SUMS",
+      "reports/v1/SOURCE_SHA256SUMS"
+    ],
+    [
+      "reports/environment_freeze.txt",
+      "reports/v1/environment_freeze.txt"
+    ],
+    [
+      "reports/auditkit_integration_check",
+      "reports/v1/auditkit_integration_check"
+    ],
+    [
+      "reports/v2_base_fire",
+      "reports/v1/v2_base_fire"
+    ],
+    [
+      "reports/local_sft_example.json",
+      "reports/v1/local_sft_example.json"
+    ],
+    [
+      "reports/reward_hacking.md",
+      "reports/v1/reward_hacking.md"
+    ],
+    [
+      "reports/sft_fire_nf4",
+      "reports/v1/sft_fire_nf4"
+    ],
+    [
+      "reports/v2_sft_fire",
+      "reports/v1/v2_sft_fire"
+    ],
+    [
+      "reports/pilot_fire_nf4_batch4",
+      "reports/v1/pilot_fire_nf4_batch4"
+    ],
+    [
+      "reports/cloud_sft",
+      "reports/v1/cloud_sft"
+    ],
+    [
+      "reports/lexsi_provenance.json",
+      "reports/v1/lexsi_provenance.json"
+    ],
+    [
+      "reports/cloud_grpo",
+      "reports/v1/cloud_grpo"
+    ],
+    [
+      "reports/world_sql_exports",
+      "reports/v1/world_sql_exports"
+    ],
+    [
+      "reports/reward_hacking.json",
+      "reports/v1/reward_hacking.json"
+    ],
+    [
+      "reports/v2_1_comparison",
+      "reports/v1/v2_1_comparison"
+    ],
+    [
+      "checkpoints_v2",
+      "checkpoints/v2"
+    ],
+    [
+      "checkpoints_v2_1",
+      "checkpoints/v2_1"
+    ],
+    [
+      "checkpoints_v2_2",
+      "checkpoints/v2_2"
+    ],
+    [
+      "reports_v2",
+      "reports/v2"
+    ],
+    [
+      "reports_v2_1",
+      "reports/v2_1"
+    ],
+    [
+      "reports_v2_2",
+      "reports/v2_2"
+    ],
+    [
+      "tests_v2",
+      "tests/v2"
+    ],
+    [
+      "tests_v2_1",
+      "tests/v2_1"
+    ],
+    [
+      "tests_v2_2",
+      "tests/v2_2"
+    ],
+    [
+      "src_v2",
+      "src/v2"
+    ],
+    [
+      "src_v2_1",
+      "src/v2_1"
+    ],
+    [
+      "src_v2_2",
+      "src/v2_2"
+    ],
+    [
+      "reports_submission",
+      "reports/submission"
+    ],
+    [
+      "tests/test_sft_training.py",
+      "tests/v1/test_sft_training.py"
+    ],
+    [
+      "tests/test_active_advantage.py",
+      "tests/v1/test_active_advantage.py"
+    ],
+    [
+      "tests/test_grpo_training.py",
+      "tests/v1/test_grpo_training.py"
+    ],
+    [
+      "tests/test_precision_comparison.py",
+      "tests/v1/test_precision_comparison.py"
+    ],
+    [
+      "tests/test_evaluation.py",
+      "tests/v1/test_evaluation.py"
+    ],
+    [
+      "tests/test_world_and_oracle.py",
+      "tests/v1/test_world_and_oracle.py"
+    ],
+    [
+      "tests/test_pipeline_v2.py",
+      "tests/v1/test_pipeline_v2.py"
+    ],
+    [
+      "tests/test_data_v2.py",
+      "tests/v1/test_data_v2.py"
+    ],
+    [
+      "tests/test_reward_hacking.py",
+      "tests/v1/test_reward_hacking.py"
+    ],
+    [
+      "src/toolkits.py",
+      "src/v1/toolkits.py"
+    ],
+    [
+      "src/run_local_sft.py",
+      "src/v1/run_local_sft.py"
+    ],
+    [
+      "src/train_grpo.py",
+      "src/v1/train_grpo.py"
+    ],
+    [
+      "src/diagnose_outputs.py",
+      "src/v1/diagnose_outputs.py"
+    ],
+    [
+      "src/plot_grpo.py",
+      "src/v1/plot_grpo.py"
+    ],
+    [
+      "src/grpo_rollout.py",
+      "src/v1/grpo_rollout.py"
+    ],
+    [
+      "src/download_sft.py",
+      "src/v1/download_sft.py"
+    ],
+    [
+      "src/evaluate_auditkit.py",
+      "src/v1/evaluate_auditkit.py"
+    ],
+    [
+      "src/manage_grpo.py",
+      "src/v1/manage_grpo.py"
+    ],
+    [
+      "src/grpo_trace_viewer.py",
+      "src/v1/grpo_trace_viewer.py"
+    ],
+    [
+      "src/analyze_grpo.py",
+      "src/v1/analyze_grpo.py"
+    ],
+    [
+      "src/reward.py",
+      "src/v1/reward.py"
+    ],
+    [
+      "src/compare_precision.py",
+      "src/v1/compare_precision.py"
+    ],
+    [
+      "src/agenttune_sft_backend.py",
+      "src/v1/agenttune_sft_backend.py"
+    ],
+    [
+      "src/cloud_grpo_job.py",
+      "src/v1/cloud_grpo_job.py"
+    ],
+    [
+      "src/sft_data.py",
+      "src/v1/sft_data.py"
+    ],
+    [
+      "src/grpo_core.py",
+      "src/v1/grpo_core.py"
+    ],
+    [
+      "src/train_agenttune.py",
+      "src/v1/train_agenttune.py"
+    ],
+    [
+      "src/cloud_sft_job.py",
+      "src/v1/cloud_sft_job.py"
+    ],
+    [
+      "hf_cards",
+      "docs/hf_cards"
+    ],
+    [
+      "data",
+      "docs/archive/data_v1"
+    ]
+  ],
+  "protected_after": 19,
+  "legacy_import_checks": [
+    {
+      "legacy": "src_v2.mcp_env",
+      "canonical": "src.v2.mcp_env",
+      "same_module_object": true
+    },
+    {
+      "legacy": "src_v2_1.mcp_env",
+      "canonical": "src.v2_1.mcp_env",
+      "same_module_object": true
+    },
+    {
+      "legacy": "src_v2_2.mcp_env",
+      "canonical": "src.v2_2.mcp_env",
+      "same_module_object": true
+    }
+  ],
+  "broken_current_document_links": []
+}

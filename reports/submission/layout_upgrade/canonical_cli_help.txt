@@ -1,0 +1,8 @@
+usage: manage.py [-h] [--models] {status,logs,download,watch}
+
+positional arguments:
+  {status,logs,download,watch}
+
+options:
+  -h, --help            show this help message and exit
+  --models

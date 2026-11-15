@@ -91,7 +91,7 @@ def test_v2_repo_mix_dedup_rewards_and_freeze():
     assert len(trajectories)==240 and all(1<=t['reward']<=1.5 for t in trajectories)
     assert {'consistent','conflict','incident','abstain'}=={t['metadata']['kind'] for t in trajectories}
     assert verify_manifest(Path('data_v2'))
-    assert verify_manifest(Path('data'))
+    assert verify_manifest(Path('docs/archive/data_v1'))
 
 
 def test_v2_cross_channel_discovery_uses_observations(worlds):

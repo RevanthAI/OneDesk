@@ -5,18 +5,18 @@ os.environ['TRANSFORMERS_OFFLINE']='1'
 import json,hashlib,statistics,re
 from pathlib import Path
 from collections import Counter
-from src_v2_2.manage import protected
-from src_v2_2.reward import score_episode
-from src_v2_2.mcp_env import MCPEnv
-from src_v2_2.oracle_solver import run_oracle
-out=Path('reports_submission');out.mkdir(exist_ok=True)
+from src.v2_2.manage import protected
+from src.v2_2.reward import score_episode
+from src.v2_2.mcp_env import MCPEnv
+from src.v2_2.oracle_solver import run_oracle
+out=Path('reports/submission');out.mkdir(exist_ok=True)
 def read(p):return json.loads(Path(p).read_text())
 def rows(p):return [json.loads(l) for l in Path(p).read_text().splitlines()]
 def save(n,d):(out/n).write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
 assert protected()==19
 # Read and hash every relevant existing text/config/runtime artifact once by real path.
 seen=set();inventory=[];jsons={};plots=[];repos=set();revisions=[]
-roots=[Path(p) for p in ['reports','reports_v2','reports_v2_1','reports_v2_2','data','data_v2','configs']]+list(Path('.').glob('checkpoints*'))
+roots=[Path(p) for p in ['reports/v1','reports/v2','reports/v2_1','reports/v2_2','docs/archive/data_v1','data_v2','configs']]+list(Path('.').glob('checkpoints*'))
 for root in roots:
  for p in sorted(root.rglob('*')):
   if not p.is_file() or '.cache' in p.parts or '__pycache__' in p.parts:continue
@@ -57,7 +57,7 @@ for name in policies:
      if prod:
       m=re.search(r'= ([\d.]+)',prod['snippet']);pred.update(value=m[1] if m else 'invalid',cites=[prod['page_id']])
     if name=='SpamAllToolsThenGuessPolicy':
-     from src_v2_2.mcp_env import SCHEMAS
+     from src.v2_2.mcp_env import SCHEMAS
      for s,tools in SCHEMAS.items():
       tool=next(iter(tools));args={k:(1 if typ=='number' else 'irrelevant') for k,typ in tools[tool].items()};env.call(s,tool,args)
      pred['value']='500'
@@ -68,9 +68,9 @@ for name in policies:
 save('REWARD_AUDIT.json',dict(cohort='Frozen v2 synthetic: 100 English semantic cases; MentalMath is restricted to 11 utility incident cases. Deterministic policies, no LLM inference.',scores=scores,mental_math='Uses oracle-correct scalar with DB evidence but removes utility calls; tests a knowingly privileged shortcut upper bound. Not a learned baseline.',lazy='Selects PROD Notion instead of staging, to isolate stale-only failure. No deployment verification.'))
 # Tokenize saved traces only. No model weights are loaded or generation performed.
 from transformers import AutoTokenizer
-tok=AutoTokenizer.from_pretrained(str(Path('checkpoints_v2_2/sft_warmup_adapter').resolve()),local_files_only=True)
+tok=AutoTokenizer.from_pretrained(str(Path('checkpoints/v2_2/sft_warmup_adapter').resolve()),local_files_only=True)
 tokens={}
-for name,folder in [('v1_sft','reports/sft_fire_nf4'),('warmup','reports_v2_2/sft_evaluation'),('grpo','reports_v2_2/grpo_evaluation')]:
+for name,folder in [('v1_sft','reports/v1/sft_fire_nf4'),('warmup','reports/v2_2/sft_evaluation'),('grpo','reports/v2_2/grpo_evaluation')]:
  episodes=[e for split in ('test_synth','repo_style') for e in rows(Path(folder)/(split+'_episodes.jsonl'))];inputs=[];outputs=[];turns=[]
  for e in episodes:
   it=ot=nt=0;msgs=e['messages']

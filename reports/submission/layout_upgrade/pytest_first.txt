@@ -1,0 +1,121 @@
+.........................F....................FF...................F.... [ 60%]
+....................F...........................                         [100%]
+=================================== FAILURES ===================================
+________ test_v2_bundle_is_independent_and_does_not_include_credentials ________
+
+tmp_path = PosixPath('/tmp/pytest-of-revanth/pytest-4/test_v2_bundle_is_independent_0')
+
+    def test_v2_bundle_is_independent_and_does_not_include_credentials(tmp_path):
+        import zipfile
+        from src_v2.cloud_job import package
+>       archive=tmp_path/'bundle.zip';manifest=package(archive)
+                                               ^^^^^^^^^^^^^^^^
+
+tests/v1/test_pipeline_v2.py:33:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = PosixPath('/tmp/pytest-of-revanth/pytest-4/test_v2_bundle_is_independent_0/bundle.zip')
+
+    def package(path):
+        files=sorted(Path('src/v2').glob('*.py'))+sorted(p for p in Path('data_v2').iterdir() if p.is_file())
+        for library in ('AgentTune','AuditKIT'):
+            files+=sorted(Path('vendor',library,'src').rglob('*.py'))
+            files+=[p for p in Path('vendor',library).glob('LICENSE*') if p.is_file()]
+        files+=[Path('toolkit_revisions.json'),Path('docs/archive/cloud_v2_bootstrap.sh')]
+        with zipfile.ZipFile(path,'w',zipfile.ZIP_DEFLATED) as archive:
+            for f in files:
+>               if f.name=='.env' or f.parts[0] in ('src','docs/archive/data_v1','reports/v1'):raise ValueError('legacy or secret path in v2 bundle')
+                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               ValueError: legacy or secret path in v2 bundle
+
+src/v2/cloud_job.py:18: ValueError
+__________________ test_anti_collapse_always_abstain_penalty ___________________
+
+    def test_anti_collapse_always_abstain_penalty():
+>       from tests_v2_1.test_recipe import test_anti_collapse_always_abstain_holdout_mix
+E       ModuleNotFoundError: No module named 'tests_v2_1'
+
+tests/v1/test_reward_hacking.py:96: ModuleNotFoundError
+___________________ test_anti_collapse_failed_group_ranking ____________________
+
+    def test_anti_collapse_failed_group_ranking():
+>       from tests_v2_1.test_recipe import test_dense_bridge_beats_lazy_stale_and_false_abstention
+E       ModuleNotFoundError: No module named 'tests_v2_1'
+
+tests/v1/test_reward_hacking.py:100: ModuleNotFoundError
+________ test_v2_bundle_is_independent_and_does_not_include_credentials ________
+
+tmp_path = PosixPath('/tmp/pytest-of-revanth/pytest-4/test_v2_bundle_is_independent_1')
+
+    def test_v2_bundle_is_independent_and_does_not_include_credentials(tmp_path):
+        import zipfile
+        from src_v2.cloud_job import package
+>       archive=tmp_path/'bundle.zip';manifest=package(archive)
+                                               ^^^^^^^^^^^^^^^^
+
+tests/v2/test_pipeline.py:35:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = PosixPath('/tmp/pytest-of-revanth/pytest-4/test_v2_bundle_is_independent_1/bundle.zip')
+
+    def package(path):
+        files=sorted(Path('src/v2').glob('*.py'))+sorted(p for p in Path('data_v2').iterdir() if p.is_file())
+        for library in ('AgentTune','AuditKIT'):
+            files+=sorted(Path('vendor',library,'src').rglob('*.py'))
+            files+=[p for p in Path('vendor',library).glob('LICENSE*') if p.is_file()]
+        files+=[Path('toolkit_revisions.json'),Path('docs/archive/cloud_v2_bootstrap.sh')]
+        with zipfile.ZipFile(path,'w',zipfile.ZIP_DEFLATED) as archive:
+            for f in files:
+>               if f.name=='.env' or f.parts[0] in ('src','docs/archive/data_v1','reports/v1'):raise ValueError('legacy or secret path in v2 bundle')
+                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               ValueError: legacy or secret path in v2 bundle
+
+src/v2/cloud_job.py:18: ValueError
+_________________ test_frozen_inputs_and_old_reports_unchanged _________________
+
+    def test_frozen_inputs_and_old_reports_unchanged():
+        import hashlib
+        sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+        data=json.loads(Path('reports/v2_1/APPROVED_DATA_LOCK.json').read_text());assert data=={p.name:sha(p) for p in Path('data_v2').iterdir() if p.is_file()}
+>       for name,digest in json.loads(Path('reports/v2_1/PROTECTED_V2_LOCK.json').read_text()).items():assert sha(Path(name))==digest,name
+                                                                                                              ^^^^^^^^^^^^^^^
+
+tests/v2_1/test_recipe.py:106:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/v2_1/test_recipe.py:104: in <lambda>
+    sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+                                ^^^^^^^^^^^^^^
+../../../../.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/pathlib.py:1019: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = PosixPath('reports_v2/comparison.svg'), mode = 'rb', buffering = -1
+encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'reports_v2/comparison.svg'
+
+../../../../.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/pathlib.py:1013: FileNotFoundError
+=============================== warnings summary ===============================
+tests/v1/test_sft_training.py::test_trained_adapter_merges_and_reloads_as_standalone_model
+  /home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/.venv/lib/python3.12/site-packages/peft/utils/save_and_load.py:286: UserWarning: Could not find a config file in  - will assume that the vocabulary was not modified.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/v1/test_pipeline_v2.py::test_v2_bundle_is_independent_and_does_not_include_credentials
+FAILED tests/v1/test_reward_hacking.py::test_anti_collapse_always_abstain_penalty
+FAILED tests/v1/test_reward_hacking.py::test_anti_collapse_failed_group_ranking
+FAILED tests/v2/test_pipeline.py::test_v2_bundle_is_independent_and_does_not_include_credentials
+FAILED tests/v2_1/test_recipe.py::test_frozen_inputs_and_old_reports_unchanged
+5 failed, 115 passed, 1 warning in 35.61s

@@ -132,7 +132,7 @@ def summary(result):
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,default=ROOT/'reports_submission/TEXT_LEAK_AUDIT.json');args=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,default=ROOT/'reports/submission/TEXT_LEAK_AUDIT.json');args=p.parse_args()
     result=audit();args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
     print(summary(result));print(json.dumps({k:result[k] for k in ['train_rows','holdout_rows','seconds']}))
 

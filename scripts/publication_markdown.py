@@ -9,7 +9,7 @@ DATA_COLLECTION_URL = 'https://huggingface.co/collections/Revanth-ml/onedesk-dat
 
 
 def publication():
-    path = ROOT / 'hf_cards/PUBLISH_RECEIPT.json'
+    path = ROOT / 'docs/hf_cards/PUBLISH_RECEIPT.json'
     data = json.loads(path.read_text()) if path.exists() else {}
     return {**data, 'complete': True,
             'model_collection_url': MODEL_COLLECTION_URL,

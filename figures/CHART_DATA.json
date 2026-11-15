@@ -7,27 +7,145 @@
       "name": "1_headline_success",
       "values": {
         "Base": [
-          0.5,
+          0.4,
           0.0,
           0.0,
-          69.0
+          70.0
         ],
         "Warmup SFT \u00b7 60 steps": [
-          72.5,
-          64.0,
-          74.0,
+          70.8,
+          70.39999999999999,
+          88.25882352941177,
+          100.0
+        ],
+        "Full SFT \u00b7 120 steps": [
+          77.0,
+          61.199999999999996,
+          93.1764705882353,
           100.0
         ],
         "Final OneDesk \u00b7 selected update 40": [
-          75.75,
-          71.0,
-          79.0,
+          74.8,
+          75.6,
+          87.55294117647058,
           100.0
         ]
       },
-      "cohort": "Frozen data_v2 holdouts; displayed labels round exact estimates",
-      "png_sha256": "64594a3676fc1a418a889a4449cf6319df62e04c674f38008f3b915a42a92386",
-      "svg_sha256": "50c7810930d2c33283b3c5e6e53b1a215d1e2d1f68341863c11fe640e0650618"
+      "metrics": [
+        "exact_outcome",
+        "stale_catch",
+        "verified_citation_f1",
+        "format_valid"
+      ],
+      "pooled": {
+        "Base": {
+          "exact_outcome": {
+            "estimate": 0.004,
+            "denominator": 500.0
+          },
+          "stale_catch": {
+            "estimate": 0.0,
+            "denominator": 250.0
+          },
+          "verified_citation_f1": {
+            "estimate": 0.0,
+            "denominator": 425.0
+          },
+          "format_valid": {
+            "estimate": 0.7,
+            "denominator": 500.0
+          },
+          "required_chain_compliance": {
+            "estimate": 0.0,
+            "denominator": 425.0
+          },
+          "native_tool_call_validity": {
+            "test_synth": null,
+            "repo_style": null
+          }
+        },
+        "Warmup SFT \u00b7 60 steps": {
+          "exact_outcome": {
+            "estimate": 0.708,
+            "denominator": 500.0
+          },
+          "stale_catch": {
+            "estimate": 0.704,
+            "denominator": 250.0
+          },
+          "verified_citation_f1": {
+            "estimate": 0.8825882352941177,
+            "denominator": 425.0
+          },
+          "format_valid": {
+            "estimate": 1.0,
+            "denominator": 500.0
+          },
+          "required_chain_compliance": {
+            "estimate": 0.9317647058823529,
+            "denominator": 425.0
+          },
+          "native_tool_call_validity": {
+            "test_synth": 1.0,
+            "repo_style": 1.0
+          }
+        },
+        "Full SFT \u00b7 120 steps": {
+          "exact_outcome": {
+            "estimate": 0.77,
+            "denominator": 500.0
+          },
+          "stale_catch": {
+            "estimate": 0.612,
+            "denominator": 250.0
+          },
+          "verified_citation_f1": {
+            "estimate": 0.931764705882353,
+            "denominator": 425.0
+          },
+          "format_valid": {
+            "estimate": 1.0,
+            "denominator": 500.0
+          },
+          "required_chain_compliance": {
+            "estimate": 0.9764705882352941,
+            "denominator": 425.0
+          },
+          "native_tool_call_validity": {
+            "test_synth": 1.0,
+            "repo_style": 1.0
+          }
+        },
+        "Final OneDesk \u00b7 selected update 40": {
+          "exact_outcome": {
+            "estimate": 0.748,
+            "denominator": 500.0
+          },
+          "stale_catch": {
+            "estimate": 0.756,
+            "denominator": 250.0
+          },
+          "verified_citation_f1": {
+            "estimate": 0.8755294117647059,
+            "denominator": 425.0
+          },
+          "format_valid": {
+            "estimate": 1.0,
+            "denominator": 500.0
+          },
+          "required_chain_compliance": {
+            "estimate": 0.84,
+            "denominator": 425.0
+          },
+          "native_tool_call_validity": {
+            "test_synth": 1.0,
+            "repo_style": 1.0
+          }
+        }
+      },
+      "cohort": "Combined 500-query frozen holdout; metric-specific denominators",
+      "png_sha256": "4c41ec0a4e83eb3941a954b2b4a2e86eb6d2aaaf13f93024003976e2f792771e",
+      "svg_sha256": "6ae6c9015ece8f1ea8cb9f95bbe33a14e0c5e8ec36307abbca3768aa0bb17d1d"
     },
     {
       "name": "2_multilingual_reach",
@@ -73,8 +191,8 @@
           ]
         }
       },
-      "png_sha256": "2963ab9f53d10a398c3317da80b8476168fc717e602702d7346aa260c3577801",
-      "svg_sha256": "c8841707ce0f61fa28e02d29fe75678146526c464d692c6d2b045e5f467f1b5c"
+      "png_sha256": "a963705a219e06ff8c8e8ee1cd4bc0ddfba25c3d99a317ec3455974b4abb4fe7",
+      "svg_sha256": "0488dc1ca2d11e3c8b25ef242a9fec6ce7eaf2cef947f1a52746906b0cb4d461"
     },
     {
       "name": "3_training_journey",
@@ -107,7 +225,7 @@
         70.0
       ],
       "png_sha256": "7c1a3d3a5078c64b8f64e6e4fdb77ef2f48b192fe352d1cad012274455e4254d",
-      "svg_sha256": "c6e1f56529d5acd7ae2bad7673928c12f850a7e400178ced3c74dd3326f1f835"
+      "svg_sha256": "5613bd370448ea4649242f609bae51bd9f66cb67656771fbbb8ce031d68f30c4"
     },
     {
       "name": "4_cost_and_privacy_roi",
@@ -163,7 +281,7 @@
         "api_quality_measured": false
       },
       "png_sha256": "52ea3bd9de8004acf349b53ecb3b2bc8da55abc0027135a275b1e168617ecdb7",
-      "svg_sha256": "d514e5788b6ed22bfd0e0173efa203295d2431bd958bbb8017af86e5334d5bed"
+      "svg_sha256": "0c10dea006f80afa732249d8a935a19470f441be83203af0197c65669646f57f"
     }
   ]
 }

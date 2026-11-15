@@ -10,7 +10,7 @@ from types import SimpleNamespace
 from unittest.mock import patch
 import yaml
 from PIL import Image
-from clean_report_data import ROOT, protect, digest
+from clean_report_data import ROOT, protect, digest, fmt
 import prepare_hf_repos as publisher
 import build_clean_report
 from publication_markdown import MODEL_COLLECTION_URL, DATA_COLLECTION_URL
@@ -55,7 +55,13 @@ def main():
     assert len(re.findall(r'!\[[^\]]*\]\(\.\./figures/[^)]+\)',full))==6
     assert 'All 19 Protected Dataset Checksums' in full
     assert 'CPU Text-Level Overlap Check' in full and '32/425' in full
-    chart=json.loads((ROOT/'figures/CHART_DATA.json').read_text())['charts'][1]['values']
+    chart_data=json.loads((ROOT/'figures/CHART_DATA.json').read_text())['charts']
+    expected_headline={'Base':[0.4,0.0,0.0,70.0],
+                       'Warmup SFT · 60 steps':[70.8,70.4,88.3,100.0],
+                       'Full SFT · 120 steps':[77.0,61.2,93.2,100.0],
+                       'Final OneDesk · selected update 40':[74.8,75.6,87.6,100.0]}
+    assert {key:[float(fmt(v)) for v in values] for key,values in chart_data[0]['values'].items()}==expected_headline
+    chart=chart_data[1]['values']
     for split,expected in [('test_synth',[77.,76.,66.,71.]),('repo_style',[64.,64.,64.,64.])]:
         assert len(chart[split])==3
         assert chart[split]['Warmup SFT · 60 steps']==expected
@@ -113,12 +119,12 @@ def main():
     for name,expected in saved_receipts.items():
         actual=(cards/name).read_bytes() if (cards/name).exists() else None
         assert actual==expected,'Real publication receipt changed during mocked checks'
-    assert digest('README.md')==json.loads((ROOT/'reports_submission/clean_assets/REPORT_METADATA.json').read_text())['sha256']
+    assert digest('README.md')==json.loads((ROOT/'reports/submission/clean_assets/REPORT_METADATA.json').read_text())['sha256']
     protect()
     result=dict(cards=15,model_cards=9,dataset_cards=6,python_snippets_parsed=snippets,yaml_valid=True,charts=figures,
                 local_report_links_valid=True,dry_run_network_calls=0,mock_publication=mutation_checks,
                 remote_publication_performed=False,protected_files=19)
-    (ROOT/'reports_submission/clean_assets/ASSET_VERIFICATION.json').write_text(json.dumps(result,indent=2)+'\n')
+    (ROOT/'reports/submission/clean_assets/ASSET_VERIFICATION.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result,indent=2))
 
 if __name__=='__main__':main()

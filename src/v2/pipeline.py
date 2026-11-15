@@ -14,7 +14,7 @@ from .plot_grpo import plot_run
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--run-repo',required=True);p.add_argument('--run-prefix',required=True);p.add_argument('--sft-repo',required=True);p.add_argument('--grpo-repo',required=True);p.add_argument('--phase',choices=('all','base'),default='all');p.add_argument('--resume-prefix');p.add_argument('--sft-revision');args=p.parse_args()
-    out=Path('reports_v2');out.mkdir(exist_ok=True);api=HfApi(token=os.getenv('HF_TOKEN'));started=time.time();torch.manual_seed(20261112);torch.set_num_threads(8)
+    out=Path('reports/v2');out.mkdir(exist_ok=True);api=HfApi(token=os.getenv('HF_TOKEN'));started=time.time();torch.manual_seed(20261112);torch.set_num_threads(8)
     if args.resume_prefix:
         restore=Path('/workspace/resume_input')
         revision=api.repo_info(args.run_repo,repo_type='dataset').sha

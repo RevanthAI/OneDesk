@@ -12,4 +12,4 @@ cd /workspace
 export PYTHONPATH=/workspace/vendor/AgentTune/src:/workspace
 export TOKENIZERS_PARALLELISM=false
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
-python -u -m src.train_agenttune "$@"
+python -u -m src.v1.train_agenttune "$@"

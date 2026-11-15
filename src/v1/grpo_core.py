@@ -10,18 +10,18 @@ from .sft_data import case_split,load_training_rows
 
 
 def load_curriculum():
-    expected={line.split('  ',1)[1]:line.split('  ',1)[0] for line in Path('data/SHA256SUMS').read_text().splitlines()}
+    expected={line.split('  ',1)[1]:line.split('  ',1)[0] for line in Path('docs/archive/data_v1/SHA256SUMS').read_text().splitlines()}
     fit,val=case_split(load_training_rows());validation_cases={r['case_id'] for r in val}
     stages=[]
     for file in ('train_grpo_stage1.jsonl','train_grpo_stage2.jsonl'):
-        raw=Path('data',file).read_bytes()
+        raw=Path('docs/archive/data_v1',file).read_bytes()
         if hashlib.sha256(raw).hexdigest()!=expected[file]:raise ValueError('curriculum hash mismatch')
         rows=[json.loads(line) for line in raw.splitlines()]
         if any(r['world_split']!='train' or not r['case_id'].startswith('train-') for r in rows):raise ValueError('non-training row')
         stages.append([r for r in rows if r['case_id'] not in validation_cases])
     # Preserve the exact ten SFT-validation cases, with prompts generated from the same train world.
     from .oracle_solver import build_tasks
-    world=json.loads(Path('data/world_train.json').read_text())
+    world=json.loads(Path('docs/archive/data_v1/world_train.json').read_text())
     validation=[r for r in build_tasks(world) if r['case_id'] in validation_cases]
     if len(validation)!=40:raise ValueError('expected forty grouped training-world validation tasks')
     if any(set(r['case_id'] for r in stage)&validation_cases for stage in stages):raise ValueError('validation leakage')

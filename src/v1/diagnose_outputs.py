@@ -39,10 +39,10 @@ def diagnose(tasks,episodes):
 
 def main():
     import argparse
-    p=argparse.ArgumentParser();p.add_argument('--output',default='reports/base_fire_nf4');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--output',default='reports/v1/base_fire_nf4');a=p.parse_args()
     out=Path(a.output);results={}
     for world,filename in [('test_synth','holdout_synth_400_frozen.jsonl'),('repo_style','holdout_repo_style_100_frozen.jsonl')]:
-        tasks=[json.loads(l) for l in (Path('data')/filename).read_text().splitlines()]
+        tasks=[json.loads(l) for l in (Path('docs/archive/data_v1')/filename).read_text().splitlines()]
         episodes=[json.loads(l) for l in (out/(world+'_episodes.jsonl')).read_text().splitlines()]
         by_id={e['task_id']:e for e in episodes};tasks=[t for t in tasks if t['task_id'] in by_id]
         results[world]=diagnose(tasks,[by_id[t['task_id']] for t in tasks])
@@ -70,7 +70,7 @@ def main():
         lines.append('')
     text='\n'.join(lines)+'\n';(out/'diagnostics.md').write_text(text)
     paths=[out/'RESULTS.md']
-    if out.resolve()==Path('reports/base_fire_nf4').resolve(): paths.append(Path('docs/archive/RESULTS.md'))
+    if out.resolve()==Path('reports/v1/base_fire_nf4').resolve(): paths.append(Path('docs/archive/RESULTS.md'))
     for path in paths:
         if path.exists():
             original=path.read_text().split('\n## Descriptive output diagnostics')[0]
