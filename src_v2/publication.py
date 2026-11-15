@@ -6,7 +6,7 @@ from .data import verify,write_json
 
 def build(destination='reports_v2/driftguard_v2_release.zip'):
     verify();paths=set()
-    for name in ('README_v2.md','requirements_v2.txt','cloud_v2_bootstrap.sh','toolkit_revisions.json'):
+    for name in ('docs/archive/README_v2.md','requirements_v2.txt','docs/archive/cloud_v2_bootstrap.sh','toolkit_revisions.json'):
         paths.add(Path(name))
     for folder in ('src_v2','tests_v2','data_v2'):
         paths.update(p for p in Path(folder).rglob('*') if p.is_file() and '__pycache__' not in p.parts and p.suffix!='.pyc')

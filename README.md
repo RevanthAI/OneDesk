@@ -1,24 +1,42 @@
-# OneDesk (formerly DriftGuard-MCP): One Multilingual Workspace to Query Your Company’s Knowledge Base
+# OneDesk: One Multilingual Workspace to Query Your Company’s Knowledge Base
 
-*Track 3: Agentic Fine-Tuning — Problem Statements Covered: **1, 2, 4, 5, 6, and 9***
+*Track 3 · Agentic Fine-Tuning · `CohereLabs/tiny-aya-fire` (3.35B) with CuratorKIT, AgentTune and AuditKIT*
 
-**Which model to use:** [Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val) *(Base: `CohereLabs/tiny-aya-fire` 3.35B · Full tables & checksums in [docs/FULL_REPORT.md](docs/FULL_REPORT.md) and [SUBMISSION_DOSSIER.md](SUBMISSION_DOSSIER.md))*
+## The problem
 
-**Declaration of work done outside the hackathon:** **None.** All world generators, synthetic datasets, CuratorKIT/AgentTune/AuditKIT integrations, training runs, and evaluations were built from scratch during the hackathon window.
+Company knowledge is split across wikis, pull requests, chat threads and databases, and the newest-looking document is often the wrong one: a stale runbook, or a staging-only page. Employees ask in English, Hindi, Hinglish and Telugu.
 
-**Naming note:** *OneDesk is an open-source hackathon research prototype (formerly named `DriftGuard-MCP`, which is why internal Python classes retain the `DriftGuard*` prefix) and is unrelated to the commercial OneDesk helpdesk software.*
+**Can a small, locally deployable model learn to find the current production answer, cite its evidence, flag the outdated page, and refuse when a source is missing, using real tool calls instead of memorized answers?**
 
-## ⚡ For Judges: 60-Second Overview
+## Results
+
+Holdout accuracy, synthetic / repo-style (%):
+
+| Metric | Base | Full SFT | **OneDesk (final)** |
+| --- | --- | --- | --- |
+| Exact accuracy | 0.5 / 0.0 | 77.3 / 76.0 | 75.8 / 71.0 |
+| **Stale-doc catch (strict)** | 0.0 / 0.0 | 63.5 / 52.0 | **79.0 / 62.0** |
+| Valid final format | 69.0 / 74.0 | 100.0 / 100.0 | 100.0 / 100.0 |
+| Verified citation F1 | 0.0 / 0.0 | 92.6 / 95.7 | 88.3 / 84.6 |
+| Required-chain compliance | 0.0 / 0.0 | 97.4 / 98.8 | 86.5 / 74.1 |
+
+OneDesk improves stale-doc catch over full SFT by **+15.5 pp [+5.5, +26.0]** (synthetic) and **+10.0 pp [+2.0, +20.4]** (repo-style). Full SFT stays ahead on overall accuracy and chain completeness, and all benchmark data is synthetic.
+
+Runs locally (3.15 GiB VRAM, v1 adapter). Self-hosted L40S cost is **$1.22 per 1k audits** vs **$13.17** at historical GPT-4o prices.
+
+![Headline Results](figures/1_headline_success.png)
+
+## Submission info
 
 |  |  |
 | --- | --- |
-| **Claim** | A local 3.35B model checks Notion, GitHub, Slack and SQL for current, cited answers in English, Hindi, Hinglish or Telugu. |
-| **Result** | Exact accuracy **0.5% → 75.8%** (synthetic, n=400), **0.0% → 71.0%** (repo-style, n=100); **100%** valid final format. |
-| **Strongest at** | Stale docs: **79.0% vs 63.5%** full SFT; **+15.5 pp [+5.5, +26.0]** synthetic and **+10.0 pp [+2.0, +20.4]** repo-style. |
-| **Caveat** | Full SFT is more accurate overall (**77.3% / 76.0%**); synthetic chain compliance trades off (**86.5% vs 97.4%**); all benchmark data is synthetic. |
-| **Cost & Compute** | **$1.22/1k audits** on L40S vs historical GPT-4o **$13.17**; v1 local NF4: **3.15 GiB**, $0 API fees; recorded compute **~12.05 L40S h**, **~$21.80** list-rate lower bound. |
+| Track | 3, problem statements 1, 2, 4, 5, 6, 9 |
+| Model to use | [onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val) |
+| Collections | [Models](https://huggingface.co/collections/Revanth-ml/onedesk-models-and-experimental-controls-6af97221a617ddc3326204a6) · [Data](https://huggingface.co/collections/Revanth-ml/onedesk-data-and-experiment-evidence-6af97225c0f1dc548b9ba8ce) |
+| Full report | [docs/FULL_REPORT.md](docs/FULL_REPORT.md) |
+| Work before the hackathon | None |
 
-![Headline Results](figures/1_headline_success.png)
+Detailed submission reference: [docs/SUBMISSION_DOSSIER.md](docs/SUBMISSION_DOSSIER.md).
 
 ## 1. Problem Statement & Approach
 
@@ -181,6 +199,8 @@ CUDA_VISIBLE_DEVICES='' python -m pytest tests tests_v2 tests_v2_1 tests_v2_2 -q
 ```
 
 ## 11. Honest Limitations & Teammates Tagged
+
+OneDesk is an open-source hackathon research prototype, formerly DriftGuard-MCP, and is unrelated to the commercial OneDesk helpdesk software; internal `DriftGuard*` class names retain that history.
 
 - Constructed fixtures, modulo-3 configuration values and correlated template translations; no verified live-OSS transfer. Scalar answers recur across different facts, as the [text audit](reports_submission/TEXT_LEAK_AUDIT.json) reports.
 - Overall GRPO-over-warmup holdout gain intervals include zero; repeated validation selection and one run need fresh confirmation.

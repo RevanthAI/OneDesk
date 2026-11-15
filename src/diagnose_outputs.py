@@ -70,7 +70,7 @@ def main():
         lines.append('')
     text='\n'.join(lines)+'\n';(out/'diagnostics.md').write_text(text)
     paths=[out/'RESULTS.md']
-    if out.resolve()==Path('reports/base_fire_nf4').resolve(): paths.append(Path('RESULTS.md'))
+    if out.resolve()==Path('reports/base_fire_nf4').resolve(): paths.append(Path('docs/archive/RESULTS.md'))
     for path in paths:
         if path.exists():
             original=path.read_text().split('\n## Descriptive output diagnostics')[0]

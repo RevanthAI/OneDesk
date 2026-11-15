@@ -1,0 +1,9 @@
+........................................................................ [ 60%]
+................................................                         [100%]
+=============================== warnings summary ===============================
+tests/test_sft_training.py::test_trained_adapter_merges_and_reloads_as_standalone_model
+  /home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/.venv/lib/python3.12/site-packages/peft/utils/save_and_load.py:286: UserWarning: Could not find a config file in  - will assume that the vocabulary was not modified.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+120 passed, 1 warning in 36.91s

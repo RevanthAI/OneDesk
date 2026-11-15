@@ -1,6 +1,6 @@
 # DriftGuard-MCP v2
 
-**Measured result:** all 340 updates completed, but final GRPO collapsed toward abstention and achieved 0% stale catch on both holdouts. See [the experiment report](reports_v2/EXPERIMENT_REPORT.md) and [GRPO findings](reports_v2/GRPO_FINDINGS.md).
+**Measured result:** all 340 updates completed, but final GRPO collapsed toward abstention and achieved 0% stale catch on both holdouts. See [the experiment report](../../reports_v2/EXPERIMENT_REPORT.md) and [GRPO findings](../../reports_v2/GRPO_FINDINGS.md).
 
 This is the independent runtime for the approved, immutable `data_v2/` release. `src_v2/` does not import legacy `src/`, and all new reports live in `reports_v2/`. The earlier `data/`, `src/`, `reports/`, model checkpoints and measured v1 results remain available as historical material, not inputs to this experiment.
 

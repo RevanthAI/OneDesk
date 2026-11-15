@@ -9,7 +9,7 @@ from huggingface_hub import HfApi
 def package(path):
     files=sorted(Path('src').glob('*.py'))+sorted(Path('vendor/AgentTune/src').rglob('*.py'))
     files += [Path('data',f) for f in ('train_sft_400.jsonl','train_grpo_stage1.jsonl','train_grpo_stage2.jsonl','world_train.json','SHA256SUMS')]
-    files += [Path('cloud_grpo_bootstrap.sh'),Path('toolkit_revisions.json'),Path('vendor/AgentTune/LICENSE')]
+    files += [Path('docs/archive/cloud_grpo_bootstrap.sh'),Path('toolkit_revisions.json'),Path('vendor/AgentTune/LICENSE')]
     files=[f for f in files if f.exists()]
     with zipfile.ZipFile(path,'w',zipfile.ZIP_DEFLATED) as archive:
         for f in files:
@@ -29,7 +29,7 @@ def main():
     api.create_repo(repo,repo_type='dataset',private=True,exist_ok=True)
     if args.mode=='pilot':api.create_repo(adapter,private=True,exist_ok=True)
     api.upload_file(path_or_fileobj=str(archive),path_in_repo='cloud_grpo_bundle.zip',repo_id=repo,repo_type='dataset',commit_message='GRPO train-only bundle '+prefix)
-    revision=api.upload_file(path_or_fileobj='cloud_grpo_bootstrap.sh',path_in_repo='cloud_grpo_bootstrap.sh',repo_id=repo,repo_type='dataset',commit_message='GRPO bootstrap '+prefix).oid
+    revision=api.upload_file(path_or_fileobj='docs/archive/cloud_grpo_bootstrap.sh',path_in_repo='cloud_grpo_bootstrap.sh',repo_id=repo,repo_type='dataset',commit_message='GRPO bootstrap '+prefix).oid
     arguments=['--mode',args.mode,'--output','/workspace/output','--run-repo',repo,'--run-prefix',prefix,'--stage1-steps',str(args.stage1_steps),'--stage2-steps',str(args.stage2_steps)]
     if args.mode=='pilot':arguments+=['--adapter-repo',adapter]
     downloader="import os,subprocess,json;from huggingface_hub import hf_hub_download;p=hf_hub_download(os.environ['RUN_REPO'],'cloud_grpo_bootstrap.sh',repo_type='dataset',revision=os.environ['BUNDLE_REVISION'],token=os.environ['HF_TOKEN']);subprocess.run(['bash',p]+json.loads(os.environ['TRAIN_ARGS']),check=True)"

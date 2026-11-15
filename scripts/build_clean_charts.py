@@ -144,7 +144,7 @@ def multilingual(ss):
             labels(ax,ax.barh(y+off,vals,height=width,color=color,label=model_names[key]),horizontal=True);data[split][key]=vals
         ax.set(yticks=y,yticklabels=names,xlim=(0,105),xlabel='Exact answer accuracy (%)',title=title);ax.invert_yaxis();clean(ax,True)
     handles, labs=axes[0].get_legend_handles_labels();fig.legend(handles,labs,loc='upper center',bbox_to_anchor=(.55,.87),ncol=3,frameon=False)
-    fig.text(.16,.055,'Both panels compare the same stages: base, 2-epoch warmup, and final agent. Native and Latin prompts share semantic cases.\nThe final agent matches or improves on warmup across all languages here; the separate full 4-epoch SFT control is reported in REPORT.md.',fontsize=11)
+    fig.text(.16,.055,'Both panels compare the same stages: base, 2-epoch warmup, and final agent. Native and Latin prompts share semantic cases.\nThe final agent matches or improves on warmup across all languages here; the separate full 4-epoch SFT control is reported in docs/FULL_REPORT.md.',fontsize=11)
     return save(fig,'2_multilingual_reach',dict(values=data))
 
 

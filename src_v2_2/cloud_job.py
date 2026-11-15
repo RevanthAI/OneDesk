@@ -11,7 +11,7 @@ def package(path):
     for lib in ('AgentTune','AuditKIT'):
         files+=sorted(Path('vendor',lib,'src').rglob('*.py'))+[p for p in Path('vendor',lib).glob('LICENSE*') if p.is_file()]
     files+=sorted(p for p in Path('reports_v2_2/sft_full_evaluation').rglob('*') if p.is_file())+[Path('reports_v2_2/SFT_FULL_PROVENANCE.json')]
-    files += sorted(Path('tests_v2_2').glob('*.py'))+[Path('README_v2_2.md'),Path('reports_v2_2/PREFLIGHT.md'),Path('toolkit_revisions.json'),Path('cloud_v2_2_bootstrap.sh')]
+    files += sorted(Path('tests_v2_2').glob('*.py'))+[Path('docs/archive/README_v2_2.md'),Path('reports_v2_2/PREFLIGHT.md'),Path('toolkit_revisions.json'),Path('docs/archive/cloud_v2_2_bootstrap.sh')]
     with zipfile.ZipFile(path,'w',zipfile.ZIP_DEFLATED) as archive:
         for f in files:
             if f.name=='.env' or f.parts[0] in ('src','reports_v2','data'):raise ValueError('Forbidden bundle path')
@@ -28,7 +28,7 @@ def main():
         api.create_repo(name,repo_type=kind,private=True,exist_ok=True)
         if not api.repo_info(name,repo_type=kind).private:raise ValueError('All experiment repositories must remain private')
     bundle=local/'pipeline_bundle.zip';manifest=package(bundle);write_json(local/'bundle_manifest.json',manifest);api.upload_file(repo_id=run,repo_type='dataset',path_or_fileobj=str(bundle),path_in_repo='pipeline_bundle.zip',commit_message='Pinned v2.1 source and immutable v2 data')
-    revision=api.upload_file(repo_id=run,repo_type='dataset',path_or_fileobj='cloud_v2_2_bootstrap.sh',path_in_repo='cloud_v2_2_bootstrap.sh',commit_message='v2.1 bootstrap').oid
+    revision=api.upload_file(repo_id=run,repo_type='dataset',path_or_fileobj='docs/archive/cloud_v2_2_bootstrap.sh',path_in_repo='cloud_v2_2_bootstrap.sh',commit_message='v2.1 bootstrap').oid
     args=['--run-repo',run,'--run-prefix',prefix,'--sft-repo',sft,'--grpo-best-repo',best,'--grpo-final-repo',final,'--group-size',str(a.group_size),'--temperature',str(a.temperature),'--retry-temperature',str(a.retry_temperature)]
     resume_revision=a.stage1_revision
     if a.stage1_prefix:

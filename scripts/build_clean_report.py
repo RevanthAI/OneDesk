@@ -1,4 +1,4 @@
-"""Build the concise OneDesk README/report; retain detailed evidence in docs/."""
+"""Build the OneDesk README and maintain the detailed evidence in docs/."""
 from pathlib import Path
 import json
 import re
@@ -30,19 +30,30 @@ def build(publication=None, output_path=None):
     pub=publication if publication is not None else published_state()
     parts=[]
     def add(text):parts.append(text.strip()+'\n')
-    add('# OneDesk (formerly DriftGuard-MCP): One Multilingual Workspace to Query Your Company’s Knowledge Base')
-    add('*Track 3: Agentic Fine-Tuning — Problem Statements Covered: **1, 2, 4, 5, 6, and 9***')
-    add(f'**Which model to use:** [{FINAL_REPO}](https://huggingface.co/{FINAL_REPO}) *(Base: `{BASE}` 3.35B · Full tables & checksums in [docs/FULL_REPORT.md](docs/FULL_REPORT.md) and [SUBMISSION_DOSSIER.md](SUBMISSION_DOSSIER.md))*')
-    add('**Declaration of work done outside the hackathon:** **None.** All world generators, synthetic datasets, CuratorKIT/AgentTune/AuditKIT integrations, training runs, and evaluations were built from scratch during the hackathon window.')
-    add('**Naming note:** *OneDesk is an open-source hackathon research prototype (formerly named `DriftGuard-MCP`, which is why internal Python classes retain the `DriftGuard*` prefix) and is unrelated to the commercial OneDesk helpdesk software.*')
-    add('## ⚡ For Judges: 60-Second Overview')
-    add(table(['',''],[
-        ['**Claim**','A local 3.35B model checks Notion, GitHub, Slack and SQL for current, cited answers in English, Hindi, Hinglish or Telugu.'],
-        ['**Result**','Exact accuracy **0.5% → 75.8%** (synthetic, n=400), **0.0% → 71.0%** (repo-style, n=100); **100%** valid final format.'],
-        ['**Strongest at**','Stale docs: **79.0% vs 63.5%** full SFT; **+15.5 pp [+5.5, +26.0]** synthetic and **+10.0 pp [+2.0, +20.4]** repo-style.'],
-        ['**Caveat**','Full SFT is more accurate overall (**77.3% / 76.0%**); synthetic chain compliance trades off (**86.5% vs 97.4%**); all benchmark data is synthetic.'],
-        ['**Cost & Compute**','**$1.22/1k audits** on L40S vs historical GPT-4o **$13.17**; v1 local NF4: **3.15 GiB**, $0 API fees; recorded compute **~12.05 L40S h**, **~$21.80** list-rate lower bound.']]))
+    add('# OneDesk: One Multilingual Workspace to Query Your Company’s Knowledge Base')
+    add('*Track 3 · Agentic Fine-Tuning · `CohereLabs/tiny-aya-fire` (3.35B) with CuratorKIT, AgentTune and AuditKIT*')
+    add('## The problem')
+    add('Company knowledge is split across wikis, pull requests, chat threads and databases, and the newest-looking document is often the wrong one: a stale runbook, or a staging-only page. Employees ask in English, Hindi, Hinglish and Telugu.')
+    add('**Can a small, locally deployable model learn to find the current production answer, cite its evidence, flag the outdated page, and refuse when a source is missing, using real tool calls instead of memorized answers?**')
+    add('## Results')
+    add('Holdout accuracy, synthetic / repo-style (%):')
+    add(table(['Metric','Base','Full SFT','**OneDesk (final)**'],[
+        ['Exact accuracy','0.5 / 0.0','77.3 / 76.0','75.8 / 71.0'],
+        ['**Stale-doc catch (strict)**','0.0 / 0.0','63.5 / 52.0','**79.0 / 62.0**'],
+        ['Valid final format','69.0 / 74.0','100.0 / 100.0','100.0 / 100.0'],
+        ['Verified citation F1','0.0 / 0.0','92.6 / 95.7','88.3 / 84.6'],
+        ['Required-chain compliance','0.0 / 0.0','97.4 / 98.8','86.5 / 74.1']]))
+    add('OneDesk improves stale-doc catch over full SFT by **+15.5 pp [+5.5, +26.0]** (synthetic) and **+10.0 pp [+2.0, +20.4]** (repo-style). Full SFT stays ahead on overall accuracy and chain completeness, and all benchmark data is synthetic.')
+    add('Runs locally (3.15 GiB VRAM, v1 adapter). Self-hosted L40S cost is **$1.22 per 1k audits** vs **$13.17** at historical GPT-4o prices.')
     add('![Headline Results](figures/1_headline_success.png)')
+    add('## Submission info')
+    add(table(['',''],[
+        ['Track','3, problem statements 1, 2, 4, 5, 6, 9'],
+        ['Model to use',f'[onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val](https://huggingface.co/{FINAL_REPO})'],
+        ['Collections',f"[Models]({pub['model_collection_url']}) · [Data]({pub['data_collection_url']})"],
+        ['Full report','[docs/FULL_REPORT.md](docs/FULL_REPORT.md)'],
+        ['Work before the hackathon','None']]))
+    add('Detailed submission reference: [docs/SUBMISSION_DOSSIER.md](docs/SUBMISSION_DOSSIER.md).')
     add('## 1. Problem Statement & Approach')
     add('A Hinglish employee asks for `loyalty-api`’s actual production `batch_size_mb`: the runbook says 154, a newer staging-only distractor says 286, and the production Slack update says 16. This `train_sft-0000-hinglish` protocol example shows the tool calls, cited answer and stale-page flag; the first query is shortened for readability.')
     add('''```xml
@@ -138,12 +149,13 @@ python scripts/text_leak_check.py
 CUDA_VISIBLE_DEVICES='' python -m pytest tests tests_v2 tests_v2_1 tests_v2_2 -q
 ```''')
     add('## 11. Honest Limitations & Teammates Tagged')
+    add('OneDesk is an open-source hackathon research prototype, formerly DriftGuard-MCP, and is unrelated to the commercial OneDesk helpdesk software; internal `DriftGuard*` class names retain that history.')
     add('- Constructed fixtures, modulo-3 configuration values and correlated template translations; no verified live-OSS transfer. Scalar answers recur across different facts, as the [text audit](reports_submission/TEXT_LEAK_AUDIT.json) reports.\n- Overall GRPO-over-warmup holdout gain intervals include zero; repeated validation selection and one run need fresh confirmation.\n- Prefer **full SFT for overall accuracy**, selected **GRPO for strict stale catch**; chain completeness, incident reasoning and unplugged-DB handling still need work.\n- Warmup length, group size and temperature changed together; zero variance does not prove full-distribution entropy collapse.\n- Local VRAM/speed is measured on the **v1 NF4 adapter**; v2 results are BF16. ROI excludes hardware/operations, uses historical API prices, and does not establish equal API accuracy; privacy requires appropriate connectors and logging.\n- Model weights retain noncommercial terms; third-party licenses apply. No public Gradio app is established, and future targets are unmeasured.')
     add('**Teammates tagged:** [@Revanth-ml](https://huggingface.co/Revanth-ml).')
     text=format_gfm('\n'.join(parts))
-    output=Path(output_path) if output_path is not None else ROOT/'REPORT.md';output.write_text(text)
+    output=Path(output_path) if output_path is not None else ROOT/'README.md';output.write_text(text)
     if output_path is None:
-        (ROOT/'README.md').write_bytes(output.read_bytes());update_full_report(audit)
+        update_full_report(audit)
     target=output.parent if output_path is not None else ROOT/'reports_submission/clean_assets';target.mkdir(exist_ok=True)
     meta=dict(project='OneDesk',words=len(text.split()),sha256=digest(output),source='Saved results plus CPU TEXT_LEAK_AUDIT',no_inference=True,no_paid_jobs=True)
     (target/'REPORT_METADATA.json').write_text(json.dumps(meta,indent=2)+'\n')

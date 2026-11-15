@@ -6,7 +6,7 @@ with tempfile.TemporaryDirectory(prefix='driftguard-gitcheck-',dir='/tmp') as td
  r=run(['git','init','--quiet',td]);assert r.returncode==0,r.stderr
  base=['git','--git-dir',td+'/.git','--work-tree',str(root)]
  ignored=['.env','.env.production','secrets/token.txt','.venv/bin/python','venv/bin/python','src/__pycache__/x.pyc','.pytest_cache/x','checkpoints_v2_2/grpo_best_val_adapter/adapter_model.safetensors','checkpoints_v2/grpo_adapter/optimizer.pt','models/weights.bin','reports_v2_2/downloads/.cache/huggingface/x','cloud_bundle.zip']
- kept=['.gitignore','SUBMISSION_DOSSIER.md','README.md','src_v2_2/reward.py','tests_v2_2/test_warmup.py','configs/sft_config.yaml','data_v2/train_sft_240.jsonl','data_v2/SHA256SUMS','reports_v2_2/comparison','reports_v2_2/downloads/warmup-20261113T084035Z/comparison/grounding_tradeoffs.png','reports_v2_2/downloads/warmup-20261113T084035Z/comparison/FINDINGS.md','reports_v2_2/downloads/warmup-20261113T084035Z/comparison/comparison.svg','checkpoints_v2_2/grpo_best_val_adapter/adapter_config.json','.env.example','scripts/build_submission_dossier.py']
+ kept=['.gitignore','docs/SUBMISSION_DOSSIER.md','docs/archive/REPORT.md','README.md','src_v2_2/reward.py','tests_v2_2/test_warmup.py','configs/sft_config.yaml','data_v2/train_sft_240.jsonl','data_v2/SHA256SUMS','reports_v2_2/comparison','reports_v2_2/downloads/warmup-20261113T084035Z/comparison/grounding_tradeoffs.png','reports_v2_2/downloads/warmup-20261113T084035Z/comparison/FINDINGS.md','reports_v2_2/downloads/warmup-20261113T084035Z/comparison/comparison.svg','checkpoints_v2_2/grpo_best_val_adapter/adapter_config.json','.env.example','scripts/build_submission_dossier.py']
  bad=[]
  for p in ignored:
   r=run(base+['check-ignore','--no-index',p]);
@@ -26,12 +26,13 @@ with tempfile.TemporaryDirectory(prefix='driftguard-gitcheck-',dir='/tmp') as td
  (out/'GITIGNORE_VALIDATION.json').write_text(json.dumps(dict(actual_git_status='fatal: not a git repository',temporary_index_used=True,expected_ignored=ignored,expected_eligible=kept,protected_data_files_eligible=19,eligible_paths=len(files),eligible_files_over_100MiB=large,preview='reports_submission/git_status_preview.txt',nothing_staged_or_committed=True),indent=2)+'\n')
  print(json.dumps({'gitignore_checks':len(ignored)+len(kept)+19,'eligible_paths':len(files),'large_eligible_files':len(large)}))
 # Local Markdown links, allowing HTTP sources and anchors.
-text=(root/'SUBMISSION_DOSSIER.md').read_text();missing=[]
+dossier=root/'docs/SUBMISSION_DOSSIER.md'
+text=dossier.read_text();missing=[]
 for target in re.findall(r'\]\(([^)]+)\)',text):
  if target.startswith(('http://','https://','#')):continue
- if not (root/target.split('#',1)[0]).exists():missing.append(target)
+ if not (dossier.parent/target.split('#',1)[0]).exists():missing.append(target)
 # Verification receipts are created after tests finish.
-missing=[p for p in missing if p not in ['reports_submission/VERIFICATION.json','reports_submission/pytest.xml']]
+missing=[p for p in missing if p not in ['../reports_submission/VERIFICATION.json','../reports_submission/pytest.xml']]
 assert not missing,missing
 abstract=text.split('## 1. Submission Abstract\n',1)[1].split('**Exact abstract word count:',1)[0].strip();assert len(abstract.split())==365
 assert len(re.findall(r'^## \d+\.',text,re.M))==11

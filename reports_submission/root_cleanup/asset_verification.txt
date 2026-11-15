@@ -1,0 +1,83 @@
+{
+  "cards": 15,
+  "model_cards": 9,
+  "dataset_cards": 6,
+  "python_snippets_parsed": 9,
+  "yaml_valid": true,
+  "charts": [
+    {
+      "path": "figures/1_headline_success.png",
+      "size": [
+        4737,
+        2362
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "path": "figures/2_multilingual_reach.png",
+      "size": [
+        5261,
+        2501
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "path": "figures/3_training_journey.png",
+      "size": [
+        6703,
+        3007
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "path": "figures/4_cost_and_privacy_roi.png",
+      "size": [
+        4029,
+        2666
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    }
+  ],
+  "local_report_links_valid": true,
+  "dry_run_network_calls": 0,
+  "mock_publication": [
+    {
+      "mocked": true,
+      "rename": false,
+      "counts": {
+        "read": 15,
+        "upload": 15,
+        "move": 15,
+        "public": 15,
+        "collection": 2,
+        "item": 15
+      }
+    },
+    {
+      "mocked": true,
+      "rename": true,
+      "counts": {
+        "read": 15,
+        "upload": 15,
+        "move": 15,
+        "public": 15,
+        "collection": 2,
+        "item": 15
+      }
+    }
+  ],
+  "remote_publication_performed": false,
+  "protected_files": 19
+}

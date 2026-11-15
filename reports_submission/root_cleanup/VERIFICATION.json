@@ -1,0 +1,16 @@
+{
+  "task": "Final README opening and safe repository-root cleanup",
+  "protected_files_unchanged": 19,
+  "tests_passed": 120,
+  "test_warnings": 1,
+  "archived_files": 11,
+  "dossier": "docs/SUBMISSION_DOSSIER.md",
+  "no_duplicate_root_report": true,
+  "all_affected_markdown_links_resolve": true,
+  "five_cpu_source_bundles_verified": true,
+  "remote_bootstrap_filenames_unchanged": true,
+  "shell_bootstrap_bytes_unchanged": true,
+  "README_opening_matches_requested_draft": true,
+  "readme_words": 1669,
+  "no_model_inference_or_cloud_jobs": true
+}

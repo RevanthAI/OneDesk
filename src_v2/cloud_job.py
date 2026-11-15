@@ -12,7 +12,7 @@ def package(path):
     for library in ('AgentTune','AuditKIT'):
         files+=sorted(Path('vendor',library,'src').rglob('*.py'))
         files+=[p for p in Path('vendor',library).glob('LICENSE*') if p.is_file()]
-    files+=[Path('toolkit_revisions.json'),Path('cloud_v2_bootstrap.sh')]
+    files+=[Path('toolkit_revisions.json'),Path('docs/archive/cloud_v2_bootstrap.sh')]
     with zipfile.ZipFile(path,'w',zipfile.ZIP_DEFLATED) as archive:
         for f in files:
             if f.name=='.env' or f.parts[0] in ('src','data','reports'):raise ValueError('legacy or secret path in v2 bundle')
@@ -29,7 +29,7 @@ def main():
     dataset_revision=api.upload_folder(repo_id=dataset_repo,repo_type='dataset',folder_path='data_v2',commit_message='Approved immutable v2 artifacts; exact locked bytes').oid
     bundle=local/'pipeline_bundle.zip';manifest=package(bundle);write_json(local/'bundle_manifest.json',manifest)
     api.upload_file(repo_id=repo,repo_type='dataset',path_or_fileobj=str(bundle),path_in_repo='pipeline_bundle.zip',commit_message='Frozen independent v2 pipeline '+prefix)
-    revision=api.upload_file(repo_id=repo,repo_type='dataset',path_or_fileobj='cloud_v2_bootstrap.sh',path_in_repo='cloud_v2_bootstrap.sh',commit_message='v2 cloud bootstrap').oid
+    revision=api.upload_file(repo_id=repo,repo_type='dataset',path_or_fileobj='docs/archive/cloud_v2_bootstrap.sh',path_in_repo='cloud_v2_bootstrap.sh',commit_message='v2 cloud bootstrap').oid
     arguments=['--run-repo',repo,'--run-prefix',prefix,'--sft-repo',sft,'--grpo-repo',grpo,'--phase',a.phase]
     if a.resume_prefix:
         sft_revision=api.model_info(sft).sha

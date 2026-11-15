@@ -1,0 +1,32 @@
+[
+  {
+    "module": "src.cloud_sft_job",
+    "files": 310,
+    "bootstrap_path": "docs/archive/cloud_bootstrap.sh",
+    "cloud_calls": 0
+  },
+  {
+    "module": "src.cloud_grpo_job",
+    "files": 312,
+    "bootstrap_path": "docs/archive/cloud_grpo_bootstrap.sh",
+    "cloud_calls": 0
+  },
+  {
+    "module": "src_v2.cloud_job",
+    "files": 419,
+    "bootstrap_path": "docs/archive/cloud_v2_bootstrap.sh",
+    "cloud_calls": 0
+  },
+  {
+    "module": "src_v2_1.cloud_job",
+    "files": 435,
+    "bootstrap_path": "docs/archive/cloud_v2_1_bootstrap.sh",
+    "cloud_calls": 0
+  },
+  {
+    "module": "src_v2_2.cloud_job",
+    "files": 462,
+    "bootstrap_path": "docs/archive/cloud_v2_2_bootstrap.sh",
+    "cloud_calls": 0
+  }
+]

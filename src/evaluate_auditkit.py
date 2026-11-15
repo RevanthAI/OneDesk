@@ -200,7 +200,7 @@ def render_report(out,results,metadata):
         lines=[line for line in lines if not line.startswith('AgentTune is used for its installed trajectory') and not line.startswith('The MCP tools run in-process.') and not line.startswith('A zero strict outcome score here')]
         lines+=['', 'Training and compatibility details are in `reports/cloud_sft/SFT_REPORT.md` and `reports/cloud_grpo/GRPO_EXPERIMENT.md`. The MCP tools run in-process. These results evaluate the named adapter over an NF4 base when quantization is 4bit. Other precision or merged-model deployments are different inference paths.', '', 'The constructed OSS fixtures include 17 questions from five cases with implausible percentage values above 100. They are retained for frozen-set comparability; see `reports/precision_full/FINDINGS.md`.']
     (out/'RESULTS.md').write_text('\n'.join(lines)+'\n');
-    if out.resolve()==Path('reports/base_fire_nf4').resolve(): Path('RESULTS.md').write_text('\n'.join(lines)+'\n')
+    if out.resolve()==Path('reports/base_fire_nf4').resolve(): Path('docs/archive/RESULTS.md').write_text('\n'.join(lines)+'\n')
 
 
 def select_tasks(tasks,per_language=0):

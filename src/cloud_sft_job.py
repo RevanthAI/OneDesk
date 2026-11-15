@@ -14,7 +14,7 @@ from huggingface_hub import HfApi
 def package(output):
     root=Path.cwd();entries=[]
     entries += sorted(Path('src').glob('*.py'))
-    entries += [Path('data/train_sft_400.jsonl'),Path('data/SHA256SUMS'),Path('cloud_bootstrap.sh'),Path('toolkit_revisions.json')]
+    entries += [Path('data/train_sft_400.jsonl'),Path('data/SHA256SUMS'),Path('docs/archive/cloud_bootstrap.sh'),Path('toolkit_revisions.json')]
     entries += sorted(Path('vendor/AgentTune/src').rglob('*.py'))
     entries += [p for p in (Path('vendor/AgentTune/README.md'),Path('vendor/AgentTune/LICENSE')) if p.exists()]
     output.parent.mkdir(parents=True,exist_ok=True)
@@ -38,7 +38,7 @@ def main():
     if args.mode=='train':
         api.create_repo(adapter,private=True,exist_ok=True);api.create_repo(merged,private=True,exist_ok=True)
     commit=api.upload_file(path_or_fileobj=str(bundle),path_in_repo='cloud_bundle.zip',repo_id=repo,repo_type='dataset',commit_message='Frozen SFT code/data bundle '+prefix)
-    bootstrap=api.upload_file(path_or_fileobj='cloud_bootstrap.sh',path_in_repo='cloud_bootstrap.sh',repo_id=repo,repo_type='dataset',commit_message='Cloud bootstrap '+prefix)
+    bootstrap=api.upload_file(path_or_fileobj='docs/archive/cloud_bootstrap.sh',path_in_repo='cloud_bootstrap.sh',repo_id=repo,repo_type='dataset',commit_message='Cloud bootstrap '+prefix)
     revision=bootstrap.oid
     # Only repository identifiers, revision and training arguments enter the
     # command. Credentials are supplied solely through the Jobs secrets field.

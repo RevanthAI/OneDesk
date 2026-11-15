@@ -2,7 +2,7 @@
 
 *Track 3: Agentic Fine-Tuning — Problem Statements Covered: **1, 2, 4, 5, 6, and 9***
 
-**Which model to use:** [Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val) *(Base: `CohereLabs/tiny-aya-fire` 3.35B · Full tables & checksums in [docs/FULL_REPORT.md](docs/FULL_REPORT.md) and [SUBMISSION_DOSSIER.md](SUBMISSION_DOSSIER.md))*
+**Which model to use:** [Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val) *(Base: `CohereLabs/tiny-aya-fire` 3.35B · Full tables & checksums in [docs/FULL_REPORT.md](../FULL_REPORT.md) and [SUBMISSION_DOSSIER.md](../SUBMISSION_DOSSIER.md))*
 
 **Declaration of work done outside the hackathon:** **None.** All world generators, synthetic datasets, CuratorKIT/AgentTune/AuditKIT integrations, training runs, and evaluations were built from scratch during the hackathon window.
 
@@ -18,7 +18,7 @@
 | **Caveat** | Full SFT is more accurate overall (**77.3% / 76.0%**); synthetic chain compliance trades off (**86.5% vs 97.4%**); all benchmark data is synthetic. |
 | **Cost & Compute** | **$1.22/1k audits** on L40S vs historical GPT-4o **$13.17**; v1 local NF4: **3.15 GiB**, $0 API fees; recorded compute **~12.05 L40S h**, **~$21.80** list-rate lower bound. |
 
-![Headline Results](figures/1_headline_success.png)
+![Headline Results](../../figures/1_headline_success.png)
 
 ## 1. Problem Statement & Approach
 
@@ -30,20 +30,20 @@ A Hinglish employee asks for `loyalty-api`’s actual production `batch_size_mb`
 <final_answer>{"status":"conflict_resolved","value":16,"cites":["NOTION-V2-TR-105","SLACK-V2-TR-105"],"stale_source":"NOTION-V2-TR-105"}</final_answer>
 ```
 
-![Unified 9-Server MCP Workspace](figures/0_workspace_architecture.png)
+![Unified 9-Server MCP Workspace](../../figures/0_workspace_architecture.png)
 
 | Script style | Frozen example |
 | --- | --- |
 | en:latin | What is the active production batch_size_mb for loyalty-api? Compare the runbook with deployment records and flag any outdated page. |
 | te:native | loyalty-api కోసం ప్రస్తుతం production లో batch_size_mb ఎంత? రన్‌బుక్‌ను deployment ఆధారాలతో పోల్చి పాత పేజీని గుర్తించండి. |
 
-All six script styles: [full report](docs/FULL_REPORT.md#six-language-and-script-styles--verbatim-frozen-prompts).
+All six script styles: [full report](../FULL_REPORT.md#six-language-and-script-styles--verbatim-frozen-prompts).
 
-![Multilingual Reach](figures/2_multilingual_reach.png)
+![Multilingual Reach](../../figures/2_multilingual_reach.png)
 
 ## 2. Hackathon Repos Used
 
-![Lexsi Toolkit Pipeline](figures/0_toolkit_pipeline.png)
+![Lexsi Toolkit Pipeline](../../figures/0_toolkit_pipeline.png)
 
 | Toolkit | Role and features |
 | --- | --- |
@@ -66,7 +66,7 @@ Compatibility fixes:
 | Database/calculation chains | Execute SQLite SELECT; derive duration or convert kg→lb / GB→MiB; calculate rounded incident cost. |
 | Safe refusal | Abstain for absent entities or an unavailable explicitly required database. |
 
-The CPU text audit found **0/500 exact holdout prompt duplicates**, with mean nearest-train 5-word Jaccard **0.001189 raw / 0.001189 entity-masked**; including shared system/tool instructions raises raw similarity to **0.901369**. All 15 split pairs have zero shared case IDs, service/parameter pairs or incident IDs, but **32/425 non-null holdout scalar answers recur** (8 numbers) on different facts; no service/parameter/gold-value tuple overlaps. A **2,560-token SFT window preserves every trajectory (0 truncations)**; evaluation uses 4,096 tokens, with [full split/token details and the audit](docs/FULL_REPORT.md#cpu-text-level-overlap-check).
+The CPU text audit found **0/500 exact holdout prompt duplicates**, with mean nearest-train 5-word Jaccard **0.001189 raw / 0.001189 entity-masked**; including shared system/tool instructions raises raw similarity to **0.901369**. All 15 split pairs have zero shared case IDs, service/parameter pairs or incident IDs, but **32/425 non-null holdout scalar answers recur** (8 numbers) on different facts; no service/parameter/gold-value tuple overlaps. A **2,560-token SFT window preserves every trajectory (0 truncations)**; evaluation uses 4,096 tokens, with [full split/token details and the audit](../FULL_REPORT.md#cpu-text-level-overlap-check).
 
 - **Exact accuracy:** correct status plus normalized scalar.
 - **Strict stale catch:** correct answer, correct stale page, every gold source retrieved and cited.
@@ -75,7 +75,7 @@ The CPU text audit found **0/500 exact holdout prompt duplicates**, with mean ne
 
 ## 4. Experiments Run, What Failed & Winning Recipe
 
-![Training Journey](figures/3_training_journey.png)
+![Training Journey](../../figures/3_training_journey.png)
 
 ### Lazy Refusal Trap
 
@@ -96,9 +96,9 @@ Two-epoch protocol warmup followed by anti-collapse, positive-anchor G6 GRPO com
 | Final OneDesk · GRPO update 40 | 75.75 [68.50, 82.50] | 71.00 [55.45, 84.31] | 80.00 [63.75, 93.75] |
 | Full 4-Epoch SFT · 120 steps | 77.25 [70.00, 84.00] | 76.00 [61.39, 88.89] | 73.75 [56.25, 90.00] |
 
-[Full seven-checkpoint, multilingual and AuditKIT tables](docs/FULL_REPORT.md).
+[Full seven-checkpoint, multilingual and AuditKIT tables](../FULL_REPORT.md).
 
-![Cost and Privacy ROI](figures/4_cost_and_privacy_roi.png)
+![Cost and Privacy ROI](../../figures/4_cost_and_privacy_roi.png)
 
 | Serving option | USD /1k audits | USD /100k audits |
 | --- | --- | --- |
@@ -108,16 +108,16 @@ Two-epoch protocol warmup followed by anti-collapse, positive-anchor G6 GRPO com
 
 **Hackathon Compute Used:** recorded **12.05 L40S hours + 2.35 A100 minutes ≈ $21.80** continuous list-rate lower bound.
 
-Includes observed training/evaluation work; excludes uncovered setup/charged intervals and minute rounding, so it is not an invoice total ([accounting](reports_submission/COMPUTE_ACCOUNTING.json)).
+Includes observed training/evaluation work; excludes uncovered setup/charged intervals and minute rounding, so it is not an invoice total ([accounting](../../reports_submission/COMPUTE_ACCOUNTING.json)).
 
 ## 5–8. Models, Datasets & Public HF Collections
 
 - **Primary Final Model:** [Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val) (base: [CohereLabs/tiny-aya-fire](https://huggingface.co/CohereLabs/tiny-aya-fire), rev `73500c80`).
 - **Public Model Collection (all 9 artifacts & controls):** [Revanth-ml/onedesk-models-and-experimental-controls](https://huggingface.co/collections/Revanth-ml/onedesk-models-and-experimental-controls-6af97221a617ddc3326204a6).
 - **Public Data Collection (frozen benchmark & rollout journals):** [Revanth-ml/onedesk-data-and-experiment-evidence](https://huggingface.co/collections/Revanth-ml/onedesk-data-and-experiment-evidence-6af97225c0f1dc548b9ba8ce).
-- **Licenses:** model weights/adapters `CC-BY-NC-4.0` · synthetic data `CC-BY-4.0` ([LICENSE-DATA.md](LICENSE-DATA.md)) · code `Apache-2.0` ([LICENSE](LICENSE)).
+- **Licenses:** model weights/adapters `CC-BY-NC-4.0` · synthetic data `CC-BY-4.0` ([LICENSE-DATA.md](../../LICENSE-DATA.md)) · code `Apache-2.0` ([LICENSE](../../LICENSE)).
 
-[Nine-row revision table, six split hashes and all 19 protected-file checksums](docs/FULL_REPORT.md#5-models-used-and-their-licenses).
+[Nine-row revision table, six split hashes and all 19 protected-file checksums](../FULL_REPORT.md#5-models-used-and-their-licenses).
 
 ## 9. With More Credits: Approach, Before and After Results
 
@@ -182,7 +182,7 @@ CUDA_VISIBLE_DEVICES='' python -m pytest tests tests_v2 tests_v2_1 tests_v2_2 -q
 
 ## 11. Honest Limitations & Teammates Tagged
 
-- Constructed fixtures, modulo-3 configuration values and correlated template translations; no verified live-OSS transfer. Scalar answers recur across different facts, as the [text audit](reports_submission/TEXT_LEAK_AUDIT.json) reports.
+- Constructed fixtures, modulo-3 configuration values and correlated template translations; no verified live-OSS transfer. Scalar answers recur across different facts, as the [text audit](../../reports_submission/TEXT_LEAK_AUDIT.json) reports.
 - Overall GRPO-over-warmup holdout gain intervals include zero; repeated validation selection and one run need fresh confirmation.
 - Prefer **full SFT for overall accuracy**, selected **GRPO for strict stale catch**; chain completeness, incident reasoning and unplugged-DB handling still need work.
 - Warmup length, group size and temperature changed together; zero variance does not prove full-distribution entropy collapse.

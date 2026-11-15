@@ -42,7 +42,7 @@ def download(api,record,models=True):
     count=protected();write_json(root/'DOWNLOADS.json',dict(repo=record['run_repo'],revision=revision,run_directory=str(run.resolve()),models=artifacts,frozen_files_unchanged=count));return run,artifacts
 
 def release():
-    root=Path('reports_v2_1');files=set(Path('src_v2_1').glob('*.py'))|set(Path('tests_v2_1').glob('*.py'))|set(Path('data_v2').iterdir())|{Path('README_v2_1.md'),Path('cloud_v2_1_bootstrap.sh'),Path('toolkit_revisions.json')}
+    root=Path('reports_v2_1');files=set(Path('src_v2_1').glob('*.py'))|set(Path('tests_v2_1').glob('*.py'))|set(Path('data_v2').iterdir())|{Path('docs/archive/README_v2_1.md'),Path('docs/archive/cloud_v2_1_bootstrap.sh'),Path('toolkit_revisions.json')}
     for lib in ('AgentTune','AuditKIT'):files.update(Path('vendor',lib,'src').rglob('*.py'));files.update(Path('vendor',lib).glob('LICENSE*'))
     for folder in ('comparison','sft_evaluation','grpo_evaluation','stage1_diagnostic','grpo_training','prior_v2'):
         for p in (root/folder).rglob('*'):

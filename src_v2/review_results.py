@@ -58,7 +58,7 @@ def review(sync=False):
     lead='**Primary finding: the final GRPO policy collapsed toward abstention. Stale-doc catch is 0% on both holdouts; its overall accuracy change versus SFT is not statistically supported.**\n\n'
     if lead not in original:original=original.replace('# DriftGuard-MCP v2 experiment report\n\n','# DriftGuard-MCP v2 experiment report\n\n'+lead)
     (root/'EXPERIMENT_REPORT.md').write_text(original+'\n<!-- V2_REVIEW -->\n\n## Detailed interpretation\n\nSee [GRPO_FINDINGS.md](GRPO_FINDINGS.md) for the collapse evidence, validation trajectory, all-wrong skipped groups and unexecuted follow-up proposals. [Failure-mode plot](failure_modes.png) makes the lost evidence use visible alongside formatting gains. Approved DATA_REVIEW.md and REVIEW_SAMPLES.md remain unchanged approval-time snapshots.\n')
-    readme=Path('README_v2.md');text=readme.read_text();banner='**Measured result:** all 340 updates completed, but final GRPO collapsed toward abstention and achieved 0% stale catch on both holdouts. See [the experiment report](reports_v2/EXPERIMENT_REPORT.md) and [GRPO findings](reports_v2/GRPO_FINDINGS.md).\n\n'
+    readme=Path('docs/archive/README_v2.md');text=readme.read_text();banner='**Measured result:** all 340 updates completed, but final GRPO collapsed toward abstention and achieved 0% stale catch on both holdouts. See [the experiment report](../../reports_v2/EXPERIMENT_REPORT.md) and [GRPO findings](../../reports_v2/GRPO_FINDINGS.md).\n\n'
     if banner not in text:readme.write_text(text.replace('# DriftGuard-MCP v2\n\n','# DriftGuard-MCP v2\n\n'+banner))
     if sync:
         from dotenv import load_dotenv

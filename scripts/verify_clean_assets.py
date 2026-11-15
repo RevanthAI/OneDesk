@@ -39,15 +39,18 @@ def main():
             assert im.width>=4000 and im.height>=2000
             assert all(abs(x-300)<1 for x in im.info['dpi'])
             figures.append(dict(path=str(png.relative_to(ROOT)),size=list(im.size),dpi=list(im.info['dpi'])))
-    report=(ROOT/'REPORT.md').read_text()
-    assert report.startswith('# OneDesk (formerly DriftGuard-MCP):') and 'SangamKB' not in report
+    report=(ROOT/'README.md').read_text()
+    assert report.startswith('# OneDesk: One Multilingual Workspace to Query Your Company’s Knowledge Base') and 'SangamKB' not in report
+    assert '## The problem' in report and '## Results' in report and '## Submission info' in report
     assert [int(x) for x in re.findall(r'^## (\d+)\.',report,re.M)]==[1,2,3,4,9,10,11]
     assert '## 5–8. Models, Datasets & Public HF Collections' in report
     assert 'targets, not measured results' in report.casefold()
     assert MODEL_COLLECTION_URL in report and DATA_COLLECTION_URL in report
     assert 'pending `--publish`' not in report and '```mermaid' not in report
     assert '`CC-BY-4.0`' in report and '`Apache-2.0`' in report
-    assert (ROOT/'README.md').read_bytes()==(ROOT/'REPORT.md').read_bytes()
+    assert not (ROOT/'REPORT.md').exists()
+    assert (ROOT/'docs/archive/REPORT.md').is_file()
+    assert (ROOT/'docs/SUBMISSION_DOSSIER.md').is_file()
     full=(ROOT/'docs/FULL_REPORT.md').read_text()
     assert len(re.findall(r'!\[[^\]]*\]\(\.\./figures/[^)]+\)',full))==6
     assert 'All 19 Protected Dataset Checksums' in full
@@ -110,7 +113,7 @@ def main():
     for name,expected in saved_receipts.items():
         actual=(cards/name).read_bytes() if (cards/name).exists() else None
         assert actual==expected,'Real publication receipt changed during mocked checks'
-    assert digest('REPORT.md')==json.loads((ROOT/'reports_submission/clean_assets/REPORT_METADATA.json').read_text())['sha256']
+    assert digest('README.md')==json.loads((ROOT/'reports_submission/clean_assets/REPORT_METADATA.json').read_text())['sha256']
     protect()
     result=dict(cards=15,model_cards=9,dataset_cards=6,python_snippets_parsed=snippets,yaml_valid=True,charts=figures,
                 local_report_links_valid=True,dry_run_network_calls=0,mock_publication=mutation_checks,

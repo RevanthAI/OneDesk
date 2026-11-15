@@ -1,6 +1,6 @@
 """Compile saved evidence into Markdown. CPU-only; never train, generate or submit jobs."""
 from publication_markdown import format_gfm, sync_publication_links, collection_links
-import json,re,hashlib,statistics,sys
+import json,re,hashlib,statistics,sys,os
 from pathlib import Path
 from collections import Counter
 ROOT=Path(__file__).resolve().parent.parent
@@ -379,7 +379,17 @@ text=sync_publication_links(text)
 if 'onedesk-models-and-experimental-controls-6af97221' not in text:
     heading='## 10. Complete Inventory of Plots, Artifacts, Checksums & Hugging Face Links'
     text=text.replace(heading,heading+'\n\n'+collection_links()+'\n')
-text=format_gfm(text)
-Path('SUBMISSION_DOSSIER.md').write_text(text)
-(E/'DOSSIER_METADATA.json').write_text(json.dumps(dict(abstract_words=wc,sections=11,words=len(text.split()),bytes=len(text.encode()),sha256=sha('SUBMISSION_DOSSIER.md'),source_artifacts_read=len(j(E/'SOURCE_INVENTORY.json')),paid_jobs_launched=False,model_inference_performed=False),indent=2)+'\n')
+output=Path('docs/SUBMISSION_DOSSIER.md')
+output.parent.mkdir(exist_ok=True)
+archived={p.name:p for p in Path('docs/archive').iterdir() if p.is_file()}
+def relocate_link(match):
+    target=match[1]
+    if target.startswith(('https://','http://','#')):return match[0]
+    path,mark,anchor=target.partition('#')
+    destination=archived.get(path,Path(path))
+    if path=='SUBMISSION_DOSSIER.md':destination=output
+    return ']('+os.path.relpath(destination,output.parent)+(mark+anchor if mark else '')+')'
+text=format_gfm(re.sub(r'\]\(([^)]+)\)',relocate_link,text))
+output.write_text(text)
+(E/'DOSSIER_METADATA.json').write_text(json.dumps(dict(abstract_words=wc,sections=11,words=len(text.split()),bytes=len(text.encode()),sha256=sha(output),source_artifacts_read=len(j(E/'SOURCE_INVENTORY.json')),paid_jobs_launched=False,model_inference_performed=False),indent=2)+'\n')
 print(json.dumps(j(E/'DOSSIER_METADATA.json')))
