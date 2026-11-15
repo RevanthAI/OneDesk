@@ -4,7 +4,7 @@
   "network_calls": 0,
   "models": 9,
   "datasets": 6,
-  "rename_prefix": "onedesk",
+  "rename_prefix": null,
   "repositories": [
     {
       "repo_id": "Revanth-ml/driftguard-tiny-aya-fire-sft",
@@ -16,8 +16,8 @@
       "merged": false,
       "note": "V1 explicit-routing benchmark; local NF4 results.",
       "target_repo_id": "Revanth-ml/onedesk-tiny-aya-fire-sft",
-      "card": "hf_cards/model/driftguard-tiny-aya-fire-sft/README.md",
-      "card_sha256": "b22cf73d29d7e4f9771e90e488f5fee269c4c6119d77486dc570376cbca90087",
+      "card": "hf_cards/model/onedesk-tiny-aya-fire-sft/README.md",
+      "card_sha256": "9bdcc46a31df88fe898e77497bc36462c773c7cdc9d04772e535c1e0c15d0c82",
       "yaml_valid": true
     },
     {
@@ -30,8 +30,8 @@
       "merged": true,
       "note": "V1 explicit-routing benchmark; v2 results do not apply. Merged export was not evaluated on the full holdout.",
       "target_repo_id": "Revanth-ml/onedesk-tiny-aya-fire-sft-merged",
-      "card": "hf_cards/model/driftguard-tiny-aya-fire-sft-merged/README.md",
-      "card_sha256": "07448c655e4b3fa6565ca372a18f66076364d55d1c061830d6b90e98f4542e69",
+      "card": "hf_cards/model/onedesk-tiny-aya-fire-sft-merged/README.md",
+      "card_sha256": "0972216dd3758a5afeaf28cbfe4e4ecde69d510c1704fecde17cef1b8d119edb",
       "yaml_valid": true
     },
     {
@@ -44,8 +44,8 @@
       "merged": false,
       "note": "40/40 validation before and after; no complete frozen-holdout evaluation.",
       "target_repo_id": "Revanth-ml/onedesk-tiny-aya-fire-grpo-pilot",
-      "card": "hf_cards/model/driftguard-tiny-aya-fire-grpo-pilot/README.md",
-      "card_sha256": "ebdb1cd99fbde9921dc2f8e64b0e9852312a956a13070b8acef2706689bff1c9",
+      "card": "hf_cards/model/onedesk-tiny-aya-fire-grpo-pilot/README.md",
+      "card_sha256": "e8f34a580a5aee0767dd164ec5823da055b0084c4479c4ec8addfc7e39874f9f",
       "yaml_valid": true
     },
     {
@@ -58,8 +58,8 @@
       "merged": false,
       "note": "",
       "target_repo_id": "Revanth-ml/onedesk-tiny-aya-fire-v2-sft",
-      "card": "hf_cards/model/driftguard-tiny-aya-fire-v2-sft/README.md",
-      "card_sha256": "b11e75d73b15db6a0c6e8c957138fd31f922dac6f6865eccc316b0878e1262f0",
+      "card": "hf_cards/model/onedesk-tiny-aya-fire-v2-sft/README.md",
+      "card_sha256": "c629bc6428bef48ba40657e3d4645c3beee7463c9e4db1f7cba1f3469821f384",
       "yaml_valid": true
     },
     {
@@ -72,8 +72,8 @@
       "merged": false,
       "note": "",
       "target_repo_id": "Revanth-ml/onedesk-tiny-aya-fire-v2-grpo",
-      "card": "hf_cards/model/driftguard-tiny-aya-fire-v2-grpo/README.md",
-      "card_sha256": "22db30f886dd7e1068320f01aabc31ecab5d719ed1351ee9e7f81e11f5f5b5c5",
+      "card": "hf_cards/model/onedesk-tiny-aya-fire-v2-grpo/README.md",
+      "card_sha256": "53e0c96b2fe6cd34f8247b10d3487de6aea8014a0115e3babab6cfd4c6cf6d64",
       "yaml_valid": true
     },
     {
@@ -86,8 +86,8 @@
       "merged": false,
       "note": "",
       "target_repo_id": "Revanth-ml/onedesk-tiny-aya-fire-v2-1-sft",
-      "card": "hf_cards/model/driftguard-tiny-aya-fire-v2-1-sft/README.md",
-      "card_sha256": "7e1b4029008e6a71404984c00ef7b866520bf4bee736564d67cd7954ba38ff80",
+      "card": "hf_cards/model/onedesk-tiny-aya-fire-v2-1-sft/README.md",
+      "card_sha256": "ebc0144644e9f3335c6661f82858f27e9b1e7a89df5793785ff8f6d54cc9a807",
       "yaml_valid": true
     },
     {
@@ -100,8 +100,8 @@
       "merged": false,
       "note": "",
       "target_repo_id": "Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-sft",
-      "card": "hf_cards/model/driftguard-tiny-aya-fire-v2-1-warmup-sft/README.md",
-      "card_sha256": "9e3033f929057433c109714a5f6d4b27faffa226ac9cfa12a7a117970bead2d6",
+      "card": "hf_cards/model/onedesk-tiny-aya-fire-v2-1-warmup-sft/README.md",
+      "card_sha256": "7ba685ffc73ec410cacef54946a9e1d5436a8dc3b3d8af46f6c6dbf216f5553c",
       "yaml_valid": true
     },
     {
@@ -114,8 +114,8 @@
       "merged": false,
       "note": "",
       "target_repo_id": "Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val",
-      "card": "hf_cards/model/driftguard-tiny-aya-fire-v2-1-warmup-grpo-best-val/README.md",
-      "card_sha256": "612f2b4d39ed2f6d869a44b026d588c823a77fda68629e9d7e95d761ce3fe30b",
+      "card": "hf_cards/model/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val/README.md",
+      "card_sha256": "1d264351d2f663f6d9a67290d68e0f70bb7ae315d929ae3d4940b2b713041924",
       "yaml_valid": true
     },
     {
@@ -128,8 +128,8 @@
       "merged": false,
       "note": "Update 80 saved separately; selected update 40 has the reported holdout scores.",
       "target_repo_id": "Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-final",
-      "card": "hf_cards/model/driftguard-tiny-aya-fire-v2-1-warmup-grpo-final/README.md",
-      "card_sha256": "15a9257566a9b472be2da542c86a14e1c93248778cfbd6bf963342518b421635",
+      "card": "hf_cards/model/onedesk-tiny-aya-fire-v2-1-warmup-grpo-final/README.md",
+      "card_sha256": "2eec6f2dfb6cecf7dbe022b2939cbd41a1b3277a0ebc7ea901f35a8232541f21",
       "yaml_valid": true
     },
     {
@@ -138,8 +138,8 @@
       "label": "Frozen benchmark",
       "scope": "data",
       "target_repo_id": "Revanth-ml/onedesk-mcp-v2-data",
-      "card": "hf_cards/dataset/driftguard-mcp-v2-data/README.md",
-      "card_sha256": "7886c0abf1c13cd957504bc5ec57e556865a21faef00da99444b4fe0905f6387",
+      "card": "hf_cards/dataset/onedesk-mcp-v2-data/README.md",
+      "card_sha256": "823548ab012f76ef554b7f489625d2f466dfdee87ff28e910541c244080fc26c",
       "yaml_valid": true
     },
     {
@@ -148,8 +148,8 @@
       "label": "Recorded experiment artifacts",
       "scope": "runs",
       "target_repo_id": "Revanth-ml/onedesk-mcp-warmup-runs",
-      "card": "hf_cards/dataset/driftguard-mcp-warmup-runs/README.md",
-      "card_sha256": "d6d2b99da0faa3623d0e408a5cead0ca06adfd53aaaa0d89674abc909ace7dc1",
+      "card": "hf_cards/dataset/onedesk-mcp-warmup-runs/README.md",
+      "card_sha256": "5b079a546e3829b9e47bca4c0996a529be070a4964bab5ea065cba2a200bd5ae",
       "yaml_valid": true
     },
     {
@@ -158,8 +158,8 @@
       "label": "Recorded experiment artifacts",
       "scope": "runs",
       "target_repo_id": "Revanth-ml/onedesk-mcp-v2-runs",
-      "card": "hf_cards/dataset/driftguard-mcp-v2-runs/README.md",
-      "card_sha256": "d6d2b99da0faa3623d0e408a5cead0ca06adfd53aaaa0d89674abc909ace7dc1",
+      "card": "hf_cards/dataset/onedesk-mcp-v2-runs/README.md",
+      "card_sha256": "5b079a546e3829b9e47bca4c0996a529be070a4964bab5ea065cba2a200bd5ae",
       "yaml_valid": true
     },
     {
@@ -168,8 +168,8 @@
       "label": "Recorded experiment artifacts",
       "scope": "runs",
       "target_repo_id": "Revanth-ml/onedesk-mcp-v2-1-runs",
-      "card": "hf_cards/dataset/driftguard-mcp-v2-1-runs/README.md",
-      "card_sha256": "d6d2b99da0faa3623d0e408a5cead0ca06adfd53aaaa0d89674abc909ace7dc1",
+      "card": "hf_cards/dataset/onedesk-mcp-v2-1-runs/README.md",
+      "card_sha256": "5b079a546e3829b9e47bca4c0996a529be070a4964bab5ea065cba2a200bd5ae",
       "yaml_valid": true
     },
     {
@@ -178,8 +178,8 @@
       "label": "Recorded experiment artifacts",
       "scope": "runs",
       "target_repo_id": "Revanth-ml/onedesk-mcp-training-runs",
-      "card": "hf_cards/dataset/driftguard-mcp-training-runs/README.md",
-      "card_sha256": "d6d2b99da0faa3623d0e408a5cead0ca06adfd53aaaa0d89674abc909ace7dc1",
+      "card": "hf_cards/dataset/onedesk-mcp-training-runs/README.md",
+      "card_sha256": "5b079a546e3829b9e47bca4c0996a529be070a4964bab5ea065cba2a200bd5ae",
       "yaml_valid": true
     },
     {
@@ -188,8 +188,8 @@
       "label": "Recorded experiment artifacts",
       "scope": "runs",
       "target_repo_id": "Revanth-ml/onedesk-mcp-grpo-runs",
-      "card": "hf_cards/dataset/driftguard-mcp-grpo-runs/README.md",
-      "card_sha256": "d6d2b99da0faa3623d0e408a5cead0ca06adfd53aaaa0d89674abc909ace7dc1",
+      "card": "hf_cards/dataset/onedesk-mcp-grpo-runs/README.md",
+      "card_sha256": "5b079a546e3829b9e47bca4c0996a529be070a4964bab5ea065cba2a200bd5ae",
       "yaml_valid": true
     }
   ],

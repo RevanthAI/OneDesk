@@ -2,24 +2,27 @@
 
 Local generation and dry-run do not use network calls or credentials. All remote operations require explicit `--publish`.
 
-|Type|Existing repository|Prepared card|Optional target|
-|---|---|---|---|
-|model|Revanth-ml/driftguard-tiny-aya-fire-sft|[Historical v1 SFT adapter](model/driftguard-tiny-aya-fire-sft/README.md)|Revanth-ml/onedesk-tiny-aya-fire-sft|
-|model|Revanth-ml/driftguard-tiny-aya-fire-sft-merged|[Historical v1 SFT merged](model/driftguard-tiny-aya-fire-sft-merged/README.md)|Revanth-ml/onedesk-tiny-aya-fire-sft-merged|
-|model|Revanth-ml/driftguard-tiny-aya-fire-grpo-pilot|[Historical v1 GRPO pilot](model/driftguard-tiny-aya-fire-grpo-pilot/README.md)|Revanth-ml/onedesk-tiny-aya-fire-grpo-pilot|
-|model|Revanth-ml/driftguard-tiny-aya-fire-v2-sft|[V2 weak SFT](model/driftguard-tiny-aya-fire-v2-sft/README.md)|Revanth-ml/onedesk-tiny-aya-fire-v2-sft|
-|model|Revanth-ml/driftguard-tiny-aya-fire-v2-grpo|[V2 collapsed RL — negative-result control](model/driftguard-tiny-aya-fire-v2-grpo/README.md)|Revanth-ml/onedesk-tiny-aya-fire-v2-grpo|
-|model|Revanth-ml/driftguard-tiny-aya-fire-v2-1-sft|[Full four-epoch SFT control](model/driftguard-tiny-aya-fire-v2-1-sft/README.md)|Revanth-ml/onedesk-tiny-aya-fire-v2-1-sft|
-|model|Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-sft|[OneDesk protocol warmup · 60 steps](model/driftguard-tiny-aya-fire-v2-1-warmup-sft/README.md)|Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-sft|
-|model|Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-grpo-best-val|[OneDesk final agent · validation-selected update 40](model/driftguard-tiny-aya-fire-v2-1-warmup-grpo-best-val/README.md)|Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val|
-|model|Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-grpo-final|[OneDesk final-update ablation · update 80](model/driftguard-tiny-aya-fire-v2-1-warmup-grpo-final/README.md)|Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-final|
-|dataset|Revanth-ml/driftguard-mcp-v2-data|[Frozen benchmark](dataset/driftguard-mcp-v2-data/README.md)|Revanth-ml/onedesk-mcp-v2-data|
-|dataset|Revanth-ml/driftguard-mcp-warmup-runs|[Recorded experiment artifacts](dataset/driftguard-mcp-warmup-runs/README.md)|Revanth-ml/onedesk-mcp-warmup-runs|
-|dataset|Revanth-ml/driftguard-mcp-v2-runs|[Recorded experiment artifacts](dataset/driftguard-mcp-v2-runs/README.md)|Revanth-ml/onedesk-mcp-v2-runs|
-|dataset|Revanth-ml/driftguard-mcp-v2-1-runs|[Recorded experiment artifacts](dataset/driftguard-mcp-v2-1-runs/README.md)|Revanth-ml/onedesk-mcp-v2-1-runs|
-|dataset|Revanth-ml/driftguard-mcp-training-runs|[Recorded experiment artifacts](dataset/driftguard-mcp-training-runs/README.md)|Revanth-ml/onedesk-mcp-training-runs|
-|dataset|Revanth-ml/driftguard-mcp-grpo-runs|[Recorded experiment artifacts](dataset/driftguard-mcp-grpo-runs/README.md)|Revanth-ml/onedesk-mcp-grpo-runs|
+**Model Collection:** [Revanth-ml/onedesk-models-and-experimental-controls](https://huggingface.co/collections/Revanth-ml/onedesk-models-and-experimental-controls-6af97221a617ddc3326204a6)
 
+**Data Collection:** [Revanth-ml/onedesk-data-and-experiment-evidence](https://huggingface.co/collections/Revanth-ml/onedesk-data-and-experiment-evidence-6af97225c0f1dc548b9ba8ce)
+
+| Type | Published repository | Prepared card |
+| --- | --- | --- |
+| model | [Revanth-ml/onedesk-tiny-aya-fire-sft](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-sft) | [Historical v1 SFT adapter](model/onedesk-tiny-aya-fire-sft/README.md) |
+| model | [Revanth-ml/onedesk-tiny-aya-fire-sft-merged](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-sft-merged) | [Historical v1 SFT merged](model/onedesk-tiny-aya-fire-sft-merged/README.md) |
+| model | [Revanth-ml/onedesk-tiny-aya-fire-grpo-pilot](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-grpo-pilot) | [Historical v1 GRPO pilot](model/onedesk-tiny-aya-fire-grpo-pilot/README.md) |
+| model | [Revanth-ml/onedesk-tiny-aya-fire-v2-sft](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-sft) | [V2 weak SFT](model/onedesk-tiny-aya-fire-v2-sft/README.md) |
+| model | [Revanth-ml/onedesk-tiny-aya-fire-v2-grpo](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-grpo) | [V2 collapsed RL — negative-result control](model/onedesk-tiny-aya-fire-v2-grpo/README.md) |
+| model | [Revanth-ml/onedesk-tiny-aya-fire-v2-1-sft](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-sft) | [Full four-epoch SFT control](model/onedesk-tiny-aya-fire-v2-1-sft/README.md) |
+| model | [Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-sft](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-sft) | [OneDesk protocol warmup · 60 steps](model/onedesk-tiny-aya-fire-v2-1-warmup-sft/README.md) |
+| model | [Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val) | [OneDesk final agent · validation-selected update 40](model/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val/README.md) |
+| model | [Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-final](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-final) | [OneDesk final-update ablation · update 80](model/onedesk-tiny-aya-fire-v2-1-warmup-grpo-final/README.md) |
+| dataset | [Revanth-ml/onedesk-mcp-v2-data](https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-v2-data) | [Frozen benchmark](dataset/onedesk-mcp-v2-data/README.md) |
+| dataset | [Revanth-ml/onedesk-mcp-warmup-runs](https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-warmup-runs) | [Recorded experiment artifacts](dataset/onedesk-mcp-warmup-runs/README.md) |
+| dataset | [Revanth-ml/onedesk-mcp-v2-runs](https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-v2-runs) | [Recorded experiment artifacts](dataset/onedesk-mcp-v2-runs/README.md) |
+| dataset | [Revanth-ml/onedesk-mcp-v2-1-runs](https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-v2-1-runs) | [Recorded experiment artifacts](dataset/onedesk-mcp-v2-1-runs/README.md) |
+| dataset | [Revanth-ml/onedesk-mcp-training-runs](https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-training-runs) | [Recorded experiment artifacts](dataset/onedesk-mcp-training-runs/README.md) |
+| dataset | [Revanth-ml/onedesk-mcp-grpo-runs](https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-grpo-runs) | [Recorded experiment artifacts](dataset/onedesk-mcp-grpo-runs/README.md) |
 
 ```bash
 .venv/bin/python scripts/prepare_hf_repos.py --dry-run

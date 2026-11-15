@@ -1,0 +1,15 @@
+{
+  "epochs": 1,
+  "optimizer_steps": 15,
+  "samples_seen": 240,
+  "max_seq_length": 2560,
+  "truncated_conversations": 0,
+  "validation_loss_before": {
+    "validation_loss": 0.7270778007805347
+  },
+  "validation_loss_after": {
+    "validation_loss": 0.09260607927571982
+  },
+  "train_rows": 240,
+  "validation_rows": 80
+}

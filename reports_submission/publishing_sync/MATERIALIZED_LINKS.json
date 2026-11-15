@@ -1,0 +1,212 @@
+[
+  {
+    "path": "reports/v2_1_comparison",
+    "source": "reports_v2_2/downloads/warmup-20261113T084035Z/comparison",
+    "dereferenced": true
+  },
+  {
+    "path": "reports/v2_base_fire",
+    "source": "reports_v2/downloads/v2-20261112T103309Z/v2_base_fire",
+    "dereferenced": true
+  },
+  {
+    "path": "reports/v2_grpo_fire",
+    "source": "reports_v2/downloads/v2-20261112T110005Z/v2_grpo_fire",
+    "dereferenced": true
+  },
+  {
+    "path": "reports/v2_sft_fire",
+    "source": "reports_v2/downloads/v2-20261112T110005Z/v2_sft_fire",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2/COMPLETION.json",
+    "source": "reports_v2/downloads/v2-20261112T110005Z/COMPLETION.json",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2/ENVIRONMENT.json",
+    "source": "reports_v2/downloads/v2-20261112T110005Z/ENVIRONMENT.json",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2/HANDOFF.json",
+    "source": "reports_v2/downloads/v2-20261112T110005Z/HANDOFF.json",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2/MODEL_REVISIONS.json",
+    "source": "reports_v2/downloads/v2-20261112T110005Z/MODEL_REVISIONS.json",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2/RESULTS.md",
+    "source": "reports_v2/downloads/v2-20261112T110005Z/RESULTS.md",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2/RUN_CONFIG.json",
+    "source": "reports_v2/downloads/v2-20261112T110005Z/RUN_CONFIG.json",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2/STATUS.json",
+    "source": "reports_v2/downloads/v2-20261112T110005Z/STATUS.json",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2/comparison.png",
+    "source": "reports_v2/downloads/v2-20261112T110005Z/comparison.png",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2/comparison.svg",
+    "source": "reports_v2/downloads/v2-20261112T110005Z/comparison.svg",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2/grpo_smoke",
+    "source": "reports_v2/downloads/v2-20261112T110005Z/grpo_smoke",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2/grpo_training",
+    "source": "reports_v2/downloads/v2-20261112T110005Z/grpo_training",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2/grpo_validation",
+    "source": "reports_v2/downloads/v2-20261112T110005Z/grpo_validation",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2/paired_comparison.json",
+    "source": "reports_v2/downloads/v2-20261112T110005Z/paired_comparison.json",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2/sft_training",
+    "source": "reports_v2/downloads/v2-20261112T110005Z/sft_training",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2/v2_base_fire",
+    "source": "reports_v2/downloads/v2-20261112T110005Z/v2_base_fire",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2/v2_grpo_fire",
+    "source": "reports_v2/downloads/v2-20261112T110005Z/v2_grpo_fire",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2/v2_sft_fire",
+    "source": "reports_v2/downloads/v2-20261112T110005Z/v2_sft_fire",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2_1/ENVIRONMENT.json",
+    "source": "reports_v2_1/downloads/v2-1-20261112T173923Z/ENVIRONMENT.json",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2_1/MODEL_REVISIONS.json",
+    "source": "reports_v2_1/downloads/v2-1-20261112T173923Z/MODEL_REVISIONS.json",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2_1/RUN_CONFIG.json",
+    "source": "reports_v2_1/downloads/v2-1-20261112T173923Z/RUN_CONFIG.json",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2_1/STATUS.json",
+    "source": "reports_v2_1/downloads/v2-1-20261112T173923Z/STATUS.json",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2_1/V2_STAGE1_DIAGNOSTIC.md",
+    "source": "reports_v2_1/downloads/v2-1-20261112T173923Z/V2_STAGE1_DIAGNOSTIC.md",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2_1/grpo_training",
+    "source": "reports_v2_1/downloads/v2-1-20261112T173923Z/grpo_training",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2_1/sft_evaluation",
+    "source": "reports_v2_1/downloads/v2-1-20261112T173923Z/sft_evaluation",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2_1/sft_training",
+    "source": "reports_v2_1/downloads/v2-1-20261112T173923Z/sft_training",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2_1/stage1_diagnostic",
+    "source": "reports_v2_1/downloads/v2-1-20261112T173923Z/stage1_diagnostic",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2_2/COMPLETION.json",
+    "source": "reports_v2_2/downloads/warmup-20261113T084035Z/COMPLETION.json",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2_2/ENVIRONMENT.json",
+    "source": "reports_v2_2/downloads/warmup-20261113T084035Z/ENVIRONMENT.json",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2_2/HANDOFF.json",
+    "source": "reports_v2_2/downloads/warmup-20261113T084035Z/HANDOFF.json",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2_2/MODEL_REVISIONS.json",
+    "source": "reports_v2_2/downloads/warmup-20261113T084035Z/MODEL_REVISIONS.json",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2_2/RUN_CONFIG.json",
+    "source": "reports_v2_2/downloads/warmup-20261113T084035Z/RUN_CONFIG.json",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2_2/STATUS.json",
+    "source": "reports_v2_2/downloads/warmup-20261113T084035Z/STATUS.json",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2_2/comparison",
+    "source": "reports_v2_2/downloads/warmup-20261113T084035Z/comparison",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2_2/grpo_evaluation",
+    "source": "reports_v2_2/downloads/warmup-20261113T084035Z/grpo_evaluation",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2_2/grpo_training",
+    "source": "reports_v2_2/downloads/warmup-20261113T084035Z/grpo_training",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2_2/sft_evaluation",
+    "source": "reports_v2_2/downloads/warmup-20261113T084035Z/sft_evaluation",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2_2/sft_training",
+    "source": "reports_v2_2/downloads/warmup-20261113T084035Z/sft_training",
+    "dereferenced": true
+  },
+  {
+    "path": "reports_v2_2/stage1_evaluation",
+    "source": "reports_v2_2/downloads/warmup-20261113T084035Z/stage1_evaluation",
+    "dereferenced": true
+  }
+]

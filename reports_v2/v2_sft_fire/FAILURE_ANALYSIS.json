@@ -1,0 +1,1393 @@
+{
+  "validation": {
+    "n": 80,
+    "correct": 18,
+    "breakdowns": {
+      "kind": {
+        "consistent": {
+          "n": 20,
+          "correct": 2,
+          "format_valid": 17,
+          "chain_compliant": 19
+        },
+        "abstain": {
+          "n": 20,
+          "correct": 11,
+          "format_valid": 15,
+          "chain_compliant": 0
+        },
+        "conflict": {
+          "n": 20,
+          "correct": 0,
+          "format_valid": 16,
+          "chain_compliant": 18
+        },
+        "incident": {
+          "n": 20,
+          "correct": 5,
+          "format_valid": 15,
+          "chain_compliant": 6
+        }
+      },
+      "language": {
+        "en": {
+          "n": 20,
+          "correct": 5,
+          "format_valid": 17,
+          "chain_compliant": 11
+        },
+        "hi": {
+          "n": 20,
+          "correct": 5,
+          "format_valid": 17,
+          "chain_compliant": 10
+        },
+        "hinglish": {
+          "n": 20,
+          "correct": 5,
+          "format_valid": 14,
+          "chain_compliant": 11
+        },
+        "te": {
+          "n": 20,
+          "correct": 3,
+          "format_valid": 15,
+          "chain_compliant": 11
+        }
+      },
+      "incident_subtype": {
+        "payload_lb": {
+          "n": 8,
+          "correct": 1,
+          "format_valid": 5,
+          "chain_compliant": 2
+        },
+        "payload_mib": {
+          "n": 4,
+          "correct": 4,
+          "format_valid": 4,
+          "chain_compliant": 4
+        },
+        "sla_penalty": {
+          "n": 4,
+          "correct": 0,
+          "format_valid": 2,
+          "chain_compliant": 0
+        },
+        "config_audit": {
+          "n": 4,
+          "correct": 0,
+          "format_valid": 4,
+          "chain_compliant": 0
+        }
+      }
+    },
+    "error_flags": {
+      "wrong_status": 26,
+      "wrong_value": 32,
+      "cites_staging_record": 14,
+      "invalid_final_format": 17,
+      "tool_error": 6,
+      "tool_budget_exhausted": 5,
+      "returned_stale_value": 3
+    },
+    "examples": [
+      {
+        "task_id": "train_val-0000-en",
+        "kind": "consistent",
+        "language": "en",
+        "expected_status": "answered",
+        "gold_value": 13,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": 13,
+          "cites": [
+            "NOTION-V2-TR-023",
+            "PR-V2-TR-023"
+          ],
+          "stale_source": "NOTION-V2-TR-023"
+        },
+        "flags": [
+          "wrong_status"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"webhook-dispatcher circuit_breaker_pct runbook\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"webhook-dispatcher circuit_breaker_pct\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"webhook-dispatcher circuit_breaker_pct\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 13, \"cites\": [\"NOTION-V2-TR-023\", \"PR-V2-TR-023\"], \"stale_source\": \"NOTION-V2-TR-023\"}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0000-hi",
+        "kind": "consistent",
+        "language": "hi",
+        "expected_status": "answered",
+        "gold_value": 13,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": 13,
+          "cites": [
+            "NOTION-V2-TR-023",
+            "PR-V2-TR-023"
+          ],
+          "stale_source": "NOTION-V2-TR-023"
+        },
+        "flags": [
+          "wrong_status"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"webhook-dispatcher circuit_breaker_pct current production\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"webhook-dispatcher circuit_breaker_pct\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 13, \"cites\": [\"NOTION-V2-TR-023\", \"PR-V2-TR-023\"], \"stale_source\": \"NOTION-V2-TR-023\"}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0000-hinglish",
+        "kind": "consistent",
+        "language": "hinglish",
+        "expected_status": "answered",
+        "gold_value": 13,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": 13,
+          "cites": [
+            "NOTION-V2-TR-023",
+            "PR-V2-TR-023"
+          ],
+          "stale_source": "NOTION-V2-TR-023"
+        },
+        "flags": [
+          "wrong_status"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"webhook-dispatcher circuit_breaker_pct production\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"webhook-dispatcher circuit_breaker_pct\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 13, \"cites\": [\"NOTION-V2-TR-023\", \"PR-V2-TR-023\"], \"stale_source\": \"NOTION-V2-TR-023\"}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0000-te",
+        "kind": "consistent",
+        "language": "te",
+        "expected_status": "answered",
+        "gold_value": 13,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": 13,
+          "cites": [
+            "NOTION-V2-TR-023",
+            "PR-V2-TR-023"
+          ],
+          "stale_source": "NOTION-V2-TR-023"
+        },
+        "flags": [
+          "wrong_status"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"webhook-dispatcher circuit_breaker_pct production\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"webhook-dispatcher circuit_breaker_pct\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 13, \"cites\": [\"NOTION-V2-TR-023\", \"PR-V2-TR-023\"], \"stale_source\": \"NOTION-V2-TR-023\"}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0002-en",
+        "kind": "consistent",
+        "language": "en",
+        "expected_status": "answered",
+        "gold_value": 406,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": 406,
+          "cites": [
+            "NOTION-V2-TR-219",
+            "SLACK-V2-TR-219"
+          ],
+          "stale_source": "NOTION-V2-TR-219"
+        },
+        "flags": [
+          "wrong_status"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"invoice-store batch_size_mb production runbook\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"invoice-store batch_size_mb\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"invoice-store batch_size_mb\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 406, \"cites\": [\"NOTION-V2-TR-219\", \"SLACK-V2-TR-219\"], \"stale_source\": \"NOTION-V2-TR-219\"}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0002-hi",
+        "kind": "consistent",
+        "language": "hi",
+        "expected_status": "answered",
+        "gold_value": 406,
+        "prediction": {
+          "status": "answered",
+          "value": 421,
+          "cites": [
+            "NOTION-V2-TR-219-STG",
+            "NOTION-V2-TR-303-STG"
+          ],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_value",
+          "cites_staging_record"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"invoice-store batch_size_mb\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"invoice-store batch_size_mb\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"invoice-store batch_size_mb\"}}</tool_call>",
+          "<final_answer>{\"status\": \"answered\", \"value\": 421, \"cites\": [\"NOTION-V2-TR-219-STG\", \"NOTION-V2-TR-303-STG\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0002-hinglish",
+        "kind": "consistent",
+        "language": "hinglish",
+        "expected_status": "answered",
+        "gold_value": 406,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": 406,
+          "cites": [
+            "NOTION-V2-TR-219",
+            "SLACK-V2-TR-219"
+          ],
+          "stale_source": "NOTION-V2-TR-219"
+        },
+        "flags": [
+          "wrong_status"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"invoice-store batch_size_mb production configuration runbook\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"invoice-store batch_size_mb\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"invoice-store batch_size_mb\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 406, \"cites\": [\"NOTION-V2-TR-219\", \"SLACK-V2-TR-219\"], \"stale_source\": \"NOTION-V2-TR-219\"}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0002-te",
+        "kind": "consistent",
+        "language": "te",
+        "expected_status": "answered",
+        "gold_value": 406,
+        "prediction": {
+          "status": "answered",
+          "value": 421,
+          "cites": [
+            "NOTION-V2-TR-219-STG",
+            "NOTION-V2-TR-303-STG"
+          ],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_value",
+          "cites_staging_record"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"invoice-store batch_size_mb\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"invoice-store batch_size_mb\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"invoice-store batch_size_mb\"}}</tool_call>",
+          "<final_answer>{\"status\": \"answered\", \"value\": 421, \"cites\": [\"NOTION-V2-TR-219-STG\", \"NOTION-V2-TR-303-STG\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0003-en",
+        "kind": "conflict",
+        "language": "en",
+        "expected_status": "conflict_resolved",
+        "gold_value": 16,
+        "prediction": {
+          "status": "answered",
+          "value": 205,
+          "cites": [
+            "NOTION-V2-TR-345-STG",
+            "NOTION-V2-TR-357-STG"
+          ],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "cites_staging_record"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"export-worker batch_size_mb production deployment history\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"export-worker batch_size_mb\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"export-worker batch_size_mb\"}}</tool_call>",
+          "<final_answer>{\"status\": \"answered\", \"value\": 205, \"cites\": [\"NOTION-V2-TR-345-STG\", \"NOTION-V2-TR-357-STG\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0003-hi",
+        "kind": "conflict",
+        "language": "hi",
+        "expected_status": "conflict_resolved",
+        "gold_value": 16,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": null,
+          "cites": [
+            "NOTION-V2-TR-345-STG",
+            "NOTION-V2-TR-345"
+          ],
+          "stale_source": "NOTION-V2-TR-345"
+        },
+        "flags": [
+          "wrong_value",
+          "cites_staging_record"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"export-worker production batch_size_mb\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"export-worker batch_size_mb\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"export-worker batch_size_mb\"}}</tool_call>",
+          "<tool_call>{\"server\": \"time-mcp\", \"tool\": \"hours_between\", \"arguments\": {\"start_iso\": \"2026-10-26T19:00:00+00:00\", \"end_iso\": \"2026-10-26T19:00:00+00:00\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": null, \"cites\": [\"NOTION-V2-TR-345-STG\", \"NOTION-V2-TR-345\"], \"stale_source\": \"NOTION-V2-TR-345\"}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0003-hinglish",
+        "kind": "conflict",
+        "language": "hinglish",
+        "expected_status": "conflict_resolved",
+        "gold_value": 16,
+        "prediction": {},
+        "flags": [
+          "invalid_final_format"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"export-worker batch_size_mb documentation history\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"export-worker batch_size_mb\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"export-worker batch_size_mb\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 181, \"cites\": [\"NOTION-V2-TR-345-STG\", \"PR-V2-TR-345\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0003-te",
+        "kind": "conflict",
+        "language": "te",
+        "expected_status": "conflict_resolved",
+        "gold_value": 16,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": null,
+          "cites": [
+            "NOTION-V2-TR-345-STG",
+            "NOTION-V2-TR-345",
+            "NOTION-V2-TR-357-STG"
+          ],
+          "stale_source": "NOTION-V2-TR-345"
+        },
+        "flags": [
+          "wrong_value",
+          "cites_staging_record"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"export-worker batch_size_mb configuration change history\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"export-worker batch_size_mb\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"export-worker batch_size_mb\"}}</tool_call>",
+          "<tool_call>{\"server\": \"time-mcp\", \"tool\": \"hours_between\", \"arguments\": {\"start_iso\": \"2026-10-26T19:00:00+00:00\", \"end_iso\": \"2026-10-26T19:00:00+00:00\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": null, \"cites\": [\"NOTION-V2-TR-345-STG\", \"NOTION-V2-TR-345\", \"NOTION-V2-TR-357-STG\"], \"stale_source\": \"NOTION-V2-TR-345\"}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0004-en",
+        "kind": "conflict",
+        "language": "en",
+        "expected_status": "conflict_resolved",
+        "gold_value": 43,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": 319,
+          "cites": [
+            "NOTION-V2-TR-333",
+            "PR-V2-TR-333"
+          ],
+          "stale_source": "NOTION-V2-TR-333"
+        },
+        "flags": [
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"dispute-api batch_size_mb production runbook\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"dispute-api batch_size_mb\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"dispute-api batch_size_mb\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 319, \"cites\": [\"NOTION-V2-TR-333\", \"PR-V2-TR-333\"], \"stale_source\": \"NOTION-V2-TR-333\"}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0004-hi",
+        "kind": "conflict",
+        "language": "hi",
+        "expected_status": "conflict_resolved",
+        "gold_value": 43,
+        "prediction": {},
+        "flags": [
+          "invalid_final_format"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"dispute-api batch_size_mb production current\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"dispute-api batch_size_mb\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 151, \"cites\": [\"NOTION-V2-TR-333\"], \"stale_source\": \"NOTION-V2-TR-297-STG\"}"
+        ]
+      },
+      {
+        "task_id": "train_val-0004-hinglish",
+        "kind": "conflict",
+        "language": "hinglish",
+        "expected_status": "conflict_resolved",
+        "gold_value": 43,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": 319,
+          "cites": [
+            "NOTION-V2-TR-333",
+            "PR-V2-TR-333"
+          ],
+          "stale_source": "NOTION-V2-TR-333"
+        },
+        "flags": [
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"dispute-api batch_size_mb production configuration\" }}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"dispute-api batch_size_mb\" }}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"dispute-api batch_size_mb\" }}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 319, \"cites\": [\"NOTION-V2-TR-333\", \"PR-V2-TR-333\"], \"stale_source\": \"NOTION-V2-TR-333\"}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0004-te",
+        "kind": "conflict",
+        "language": "te",
+        "expected_status": "conflict_resolved",
+        "gold_value": 43,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": 319,
+          "cites": [
+            "NOTION-V2-TR-333",
+            "PR-V2-TR-333"
+          ],
+          "stale_source": "NOTION-V2-TR-333"
+        },
+        "flags": [
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"dispute-api batch_size_mb production current value\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"dispute-api batch_size_mb\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"dispute-api batch_size_mb\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 319, \"cites\": [\"NOTION-V2-TR-333\", \"PR-V2-TR-333\"], \"stale_source\": \"NOTION-V2-TR-333\"}</final_answer>"
+        ]
+      }
+    ]
+  },
+  "test_synth": {
+    "n": 400,
+    "correct": 60,
+    "breakdowns": {
+      "kind": {
+        "conflict": {
+          "n": 200,
+          "correct": 14,
+          "format_valid": 148,
+          "chain_compliant": 175
+        },
+        "incident": {
+          "n": 60,
+          "correct": 8,
+          "format_valid": 36,
+          "chain_compliant": 13
+        },
+        "abstain": {
+          "n": 60,
+          "correct": 23,
+          "format_valid": 58,
+          "chain_compliant": 0
+        },
+        "consistent": {
+          "n": 80,
+          "correct": 15,
+          "format_valid": 58,
+          "chain_compliant": 79
+        }
+      },
+      "language": {
+        "en": {
+          "n": 100,
+          "correct": 16,
+          "format_valid": 81,
+          "chain_compliant": 72
+        },
+        "hi": {
+          "n": 100,
+          "correct": 22,
+          "format_valid": 81,
+          "chain_compliant": 70
+        },
+        "hinglish": {
+          "n": 100,
+          "correct": 11,
+          "format_valid": 76,
+          "chain_compliant": 70
+        },
+        "te": {
+          "n": 100,
+          "correct": 11,
+          "format_valid": 62,
+          "chain_compliant": 55
+        }
+      },
+      "incident_subtype": {
+        "sla_penalty": {
+          "n": 16,
+          "correct": 0,
+          "format_valid": 4,
+          "chain_compliant": 0
+        },
+        "config_audit": {
+          "n": 16,
+          "correct": 0,
+          "format_valid": 11,
+          "chain_compliant": 2
+        },
+        "payload_lb": {
+          "n": 16,
+          "correct": 5,
+          "format_valid": 13,
+          "chain_compliant": 6
+        },
+        "payload_mib": {
+          "n": 12,
+          "correct": 3,
+          "format_valid": 8,
+          "chain_compliant": 5
+        }
+      }
+    },
+    "error_flags": {
+      "invalid_final_format": 100,
+      "wrong_status": 155,
+      "wrong_value": 195,
+      "tool_error": 26,
+      "tool_budget_exhausted": 19,
+      "cites_staging_record": 99,
+      "unnecessary_abstention": 27,
+      "returned_stale_value": 26
+    },
+    "examples": [
+      {
+        "task_id": "holdout_synth-0000-en",
+        "kind": "conflict",
+        "language": "en",
+        "expected_status": "conflict_resolved",
+        "gold_value": 3836,
+        "prediction": {},
+        "flags": [
+          "invalid_final_format"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"statement-worker rate_limit rpm\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"statement-worker rate_limit rpm\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"statement-worker rate_limit rpm\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 65, \"cites\": [\"NOTION-V2-TS-047-STG\", \"PR-V2-TS-042-STG\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0000-hi",
+        "kind": "conflict",
+        "language": "hi",
+        "expected_status": "conflict_resolved",
+        "gold_value": 3836,
+        "prediction": {
+          "status": "answered",
+          "value": 4772,
+          "cites": [
+            "NOTION-V2-TS-044",
+            "PR-V2-TS-044"
+          ],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"statement-worker production rate_limit_rpm effective value\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"statement-worker rate_limit_rpm\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"statement-worker rate_limit_rpm\"}}</tool_call>",
+          "<final_answer>{\"status\": \"answered\", \"value\": 4772, \"cites\": [\"NOTION-V2-TS-044\", \"PR-V2-TS-044\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0000-te",
+        "kind": "conflict",
+        "language": "te",
+        "expected_status": "conflict_resolved",
+        "gold_value": 3836,
+        "prediction": {},
+        "flags": [
+          "invalid_final_format"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"statement-worker rate_limit_rpm production release history\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"statement-worker rate_limit_rpm\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 3878, \"cites\": [\"NOTION-V2-TS-044\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0001-en",
+        "kind": "incident",
+        "language": "en",
+        "expected_status": "answered",
+        "gold_value": 15.0,
+        "prediction": {},
+        "flags": [
+          "invalid_final_format",
+          "tool_error",
+          "tool_budget_exhausted"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"USD SLA charge for INC-V2-TS-000\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"USD SLA charge for INC-V2-TS-000\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"USD SLA charge for INC-V2-TS-000\"}}</tool_call>",
+          "<tool_call>{\"server\": \"db-mcp\", \"tool\": \"query_db\", \"arguments\": {\"sql\": \"SELECT * FROM production_incidents WHERE incident_id = 'INC-V2-TS-000'\"}}</tool_call>",
+          "<tool_call>{\"server\": \"unit-converter-mcp\", \"tool\": \"convert_unit\", \"arguments\": {\"value\": 15.0, \"from_unit\": \"null\", \"to_unit\": \"USD\"}}</tool_call>",
+          "<tool_call>{\"server\": \"unit-converter-mcp\", \"tool\": \"convert_unit\", \"arguments\": {\"value\": 15.0, \"from_unit\": \"null\", \"to_unit\": \"USD\"}}</tool_call>",
+          "<tool_call>{\"server\": \"math-mcp\", \"tool\": \"calculate\", \"arguments\": {\"expression\": \"round(15.0, 2)\"}}</tool_call>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0001-hi",
+        "kind": "incident",
+        "language": "hi",
+        "expected_status": "answered",
+        "gold_value": 15.0,
+        "prediction": {},
+        "flags": [
+          "invalid_final_format",
+          "tool_error",
+          "tool_budget_exhausted"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"INC-V2-TS-000 SLA penalty USD\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"INC-V2-TS-000 SLA penalty USD\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"INC-V2-TS-000 SLA penalty USD\"}}</tool_call>",
+          "<tool_call>{\"server\": \"db-mcp\", \"tool\": \"query_db\", \"arguments\": {\"sql\": \"SELECT * FROM production_incidents WHERE incident_id = 'INC-V2-TS-000'\"}}</tool_call>",
+          "<tool_call>{\"server\": \"unit-converter-mcp\", \"tool\": \"convert_unit\", \"arguments\": {\"value\": 15.0, \"from_unit\": \"null\", \"to_unit\": \"USD\"}}</tool_call>",
+          "<tool_call>{\"server\": \"unit-converter-mcp\", \"tool\": \"convert_unit\", \"arguments\": {\"value\": 15.0, \"from_unit\": \"null\", \"to_unit\": \"USD\"}}</tool_call>",
+          "<tool_call>{\"server\": \"math-mcp\", \"tool\": \"calculate\", \"arguments\": {\"expression\": \"round(15.0, 2)\"}}</tool_call>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0001-hinglish",
+        "kind": "incident",
+        "language": "hinglish",
+        "expected_status": "answered",
+        "gold_value": 15.0,
+        "prediction": {
+          "status": "answered",
+          "value": 2500000000.0,
+          "cites": [
+            "INC-V2-TS-000"
+          ],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_value",
+          "tool_error"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"incident INC-V2-TS-000 duration-based SLA charge USD\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"incident INC-V2-TS-000 duration-based SLA charge USD\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"incident INC-V2-TS-000 duration-based SLA charge USD\"}}</tool_call>",
+          "<tool_call>{\"server\": \"db-mcp\", \"tool\": \"query_db\", \"arguments\": {\"sql\": \"SELECT * FROM production_incidents WHERE incident_id = 'INC-V2-TS-000'\"}}</tool_call>",
+          "<tool_call>{\"server\": \"unit-converter-mcp\", \"tool\": \"convert_unit\", \"arguments\": {\"value\": 2.5, \"from_unit\": \"gb\", \"to_unit\": \"bytes\"}}</tool_call>",
+          "<tool_call>{\"server\": \"math-mcp\", \"tool\": \"calculate\", \"arguments\": {\"expression\": \"round(2.5 * 1e9, 2)\"}}</tool_call>",
+          "<final_answer>{\"status\": \"answered\", \"value\": 2500000000.0, \"cites\": [\"INC-V2-TS-000\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0001-te",
+        "kind": "incident",
+        "language": "te",
+        "expected_status": "answered",
+        "gold_value": 15.0,
+        "prediction": {
+          "status": "answered",
+          "value": 2.5,
+          "cites": [
+            "INC-V2-TS-000"
+          ],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"INC-V2-TS-000 namodaina antaraayam samayaaniki vartinche SLA rusumunu USD lo nirnayinchandi\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"INC-V2-TS-000 namodaina antaraayam samayaaniki vartinche SLA rusumunu USD lo nirnayinchandi\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"INC-V2-TS-000 namodaina antaraayam samayaaniki vartinche SLA rusumunu USD lo nirnayinchandi\"}}</tool_call>",
+          "<tool_call>{\"server\": \"db-mcp\", \"tool\": \"query_db\", \"arguments\": {\"sql\": \"SELECT * FROM production_incidents WHERE incident_id = 'INC-V2-TS-000'\"}}</tool_call>",
+          "<final_answer>{\"status\": \"answered\", \"value\": 2.5, \"cites\": [\"INC-V2-TS-000\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0003-en",
+        "kind": "incident",
+        "language": "en",
+        "expected_status": "answered",
+        "gold_value": 2,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": null,
+          "cites": [
+            "NOTION-V2-TS-145-STG",
+            "NOTION-V2-TS-139-STG",
+            "NOTION-V2-TS-133-STG"
+          ],
+          "stale_source": "NOTION-V2-TS-145-STG"
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "cites_staging_record"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"incident INC-V2-TS-001 component max_retries\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"incident INC-V2-TS-001\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": null, \"cites\": [\"NOTION-V2-TS-145-STG\", \"NOTION-V2-TS-139-STG\", \"NOTION-V2-TS-133-STG\"], \"stale_source\": \"NOTION-V2-TS-145-STG\"}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0003-hi",
+        "kind": "incident",
+        "language": "hi",
+        "expected_status": "answered",
+        "gold_value": 2,
+        "prediction": {
+          "status": "answered",
+          "value": 5,
+          "cites": [
+            "PR-V2-TS-133-STG"
+          ],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_value",
+          "cites_staging_record"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"INC-V2-TS-001 service max_retries\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"INC-V2-TS-001 service max_retries\"}}</tool_call>",
+          "<final_answer>{\"status\": \"answered\", \"value\": 5, \"cites\": [\"PR-V2-TS-133-STG\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0003-hinglish",
+        "kind": "incident",
+        "language": "hinglish",
+        "expected_status": "answered",
+        "gold_value": 2,
+        "prediction": {},
+        "flags": [
+          "invalid_final_format"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"Outage entry INC-V2-TS-001 deployed max_retries operational docs\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"Inc-V2-TS-001 max_retries\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"Inc-V2-TS-001 max_retries\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": \"11\", \"cites\": [\"NOTION-V2-TS-145-STG\", \"NOTION-V2-TS-139-STG\", \"NOTION-V2-TS-133-STG\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0003-te",
+        "kind": "incident",
+        "language": "te",
+        "expected_status": "answered",
+        "gold_value": 2,
+        "prediction": {
+          "status": "answered",
+          "value": 5,
+          "cites": [
+            "PR-V2-TS-133-STG"
+          ],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_value",
+          "cites_staging_record"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"INC-V2-TS-001 betweenayam namoduloni sevanu gurthinchi daani amalaina max_retries nu nirvahana patramtho saripolchandi\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"INC-V2-TS-001 betweenayam namoduloni sevanu gurthinchi daani amalaina max_retries nu nirvahana patramtho saripolchandi\"}}</tool_call>",
+          "<final_answer>{\"status\": \"answered\", \"value\": 5, \"cites\": [\"PR-V2-TS-133-STG\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0004-en",
+        "kind": "conflict",
+        "language": "en",
+        "expected_status": "conflict_resolved",
+        "gold_value": 17,
+        "prediction": {},
+        "flags": [
+          "invalid_final_format",
+          "tool_budget_exhausted"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"clearing-agent batch_size_mb deployed batch_size_mb operational documentation release trail superseded page\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"clearing-agent batch_size_mb\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"clearing-agent batch_size_mb\"}}</tool_call>",
+          "<tool_call>{\"server\": \"db-mcp\", \"tool\": \"query_db\", \"arguments\": {\"sql\": \"SELECT * FROM production_incidents WHERE service_name = 'clearing-agent' AND environment = 'staging'\"}}</tool_call>",
+          "<tool_call>{\"server\": \"db-mcp\", \"tool\": \"query_db\", \"arguments\": {\"sql\": \"SELECT * FROM production_incidents WHERE service_name = 'clearing-agent' AND environment = 'prod'\"}}</tool_call>",
+          "<tool_call>{\"server\": \"time-mcp\", \"tool\": \"hours_between\", \"arguments\": {\"start_iso\": \"2026-10-19T11:30:00+00:00\", \"end_iso\": \"2026-10-20T06:30:00+00:00\"}}</tool_call>",
+          "<tool_call>{\"server\": \"unit-converter-mcp\", \"tool\": \"convert_unit\", \"arguments\": {\"value\": 19.0, \"from_unit\": \"hours\", \"to_unit\": \"minutes\"}}</tool_call>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0004-hi",
+        "kind": "conflict",
+        "language": "hi",
+        "expected_status": "conflict_resolved",
+        "gold_value": 17,
+        "prediction": {},
+        "flags": [
+          "invalid_final_format"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"clearing-agent production batch_size_mb effective value\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"clearing-agent batch_size_mb\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"clearing-agent batch_size_mb\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 17, \"cites\": [\"NOTION-V2-TS-093\", \"SLACK-V2-TS-141\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0004-hinglish",
+        "kind": "conflict",
+        "language": "hinglish",
+        "expected_status": "conflict_resolved",
+        "gold_value": 17,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": null,
+          "cites": [
+            "NOTION-V2-TS-147-STG",
+            "NOTION-V2-TS-141-STG",
+            "NOTION-V2-TS-135-STG"
+          ],
+          "stale_source": "NOTION-V2-TS-147-STG"
+        },
+        "flags": [
+          "wrong_value",
+          "cites_staging_record"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"batch_size_mb superseded page operational docs release trail\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"batch_size_mb superseded\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"batch_size_mb superseded\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": null, \"cites\": [\"NOTION-V2-TS-147-STG\", \"NOTION-V2-TS-141-STG\", \"NOTION-V2-TS-135-STG\"], \"stale_source\": \"NOTION-V2-TS-147-STG\"}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0004-te",
+        "kind": "conflict",
+        "language": "te",
+        "expected_status": "conflict_resolved",
+        "gold_value": 17,
+        "prediction": {},
+        "flags": [
+          "invalid_final_format"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"clearing-agent production batch_size_mb\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"clearing-agent batch_size_mb\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 98, \"cites\": [\"NOTION-V2-TS-093\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0005-en",
+        "kind": "abstain",
+        "language": "en",
+        "expected_status": "abstain",
+        "gold_value": null,
+        "prediction": {
+          "status": "answered",
+          "value": 4727,
+          "cites": [
+            "NOTION-V2-TS-086-STG",
+            "NOTION-V2-TS-086",
+            "NOTION-V2-TS-026-STG"
+          ],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "cites_staging_record"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"token-vault rate_limit_rpm\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"token-vault rate_limit_rpm\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"token-vault rate_limit_rpm\"}}</tool_call>",
+          "<final_answer>{\"status\": \"answered\", \"value\": 4727, \"cites\": [\"NOTION-V2-TS-086-STG\", \"NOTION-V2-TS-086\", \"NOTION-V2-TS-026-STG\"], \"stale_source\": null}</final_answer>"
+        ]
+      }
+    ]
+  },
+  "repo_style": {
+    "n": 100,
+    "correct": 16,
+    "breakdowns": {
+      "kind": {
+        "consistent": {
+          "n": 20,
+          "correct": 2,
+          "format_valid": 16,
+          "chain_compliant": 19
+        },
+        "abstain": {
+          "n": 15,
+          "correct": 5,
+          "format_valid": 9,
+          "chain_compliant": 0
+        },
+        "conflict": {
+          "n": 50,
+          "correct": 7,
+          "format_valid": 37,
+          "chain_compliant": 38
+        },
+        "incident": {
+          "n": 15,
+          "correct": 2,
+          "format_valid": 8,
+          "chain_compliant": 2
+        }
+      },
+      "language": {
+        "en": {
+          "n": 25,
+          "correct": 5,
+          "format_valid": 21,
+          "chain_compliant": 16
+        },
+        "hi": {
+          "n": 25,
+          "correct": 7,
+          "format_valid": 20,
+          "chain_compliant": 16
+        },
+        "hinglish": {
+          "n": 25,
+          "correct": 4,
+          "format_valid": 19,
+          "chain_compliant": 18
+        },
+        "te": {
+          "n": 25,
+          "correct": 0,
+          "format_valid": 10,
+          "chain_compliant": 9
+        }
+      },
+      "incident_subtype": {
+        "sla_penalty": {
+          "n": 4,
+          "correct": 0,
+          "format_valid": 2,
+          "chain_compliant": 0
+        },
+        "config_audit": {
+          "n": 4,
+          "correct": 0,
+          "format_valid": 3,
+          "chain_compliant": 0
+        },
+        "payload_lb": {
+          "n": 4,
+          "correct": 1,
+          "format_valid": 2,
+          "chain_compliant": 1
+        },
+        "payload_mib": {
+          "n": 3,
+          "correct": 1,
+          "format_valid": 1,
+          "chain_compliant": 1
+        }
+      }
+    },
+    "error_flags": {
+      "wrong_status": 31,
+      "wrong_value": 37,
+      "cites_staging_record": 14,
+      "invalid_final_format": 30,
+      "unnecessary_abstention": 3,
+      "returned_stale_value": 9,
+      "tool_error": 9,
+      "tool_budget_exhausted": 5
+    },
+    "examples": [
+      {
+        "task_id": "holdout_repo_style-0000-en",
+        "kind": "consistent",
+        "language": "en",
+        "expected_status": "answered",
+        "gold_value": 33,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": 33,
+          "cites": [
+            "NOTION-V2-OSS-012",
+            "PR-V2-OSS-012"
+          ],
+          "stale_source": "NOTION-V2-OSS-012"
+        },
+        "flags": [
+          "wrong_status"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"pydantic-schema-validator timeout_sec deployed\" }}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"pydantic-schema-validator timeout_sec\" }}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 33, \"cites\": [\"NOTION-V2-OSS-012\", \"PR-V2-OSS-012\"], \"stale_source\": \"NOTION-V2-OSS-012\"}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0000-hi",
+        "kind": "consistent",
+        "language": "hi",
+        "expected_status": "answered",
+        "gold_value": 33,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": 33,
+          "cites": [
+            "NOTION-V2-OSS-012",
+            "PR-V2-OSS-012"
+          ],
+          "stale_source": "NOTION-V2-OSS-012"
+        },
+        "flags": [
+          "wrong_status"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"pydantic-schema-validator production timeout_sec effective value\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"pydantic-schema-validator timeout_sec\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 33, \"cites\": [\"NOTION-V2-OSS-012\", \"PR-V2-OSS-012\"], \"stale_source\": \"NOTION-V2-OSS-012\"}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0000-hinglish",
+        "kind": "consistent",
+        "language": "hinglish",
+        "expected_status": "answered",
+        "gold_value": 33,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": 33,
+          "cites": [
+            "NOTION-V2-OSS-012",
+            "PR-V2-OSS-012"
+          ],
+          "stale_source": "NOTION-V2-OSS-042"
+        },
+        "flags": [
+          "wrong_status"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"pydantic-schema-validator timeout_sec superseded page operational docs release trail\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"pydantic-schema-validator timeout_sec\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"pydantic-schema-validator timeout_sec\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 33, \"cites\": [\"NOTION-V2-OSS-012\", \"PR-V2-OSS-012\"], \"stale_source\": \"NOTION-V2-OSS-042\"}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0000-te",
+        "kind": "consistent",
+        "language": "te",
+        "expected_status": "answered",
+        "gold_value": 33,
+        "prediction": {
+          "status": "answered",
+          "value": "The production timeout_sec values are not defined in the provided sources. All references indicate that the values are STAGING-ONLY settings and should not be applied to production. The latest STAGING values are: falcon-api-middleware: 90, quart-websocket-worker: 102, tornado-request-handler: 54.",
+          "cites": [
+            "NOTION-V2-OSS-174-STG",
+            "NOTION-V2-OSS-168-STG",
+            "NOTION-V2-OSS-162-STG"
+          ],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_value",
+          "cites_staging_record"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"production timeout_sec pydantic schema release notes\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"pydantic timeout_sec production\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"pydantic timeout_sec production\"}}</tool_call>",
+          "<final_answer>{\"status\": \"answered\", \"value\": \"The production timeout_sec values are not defined in the provided sources. All references indicate that the values are STAGING-ONLY settings and should not be applied to production. The latest STAGING values are: falcon-api-middleware: 90, quart-websocket-worker: 102, tornado-request-handler: 54.\", \"cites\": [\"NOTION-V2-OSS-174-STG\", \"NOTION-V2-OSS-168-STG\", \"NOTION-V2-OSS-162-STG\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0001-te",
+        "kind": "abstain",
+        "language": "te",
+        "expected_status": "abstain",
+        "gold_value": null,
+        "prediction": {},
+        "flags": [
+          "invalid_final_format"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"asgi-hedger circuit_breaker_pct database connection lekapothe seva viraminchandi\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"asgi-hedger circuit_breaker_pct\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": null, \"cites\": [\"NOTION-V2-OSS-179-STG\", \"NOTION-V2-OSS-173-STG\", \"NOTION-V2-OSS-167-STG\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0002-te",
+        "kind": "conflict",
+        "language": "te",
+        "expected_status": "conflict_resolved",
+        "gold_value": 57,
+        "prediction": {},
+        "flags": [
+          "invalid_final_format"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"rq-job-worker circuit_breaker_pct production release notes\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"rq-job-worker circuit_breaker_pct\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 51, \"cites\": [\"NOTION-V2-OSS-119\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0003-en",
+        "kind": "consistent",
+        "language": "en",
+        "expected_status": "answered",
+        "gold_value": 30,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": 30,
+          "cites": [
+            "NOTION-V2-OSS-178",
+            "PR-V2-OSS-178"
+          ],
+          "stale_source": "NOTION-V2-OSS-178"
+        },
+        "flags": [
+          "wrong_status"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"falcon-api-middleware sla_hours\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"falcon-api-middleware sla_hours\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"falcon-api-middleware sla_hours\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 30, \"cites\": [\"NOTION-V2-OSS-178\", \"PR-V2-OSS-178\"], \"stale_source\": \"NOTION-V2-OSS-178\"}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0003-hi",
+        "kind": "consistent",
+        "language": "hi",
+        "expected_status": "answered",
+        "gold_value": 30,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": 30,
+          "cites": [
+            "NOTION-V2-OSS-178",
+            "PR-V2-OSS-178"
+          ],
+          "stale_source": "NOTION-V2-OSS-178"
+        },
+        "flags": [
+          "wrong_status"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"falcon-api-middleware production sla_hours impact\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"falcon-api-middleware sla_hours\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 30, \"cites\": [\"NOTION-V2-OSS-178\", \"PR-V2-OSS-178\"], \"stale_source\": \"NOTION-V2-OSS-178\"}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0003-te",
+        "kind": "consistent",
+        "language": "te",
+        "expected_status": "answered",
+        "gold_value": 30,
+        "prediction": {},
+        "flags": [
+          "invalid_final_format"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"falcon-api-middleware deployment sla_hours\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"falcon-api-middleware sla_hours\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 30, \"cites\": [\"NOTION-V2-OSS-178\", \"PR-V2-OSS-178\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0004-en",
+        "kind": "conflict",
+        "language": "en",
+        "expected_status": "conflict_resolved",
+        "gold_value": 372,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": 273,
+          "cites": [
+            "NOTION-V2-OSS-171-STG",
+            "SLACK-V2-OSS-171"
+          ],
+          "stale_source": "NOTION-V2-OSS-171"
+        },
+        "flags": [
+          "wrong_value",
+          "cites_staging_record"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"quart-websocket-worker batch_size_mb deployed version trail\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"quart-websocket-worker batch_size_mb\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"quart-websocket-worker batch_size_mb\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 273, \"cites\": [\"NOTION-V2-OSS-171-STG\", \"SLACK-V2-OSS-171\"], \"stale_source\": \"NOTION-V2-OSS-171\"}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0004-hi",
+        "kind": "conflict",
+        "language": "hi",
+        "expected_status": "conflict_resolved",
+        "gold_value": 372,
+        "prediction": {
+          "status": "answered",
+          "value": 372,
+          "cites": [
+            "NOTION-V2-OSS-171",
+            "SLACK-V2-OSS-171"
+          ],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"quart-websocket-worker production batch_size_mb effective value\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"quart-websocket-worker batch_size_mb\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"quart-websocket-worker batch_size_mb\"}}</tool_call>",
+          "<final_answer>{\"status\": \"answered\", \"value\": 372, \"cites\": [\"NOTION-V2-OSS-171\", \"SLACK-V2-OSS-171\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0004-hinglish",
+        "kind": "conflict",
+        "language": "hinglish",
+        "expected_status": "conflict_resolved",
+        "gold_value": 372,
+        "prediction": {},
+        "flags": [
+          "invalid_final_format"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"batch_size_mb superseded page operational docs release trail\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"batch_size_mb superseded\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"batch_size_mb superseded\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": \"The superseded page is `NOTION-V2-OSS-177-STG` for `falcon-api-middleware` with `batch_size_mb = 171`. Operational docs and release trail confirm this is a staging-only setting. No production impact.\", \"cites\": [\"NOTION-V2-OSS-177-STG\", \"NOTION-V2-OSS-171-STG\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0004-te",
+        "kind": "conflict",
+        "language": "te",
+        "expected_status": "conflict_resolved",
+        "gold_value": 372,
+        "prediction": {},
+        "flags": [
+          "invalid_final_format"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"quart-websocket-worker batch_size_mb production release notes\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"quart-websocket-worker batch_size_mb\"}}</tool_call>",
+          "<final_answer>{\"status\": \"conflict_resolved\", \"value\": 267, \"cites\": [\"NOTION-V2-OSS-171\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0005-en",
+        "kind": "conflict",
+        "language": "en",
+        "expected_status": "conflict_resolved",
+        "gold_value": 192,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"trl-rollout-worker batch_size_mb configuration history\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"trl-rollout-worker batch_size_mb\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"trl-rollout-worker batch_size_mb\"}}</tool_call>",
+          "<tool_call>{\"server\": \"db-mcp\", \"tool\": \"query_db\", \"arguments\": {\"sql\": \"SELECT * FROM production_incidents WHERE service_name = 'trl-rollout-worker'\"}}</tool_call>",
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0005-hinglish",
+        "kind": "conflict",
+        "language": "hinglish",
+        "expected_status": "conflict_resolved",
+        "gold_value": 192,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"trl-rollout-worker batch_size_mb release evidence\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"trl-rollout-worker batch_size_mb\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"trl-rollout-worker batch_size_mb\"}}</tool_call>",
+          "<tool_call>{\"server\": \"db-mcp\", \"tool\": \"query_db\", \"arguments\": {\"sql\": \"SELECT * FROM production_incidents WHERE service_name = 'trl-rollout-worker'\"}}</tool_call>",
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0005-te",
+        "kind": "conflict",
+        "language": "te",
+        "expected_status": "conflict_resolved",
+        "gold_value": 192,
+        "prediction": {
+          "status": "answered",
+          "value": 342,
+          "cites": [
+            "NOTION-V2-OSS-093-STG",
+            "SLACK-V2-OSS-093"
+          ],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "cites_staging_record"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"trl-rollout-worker batch_size_mb production\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"trl-rollout-worker batch_size_mb\"}}</tool_call>",
+          "<tool_call>{\"server\": \"slack-mcp\", \"tool\": \"search_slack\", \"arguments\": {\"query\": \"trl-rollout-worker batch_size_mb\"}}</tool_call>",
+          "<final_answer>{\"status\": \"answered\", \"value\": 342, \"cites\": [\"NOTION-V2-OSS-093-STG\", \"SLACK-V2-OSS-093\"], \"stale_source\": null}</final_answer>"
+        ]
+      }
+    ]
+  }
+}

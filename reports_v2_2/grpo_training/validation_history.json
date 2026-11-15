@@ -1,0 +1,42 @@
+[
+  {
+    "step": 20,
+    "exact_outcome": 0.7375,
+    "predicted_abstention_rate": 0.2625,
+    "safe": true,
+    "selected": true,
+    "early_stop": false,
+    "best_step": 20,
+    "best_accuracy": 0.7375
+  },
+  {
+    "step": 40,
+    "exact_outcome": 0.8,
+    "predicted_abstention_rate": 0.25,
+    "safe": true,
+    "selected": true,
+    "early_stop": false,
+    "best_step": 40,
+    "best_accuracy": 0.8
+  },
+  {
+    "step": 60,
+    "exact_outcome": 0.7625,
+    "predicted_abstention_rate": 0.2375,
+    "safe": true,
+    "selected": false,
+    "early_stop": false,
+    "best_step": 40,
+    "best_accuracy": 0.8
+  },
+  {
+    "step": 80,
+    "exact_outcome": 0.7875,
+    "predicted_abstention_rate": 0.2375,
+    "safe": true,
+    "selected": false,
+    "early_stop": false,
+    "best_step": 40,
+    "best_accuracy": 0.8
+  }
+]

@@ -1,0 +1,1318 @@
+{
+  "validation": {
+    "n": 80,
+    "correct": 21,
+    "breakdowns": {
+      "kind": {
+        "consistent": {
+          "n": 20,
+          "correct": 1,
+          "format_valid": 20,
+          "chain_compliant": 1
+        },
+        "abstain": {
+          "n": 20,
+          "correct": 20,
+          "format_valid": 20,
+          "chain_compliant": 0
+        },
+        "conflict": {
+          "n": 20,
+          "correct": 0,
+          "format_valid": 20,
+          "chain_compliant": 1
+        },
+        "incident": {
+          "n": 20,
+          "correct": 0,
+          "format_valid": 20,
+          "chain_compliant": 0
+        }
+      },
+      "language": {
+        "en": {
+          "n": 20,
+          "correct": 6,
+          "format_valid": 20,
+          "chain_compliant": 2
+        },
+        "hi": {
+          "n": 20,
+          "correct": 5,
+          "format_valid": 20,
+          "chain_compliant": 0
+        },
+        "hinglish": {
+          "n": 20,
+          "correct": 5,
+          "format_valid": 20,
+          "chain_compliant": 0
+        },
+        "te": {
+          "n": 20,
+          "correct": 5,
+          "format_valid": 20,
+          "chain_compliant": 0
+        }
+      },
+      "incident_subtype": {
+        "payload_lb": {
+          "n": 8,
+          "correct": 0,
+          "format_valid": 8,
+          "chain_compliant": 0
+        },
+        "payload_mib": {
+          "n": 4,
+          "correct": 0,
+          "format_valid": 4,
+          "chain_compliant": 0
+        },
+        "sla_penalty": {
+          "n": 4,
+          "correct": 0,
+          "format_valid": 4,
+          "chain_compliant": 0
+        },
+        "config_audit": {
+          "n": 4,
+          "correct": 0,
+          "format_valid": 4,
+          "chain_compliant": 0
+        }
+      }
+    },
+    "error_flags": {
+      "wrong_status": 46,
+      "wrong_value": 59,
+      "unnecessary_abstention": 40,
+      "returned_stale_value": 3,
+      "cites_staging_record": 1
+    },
+    "examples": [
+      {
+        "task_id": "train_val-0000-en",
+        "kind": "consistent",
+        "language": "en",
+        "expected_status": "answered",
+        "gold_value": 13,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0000-hi",
+        "kind": "consistent",
+        "language": "hi",
+        "expected_status": "answered",
+        "gold_value": 13,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0000-hinglish",
+        "kind": "consistent",
+        "language": "hinglish",
+        "expected_status": "answered",
+        "gold_value": 13,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0000-te",
+        "kind": "consistent",
+        "language": "te",
+        "expected_status": "answered",
+        "gold_value": 13,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0002-en",
+        "kind": "consistent",
+        "language": "en",
+        "expected_status": "answered",
+        "gold_value": 406,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0002-hi",
+        "kind": "consistent",
+        "language": "hi",
+        "expected_status": "answered",
+        "gold_value": 406,
+        "prediction": {
+          "status": "answered",
+          "value": 1024,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"answered\", \"value\": 1024, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0002-hinglish",
+        "kind": "consistent",
+        "language": "hinglish",
+        "expected_status": "answered",
+        "gold_value": 406,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0002-te",
+        "kind": "consistent",
+        "language": "te",
+        "expected_status": "answered",
+        "gold_value": 406,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0003-en",
+        "kind": "conflict",
+        "language": "en",
+        "expected_status": "conflict_resolved",
+        "gold_value": 16,
+        "prediction": {
+          "status": "answered",
+          "value": 436,
+          "cites": [
+            "NOTION-V2-TR-345",
+            "PR-V2-TR-345"
+          ],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "returned_stale_value"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"export-worker batch_size_mb production deployment history\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"export-worker batch_size_mb\"}}</tool_call>",
+          "<final_answer>{\"status\": \"answered\", \"value\": 436, \"cites\": [\"NOTION-V2-TR-345\", \"PR-V2-TR-345\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0003-hi",
+        "kind": "conflict",
+        "language": "hi",
+        "expected_status": "conflict_resolved",
+        "gold_value": 16,
+        "prediction": {
+          "status": "answered",
+          "value": 256,
+          "cites": [
+            "notion-mcp:export-worker",
+            "github-mcp:export-worker"
+          ],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"answered\", \"value\": 256, \"cites\": [\"notion-mcp:export-worker\", \"github-mcp:export-worker\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0003-hinglish",
+        "kind": "conflict",
+        "language": "hinglish",
+        "expected_status": "conflict_resolved",
+        "gold_value": 16,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0003-te",
+        "kind": "conflict",
+        "language": "te",
+        "expected_status": "conflict_resolved",
+        "gold_value": 16,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0004-en",
+        "kind": "conflict",
+        "language": "en",
+        "expected_status": "conflict_resolved",
+        "gold_value": 43,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0004-hi",
+        "kind": "conflict",
+        "language": "hi",
+        "expected_status": "conflict_resolved",
+        "gold_value": 43,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0004-hinglish",
+        "kind": "conflict",
+        "language": "hinglish",
+        "expected_status": "conflict_resolved",
+        "gold_value": 43,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "train_val-0004-te",
+        "kind": "conflict",
+        "language": "te",
+        "expected_status": "conflict_resolved",
+        "gold_value": 43,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      }
+    ]
+  },
+  "test_synth": {
+    "n": 400,
+    "correct": 70,
+    "breakdowns": {
+      "kind": {
+        "conflict": {
+          "n": 200,
+          "correct": 0,
+          "format_valid": 197,
+          "chain_compliant": 17
+        },
+        "incident": {
+          "n": 60,
+          "correct": 0,
+          "format_valid": 60,
+          "chain_compliant": 0
+        },
+        "abstain": {
+          "n": 60,
+          "correct": 60,
+          "format_valid": 60,
+          "chain_compliant": 0
+        },
+        "consistent": {
+          "n": 80,
+          "correct": 10,
+          "format_valid": 77,
+          "chain_compliant": 9
+        }
+      },
+      "language": {
+        "en": {
+          "n": 100,
+          "correct": 15,
+          "format_valid": 100,
+          "chain_compliant": 0
+        },
+        "hi": {
+          "n": 100,
+          "correct": 15,
+          "format_valid": 100,
+          "chain_compliant": 0
+        },
+        "hinglish": {
+          "n": 100,
+          "correct": 25,
+          "format_valid": 94,
+          "chain_compliant": 26
+        },
+        "te": {
+          "n": 100,
+          "correct": 15,
+          "format_valid": 100,
+          "chain_compliant": 0
+        }
+      },
+      "incident_subtype": {
+        "sla_penalty": {
+          "n": 16,
+          "correct": 0,
+          "format_valid": 16,
+          "chain_compliant": 0
+        },
+        "config_audit": {
+          "n": 16,
+          "correct": 0,
+          "format_valid": 16,
+          "chain_compliant": 0
+        },
+        "payload_lb": {
+          "n": 16,
+          "correct": 0,
+          "format_valid": 16,
+          "chain_compliant": 0
+        },
+        "payload_mib": {
+          "n": 12,
+          "correct": 0,
+          "format_valid": 12,
+          "chain_compliant": 0
+        }
+      }
+    },
+    "error_flags": {
+      "wrong_status": 302,
+      "wrong_value": 317,
+      "unnecessary_abstention": 249,
+      "returned_stale_value": 10,
+      "cites_staging_record": 12,
+      "invalid_final_format": 6
+    },
+    "examples": [
+      {
+        "task_id": "holdout_synth-0000-en",
+        "kind": "conflict",
+        "language": "en",
+        "expected_status": "conflict_resolved",
+        "gold_value": 3836,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0000-hi",
+        "kind": "conflict",
+        "language": "hi",
+        "expected_status": "conflict_resolved",
+        "gold_value": 3836,
+        "prediction": {
+          "status": "answered",
+          "value": 1000,
+          "cites": [
+            "notion-mcp:search_notion",
+            "github-mcp:search_github_prs"
+          ],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"answered\", \"value\": 1000, \"cites\": [\"notion-mcp:search_notion\", \"github-mcp:search_github_prs\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0000-hinglish",
+        "kind": "conflict",
+        "language": "hinglish",
+        "expected_status": "conflict_resolved",
+        "gold_value": 3836,
+        "prediction": {
+          "status": "answered",
+          "value": 3878,
+          "cites": [
+            "NOTION-V2-TS-044",
+            "PR-V2-TS-044"
+          ],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "returned_stale_value"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"statement-worker rate_limit_rpm superseded page\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"statement-worker rate_limit_rpm superseded\"}}</tool_call>",
+          "<final_answer>{\"status\": \"answered\", \"value\": 3878, \"cites\": [\"NOTION-V2-TS-044\", \"PR-V2-TS-044\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0000-te",
+        "kind": "conflict",
+        "language": "te",
+        "expected_status": "conflict_resolved",
+        "gold_value": 3836,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0001-en",
+        "kind": "incident",
+        "language": "en",
+        "expected_status": "answered",
+        "gold_value": 15.0,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0001-hi",
+        "kind": "incident",
+        "language": "hi",
+        "expected_status": "answered",
+        "gold_value": 15.0,
+        "prediction": {
+          "status": "answered",
+          "value": 0.0,
+          "cites": [
+            "INC-V2-TS-000"
+          ],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"answered\", \"value\": 0.00, \"cites\": [\"INC-V2-TS-000\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0001-hinglish",
+        "kind": "incident",
+        "language": "hinglish",
+        "expected_status": "answered",
+        "gold_value": 15.0,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0001-te",
+        "kind": "incident",
+        "language": "te",
+        "expected_status": "answered",
+        "gold_value": 15.0,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0003-en",
+        "kind": "incident",
+        "language": "en",
+        "expected_status": "answered",
+        "gold_value": 2,
+        "prediction": {
+          "status": "answered",
+          "value": 3,
+          "cites": [
+            "incident: INC-V2-TS-001"
+          ],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"answered\", \"value\": 3, \"cites\": [\"incident: INC-V2-TS-001\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0003-hi",
+        "kind": "incident",
+        "language": "hi",
+        "expected_status": "answered",
+        "gold_value": 2,
+        "prediction": {
+          "status": "answered",
+          "value": 3,
+          "cites": [
+            "INC-V2-TS-001"
+          ],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"answered\", \"value\": 3, \"cites\": [\"INC-V2-TS-001\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0003-hinglish",
+        "kind": "incident",
+        "language": "hinglish",
+        "expected_status": "answered",
+        "gold_value": 2,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0003-te",
+        "kind": "incident",
+        "language": "te",
+        "expected_status": "answered",
+        "gold_value": 2,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0004-en",
+        "kind": "conflict",
+        "language": "en",
+        "expected_status": "conflict_resolved",
+        "gold_value": 17,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0004-hi",
+        "kind": "conflict",
+        "language": "hi",
+        "expected_status": "conflict_resolved",
+        "gold_value": 17,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0004-hinglish",
+        "kind": "conflict",
+        "language": "hinglish",
+        "expected_status": "conflict_resolved",
+        "gold_value": 17,
+        "prediction": {
+          "status": "answered",
+          "value": 272,
+          "cites": [
+            "NOTION-V2-TS-147-STG",
+            "NOTION-V2-TS-141-STG",
+            "NOTION-V2-TS-135-STG"
+          ],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "cites_staging_record"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"batch_size_mb superseded page operational docs release trail\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"batch_size_mb superseded\"}}</tool_call>",
+          "<final_answer>{\"status\": \"answered\", \"value\": 272, \"cites\": [\"NOTION-V2-TS-147-STG\", \"NOTION-V2-TS-141-STG\", \"NOTION-V2-TS-135-STG\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0004-te",
+        "kind": "conflict",
+        "language": "te",
+        "expected_status": "conflict_resolved",
+        "gold_value": 17,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      }
+    ]
+  },
+  "repo_style": {
+    "n": 100,
+    "correct": 15,
+    "breakdowns": {
+      "kind": {
+        "consistent": {
+          "n": 20,
+          "correct": 0,
+          "format_valid": 18,
+          "chain_compliant": 0
+        },
+        "abstain": {
+          "n": 15,
+          "correct": 15,
+          "format_valid": 15,
+          "chain_compliant": 0
+        },
+        "conflict": {
+          "n": 50,
+          "correct": 0,
+          "format_valid": 50,
+          "chain_compliant": 1
+        },
+        "incident": {
+          "n": 15,
+          "correct": 0,
+          "format_valid": 15,
+          "chain_compliant": 0
+        }
+      },
+      "language": {
+        "en": {
+          "n": 25,
+          "correct": 4,
+          "format_valid": 25,
+          "chain_compliant": 0
+        },
+        "hi": {
+          "n": 25,
+          "correct": 4,
+          "format_valid": 25,
+          "chain_compliant": 0
+        },
+        "hinglish": {
+          "n": 25,
+          "correct": 4,
+          "format_valid": 23,
+          "chain_compliant": 1
+        },
+        "te": {
+          "n": 25,
+          "correct": 3,
+          "format_valid": 25,
+          "chain_compliant": 0
+        }
+      },
+      "incident_subtype": {
+        "sla_penalty": {
+          "n": 4,
+          "correct": 0,
+          "format_valid": 4,
+          "chain_compliant": 0
+        },
+        "config_audit": {
+          "n": 4,
+          "correct": 0,
+          "format_valid": 4,
+          "chain_compliant": 0
+        },
+        "payload_lb": {
+          "n": 4,
+          "correct": 0,
+          "format_valid": 4,
+          "chain_compliant": 0
+        },
+        "payload_mib": {
+          "n": 3,
+          "correct": 0,
+          "format_valid": 3,
+          "chain_compliant": 0
+        }
+      }
+    },
+    "error_flags": {
+      "wrong_status": 78,
+      "wrong_value": 83,
+      "unnecessary_abstention": 70,
+      "returned_stale_value": 3,
+      "cites_staging_record": 3,
+      "invalid_final_format": 2
+    },
+    "examples": [
+      {
+        "task_id": "holdout_repo_style-0000-en",
+        "kind": "consistent",
+        "language": "en",
+        "expected_status": "answered",
+        "gold_value": 33,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0000-hi",
+        "kind": "consistent",
+        "language": "hi",
+        "expected_status": "answered",
+        "gold_value": 33,
+        "prediction": {
+          "status": "answered",
+          "value": 30,
+          "cites": [
+            "notion-mcp:search_notion('pydantic-schema-validator production timeout_sec')"
+          ],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"answered\", \"value\": 30, \"cites\": [\"notion-mcp:search_notion('pydantic-schema-validator production timeout_sec')\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0000-hinglish",
+        "kind": "consistent",
+        "language": "hinglish",
+        "expected_status": "answered",
+        "gold_value": 33,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0000-te",
+        "kind": "consistent",
+        "language": "te",
+        "expected_status": "answered",
+        "gold_value": 33,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0002-en",
+        "kind": "conflict",
+        "language": "en",
+        "expected_status": "conflict_resolved",
+        "gold_value": 57,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0002-hi",
+        "kind": "conflict",
+        "language": "hi",
+        "expected_status": "conflict_resolved",
+        "gold_value": 57,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0002-hinglish",
+        "kind": "conflict",
+        "language": "hinglish",
+        "expected_status": "conflict_resolved",
+        "gold_value": 57,
+        "prediction": {
+          "status": "answered",
+          "value": 51,
+          "cites": [
+            "NOTION-V2-OSS-119"
+          ],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "returned_stale_value"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"rq-job-worker circuit_breaker_pct superseded page\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"rq-job-worker circuit_breaker_pct\"}}</tool_call>",
+          "<final_answer>{\"status\": \"answered\", \"value\": 51, \"cites\": [\"NOTION-V2-OSS-119\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0002-te",
+        "kind": "conflict",
+        "language": "te",
+        "expected_status": "conflict_resolved",
+        "gold_value": 57,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0003-en",
+        "kind": "consistent",
+        "language": "en",
+        "expected_status": "answered",
+        "gold_value": 30,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0003-hi",
+        "kind": "consistent",
+        "language": "hi",
+        "expected_status": "answered",
+        "gold_value": 30,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0003-hinglish",
+        "kind": "consistent",
+        "language": "hinglish",
+        "expected_status": "answered",
+        "gold_value": 30,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0003-te",
+        "kind": "consistent",
+        "language": "te",
+        "expected_status": "answered",
+        "gold_value": 30,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0004-en",
+        "kind": "conflict",
+        "language": "en",
+        "expected_status": "conflict_resolved",
+        "gold_value": 372,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0004-hi",
+        "kind": "conflict",
+        "language": "hi",
+        "expected_status": "conflict_resolved",
+        "gold_value": 372,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0004-hinglish",
+        "kind": "conflict",
+        "language": "hinglish",
+        "expected_status": "conflict_resolved",
+        "gold_value": 372,
+        "prediction": {
+          "status": "answered",
+          "value": 273,
+          "cites": [
+            "NOTION-V2-OSS-177-STG",
+            "PR-V2-OSS-171-STG"
+          ],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "cites_staging_record"
+        ],
+        "raw_turns": [
+          "<tool_call>{\"server\": \"notion-mcp\", \"tool\": \"search_notion\", \"arguments\": {\"query\": \"batch_size_mb superseded page operational docs release trail\"}}</tool_call>",
+          "<tool_call>{\"server\": \"github-mcp\", \"tool\": \"search_github_prs\", \"arguments\": {\"query\": \"batch_size_mb quart-websocket-worker superseded page\"}}</tool_call>",
+          "<final_answer>{\"status\": \"answered\", \"value\": 273, \"cites\": [\"NOTION-V2-OSS-177-STG\", \"PR-V2-OSS-171-STG\"], \"stale_source\": null}</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0004-te",
+        "kind": "conflict",
+        "language": "te",
+        "expected_status": "conflict_resolved",
+        "gold_value": 372,
+        "prediction": {
+          "status": "abstain",
+          "value": null,
+          "cites": [],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value",
+          "unnecessary_abstention"
+        ],
+        "raw_turns": [
+          "<final_answer>{\"status\": \"abstain\", \"value\": null, \"cites\": [], \"stale_source\": null}</final_answer>"
+        ]
+      }
+    ]
+  }
+}

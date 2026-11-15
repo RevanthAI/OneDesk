@@ -1,0 +1,43 @@
+{
+  "stage1": {
+    "attempted_groups": 5,
+    "accepted_groups": 5,
+    "skipped_groups": 0,
+    "acceptance_rate": 1.0,
+    "kind_fallback_events": 0,
+    "sampling_temperatures": {
+      "0.8": 5
+    },
+    "mean_attempted_reward": -0.14400000721216202,
+    "skipped_outcome_composition": {},
+    "skipped_uniform_rewards": {},
+    "attempted_by_kind": {
+      "consistent": 2,
+      "incident": 1,
+      "conflict": 1,
+      "abstain": 1
+    },
+    "accepted_by_kind": {
+      "consistent": 2,
+      "incident": 1,
+      "conflict": 1,
+      "abstain": 1
+    },
+    "final_sampler": {
+      "accepted": 5,
+      "accepted_by_kind": {
+        "consistent": 2,
+        "incident": 1,
+        "conflict": 1,
+        "abstain": 1
+      },
+      "saturated": [],
+      "draws": {
+        "consistent": 2,
+        "incident": 1,
+        "conflict": 1,
+        "abstain": 1
+      }
+    }
+  }
+}

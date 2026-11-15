@@ -1,0 +1,213 @@
+{
+  "completion": {
+    "status": "complete",
+    "grpo_training_status": "complete",
+    "completed_grpo_updates": 80,
+    "selected_grpo_step": 40,
+    "approved_data_unchanged": true,
+    "wall_seconds": 6709.1241891384125,
+    "model_revisions": {
+      "SFT_WARMUP": {
+        "repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-sft",
+        "revision": "72aafc56b1506a81a7cb12930e95f8f2f17d03d5"
+      },
+      "GRPO_BEST_VAL": {
+        "repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-grpo-best-val",
+        "revision": "016676680121b4dd90ec6026978de7ee1cdb1271"
+      },
+      "GRPO_FINAL": {
+        "repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-grpo-final",
+        "revision": "b006ec346e48807afd23030abf17b599adfcf71f"
+      }
+    }
+  },
+  "paired_differences": {
+    "validation": {
+      "GRPO minus warmup": {
+        "exact_outcome": {
+          "estimate": 0.125,
+          "ci95": [
+            0.0,
+            0.2625
+          ],
+          "clusters": 20
+        },
+        "stale_catch": {
+          "estimate": 0.25,
+          "ci95": [
+            -0.2,
+            0.7
+          ],
+          "clusters": 5
+        },
+        "required_chain_compliance": {
+          "estimate": -0.05,
+          "ci95": [
+            -0.13333333333333333,
+            0.0
+          ],
+          "clusters": 15
+        }
+      },
+      "GRPO minus full SFT": {
+        "exact_outcome": {
+          "estimate": 0.0625,
+          "ci95": [
+            -0.1,
+            0.2
+          ],
+          "clusters": 20
+        },
+        "stale_catch": {
+          "estimate": 0.4,
+          "ci95": [
+            0.15,
+            0.65
+          ],
+          "clusters": 5
+        },
+        "required_chain_compliance": {
+          "estimate": -0.1,
+          "ci95": [
+            -0.26666666666666666,
+            0.0
+          ],
+          "clusters": 15
+        }
+      }
+    },
+    "test_synth": {
+      "GRPO minus warmup": {
+        "exact_outcome": {
+          "estimate": 0.0325,
+          "ci95": [
+            -0.025,
+            0.09
+          ],
+          "clusters": 100
+        },
+        "stale_catch": {
+          "estimate": 0.05,
+          "ci95": [
+            -0.065,
+            0.17
+          ],
+          "clusters": 50
+        },
+        "required_chain_compliance": {
+          "estimate": -0.07352941176470588,
+          "ci95": [
+            -0.12058823529411765,
+            -0.03529411764705882
+          ],
+          "clusters": 85
+        }
+      },
+      "GRPO minus full SFT": {
+        "exact_outcome": {
+          "estimate": -0.015,
+          "ci95": [
+            -0.0725,
+            0.0425
+          ],
+          "clusters": 100
+        },
+        "stale_catch": {
+          "estimate": 0.155,
+          "ci95": [
+            0.055,
+            0.26
+          ],
+          "clusters": 50
+        },
+        "required_chain_compliance": {
+          "estimate": -0.10882352941176471,
+          "ci95": [
+            -0.16470588235294117,
+            -0.058823529411764705
+          ],
+          "clusters": 85
+        }
+      }
+    },
+    "repo_style": {
+      "GRPO minus warmup": {
+        "exact_outcome": {
+          "estimate": 0.07,
+          "ci95": [
+            -0.05,
+            0.20004807692307625
+          ],
+          "clusters": 26
+        },
+        "stale_catch": {
+          "estimate": 0.06,
+          "ci95": [
+            -0.08163265306122448,
+            0.19607843137254902
+          ],
+          "clusters": 13
+        },
+        "required_chain_compliance": {
+          "estimate": -0.16470588235294117,
+          "ci95": [
+            -0.2839506172839506,
+            -0.058823529411764705
+          ],
+          "clusters": 22
+        }
+      },
+      "GRPO minus full SFT": {
+        "exact_outcome": {
+          "estimate": -0.05,
+          "ci95": [
+            -0.1863051470588235,
+            0.06796116504854369
+          ],
+          "clusters": 26
+        },
+        "stale_catch": {
+          "estimate": 0.1,
+          "ci95": [
+            0.0196078431372549,
+            0.20408163265306123
+          ],
+          "clusters": 13
+        },
+        "required_chain_compliance": {
+          "estimate": -0.24705882352941178,
+          "ci95": [
+            -0.4000574712643678,
+            -0.10843373493975904
+          ],
+          "clusters": 22
+        }
+      }
+    }
+  },
+  "full_run_support": {
+    "attempted_groups": 342,
+    "accepted_groups": 80,
+    "acceptance_rate": 0.23391812865497075,
+    "all_negative_skipped": 3,
+    "zero_variance_skipped": 260,
+    "accepted_mixed_outcomes": 68,
+    "accepted_all_correct": 7,
+    "accepted_all_wrong_positive_evidence": 5,
+    "accepted_with_format_errors": 9
+  },
+  "model_revisions": {
+    "SFT_WARMUP": {
+      "repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-sft",
+      "revision": "72aafc56b1506a81a7cb12930e95f8f2f17d03d5"
+    },
+    "GRPO_BEST_VAL": {
+      "repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-grpo-best-val",
+      "revision": "016676680121b4dd90ec6026978de7ee1cdb1271"
+    },
+    "GRPO_FINAL": {
+      "repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-grpo-final",
+      "revision": "b006ec346e48807afd23030abf17b599adfcf71f"
+    }
+  }
+}

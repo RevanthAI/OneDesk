@@ -1,0 +1,69 @@
+{
+  "num_train_epochs": 2,
+  "optimizer_steps": 60,
+  "effective_batch_size": 8,
+  "learning_rate": 0.00015,
+  "schedule": "First 60 steps of the original 120-step cosine schedule, six-step LR warmup; no forced decay to zero at step 60",
+  "scheduler_horizon": 120,
+  "samples_seen": 480,
+  "selection": {
+    "step": 60,
+    "epoch": 2.0,
+    "exact_outcome": 0.675,
+    "format_valid": 1.0,
+    "predicted_abstention_rate": 0.2375,
+    "adapter": "reports_v2_2/sft_training/step060/adapter",
+    "within_preferred_accuracy_range": true,
+    "selection_rule": "Highest validation accuracy among protocol-safe 45/60-step candidates in preferred 55-68% range, otherwise highest safe candidate; earliest step breaks ties. No holdout selection."
+  },
+  "max_seq_length": 2560,
+  "truncated_conversations": 0,
+  "selected_step": 60,
+  "selected_validation_accuracy": 0.675,
+  "validation": [
+    {
+      "step": 30,
+      "epoch": 1.0,
+      "exact_outcome": 0.525,
+      "format_valid": 1.0,
+      "predicted_abstention_rate": 0.15,
+      "adapter": "reports_v2_2/sft_training/step030/adapter"
+    },
+    {
+      "step": 45,
+      "epoch": 1.5,
+      "exact_outcome": 0.5875,
+      "format_valid": 1.0,
+      "predicted_abstention_rate": 0.2125,
+      "adapter": "reports_v2_2/sft_training/step045/adapter"
+    },
+    {
+      "step": 60,
+      "epoch": 2.0,
+      "exact_outcome": 0.675,
+      "format_valid": 1.0,
+      "predicted_abstention_rate": 0.2375,
+      "adapter": "reports_v2_2/sft_training/step060/adapter"
+    }
+  ],
+  "warm_start_gate": {
+    "passed": true,
+    "criterion": "Paired semantic-case bootstrap accuracy-change lower 95% bound > 0 versus the v2 15-step SFT validation baseline",
+    "accuracy": 0.675,
+    "paired_change": {
+      "estimate": 0.45,
+      "ci95": [
+        0.2625,
+        0.6375
+      ],
+      "clusters": 20
+    },
+    "exploratory": true,
+    "selection_caveat": "45/60-step candidates selected on the same validation set; exploratory operational gate, not independent confirmation.",
+    "selected_sft_abstention_rate": 0.2375,
+    "abstention_safe": true
+  },
+  "validation_loss_before": {
+    "validation_loss": 0.7270778007805347
+  }
+}

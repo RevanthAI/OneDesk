@@ -25,7 +25,7 @@ A production runbook says `max_retries=3`, an older PR says `4`, and a later Sla
 The [official hackathon Track 3 problem list](https://hackathon.lexsi.ai/#tracks), verified during this documentation pass, places our six areas at official items 1, 2, 4, 5, 6 and 9. The original `/tracks` URL returned 404; the homepage contains the track details. The following mapping is an implementation assessment, not an assertion that every deployment goal was achieved.
 
 | Official item / area | What DriftGuard implements | Evidence and boundary |
-|---|---|---|
+| --- | --- | --- |
 | 1 · Reliable tool calling | Live model-generated XML/JSON calls, strict schemas, ordering and tool feedback | AgentTune-backed multi-turn episodes; all 500 final selected-GRPO holdout finals format-valid |
 | 2 · Efficient trajectories | Measured discovery-oracle lengths and success-gated excess-step penalties | Tool counts, redundancy and outcome reported separately; fewer calls can also omit required evidence |
 | 4 · Retrieval-augmented generation | Model decides queries and follows runbook hints; filters staging and sibling records | Up to three query-ranked records; complete-chain compliance remains a weakness |
@@ -42,7 +42,7 @@ The original design lives in `src/world_generator.py`, `src/real_repo_world.py`,
 Each episode creates its own `sqlite3.connect(":memory:")` connection, inserts a deterministic snapshot, commits initialization, then enables `PRAGMA query_only=ON` and an SQLite authorizer. The agent may read only `microservices` and `production_incidents`; the three search collections also have snapshot tables but are accessed through their tools. SQL must start with SELECT, rows are capped at 32, and a progress handler bounds execution. Failures return an error object for feedback. This is connection-per-episode isolation, not a measured sub-millisecond parallel transaction service. `sql_dump()` exports trusted DDL/INSERT snapshots; PostgreSQL execution was not benchmarked. Local rollouts call Python functions in-process; an optional FastMCP wrapper exposes the same router, not nine separately deployed production integrations.
 
 | Server | Exact callable signature | Output |
-|---|---|---|
+| --- | --- | --- |
 | notion-mcp | search_notion(query: str) | list[dict]: page_id, title, updated_at, snippet, scope/entity fields |
 | github-mcp | search_github_prs(query: str) | list[dict]: pr_id, title, merged_at, summary, scope/entity fields |
 | slack-mcp | search_slack(query: str) | list[dict]: msg_id, channel, posted_at, text, scope/entity fields |
@@ -68,7 +68,7 @@ Every assistant turn contains exactly one XML wrapper around strict JSON. Tool o
 This final-answer example is the recorded scalar-correct but chain-incomplete trace discussed in Section 8; it is not a fully compliant gold answer. `answered` requires `stale_source=null`; `conflict_resolved` identifies an outdated page; `abstain` requires `value=null`. Evidence IDs enter the retrieved set only when actually returned by a tool observation.
 
 | Kind / subtype | Discovery and output | Key trap |
-|---|---|---|
+| --- | --- | --- |
 | consistent | Notion production record → hinted GitHub or Slack verification; status answered | Treating staging as production or inventing a conflict |
 | conflict · hinted | Notion → deployment channel from observed tracking hint; newer scalar plus stale-page ID | Stopping at runbook or wrong status |
 | conflict · cross-channel | Notion → older deployment channel → newer hotfix on the other channel | Incomplete three-source evidence or blindly choosing latest staging timestamp |
@@ -84,7 +84,7 @@ Search tokenizes Unicode word/hyphen tokens, strips a multilingual generic stopw
 ### Language/script coverage and concrete frozen prompts
 
 | Dataset | en:latin | hi:native | hi:latin | hinglish:latin | te:native | te:latin |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | holdout_repo_style_100_frozen | 25 | 13 | 12 | 25 | 13 | 12 |
 | holdout_synth_400_frozen | 100 | 50 | 50 | 100 | 50 | 50 |
 | train_grpo_stage1 | 100 | 50 | 50 | 100 | 50 | 50 |
@@ -93,7 +93,7 @@ Search tokenizes Unicode word/hyphen tokens, strips a multilingual generic stopw
 | val_train_80 | 20 | 10 | 10 | 20 | 10 | 10 |
 
 | Language/script | Task ID | Verbatim frozen prompt |
-|---|---|---|
+| --- | --- | --- |
 | en:latin | train_sft-0000-en | What is the active production batch_size_mb for loyalty-api? Compare the runbook with deployment records and flag any outdated page. |
 | hi:native | train_sft-0000-hi | loyalty-api का वर्तमान production batch_size_mb क्या है? दस्तावेज़ और deployment records की तुलना करें और पुराने पन्ने को पहचानें। |
 | hi:latin | train_sft-0023-hi | audit-stream ka production circuit_breaker_pct nirdhaarit kijiye; likhit nirdesh aur naveen tainaati soochna mein antar ho to bataaiye. |
@@ -108,7 +108,7 @@ Script labels describe the natural-language template; technical service/paramete
 All ground truth, timestamps, configuration histories and incident fields are generated from structured Python facts before text rendering. No LLM invented the gold facts. The train world has seed 42, 60 services, 80 incidents and 320 semantic cases: 300 allocated plus 20 reserved; synthetic holdout uses seed 99 and a separate namespace. Training phases share the broader enterprise namespace but have disjoint case IDs, service-parameter pairs and incident IDs. Thus “zero leakage” here means those tested boundaries, not proof that no statistical shortcut exists, no shared service appears across train phases, or no numeric values recur. The allowed domain intervals are shared, but configuration integer candidates are partitioned by value modulo 3: train residue 1, synthetic residue 2, OSS-style residue 0. That makes configuration-value vocabularies split-disjoint within those intervals; incident rates, converted quantities and computed outcomes are not guaranteed globally disjoint. This artificial residue split is itself a benchmark limitation.
 
 | Artifact / pool | Rows | Semantic cases | Task-kind row counts | Case-ID range |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | holdout_repo_style_100_frozen.jsonl | 100 | 26 | consistent:20, incident:15, conflict:50, abstain:15 | holdout_repo_style-0000 … holdout_repo_style-0025 |
 | holdout_synth_400_frozen.jsonl | 400 | 100 | consistent:80, incident:60, conflict:200, abstain:60 | holdout_synth-0000 … holdout_synth-0099 |
 | train_grpo_stage1.jsonl | 400 | 100 | consistent:100, incident:100, conflict:100, abstain:100 | train_grpo1-0000 … train_grpo1-0099 |
@@ -118,7 +118,7 @@ All ground truth, timestamps, configuration histories and incident fields are ge
 | train_reserved (manifest only; not a training JSONL) | 0 | 20 | {'incident': 5, 'abstain': 5, 'consistent': 5, 'conflict': 5} | train_reserved-0000 … train_reserved-0019 |
 
 | Configuration parameter | Allowed inclusive domain |
-|---|---|
+| --- | --- |
 | timeout_sec | 5–180 |
 | max_retries | 1–12 |
 | rate_limit_rpm | 100–5,000 |
@@ -131,7 +131,7 @@ Incident start times vary across hours and half-hours. Candidate hourly USD rate
 The frozen manifest contains 15 JSON/JSONL artifacts; `protected()` additionally locks the review documents, manifests and other files for 19 files total. `src/v2_dataset.py:audit_splits` checks all 15 pairwise combinations of the six emitted datasets for case, (service, parameter) and incident intersections. No holdout examples are optimized on. Repeated validation selection is acknowledged separately from case disjointness.
 
 | v1 audit issue | v2 correction / verification |
-|---|---|
+| --- | --- |
 | 1 · Same SFT/GRPO case IDs | 60/100/120/20 phase-specific pools plus reserved20; pairwise intersection tests |
 | 2 · User prompt names target tools | Natural audit/incident requests; tracking hints arrive only through tool observations |
 | 3 · unknown- missing-entity prefix | Realistic absent names in split-specific namespaces; absence checked against world |
@@ -143,7 +143,7 @@ The frozen manifest contains 15 JSON/JSONL artifacts; `protected()` additionally
 The seven-item accounting above separates unused conversion from constant incident values, as in this final submission request. The earlier audit grouped those together and counted curation/trajectory metadata/native-script coverage as its seventh category. Those additional issues were also addressed: actual oracle rewards replace zero metadata, controlled duplicates exercise CuratorKIT, and Hindi/Telugu include native and Latin templates. V2 acceptance originally passed 50 tests; the latest complete multi-version regression suite passed 120. Tests establish implemented invariants, not a causal explanation of all prior accuracy saturation.
 
 | Dataset | Input candidates | Kept | Rejected | Injected exact duplicates | Verified oracle rows |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | holdout_repo_style_100_frozen | 115 | 100 | 15 | 15 | 100 |
 | holdout_synth_400_frozen | 460 | 400 | 60 | 60 | 400 |
 | train_grpo_stage1 | 460 | 400 | 60 | 60 | 400 |
@@ -154,7 +154,7 @@ The seven-item accounting above separates unused conversion from constant incide
 Totals: 1955 candidates → 1700 retained → 255 rejected. This is genuine execution of CuratorKIT’s exact deduplicator on deliberately injected duplicate controls (~15% of retained rows), not semantic paraphrase deduplication or evidence of improved natural-data quality. `curation_rejections.jsonl` records candidate IDs, task IDs, origins and rejection reasons. `train_sft_agenttune_trajectories.jsonl` stores measured evidence-gated oracle rewards; reward histogram: `{"1.0": 60, "1.3": 112, "1.5": 68}`.
 
 | Token audit field | Measured value |
-|---|---|
+| --- | --- |
 | model | CohereLabs/tiny-aya-fire |
 | tokenizer_source | local cached tokenizer; no model inference |
 | rows | 240 |
@@ -171,7 +171,7 @@ The legacy 1,536 budget would truncate 136/240 conversations (56.67%). The measu
 The integrations form a real data→training→evaluation chain. Curated oracle trajectories round-trip through AgentTune’s trajectory serialization and AuditKIT’s importer before training; model-produced trajectories follow the same export path after evaluation. No toolkit name is used only as a dependency badge.
 
 | Toolkit / pinned version | Exact integration points | Role and verified path |
-|---|---|---|
+| --- | --- | --- |
 | CuratorKIT 0.1.21 | src/v2_dataset.py:curate; curatorkit.schema.DataSample; curatorkit.normalizers.dedup.ExactDeduplicator.run | Canonical model-visible prompt JSON → controlled exact dedup → frozen rows/rejection log |
 | AgentTune 1.1.4 · data | src_v2_2/toolkits.py:trajectory_module, portable_trajectory; Step, Trajectory.to_dict, TrajectoryDataset.from_jsonl | Serialize real tool observations and final response; include actual oracle/episode reward |
 | AgentTune 1.1.4 · SFT | src_v2_2/agenttune_sft_backend.py:DriftGuardSFTTrainer(SFTTrainerBase); src_v2_2/training.py:run_sft | AgentTune config/lifecycle, project assistant-only sparse causal CE backend and validation callback |
@@ -179,7 +179,7 @@ The integrations form a real data→training→evaluation chain. Curated oracle 
 | AuditKIT 1.1.7 | src_v2_2/evaluate_auditkit.py:evaluate; src_v2_2/evaluation_core.py:auditkit_score; episodes_from_agenttune; Sample; FunctionScorer; ak.evaluate | Precomputed real generations; exact/citation custom scorers plus ToolCallF1(name), ToolCallValidity, RedundantToolCalls; result.save |
 
 | Repository | Git commit |
-|---|---|
+| --- | --- |
 | AgentTune | e56a1094b65cbf7c2c0b26d0db2ac4dffffa693a |
 | AuditKIT | fe6083e7487dfe7326ffd473be57481b52fdd9fb |
 | CuratorKIT | d6f2e44edede9b78d5fe5189096f64d3ed798724 |
@@ -236,7 +236,7 @@ Thus fully observed but wrong status/value can earn +0.30, fully observed stale 
 ### Deterministic adversarial audit, recomputed without model inference
 
 | Policy | Cases | specified | evidence_gated | anti_collapse |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | AlwaysAbstainPolicy | 100 | 0.1925 | -0.0200 | -0.5725 |
 | DumpAllNumbersPolicy | 100 | 0.0500 | -0.2000 | -0.3000 |
 | TrustOnlyNotionLazyPolicy | 100 | -0.0360 | -0.3640 | -0.1962 |
@@ -250,7 +250,7 @@ The six non-MentalMath policies use one English rendering of each of 100 frozen 
 Historical v1 audit, kept for continuity (different world/policy details, two reward modes):
 
 | Policy | Specified reward | Evidence-gated reward |
-|---|---:|---:|
+| --- | ---: | ---: |
 | AlwaysAbstainPolicy | 0.1925 | -0.0200 |
 | DumpAllNumbersPolicy | 0.0500 | -0.2000 |
 | TrustOnlyNotionLazyPolicy | -0.0450 | -0.3600 |
@@ -267,7 +267,7 @@ GRPO optimization math (`src_v2_2/grpo_core.py`): for each group, A_i=(R_i−mea
 ## 7. Metrics Chosen & Why
 
 | Metric | Exact definition / denominator | Deployment interpretation |
-|---|---|---|
+| --- | --- | --- |
 | exact_outcome | Mean I(predicted status=gold status AND normalized scalar=gold scalar), all tasks | A correct number with wrong conflict/abstain status fails; not an evidence-completeness metric |
 | stale_catch | Conflict tasks only: exact outcome AND stale_source=gold stale page AND every gold cite ∈ claimed∩retrieved | Strict drift-resolution contract; not interchangeable with conflict scalar/status accuracy |
 | verified_citation_f1 | Per evidence-bearing task, 2×verified gold hits/(claimed+gold); average over gold-citation tasks | Hallucinated cites reduce precision; mere retrieval without citing earns no F1 |
@@ -295,19 +295,19 @@ The evaluator preserves raw assistant turns, messages, executed calls, tool erro
 V1 prompts often named deployment or utility tools; absent entities had an `unknown-` prefix; simple search returned one exact match; SFT and GRPO reused the same semantic pools. This lowered discovery difficulty and confounded policy generalization. It does not mean the reported SFT successes were fake: the model executed tools and produced correct structured outcomes on that easier benchmark. The v1 NF4 base scored 0/400 synthetic and0/100 OSS-style exact outcomes, with format validity9.25%/8.00%. A later FP16 run also failed its completed subset and hit OOM; precision alone did not establish a fix, and a partial FP16 cohort is not a full matched500-question ablation.
 
 | V1 cohort | Base exact [CI] | SFT exact [CI] | SFT strict stale catch [CI] | SFT citation F1 [CI] | SFT format [CI] |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | test_synth | 0.00 [0.00, 0.00] | 85.25 [80.75, 89.50] | 87.00 [80.36, 92.65] | 89.41 [85.63, 92.93] | 99.00 [98.00, 99.75] |
 | repo_style | 0.00 [0.00, 0.00] | 68.00 [61.62, 74.49] | 68.00 [61.62, 74.49] | 100.00 [100.00, 100.00] | 100.00 [100.00, 100.00] |
 
 | V1 language | SFT synthetic exact [CI] | SFT OSS-style exact [CI] |
-|---|---|---|
+| --- | --- | --- |
 | en | 88.00 [81.00, 94.00] | 100.00 [100.00, 100.00] |
 | hi | 83.00 [75.00, 90.00] | 0.00 [0.00, 0.00] |
 | hinglish | 85.00 [78.00, 91.02] | 100.00 [100.00, 100.00] |
 | te | 85.00 [78.00, 92.00] | 72.00 [52.00, 88.00] |
 
 | V1 SFT cohort | Kind | Rows | Correct | Exact outcome [95% CI] |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | test_synth | abstain | 60 | 50.0 | 83.33 [73.33, 93.33] |
 | test_synth | conflict | 200 | 174.0 | 87.00 [80.50, 92.50] |
 | test_synth | consistent | 80 | 80.0 | 100.00 [100.00, 100.00] |
@@ -341,7 +341,7 @@ Execution used two capped3h L40S allocations: preparation+SFT+Stage 1, then exac
 ### Complete progression — exact saved comparison
 
 | Checkpoint | Validation exact outcome | Synthetic exact outcome | OSS-style exact outcome |
-|---|---:|---:|---:|
+| --- | ---: | ---: | ---: |
 | Base (Tiny Aya Fire) | 1.25 [0.00, 3.75] | 0.50 [0.00, 1.25] | 0.00 [0.00, 0.00] |
 | v2 SFT (15 steps) | 22.50 [7.50, 40.00] | 15.00 [10.50, 20.00] | 16.00 [7.52, 25.74] |
 | v2 GRPO Stage 1 (120 updates) | 43.75 [23.75, 62.50] | 26.25 [18.75, 34.50] | 26.00 [11.00, 43.14] |
@@ -353,7 +353,7 @@ Execution used two capped3h L40S allocations: preparation+SFT+Stage 1, then exac
 ### Metrics by cohort — exact saved comparison
 
 | World | Metric | Base (Tiny Aya Fire) | v2 SFT (15 steps) | v2 GRPO Stage 1 (120 updates) | v2 GRPO Stage 2 (collapsed) | v2.1 SFT Warmup | v2.1 GRPO Anti-Collapse | v2.1 SFT Full 4-Epoch (ablation) |
-|---|---|---:|---:|---:|---:|---:|---:|---:|
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | validation | exact_outcome | 1.25 [0.00, 3.75] | 22.50 [7.50, 40.00] | 43.75 [23.75, 62.50] | 26.25 [8.72, 46.25] | 67.50 [48.75, 85.00] | 80.00 [63.75, 93.75] | 73.75 [56.25, 90.00] |
 | validation | stale_catch | 0.00 [0.00, 0.00] | 0.00 [0.00, 0.00] | 0.00 [0.00, 0.00] | 0.00 [0.00, 0.00] | 45.00 [0.00, 100.00] | 70.00 [37.50, 100.00] | 30.00 [0.00, 67.86] |
 | validation | verified_citation_f1 | 0.00 [0.00, 0.00] | 54.50 [41.37, 67.41] | 53.67 [37.02, 69.65] | 5.50 [0.00, 11.72] | 95.33 [91.07, 98.93] | 93.94 [87.12, 99.55] | 96.33 [92.14, 100.00] |
@@ -397,7 +397,7 @@ Execution used two capped3h L40S allocations: preparation+SFT+Stage 1, then exac
 ### Paired accuracy changes — exact saved comparison
 
 | World | Comparison | Percentage points [95% CI] |
-|---|---|---:|
+| --- | --- | ---: |
 | validation | v2 SFT (15 steps) -> v2 GRPO Stage 1 (120 updates) | +21.25 [+6.25, +38.75] |
 | validation | v2 GRPO Stage 1 (120 updates) -> v2 GRPO Stage 2 (collapsed) | -17.50 [-37.50, +1.25] |
 | validation | v2.1 SFT Warmup -> v2.1 GRPO Anti-Collapse | +12.50 [+0.00, +26.25] |
@@ -416,7 +416,7 @@ Execution used two capped3h L40S allocations: preparation+SFT+Stage 1, then exac
 Percentages and 95% semantic-case bootstrap intervals; no additional model selection.
 
 | Cohort / kind | Base | v2 SFT15 | v2 GRPO Stage1 | v2 collapsed | SFT warmup | GRPO best | SFT full120 |
-|---|---:|---:|---:|---:|---:|---:|---:|
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | validation / conflict | 0.00 [0.00, 0.00] | 0.00 [0.00, 0.00] | 0.00 [0.00, 0.00] | 0.00 [0.00, 0.00] | 65.00 [25.00, 100.00] | 70.00 [45.00, 95.00] | 45.00 [5.00, 85.00] |
 | validation / incident | 0.00 [0.00, 0.00] | 25.00 [0.00, 65.00] | 20.00 [0.00, 60.00] | 0.00 [0.00, 0.00] | 80.00 [40.00, 100.00] | 80.00 [40.00, 100.00] | 100.00 [100.00, 100.00] |
 | validation / consistent | 0.00 [0.00, 0.00] | 10.00 [0.00, 30.00] | 75.00 [55.00, 95.00] | 5.00 [0.00, 15.00] | 30.00 [5.00, 55.00] | 75.00 [35.00, 100.00] | 60.00 [30.00, 90.00] |
@@ -433,7 +433,7 @@ Percentages and 95% semantic-case bootstrap intervals; no additional model selec
 ### Warmup validation checkpoints — exact saved comparison
 
 | Update | Epochs | Exact outcome [95% CI] | Format valid | Predicted abstention | Selected |
-|---|---:|---:|---:|---:|---|
+| --- | ---: | ---: | ---: | ---: | --- |
 | 30 | 1.0 | 52.50 [31.25, 72.50] | 100.00% | 15.00% | False |
 | 45 | 1.5 | 58.75 [38.75, 77.50] | 100.00% | 21.25% | False |
 | 60 | 2.0 | 67.50 [48.75, 85.00] | 100.00% | 23.75% | True |
@@ -441,7 +441,7 @@ Percentages and 95% semantic-case bootstrap intervals; no additional model selec
 ### GRPO validation and selection — exact saved comparison
 
 | Cumulative update | Exact outcome [95% CI] | Predicted abstention | Safe | Selected final |
-|---|---:|---:|---|---|
+| --- | ---: | ---: | --- | --- |
 | 20 | 73.75 [56.25, 90.00] | 26.25% | True | False |
 | 40 | 80.00 [63.75, 93.75] | 25.00% | True | True |
 | 60 | 76.25 [58.75, 91.25] | 23.75% | True | False |
@@ -452,7 +452,7 @@ Percentages and 95% semantic-case bootstrap intervals; no additional model selec
 #### validation — native aggregate values (fractions, not percentages)
 
 | Metric | Base | v2 SFT15 | v2 Stage1 | v2 collapsed | Warmup60 | GRPO best40 | Full SFT120 |
-|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- |
 | driftguard_evidence_f1_all_items | 0.000000 | 0.408750 | 0.402500 | 0.041250 | 0.715000 | 0.704583 | 0.722500 |
 | driftguard_exact_outcome | 0.012500 | 0.225000 | 0.437500 | 0.262500 | 0.675000 | 0.800000 | 0.737500 |
 | redundant_tool_calls | N/A | 0.002137 | 0.000000 | 0.000000 | 0.000000 | 0.000000 | 0.000000 |
@@ -465,7 +465,7 @@ Percentages and 95% semantic-case bootstrap intervals; no additional model selec
 #### test_synth — native aggregate values (fractions, not percentages)
 
 | Metric | Base | v2 SFT15 | v2 Stage1 | v2 collapsed | Warmup60 | GRPO best40 | Full SFT120 |
-|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- |
 | driftguard_evidence_f1_all_items | 0.000000 | 0.325262 | 0.496109 | 0.060000 | 0.755000 | 0.750500 | 0.786750 |
 | driftguard_exact_outcome | 0.005000 | 0.150000 | 0.262500 | 0.175000 | 0.725000 | 0.757500 | 0.772500 |
 | redundant_tool_calls | N/A | 0.011725 | 0.007917 | 0.011905 | 0.000000 | 0.000000 | 0.000000 |
@@ -478,7 +478,7 @@ Percentages and 95% semantic-case bootstrap intervals; no additional model selec
 #### repo_style — native aggregate values (fractions, not percentages)
 
 | Metric | Base | v2 SFT15 | v2 Stage1 | v2 collapsed | Warmup60 | GRPO best40 | Full SFT120 |
-|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- |
 | driftguard_evidence_f1_all_items | 0.000000 | 0.415667 | 0.461714 | 0.024667 | 0.731000 | 0.719000 | 0.813000 |
 | driftguard_exact_outcome | 0.000000 | 0.160000 | 0.260000 | 0.150000 | 0.640000 | 0.710000 | 0.760000 |
 | redundant_tool_calls | N/A | 0.027891 | 0.000000 | 0.000000 | 0.000000 | 0.000000 | 0.000000 |
@@ -552,7 +552,7 @@ Selected GRPO predicted abstention57/400 synthetic (38true,19false,22missed) and
 No frontier API was benchmarked and no new inference was run for this dossier. Counts below come from recorded runtime counters and CPU-only re-tokenization of saved assistant-prefixes using the downloaded pinned tokenizer. Each assistant request re-sends prior conversation history, so summed input differs from the final conversation length or the SFT mean1,646-token length. Reconstructed counts omit padding and re-tokenize decoded text; backend generated-token counters may include extra generation-side/batch effects. V2 runtime files aggregate validation80 plus holdouts500 (580 episodes), whereas reconstruction below is holdouts500 only.
 
 | Recorded run | Holdout episodes | Input tokens/episode across turns | Decoded generated tokens/episode | Mean assistant turns | Input p10–p90 | Generated p10–p90 |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | v1_sft | 500 | 2895.024 | 128.130 | 2.842 | 1829–3173 | 78–150 |
 | warmup | 500 | 4927.994 | 158.614 | 3.366 | 3481–6587 | 111–199 |
 | grpo | 500 | 4653.332 | 153.322 | 3.240 | 2142–6546 | 85–199 |
@@ -560,7 +560,7 @@ No frontier API was benchmarked and no new inference was run for this dossier. C
 The proposed1,650–2,800 input-token range is therefore not an accurate v2 multi-turn billing budget: selected GRPO averages4,653.332 input and153.322 decoded generated tokens. V1 runtime counters report1,447,512 input and64,664 generated over 500 episodes:2,895.024/129.328 per episode; decoded reconstruction gives128.130 output. This difference is retained instead of mixing counters silently.
 
 | Run / hardware | Runtime episodes | Recorded output tokens | Generation seconds | Output tokens/sec | Scoring/program seconds | Peak reserved GiB |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | v1_sft / RTX2070 NF4 | 500 | 64664 | 8179.517 | 7.906 | 8228.351 | 3.154 |
 | warmup / L40S BF16 | 580 | 90793 | 1299.984 | 69.842 | 1413.031 | 15.879 |
 | grpo / L40S BF16 | 580 | 87984 | 1302.923 | 67.528 | 1419.402 | 13.566 |
@@ -582,7 +582,7 @@ Electricity_USD(N) = GPU_hours(N) * power_kW * tariff_USD_per_kWh
 The requested four deployment categories are shown below; the closed-API category includes two historical reference rate schedules. T4 throughput has not been measured, so its numerical row is explicitly a proxy scenario using the RTX2070 episode latency, not a T4 benchmark.
 
 | Deployment option | Throughput basis | GPU h /1k; /100k | USD /1k; /100k | Data boundary / qualifications |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 1 · Local RTX2070 8GB NF4 | Measured v1: 16.457s/audit; 218.76audits/h | 4.571; 457.131 | $0 API; electricity $0.0800; $8.00 | Company-controlled on-prem evidence when connectors/logging stay local; excludes hardware amortization/CPU |
 | 2 · Cloud T4 scenario at $0.50/h | UNMEASURED T4; assume 16.457s/audit from edge proxy | 4.571; 457.131 | $2.286; $228.57 | No quality/throughput result on T4; $0.50/h is requested scenario, not current HF Jobs list rate |
 | 3 · Cloud L40S BF16 at $1.80/h | Measured580episode mix, batch16: 2.447s/audit; 1471.04audits/h | 0.680; 67.979 | $1.224; $122.36 | Self-hosted model, provider infrastructure; private VPC deployment requires separate configuration |
@@ -599,7 +599,7 @@ Pricing sources, checked13November2026: [HF Jobs pricing](https://huggingface.co
 No invoice/billing-ledger export is present. An authenticated read of the completed HF job exposed creation time/status/flavor but no actual start/end or billed amount. Consequently an exact total charged amount is **not verifiable** from these artifacts. The table below reconstructs disjoint observed work blocks and list-rate equivalents, not the whole account bill. It excludes uncovered startup/download/export time, the first canceled v2 attempt, provisional discarded work not fully timed, and other unlogged intervals; it does not count copied reports as new computation.
 
 | Disjoint observed block | Hardware | Wall minutes | List-rate USD equivalent | Source |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | v1 SFT program incl evaluation/export | L40S | 5.974 | 0.1792 | [reports/cloud_sft/downloaded_artifacts/train-l40sx1-20261111T113101Z/run_metadata.json](reports/cloud_sft/downloaded_artifacts/train-l40sx1-20261111T113101Z/run_metadata.json) |
 | v1 A100 sizing program | A100 | 2.354 | 0.0981 | [reports/cloud_sft/downloaded_artifacts/smoke-a100-large-20261111T112652Z/run_metadata.json](reports/cloud_sft/downloaded_artifacts/smoke-a100-large-20261111T112652Z/run_metadata.json) |
 | v1 GRPO smoke program | L40S | 2.147 | 0.0644 | [reports/cloud_grpo/downloaded_artifacts/smoke-l40sx1-20261111T155637Z/run_metadata.json](reports/cloud_grpo/downloaded_artifacts/smoke-l40sx1-20261111T155637Z/run_metadata.json) |
@@ -621,18 +621,24 @@ No invoice/billing-ledger export is present. An authenticated read of the comple
 | Warmup first allocation eval: sft_training/step045/validation/runtime.json | L40S | 3.098 | 0.0929 | [reports_v2_2/downloads/warmup-20261113T055708Z/sft_training/step045/validation/runtime.json](reports_v2_2/downloads/warmup-20261113T055708Z/sft_training/step045/validation/runtime.json) |
 | Warmup first allocation eval: sft_training/step060/validation/runtime.json | L40S | 3.128 | 0.0938 | [reports_v2_2/downloads/warmup-20261113T055708Z/sft_training/step060/validation/runtime.json](reports_v2_2/downloads/warmup-20261113T055708Z/sft_training/step060/validation/runtime.json) |
 | Warmup GRPO Stage1 incl update20/40 validation | L40S | 76.039 | 2.2812 | [reports_v2_2/downloads/warmup-20261113T055708Z/grpo_training/stage1/optimizer_log.jsonl](reports_v2_2/downloads/warmup-20261113T055708Z/grpo_training/stage1/optimizer_log.jsonl) |
-| Continuation Stage2 + final eval/export program | L40S | 111.819 | 3.3546 | [reports_v2_2/COMPLETION.json](reports_v2_2/COMPLETION.json) |
+| Continuation Stage2 + final eval/export program | L40S | 111.819 | 3.3546 | [reports_v2_2/COMPLETION.json](reports_v2_2/downloads/warmup-20261113T084035Z/COMPLETION.json) |
 
 Observed disjoint-work subtotal: **723.23 L40Sminutes (12.054h)** plus **2.35 A100 minutes**; continuous list-rate equivalent **$21.80**, before minute rounding and missing charged intervals. This is a lower-bound-style work accounting, not the actual account spend and not a claim that remaining credit equals$45minus this amount. For an invoice-accurate final spend, reconcile HF Billing usage by job ID. Both warmup allocations had3h ceilings; that is an authorization/runtime ceiling, not evidence each was billed3h. The completed continuation’s own program clock was6,709.124s (111.819min), including5,225.961s Stage 2GRPO and1,419.402s final evaluation plus overhead. Original v2 fullGRPO alone recorded17,622.145s (293.702min), a subset of the349.480min completed pipeline and therefore not added again.
 
 ## 10. Complete Inventory of Plots, Artifacts, Checksums & Hugging Face Links
+
+**Model Collection:** [Revanth-ml/onedesk-models-and-experimental-controls](https://huggingface.co/collections/Revanth-ml/onedesk-models-and-experimental-controls-6af97221a617ddc3326204a6)
+
+**Data Collection:** [Revanth-ml/onedesk-data-and-experiment-evidence](https://huggingface.co/collections/Revanth-ml/onedesk-data-and-experiment-evidence-6af97225c0f1dc548b9ba8ce)
+
+Published repositories use the `onedesk-` prefix; immutable historical run metadata keeps its original identifiers.
 
 ### Plot inventory and captions
 
 The table lists every physical PNG/SVG/HTML report artifact found in the existing report roots, deduplicating filesystem aliases, not hiding historical variants. Canonical final aliases are `reports_v2_2/comparison/` and `reports_v2_2/grpo_training/`; their actual targets are under `reports_v2_2/downloads/warmup-20261113T084035Z/`. Existing absolute symlinks are left untouched; public Git clones should use the real target paths below, or later replace aliases in a separately reviewed packaging step. PNG/SVG pairs are raster/vector renderings of the same measurement; HTML viewers are saved evidence, not running inference.
 
 | Exact file path | Two-sentence caption |
-|---|---|
+| --- | --- |
 | [reports/cloud_grpo/downloaded_artifacts/pilot-l40sx1-20261111T160022Z/dashboard.html](reports/cloud_grpo/downloaded_artifacts/pilot-l40sx1-20261111T160022Z/dashboard.html) | Provides a local HTML index of the saved training and optimizer plots. It is a static artifact and does not launch a model or cloud job. |
 | [reports/cloud_grpo/downloaded_artifacts/pilot-l40sx1-20261111T160022Z/optimization.png](reports/cloud_grpo/downloaded_artifacts/pilot-l40sx1-20261111T160022Z/optimization.png) | Plots optimizer-side loss, gradient norms, KL and related logged diagnostics. Near-zero centered surrogate loss can coexist with nonzero gradients, so interpret it with weight changes and validation. |
 | [reports/cloud_grpo/downloaded_artifacts/pilot-l40sx1-20261111T160022Z/optimization.svg](reports/cloud_grpo/downloaded_artifacts/pilot-l40sx1-20261111T160022Z/optimization.svg) | Plots optimizer-side loss, gradient norms, KL and related logged diagnostics. Near-zero centered surrogate loss can coexist with nonzero gradients, so interpret it with weight changes and validation. |
@@ -647,8 +653,8 @@ The table lists every physical PNG/SVG/HTML report artifact found in the existin
 | [reports/cloud_grpo/downloaded_artifacts/smoke-l40sx1-20261111T155637Z/rollout_explorer.html](reports/cloud_grpo/downloaded_artifacts/smoke-l40sx1-20261111T155637Z/rollout_explorer.html) | Provides a filterable HTML viewer of recorded sampled episodes, tool observations, rewards and advantages. It replays saved evidence rather than generating new answers. |
 | [reports/cloud_grpo/downloaded_artifacts/smoke-l40sx1-20261111T155637Z/training_rollouts.png](reports/cloud_grpo/downloaded_artifacts/smoke-l40sx1-20261111T155637Z/training_rollouts.png) | Plots actual sampled-group reward, outcome, format or tool-use diagnostics from training journals. Training-group statistics are not heldout model accuracy and rejected groups must not be mistaken for updates. |
 | [reports/cloud_grpo/downloaded_artifacts/smoke-l40sx1-20261111T155637Z/training_rollouts.svg](reports/cloud_grpo/downloaded_artifacts/smoke-l40sx1-20261111T155637Z/training_rollouts.svg) | Plots actual sampled-group reward, outcome, format or tool-use diagnostics from training journals. Training-group statistics are not heldout model accuracy and rejected groups must not be mistaken for updates. |
-| [reports_v2/comparison.png](reports_v2/comparison.png) | Compares checkpoint performance on fixed evaluation cohorts with recorded uncertainty. Compare within a dataset version; earlier v1 and later v2 fixtures are different. |
-| [reports_v2/comparison.svg](reports_v2/comparison.svg) | Compares checkpoint performance on fixed evaluation cohorts with recorded uncertainty. Compare within a dataset version; earlier v1 and later v2 fixtures are different. |
+| [reports_v2/comparison.png](reports_v2/downloads/v2-20261112T110005Z/comparison.png) | Compares checkpoint performance on fixed evaluation cohorts with recorded uncertainty. Compare within a dataset version; earlier v1 and later v2 fixtures are different. |
+| [reports_v2/comparison.svg](reports_v2/downloads/v2-20261112T110005Z/comparison.svg) | Compares checkpoint performance on fixed evaluation cohorts with recorded uncertainty. Compare within a dataset version; earlier v1 and later v2 fixtures are different. |
 | [reports_v2/downloads/v2-20261112T110005Z/grpo_smoke/dashboard.html](reports_v2/downloads/v2-20261112T110005Z/grpo_smoke/dashboard.html) | Provides a local HTML index of the saved training and optimizer plots. It is a static artifact and does not launch a model or cloud job. |
 | [reports_v2/downloads/v2-20261112T110005Z/grpo_smoke/optimization.png](reports_v2/downloads/v2-20261112T110005Z/grpo_smoke/optimization.png) | Plots optimizer-side loss, gradient norms, KL and related logged diagnostics. Near-zero centered surrogate loss can coexist with nonzero gradients, so interpret it with weight changes and validation. |
 | [reports_v2/downloads/v2-20261112T110005Z/grpo_smoke/optimization.svg](reports_v2/downloads/v2-20261112T110005Z/grpo_smoke/optimization.svg) | Plots optimizer-side loss, gradient norms, KL and related logged diagnostics. Near-zero centered surrogate loss can coexist with nonzero gradients, so interpret it with weight changes and validation. |
@@ -701,58 +707,58 @@ The table lists every physical PNG/SVG/HTML report artifact found in the existin
 
 Selected final visualizations:
 
-![Seven-checkpoint comparison](reports_v2_2/comparison/comparison.png)
+![Seven-checkpoint comparison](reports_v2_2/downloads/warmup-20261113T084035Z/comparison/comparison.png)
 
-![Strict stale catch and required-chain trade-offs](reports_v2_2/comparison/grounding_tradeoffs.png)
+![Strict stale catch and required-chain trade-offs](reports_v2_2/downloads/warmup-20261113T084035Z/comparison/grounding_tradeoffs.png)
 
-![Validation and abstention guard](reports_v2_2/comparison/validation_progress.png)
+![Validation and abstention guard](reports_v2_2/downloads/warmup-20261113T084035Z/comparison/validation_progress.png)
 
 ### Model repositories, local paths, revisions and adapter hashes
 
-Hub links below refer to saved artifact repositories. Many are private; existence of a link does not mean judges can currently access it. Previously prepared v2.1 GRPO repository names without completed weights are identified as such. No repository visibility or publication setting was changed for this documentation task. Final models are LoRA adapters, requiring the pinned base; v1 also has a separately merged export.
+Hub links below refer to saved artifact repositories. The 15 artifact-backed repositories are now public and grouped in the collections above. Previously prepared v2.1 GRPO repository names without completed weights are identified as such. No repository visibility or publication setting was changed for this documentation task. Final models are LoRA adapters, requiring the pinned base; v1 also has a separately merged export.
 
 | Artifact | HF model/source URL | Pinned revision | Local artifact path | SHA256 of adapter weight / manifest |
-|---|---|---|---|---|
-| Base | https://huggingface.co/CohereLabs/tiny-aya-fire | 73500c80fcb6c8bea3e830c21d5d2920249a0e1a | Hub cache; no newly downloaded base | Base shard hashes not recomputed; revision pins weights |
-| v1 adapter | https://huggingface.co/Revanth-ml/driftguard-tiny-aya-fire-sft | b0d0d072311e62e31eb6258ad8ce987e8bf7926d | checkpoints/tiny-aya-fire-sft-adapter | a3cd9058f25334d724c906521a75b168fe4b07b5dcedcfaf005ebbd0ab321b39 |
-| v1 merged | https://huggingface.co/Revanth-ml/driftguard-tiny-aya-fire-sft-merged | 9747926dfe35d4a7ff10761c8caec3c1714496b2 | checkpoints/tiny-aya-fire-sft-merged | Merged shards: reports/cloud_sft/MODEL_SHA256SUMS |
-| v1 GRPO pilot | https://huggingface.co/Revanth-ml/driftguard-tiny-aya-fire-grpo-pilot | 1eae42be5b7a3e8eeeb8408078537b4b0b243732 | checkpoints/tiny-aya-fire-grpo-pilot-adapter | 3dd8de5008b6a4d402ed71438fc61f10367b58c0735dc16f729437f11ee8a8e1 |
-| v2 SFT | https://huggingface.co/Revanth-ml/driftguard-tiny-aya-fire-v2-sft | f8bd317a9f84746328af7d078a49cc08a64f0086 | checkpoints_v2/sft_adapter | f7524411f0bf7fc79d6d0bc93b0dad7c484ce8facabbf916dc165553915a40cb |
-| v2 GRPO | https://huggingface.co/Revanth-ml/driftguard-tiny-aya-fire-v2-grpo | c313816cc3ae46c4e3dd5ebc1d61cbff22ec05c4 | checkpoints_v2/grpo_adapter | 1f12051c19604fc874b81a6d7f8f1654088866b6402967bf7a8ff0475d10eb32 |
-| v2 Stage1 /120updates | https://huggingface.co/datasets/Revanth-ml/driftguard-mcp-v2-runs | c42cbc5265e02c0c37aa9e59c00ce772de5b4c1f / v2-20261112T110005Z/grpo_training/stage1/last_safe_adapter/ | checkpoints_v2/grpo_stage1_adapter | 6c850168acbba2a15292ecf3c08622402cab2a571fc173766e9e2763ef57aafa |
-| Four-epoch SFT | https://huggingface.co/Revanth-ml/driftguard-tiny-aya-fire-v2-1-sft | bf94f4cc6ec420752205859e6d63c7f83b85f14d | checkpoints_v2_1/sft_adapter | ec7cddc8a4791a7f740087026b4664518d6e99c05b051cee03f970c0091148d4 |
-| SFT_WARMUP | https://huggingface.co/Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-sft | 72aafc56b1506a81a7cb12930e95f8f2f17d03d5 | checkpoints_v2_2/sft_warmup_adapter | bc362ae46f670c2d24ffe3ebc02d22df45aeebce8515ceb2873c5c7319442dc6 |
-| GRPO_BEST_VAL | https://huggingface.co/Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-grpo-best-val | 016676680121b4dd90ec6026978de7ee1cdb1271 | checkpoints_v2_2/grpo_best_val_adapter | b286392a2d979af730b6c9fcd1c2a14369a2f859bcc691526478d0e8220a2f07 |
-| GRPO_FINAL | https://huggingface.co/Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-grpo-final | b006ec346e48807afd23030abf17b599adfcf71f | checkpoints_v2_2/grpo_final_adapter | 16b135a64f95c3fb74c83a9fd59a3e3c55a1adff48db998549cdaad410e764b8 |
+| --- | --- | --- | --- | --- |
+| Base | [CohereLabs/tiny-aya-fire](https://huggingface.co/CohereLabs/tiny-aya-fire) | 73500c80fcb6c8bea3e830c21d5d2920249a0e1a | Hub cache; no newly downloaded base | Base shard hashes not recomputed; revision pins weights |
+| v1 adapter | [Revanth-ml/onedesk-tiny-aya-fire-sft](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-sft) | b0d0d072311e62e31eb6258ad8ce987e8bf7926d | checkpoints/tiny-aya-fire-sft-adapter | a3cd9058f25334d724c906521a75b168fe4b07b5dcedcfaf005ebbd0ab321b39 |
+| v1 merged | [Revanth-ml/onedesk-tiny-aya-fire-sft-merged](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-sft-merged) | 9747926dfe35d4a7ff10761c8caec3c1714496b2 | checkpoints/tiny-aya-fire-sft-merged | Merged shards: reports/cloud_sft/MODEL_SHA256SUMS |
+| v1 GRPO pilot | [Revanth-ml/onedesk-tiny-aya-fire-grpo-pilot](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-grpo-pilot) | 1eae42be5b7a3e8eeeb8408078537b4b0b243732 | checkpoints/tiny-aya-fire-grpo-pilot-adapter | 3dd8de5008b6a4d402ed71438fc61f10367b58c0735dc16f729437f11ee8a8e1 |
+| v2 SFT | [Revanth-ml/onedesk-tiny-aya-fire-v2-sft](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-sft) | f8bd317a9f84746328af7d078a49cc08a64f0086 | checkpoints_v2/sft_adapter | f7524411f0bf7fc79d6d0bc93b0dad7c484ce8facabbf916dc165553915a40cb |
+| v2 GRPO | [Revanth-ml/onedesk-tiny-aya-fire-v2-grpo](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-grpo) | c313816cc3ae46c4e3dd5ebc1d61cbff22ec05c4 | checkpoints_v2/grpo_adapter | 1f12051c19604fc874b81a6d7f8f1654088866b6402967bf7a8ff0475d10eb32 |
+| v2 Stage1 /120updates | [Revanth-ml/onedesk-mcp-v2-runs](https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-v2-runs) | c42cbc5265e02c0c37aa9e59c00ce772de5b4c1f / v2-20261112T110005Z/grpo_training/stage1/last_safe_adapter/ | checkpoints_v2/grpo_stage1_adapter | 6c850168acbba2a15292ecf3c08622402cab2a571fc173766e9e2763ef57aafa |
+| Four-epoch SFT | [Revanth-ml/onedesk-tiny-aya-fire-v2-1-sft](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-sft) | bf94f4cc6ec420752205859e6d63c7f83b85f14d | checkpoints_v2_1/sft_adapter | ec7cddc8a4791a7f740087026b4664518d6e99c05b051cee03f970c0091148d4 |
+| SFT_WARMUP | [Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-sft](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-sft) | 72aafc56b1506a81a7cb12930e95f8f2f17d03d5 | checkpoints_v2_2/sft_warmup_adapter | bc362ae46f670c2d24ffe3ebc02d22df45aeebce8515ceb2873c5c7319442dc6 |
+| GRPO_BEST_VAL | [Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val) | 016676680121b4dd90ec6026978de7ee1cdb1271 | checkpoints_v2_2/grpo_best_val_adapter | b286392a2d979af730b6c9fcd1c2a14369a2f859bcc691526478d0e8220a2f07 |
+| GRPO_FINAL | [Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-final](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-final) | b006ec346e48807afd23030abf17b599adfcf71f | checkpoints_v2_2/grpo_final_adapter | 16b135a64f95c3fb74c83a9fd59a3e3c55a1adff48db998549cdaad410e764b8 |
 
 The selectedGRPO40adapter hash equals the Stage 1 policy hash by validation selection, while the final80adapter hash differs. Each final adapter weight is120,981,200bytes. This equality is expected checkpoint restoration, not evidence of a missing Stage 2run. The preserved full 4 epochadapter hash remains unchanged.
 
 | All repository IDs recorded in local metadata | Status / contents |
-|---|---|
-| [Revanth-ml/driftguard-mcp-grpo-runs](https://huggingface.co/datasets/Revanth-ml/driftguard-mcp-grpo-runs) | Historical training/evaluation run artifacts |
-| [Revanth-ml/driftguard-mcp-training-runs](https://huggingface.co/datasets/Revanth-ml/driftguard-mcp-training-runs) | Historical training/evaluation run artifacts |
-| [Revanth-ml/driftguard-mcp-v2-1-runs](https://huggingface.co/datasets/Revanth-ml/driftguard-mcp-v2-1-runs) | Historical training/evaluation run artifacts |
-| [Revanth-ml/driftguard-mcp-v2-data](https://huggingface.co/datasets/Revanth-ml/driftguard-mcp-v2-data) | Frozen v2 data release |
-| [Revanth-ml/driftguard-mcp-v2-runs](https://huggingface.co/datasets/Revanth-ml/driftguard-mcp-v2-runs) | Historical training/evaluation run artifacts |
-| [Revanth-ml/driftguard-mcp-warmup-runs](https://huggingface.co/datasets/Revanth-ml/driftguard-mcp-warmup-runs) | Completed final study, raw journals and finalized comparison |
-| [Revanth-ml/driftguard-tiny-aya-fire-grpo-pilot](https://huggingface.co/Revanth-ml/driftguard-tiny-aya-fire-grpo-pilot) | Model/adapter export; see exact revision table/receipts |
-| [Revanth-ml/driftguard-tiny-aya-fire-sft](https://huggingface.co/Revanth-ml/driftguard-tiny-aya-fire-sft) | Model/adapter export; see exact revision table/receipts |
-| [Revanth-ml/driftguard-tiny-aya-fire-sft-merged](https://huggingface.co/Revanth-ml/driftguard-tiny-aya-fire-sft-merged) | Model/adapter export; see exact revision table/receipts |
-| [Revanth-ml/driftguard-tiny-aya-fire-v2-1-grpo-best-val](https://huggingface.co/Revanth-ml/driftguard-tiny-aya-fire-v2-1-grpo-best-val) | Prepared earlier v2.1 recipe name; no completed4epoch-GRPO model result is claimed |
-| [Revanth-ml/driftguard-tiny-aya-fire-v2-1-grpo-final](https://huggingface.co/Revanth-ml/driftguard-tiny-aya-fire-v2-1-grpo-final) | Prepared earlier v2.1 recipe name; no completed4epoch-GRPO model result is claimed |
-| [Revanth-ml/driftguard-tiny-aya-fire-v2-1-sft](https://huggingface.co/Revanth-ml/driftguard-tiny-aya-fire-v2-1-sft) | Model/adapter export; see exact revision table/receipts |
-| [Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-grpo-best-val](https://huggingface.co/Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-grpo-best-val) | Model/adapter export; see exact revision table/receipts |
-| [Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-grpo-final](https://huggingface.co/Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-grpo-final) | Model/adapter export; see exact revision table/receipts |
-| [Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-sft](https://huggingface.co/Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-sft) | Model/adapter export; see exact revision table/receipts |
-| [Revanth-ml/driftguard-tiny-aya-fire-v2-grpo](https://huggingface.co/Revanth-ml/driftguard-tiny-aya-fire-v2-grpo) | Model/adapter export; see exact revision table/receipts |
-| [Revanth-ml/driftguard-tiny-aya-fire-v2-sft](https://huggingface.co/Revanth-ml/driftguard-tiny-aya-fire-v2-sft) | Model/adapter export; see exact revision table/receipts |
+| --- | --- |
+| [Revanth-ml/onedesk-mcp-grpo-runs](https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-grpo-runs) | Historical training/evaluation run artifacts |
+| [Revanth-ml/onedesk-mcp-training-runs](https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-training-runs) | Historical training/evaluation run artifacts |
+| [Revanth-ml/onedesk-mcp-v2-1-runs](https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-v2-1-runs) | Historical training/evaluation run artifacts |
+| [Revanth-ml/onedesk-mcp-v2-data](https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-v2-data) | Frozen v2 data release |
+| [Revanth-ml/onedesk-mcp-v2-runs](https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-v2-runs) | Historical training/evaluation run artifacts |
+| [Revanth-ml/onedesk-mcp-warmup-runs](https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-warmup-runs) | Completed final study, raw journals and finalized comparison |
+| [Revanth-ml/onedesk-tiny-aya-fire-grpo-pilot](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-grpo-pilot) | Model/adapter export; see exact revision table/receipts |
+| [Revanth-ml/onedesk-tiny-aya-fire-sft](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-sft) | Model/adapter export; see exact revision table/receipts |
+| [Revanth-ml/onedesk-tiny-aya-fire-sft-merged](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-sft-merged) | Model/adapter export; see exact revision table/receipts |
+| `Revanth-ml/driftguard-tiny-aya-fire-v2-1-grpo-best-val` (unpublished historical plan) | Prepared earlier v2.1 recipe name; no completed4epoch-GRPO model result is claimed |
+| `Revanth-ml/driftguard-tiny-aya-fire-v2-1-grpo-final` (unpublished historical plan) | Prepared earlier v2.1 recipe name; no completed4epoch-GRPO model result is claimed |
+| [Revanth-ml/onedesk-tiny-aya-fire-v2-1-sft](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-sft) | Model/adapter export; see exact revision table/receipts |
+| [Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val) | Model/adapter export; see exact revision table/receipts |
+| [Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-final](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-final) | Model/adapter export; see exact revision table/receipts |
+| [Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-sft](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-sft) | Model/adapter export; see exact revision table/receipts |
+| [Revanth-ml/onedesk-tiny-aya-fire-v2-grpo](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-grpo) | Model/adapter export; see exact revision table/receipts |
+| [Revanth-ml/onedesk-tiny-aya-fire-v2-sft](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-sft) | Model/adapter export; see exact revision table/receipts |
 
-Final report upload commit: `a21c97d6a70163562f24aa345c6c086ada8bb84a` in private `Revanth-ml/driftguard-mcp-warmup-runs`, prefix `warmup-20261113T084035Z`; [immutable Hub commit](https://huggingface.co/datasets/Revanth-ml/driftguard-mcp-warmup-runs/commit/a21c97d6a70163562f24aa345c6c086ada8bb84a). SourceStage1 handoff revision:`c28a459859bcdeeaebdfe3695ec68a9d17478ad6`. Final submitted runtime bundle revision:`4d076d5be603d2ec80d070e5e5b60c3828f1de1b`, archiveSHA256:`142ee44db690faf6a05ad334a8c5b53e32f721fcb8f3649a3558cfa9877a16ee`. Final existing releaseZIP SHA256:`16b641afeaa9d81c5c8d7d591235f3f71c3bcb5342120ad0ddc3330e71a09b38`; the newly compiled dossier is separate and is not silently claimed to be included in that earlier uploaded archive.
+Final report upload commit: `a21c97d6a70163562f24aa345c6c086ada8bb84a` in private `Revanth-ml/onedesk-mcp-warmup-runs`, prefix `warmup-20261113T084035Z`; [immutable Hub commit](https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-warmup-runs/commit/a21c97d6a70163562f24aa345c6c086ada8bb84a). SourceStage1 handoff revision:`c28a459859bcdeeaebdfe3695ec68a9d17478ad6`. Final submitted runtime bundle revision:`4d076d5be603d2ec80d070e5e5b60c3828f1de1b`, archiveSHA256:`142ee44db690faf6a05ad334a8c5b53e32f721fcb8f3649a3558cfa9877a16ee`. Final existing releaseZIP SHA256:`16b641afeaa9d81c5c8d7d591235f3f71c3bcb5342120ad0ddc3330e71a09b38`; the newly compiled dossier is separate and is not silently claimed to be included in that earlier uploaded archive.
 
 ### Frozen data checksums — all 19 protected files
 
 | data_v2 file | SHA256 |
-|---|---|
+| --- | --- |
 | [data_v2/AUDIT.json](data_v2/AUDIT.json) | 5316e6e04bb476181e826ba9a23229440595f9e892ac628cd50b8be00fe1e35b |
 | [data_v2/DATA_REVIEW.md](data_v2/DATA_REVIEW.md) | db2435e2ec48c3731c055ded02dd6d9b9e94167c48f452cf3cd040e58eae475b |
 | [data_v2/REVIEW_SAMPLES.md](data_v2/REVIEW_SAMPLES.md) | 0962fb5dabbb7fc58f667f27d27fb9fa81f8beef8e3a4ca775ce2e661e352748 |
@@ -780,7 +786,7 @@ The15-artifact `data_v2/SHA256SUMS` remains byte-identical. V1 hashes remain at 
 Repository git commits and HF content commits are different namespaces; the context/source column preserves where each was recorded. These are local artifact records, not a claim that every planned repository contains trained weights.
 
 | Metadata field | Revision | First recorded source |
-|---|---|---|
+| --- | --- | --- |
 | adapter_revision | 1eae42be5b7a3e8eeeb8408078537b4b0b243732 | [reports/cloud_grpo/pilot-l40sx1-20261111T160022Z/downloads.json](reports/cloud_grpo/pilot-l40sx1-20261111T160022Z/downloads.json) |
 | base_revision | 73500c80fcb6c8bea3e830c21d5d2920249a0e1a | [reports/cloud_grpo/downloaded_artifacts/pilot-l40sx1-20261111T160022Z/run_metadata.json](reports/cloud_grpo/downloaded_artifacts/pilot-l40sx1-20261111T160022Z/run_metadata.json) |
 | bundle_revision | 3c9fc4546b011111ed1df60b85c694d6a87c1781 | [reports_v2/LATEST_JOB.json](reports_v2/LATEST_JOB.json) |
@@ -794,51 +800,51 @@ Repository git commits and HF content commits are different namespaces; the cont
 | bundle_revision | d79e121819357250f3c5bd8bf1e2eab90b0952aa | [reports_v2_2/ACTIVE_RUN_STATE.json](reports_v2_2/ACTIVE_RUN_STATE.json) |
 | bundle_revision | e6a25dddc2493e41f7ab65fe763c09312d43ae7b | [reports/cloud_grpo/latest_job.json](reports/cloud_grpo/latest_job.json) |
 | commit | a21c97d6a70163562f24aa345c6c086ada8bb84a | [reports_v2_2/FINAL_PUBLICATION.json](reports_v2_2/FINAL_PUBLICATION.json) |
-| commit | d6f2e44edede9b78d5fe5189096f64d3ed798724 | [reports_v2/ENVIRONMENT.json](reports_v2/ENVIRONMENT.json) |
-| commit | e56a1094b65cbf7c2c0b26d0db2ac4dffffa693a | [reports_v2/ENVIRONMENT.json](reports_v2/ENVIRONMENT.json) |
-| commit | fe6083e7487dfe7326ffd473be57481b52fdd9fb | [reports_v2/ENVIRONMENT.json](reports_v2/ENVIRONMENT.json) |
+| commit | d6f2e44edede9b78d5fe5189096f64d3ed798724 | [reports_v2/ENVIRONMENT.json](reports_v2/downloads/v2-20261112T110005Z/ENVIRONMENT.json) |
+| commit | e56a1094b65cbf7c2c0b26d0db2ac4dffffa693a | [reports_v2/ENVIRONMENT.json](reports_v2/downloads/v2-20261112T110005Z/ENVIRONMENT.json) |
+| commit | fe6083e7487dfe7326ffd473be57481b52fdd9fb | [reports_v2/ENVIRONMENT.json](reports_v2/downloads/v2-20261112T110005Z/ENVIRONMENT.json) |
 | dataset_revision | 97917b6fc7c5800f69afacb2b251926e7a21596d | [reports_v2/LATEST_JOB.json](reports_v2/LATEST_JOB.json) |
 | resume_revision | 883cbadd7fd29fc89c315e698fe4b6dd2b6ec6e6 | [reports_v2_1/LATEST_JOB.json](reports_v2_1/LATEST_JOB.json) |
 | resume_revision | c28a459859bcdeeaebdfe3695ec68a9d17478ad6 | [reports_v2_2/ACTIVE_RUN_STATE.json](reports_v2_2/ACTIVE_RUN_STATE.json) |
 | resume_sft_revision | f8bd317a9f84746328af7d078a49cc08a64f0086 | [reports_v2/LATEST_JOB.json](reports_v2/LATEST_JOB.json) |
-| revision | 016676680121b4dd90ec6026978de7ee1cdb1271 | [reports_v2_2/COMPLETION.json](reports_v2_2/COMPLETION.json) |
+| revision | 016676680121b4dd90ec6026978de7ee1cdb1271 | [reports_v2_2/COMPLETION.json](reports_v2_2/downloads/warmup-20261113T084035Z/COMPLETION.json) |
 | revision | 23618602809fdb9a83641505cebcb9417c39bbd8 | [reports_v2/cloud/v2-20261112T103309Z/downloads.json](reports_v2/cloud/v2-20261112T103309Z/downloads.json) |
 | revision | 267d7662f32443c65b71dd002601b80bc5f0500a | [reports_v2_2/LIVE_SNAPSHOT.json](reports_v2_2/LIVE_SNAPSHOT.json) |
 | revision | 27a8628d8c3907f55eeaea8edad07d0ed6f0266d | [reports_v2_2/DOWNLOADS.json](reports_v2_2/DOWNLOADS.json) |
-| revision | 72aafc56b1506a81a7cb12930e95f8f2f17d03d5 | [reports_v2_2/COMPLETION.json](reports_v2_2/COMPLETION.json) |
+| revision | 72aafc56b1506a81a7cb12930e95f8f2f17d03d5 | [reports_v2_2/COMPLETION.json](reports_v2_2/downloads/warmup-20261113T084035Z/COMPLETION.json) |
 | revision | 73500c80fcb6c8bea3e830c21d5d2920249a0e1a | [reports/base_fire_nf4/run_config.json](reports/base_fire_nf4/run_config.json) |
 | revision | 7f1f228cc74594dc1a1ac00f71265e7c4bf0029b | [reports_v2_1/DOWNLOADS.json](reports_v2_1/DOWNLOADS.json) |
 | revision | 9747926dfe35d4a7ff10761c8caec3c1714496b2 | [reports/cloud_sft/downloaded_models.json](reports/cloud_sft/downloaded_models.json) |
-| revision | b006ec346e48807afd23030abf17b599adfcf71f | [reports_v2_2/COMPLETION.json](reports_v2_2/COMPLETION.json) |
+| revision | b006ec346e48807afd23030abf17b599adfcf71f | [reports_v2_2/COMPLETION.json](reports_v2_2/downloads/warmup-20261113T084035Z/COMPLETION.json) |
 | revision | b0d0d072311e62e31eb6258ad8ce987e8bf7926d | [reports/cloud_sft/downloaded_models.json](reports/cloud_sft/downloaded_models.json) |
-| revision | bf94f4cc6ec420752205859e6d63c7f83b85f14d | [reports_v2_1/MODEL_REVISIONS.json](reports_v2_1/MODEL_REVISIONS.json) |
+| revision | bf94f4cc6ec420752205859e6d63c7f83b85f14d | [reports_v2_1/MODEL_REVISIONS.json](reports_v2_1/downloads/v2-1-20261112T173923Z/MODEL_REVISIONS.json) |
 | revision | c282338bd42511d9b0aabc411c2dd24b9b84bfc0 | [reports/cloud_grpo/review_upload.json](reports/cloud_grpo/review_upload.json) |
-| revision | c313816cc3ae46c4e3dd5ebc1d61cbff22ec05c4 | [reports_v2/COMPLETION.json](reports_v2/COMPLETION.json) |
+| revision | c313816cc3ae46c4e3dd5ebc1d61cbff22ec05c4 | [reports_v2/COMPLETION.json](reports_v2/downloads/v2-20261112T110005Z/COMPLETION.json) |
 | revision | c42cbc5265e02c0c37aa9e59c00ce772de5b4c1f | [reports_v2/cloud/v2-20261112T110005Z/downloads.json](reports_v2/cloud/v2-20261112T110005Z/downloads.json) |
 | revision | ef54c1b2658e6b9690dbd41a3f5c7dc9f45ca026 | [reports_v2/FINALIZATION.json](reports_v2/FINALIZATION.json) |
-| revision | f8bd317a9f84746328af7d078a49cc08a64f0086 | [reports_v2/COMPLETION.json](reports_v2/COMPLETION.json) |
+| revision | f8bd317a9f84746328af7d078a49cc08a64f0086 | [reports_v2/COMPLETION.json](reports_v2/downloads/v2-20261112T110005Z/COMPLETION.json) |
 | run_repository_revision | b3b7f1f9e8236790c67c2cbc1afdb439029ea84a | [reports_v2_2/WARMUP_ADAPTER_RECEIPT.json](reports_v2_2/WARMUP_ADAPTER_RECEIPT.json) |
 | run_revision | cd0d2913857874550c564a19546248d08e9e9061 | [reports/cloud_grpo/pilot-l40sx1-20261111T160022Z/downloads.json](reports/cloud_grpo/pilot-l40sx1-20261111T160022Z/downloads.json) |
 | run_revision | d8c79d64ab0137e2588aa30947f2ce3138601281 | [reports/cloud_grpo/smoke-l40sx1-20261111T155637Z/downloads.json](reports/cloud_grpo/smoke-l40sx1-20261111T155637Z/downloads.json) |
 | sft_revision | b0d0d072311e62e31eb6258ad8ce987e8bf7926d | [reports/cloud_grpo/downloaded_artifacts/pilot-l40sx1-20261111T160022Z/run_metadata.json](reports/cloud_grpo/downloaded_artifacts/pilot-l40sx1-20261111T160022Z/run_metadata.json) |
-| sft_revision | f8bd317a9f84746328af7d078a49cc08a64f0086 | [reports_v2/HANDOFF.json](reports_v2/HANDOFF.json) |
-| source_revision | 3c9fc4546b011111ed1df60b85c694d6a87c1781 | [reports_v2/HANDOFF.json](reports_v2/HANDOFF.json) |
+| sft_revision | f8bd317a9f84746328af7d078a49cc08a64f0086 | [reports_v2/HANDOFF.json](reports_v2/downloads/v2-20261112T110005Z/HANDOFF.json) |
+| source_revision | 3c9fc4546b011111ed1df60b85c694d6a87c1781 | [reports_v2/HANDOFF.json](reports_v2/downloads/v2-20261112T110005Z/HANDOFF.json) |
 | source_revision | c28a459859bcdeeaebdfe3695ec68a9d17478ad6 | [reports_v2_2/ACTIVE_RUN_STATE.json](reports_v2_2/ACTIVE_RUN_STATE.json) |
 | source_revision | c42cbc5265e02c0c37aa9e59c00ce772de5b4c1f | [reports_v2/SELECTED_STAGE1.json](reports_v2/SELECTED_STAGE1.json) |
 | source_revision | ebb8a90da671fc1a631aa50c4275f807f75bf19a | [reports_v2_2/WARMUP_HEADROOM_REVIEW.json](reports_v2_2/WARMUP_HEADROOM_REVIEW.json) |
-| stage1_source_revision | c28a459859bcdeeaebdfe3695ec68a9d17478ad6 | [reports_v2_2/RUN_CONFIG.json](reports_v2_2/RUN_CONFIG.json) |
+| stage1_source_revision | c28a459859bcdeeaebdfe3695ec68a9d17478ad6 | [reports_v2_2/RUN_CONFIG.json](reports_v2_2/downloads/warmup-20261113T084035Z/RUN_CONFIG.json) |
 
 Final documentation-pass checks: all 120regression tests passed (one benign PEFT fixture warning); protected() returned19 and verified previous report/model locks. Ignore-rule checks use a temporary Git index because the real checkout has no Git metadata; no files were staged or committed. Secrets/model blobs/caches are ignored while adapter configs, frozen datasets and report targets remain eligible. Exact receipts are linked below.
 
 ### Canonical experiment evidence and CPU-only reproduction
 
 | Purpose | Path |
-|---|---|
-| Final seven-checkpoint study | [reports/v2_1_comparison/EXPERIMENT_REPORT.md](reports/v2_1_comparison/EXPERIMENT_REPORT.md) |
-| Final interpretation and trade-offs | [reports_v2_2/comparison/FINDINGS.md](reports_v2_2/comparison/FINDINGS.md) |
-| Paired strictcatch/chain/outcome intervals | [reports_v2_2/comparison/EXTENDED_PAIRED_COMPARISON.json](reports_v2_2/comparison/EXTENDED_PAIRED_COMPARISON.json) |
-| Task-kind CIs | [reports_v2_2/comparison/task_kind_comparison.json](reports_v2_2/comparison/task_kind_comparison.json) |
-| Failure calls and missing authorities | [reports_v2_2/comparison/CHAIN_FAILURE_EXAMPLES.json](reports_v2_2/comparison/CHAIN_FAILURE_EXAMPLES.json) |
+| --- | --- |
+| Final seven-checkpoint study | [reports/v2_1_comparison/EXPERIMENT_REPORT.md](reports_v2_2/downloads/warmup-20261113T084035Z/comparison/EXPERIMENT_REPORT.md) |
+| Final interpretation and trade-offs | [reports_v2_2/comparison/FINDINGS.md](reports_v2_2/downloads/warmup-20261113T084035Z/comparison/FINDINGS.md) |
+| Paired strictcatch/chain/outcome intervals | [reports_v2_2/comparison/EXTENDED_PAIRED_COMPARISON.json](reports_v2_2/downloads/warmup-20261113T084035Z/comparison/EXTENDED_PAIRED_COMPARISON.json) |
+| Task-kind CIs | [reports_v2_2/comparison/task_kind_comparison.json](reports_v2_2/downloads/warmup-20261113T084035Z/comparison/task_kind_comparison.json) |
+| Failure calls and missing authorities | [reports_v2_2/comparison/CHAIN_FAILURE_EXAMPLES.json](reports_v2_2/downloads/warmup-20261113T084035Z/comparison/CHAIN_FAILURE_EXAMPLES.json) |
 | Old v2 collapse autopsy | [reports_v2/GRPO_FINDINGS.md](reports_v2/GRPO_FINDINGS.md) |
 | Four-epoch SFT/discardedpilot handoff | [reports_v2_1/MORNING_HANDOFF.md](reports_v2_1/MORNING_HANDOFF.md) |
 | Approved data review | [data_v2/DATA_REVIEW.md](data_v2/DATA_REVIEW.md) |
@@ -873,8 +879,7 @@ Existing local deployment command for later use (not executed for this dossier):
 7. **Reward shortcuts:** A utility-server-call gate does not prove causal use of intermediate results or prevent calling a utility with irrelevant arguments. Dense bridge rewards can support evidence retrieval without a correct final answer. Exhaustive three-source gold citation requirements may exceed the minimum needed once the latest production record is found; report both minimal resolution and complete audit-trail objectives.
 8. **MCP/deployment scope:** Nine logical interfaces run in-process over SQLite, with an optional FastMCP bridge. Real network authentication, permissions, latency, document length, injection resistance, production SQL dialects and concurrent service reliability were not evaluated. No <1ms parallel-rollout assertion is supported.
 9. **Edge and cost claims:**3.15 GiB and7.91 tokens/s are measured v1 adapter deployment figures. Final v2GRPO NF4 accuracy, T4throughput, whole-machine power and frontier accuracy were not measured. ROI extrapolates recorded offline work with explicit rates, hardware assumptions and historical API schedules; it is not invoice-confirmed savings or equal-quality comparison.
-10. **Publication/access:** Existing model/run repositories include private artifacts and a noncommercial base-model license. No public Gradio Space or publicly accessible write-up is verified by this dossier; submission still requires checking access, rights and any official deliverable requirements. No private repository was made public here, and no secrets were included deliberately in the inventory.
+10. **Publication/access:** Existing model/run repositories include private artifacts and a noncommercial base-model license. No public Gradio Space or publicly accessible write-up is verified by this dossier; submission still requires checking access, rights and any official deliverable requirements. The published artifact repositories are listed in Section 10; no secrets are included deliberately in the inventory.
 11. **Repository portability:** The supplied workspace has no Git metadata, and report aliases include absolute symlinks. Ignore rules can be validated in a temporary repository, but cannot untrack files that may already exist in a future Git index. Before public release, inspect the actual index, verify secret history, and use real report target paths; do not delete protected artifacts to simplify packaging.
 
 The strongest defensible submission claim is that this small multilingual agent improved from near-zero strict structured performance to useful retrieval-and-reconciliation behavior, while the project diagnosed a reproducible RL refusal failure and built a recipe that avoided that behavior in one completed run. The study contributes an auditable benchmark, actual toolkit integrations, transparent negative results, and measured trade-offs. Future experiments should preserve those boundaries rather than replace them with a single favorable headline.
-

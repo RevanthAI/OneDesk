@@ -59,7 +59,7 @@
       "counts": {
         "read": 15,
         "upload": 15,
-        "move": 0,
+        "move": 15,
         "public": 15,
         "collection": 2,
         "item": 15

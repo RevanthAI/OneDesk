@@ -1,0 +1,16 @@
+{
+  "accepted": 220,
+  "accepted_by_kind": {
+    "consistent": 55,
+    "incident": 55,
+    "conflict": 55,
+    "abstain": 55
+  },
+  "saturated": [],
+  "draws": {
+    "consistent": 85,
+    "incident": 233,
+    "conflict": 98,
+    "abstain": 239
+  }
+}

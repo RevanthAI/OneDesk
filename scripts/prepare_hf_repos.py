@@ -10,6 +10,7 @@ import os
 import re
 from datetime import datetime, timezone
 import yaml
+from publication_markdown import publication, format_gfm, sync_publication_links, current_repo, collection_links
 from clean_report_data import (ROOT, PROJECT_NAME, BASE, BASE_REVISION, registry, read, rows,
                                ci, percent, table, data_manifest, protect, digest)
 
@@ -99,7 +100,7 @@ def model_card(record, target_repo):
 
 OneDesk is a multilingual company-knowledge agent built on **Tiny Aya Fire (3.35B)**. It reconciles runbooks, GitHub PRs, Slack deployment records and live SQL data, and can chain time, conversion and arithmetic tools. Users can ask in English, Hindi (Devanagari/Latin), Hinglish, and Telugu (native/Latin).
 
-This repository contains **{record['label']}**, evaluated or retained as described below on {data_label}. Repository names preserve the original DriftGuard experiment identifiers; OneDesk is the presentation name.
+This repository contains **{record['label']}**, evaluated or retained as described below on {data_label}. Published repositories use the OneDesk name; frozen task IDs and historical run metadata retain their original experiment identifiers.
 
 ## Benchmark results
 
@@ -132,8 +133,8 @@ CuratorKIT 0.1.21 exact-deduplicates model-visible prompts. AgentTune 1.1.4 runs
 - Saved weight revision in this repository: `{record['revision']}`.
 - Local artifact path in the project: `{record['local']}`.
 - Owner and teammate: [@Revanth-ml](https://huggingface.co/Revanth-ml).
-- Companion frozen data: [driftguard-mcp-v2-data](https://huggingface.co/datasets/Revanth-ml/driftguard-mcp-v2-data).
-- Final study logs: [driftguard-mcp-warmup-runs](https://huggingface.co/datasets/Revanth-ml/driftguard-mcp-warmup-runs).
+- Companion frozen data: [onedesk-mcp-v2-data](https://huggingface.co/datasets/Revanth-ml/driftguard-mcp-v2-data).
+- Final study logs: [onedesk-mcp-warmup-runs](https://huggingface.co/datasets/Revanth-ml/driftguard-mcp-warmup-runs).
 
 ## Limitations and license
 
@@ -230,16 +231,24 @@ def target_name(repo_id,prefix):
 
 
 def generate(prefix=None):
-    protect();records=registry();mapping={r['repo_id']:target_name(r['repo_id'],prefix) for r in records}
+    protect();records=registry();published=publication()
+    mapping={r['repo_id']:(target_name(r['repo_id'],prefix) if prefix else published.get('repo_mapping',{}).get(r['repo_id'],current_repo(r['repo_id']))) for r in records}
     if len(set(mapping.values()))!=len(records):raise ValueError('Rename creates duplicate targets')
     CARDS.mkdir(exist_ok=True);plan=[]
     for record in records:
         repo=record['repo_id'];target=mapping[repo]
-        folder=CARDS/record['repo_type']/repo.split('/')[1];folder.mkdir(parents=True,exist_ok=True)
+        folder=CARDS/record['repo_type']/target.split('/')[1];folder.mkdir(parents=True,exist_ok=True)
         content=model_card(record,target) if record['repo_type']=='model' else dataset_card(record,target)
         for original,renamed in mapping.items():
             content=content.replace('https://huggingface.co/datasets/'+original+')','https://huggingface.co/datasets/'+renamed+')').replace('https://huggingface.co/'+original+')','https://huggingface.co/'+renamed+')')
+        content=sync_publication_links(content,mapping)
+        content += '\n## Published collections\n\n'+collection_links(published)+'\n'
+        content=format_gfm(content)
         path=folder/'README.md';path.write_text(content)
+        old=CARDS/record['repo_type']/repo.split('/')[1]/'README.md'
+        if old!=path and old.is_file():
+            old.unlink()
+            if not any(old.parent.iterdir()):old.parent.rmdir()
         # Parse with the real HF card classes, entirely from local text.
         from huggingface_hub import ModelCard,DatasetCard
         card=(ModelCard if record['repo_type']=='model' else DatasetCard)(content)
@@ -251,9 +260,35 @@ def generate(prefix=None):
                operations_if_publish=['Preflight existing repositories and optional rename collisions','Upload prepared README cards without changing weights/data','Optionally move repositories within the same namespace','Make selected repositories public','Create public model/data collections and add repositories'])
     (CARDS/'PLAN.json').write_text(json.dumps(value,indent=2)+'\n')
     index='# OneDesk — prepared Hugging Face cards\n\nLocal generation and dry-run do not use network calls or credentials. All remote operations require explicit `--publish`.\n'
-    index+=table(['Type','Existing repository','Prepared card','Optional target'],[[r['repo_type'],r['repo_id'],'['+r['label']+']('+str(Path(r['card']).relative_to('hf_cards'))+')',r['target_repo_id']] for r in plan])
+    index+='\n'+collection_links(published)+'\n'
+    index+=table(['Type','Published repository','Prepared card'],[[r['repo_type'],'https://huggingface.co/'+('datasets/' if r['repo_type']=='dataset' else '')+r['target_repo_id'],'['+r['label']+']('+str(Path(r['card']).relative_to('hf_cards'))+')'] for r in plan])
     index+='\n```bash\n.venv/bin/python scripts/prepare_hf_repos.py --dry-run\n# When ready:\n.venv/bin/python scripts/prepare_hf_repos.py --publish\n# Optional OneDesk rename:\n# .venv/bin/python scripts/prepare_hf_repos.py --publish --rename-prefix onedesk\n```\n\nPublishing makes the listed run repositories and their existing contents public; review PLAN.json and those repositories before invoking it. Two historical planned-but-untrained v2.1 model names are intentionally excluded. Original synthetic datasets are CC-BY-4.0; original project code is Apache-2.0; model weights/adapters retain CC BY-NC 4.0. Collections are created only by publish; URLs are saved to PUBLISH_RECEIPT.json and printed. Publication automatically updates both collection URLs in REPORT.md.\n'
-    (CARDS/'README.md').write_text(index);protect();return value
+    (CARDS/'README.md').write_text(format_gfm(index));protect();return value
+
+
+def upload_cards(plan):
+    """Refresh README cards in already-published repositories; no rename or visibility edits."""
+    from dotenv import load_dotenv
+    from huggingface_hub import HfApi, hf_hub_download
+    import tempfile
+    load_dotenv(ROOT.parent/'.env')
+    token=os.getenv('HUGGINGFACE_TOKEN') or os.getenv('HF_TOKEN')
+    if not token:raise RuntimeError('Set HUGGINGFACE_TOKEN or HF_TOKEN before --upload-cards')
+    api=HfApi(token=token)
+    # Confirm every exact target before writing any card.
+    for r in plan['repositories']:
+        info=api.repo_info(r['target_repo_id'],repo_type=r['repo_type'])
+        if info.private:raise RuntimeError('Expected a published repository: '+r['target_repo_id'])
+    uploaded=[]
+    for r in plan['repositories']:
+        commit=api.upload_file(path_or_fileobj=str(ROOT/r['card']),path_in_repo='README.md',repo_id=r['target_repo_id'],repo_type=r['repo_type'],commit_message='OneDesk: published collection links and readable benchmark card')
+        with tempfile.TemporaryDirectory(prefix='onedesk-card-readback-',dir='/tmp') as td:
+            downloaded=hf_hub_download(r['target_repo_id'],'README.md',repo_type=r['repo_type'],revision=commit.oid,token=token,local_dir=td)
+            if Path(downloaded).read_bytes()!=(ROOT/r['card']).read_bytes():raise RuntimeError('README read-back mismatch: '+r['target_repo_id'])
+        uploaded.append(dict(repo_id=r['target_repo_id'],repo_type=r['repo_type'],commit=commit.oid,card_sha256=r['card_sha256'],verified=True))
+        (CARDS/'CARD_UPLOAD_RECEIPT.json').write_text(json.dumps(dict(updated_at=datetime.now(timezone.utc).isoformat(),complete=len(uploaded)==len(plan['repositories']),cards=uploaded,renamed=False,visibility_changed=False),indent=2)+'\n')
+        print(json.dumps(dict(event='card_uploaded',repo=r['target_repo_id'],commit=commit.oid)),flush=True)
+    protect();return dict(complete=True,cards_uploaded=len(uploaded),renamed=False,visibility_changed=False)
 
 
 def publish(plan):
@@ -315,13 +350,15 @@ def publish(plan):
 
 def main(argv=None):
     parser=argparse.ArgumentParser(description=__doc__)
-    modes=parser.add_mutually_exclusive_group();modes.add_argument('--publish',action='store_true');modes.add_argument('--dry-run',action='store_true')
+    modes=parser.add_mutually_exclusive_group();modes.add_argument('--publish',action='store_true');modes.add_argument('--dry-run',action='store_true');modes.add_argument('--upload-cards',action='store_true',help='Refresh README cards in the existing public repositories only')
     parser.add_argument('--rename-prefix',help='Optional same-account prefix, e.g. onedesk; mutation still requires --publish')
     args=parser.parse_args(argv);plan=generate(args.rename_prefix)
-    if args.publish:
+    if args.upload_cards:
+        print(json.dumps(upload_cards(plan),indent=2))
+    elif args.publish:
         print(json.dumps(publish(plan),indent=2))
     else:
-        print(json.dumps(dict(project=PROJECT_NAME,mode='dry-run',network_calls=0,models=plan['models'],datasets=plan['datasets'],rename_prefix=args.rename_prefix,plan='hf_cards/PLAN.json',collections='Not created; --publish required'),indent=2))
+        print(json.dumps(dict(project=PROJECT_NAME,mode='dry-run',network_calls=0,models=plan['models'],datasets=plan['datasets'],rename_prefix=args.rename_prefix,plan='hf_cards/PLAN.json',collections={'model':publication()['model_collection_url'],'data':publication()['data_collection_url']}),indent=2))
     return plan
 
 if __name__=='__main__':main()

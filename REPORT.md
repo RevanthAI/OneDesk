@@ -4,13 +4,13 @@
 
 ## ⚡ For Judges: 60-Second Overview
 
-|What matters|OneDesk|
-|---|---|
-|The vision|One internal workspace: ask in English, Hindi (Devanagari/Latin), Hinglish or Telugu (native/Latin), and reconcile company wikis, code PRs, chat threads and databases into a current, cited answer.|
-|The core challenge|A wiki may be stale after yesterday’s PR or hotfix; the newest document may be `[STAGING-ONLY]`. OneDesk checks production scope, reconciles evidence, flags outdated pages, runs SQL/time/unit/math chains, and handles unavailable sources.|
-|Headline results|Base → final: **0.5% → 75.8% synthetic accuracy**, **0.0% → 71.0% repo-style accuracy**, and **100% valid final response format** on all 500 holdouts. Strict outdated-doc catch: **79.0%**, beating four-epoch SFT’s 63.5% by **15.5 percentage points** on synthetic conflicts.|
-|On-premises & affordable|A local NF4 deployment measured **3.15 GiB VRAM** with $0 API fees (v1 adapter). The measured L40S serving scenario costs **$1.22/1,000 audits**, about 10.8× below the historical GPT-4o token-price scenario. On-premises deployment keeps model processing local; connector/logging controls define the privacy boundary.|
-|What we built|A facts-first multilingual benchmark, real AgentTune SFT/live GRPO, CuratorKIT deduplication, AuditKIT evaluation, and a documented diagnosis and recovery from RL abstention collapse.|
+| What matters | OneDesk |
+| --- | --- |
+| The vision | One internal workspace: ask in English, Hindi (Devanagari/Latin), Hinglish or Telugu (native/Latin), and reconcile company wikis, code PRs, chat threads and databases into a current, cited answer. |
+| The core challenge | A wiki may be stale after yesterday’s PR or hotfix; the newest document may be `[STAGING-ONLY]`. OneDesk checks production scope, reconciles evidence, flags outdated pages, runs SQL/time/unit/math chains, and handles unavailable sources. |
+| Headline results | Base → final: **0.5% → 75.8% synthetic accuracy**, **0.0% → 71.0% repo-style accuracy**, and **100% valid final response format** on all 500 holdouts. Strict outdated-doc catch: **79.0%**, beating four-epoch SFT’s 63.5% by **15.5 percentage points** on synthetic conflicts. |
+| On-premises & affordable | A local NF4 deployment measured **3.15 GiB VRAM** with $0 API fees (v1 adapter). The measured L40S serving scenario costs **$1.22/1,000 audits**, about 10.8× below the historical GPT-4o token-price scenario. On-premises deployment keeps model processing local; connector/logging controls define the privacy boundary. |
+| What we built | A facts-first multilingual benchmark, real AgentTune SFT/live GRPO, CuratorKIT deduplication, AuditKIT evaluation, and a documented diagnosis and recovery from RL abstention collapse. |
 
 ![Headline Results](figures/1_headline_success.png)
 
@@ -42,58 +42,32 @@ These values come from the frozen `train_sft-0000-hinglish` example; the first s
 
 ### Unified 9-Server MCP Workspace
 
-```mermaid
-flowchart TD
-    E[Employee: English / Hindi / Hinglish / Telugu] --> A[OneDesk · Tiny Aya Fire 3.35B]
-    A --> N[notion-mcp · runbooks]
-    A --> G[github-mcp · merged PRs]
-    A --> S[slack-mcp · deployments / hotfixes]
-    A --> D[db-mcp · real read-only SQLite queries]
-    A --> T[time-mcp · incident duration]
-    A --> U[unit-converter-mcp · kg/lb and GB/MiB]
-    A --> M[math-mcp · exact rounded cost]
-    A -. routing distractor .-> W[weather-mcp]
-    A -. routing distractor .-> C[calendar-mcp]
-    N --> V[Current value + citations + stale-page flag]
-    G --> V
-    S --> V
-    D --> V
-    T --> V
-    U --> V
-    M --> V
-```
+![Unified 9-Server MCP Workspace](figures/0_workspace_architecture.png)
 
 `db-mcp.query_db(sql)` executes actual SELECT queries against an episode-isolated, in-memory SQLite snapshot. The model receives rows or SQLite errors as its next observation. Time, conversion and arithmetic tools perform actual deterministic calculations. Search returns up to three ranked records, mixing production, newer staging-only records and siblings. The model’s structured tool turns are executed and fed back before it chooses the next action.
 
 ### Six language and script styles — verbatim frozen prompts
 
-|Style|Example prompt|
-|---|---|
-|en:latin|What is the active production batch_size_mb for loyalty-api? Compare the runbook with deployment records and flag any outdated page.|
-|hi:native|loyalty-api का वर्तमान production batch_size_mb क्या है? दस्तावेज़ और deployment records की तुलना करें और पुराने पन्ने को पहचानें।|
-|hi:latin|audit-stream ka production circuit_breaker_pct nirdhaarit kijiye; likhit nirdesh aur naveen tainaati soochna mein antar ho to bataaiye.|
-|hinglish:latin|Bhai, loyalty-api ka actual production batch_size_mb kya hai? Runbook aur deployment updates match karke outdated page flag karo.|
-|te:native|loyalty-api కోసం ప్రస్తుతం production లో batch_size_mb ఎంత? రన్‌బుక్‌ను deployment ఆధారాలతో పోల్చి పాత పేజీని గుర్తించండి.|
-|te:latin|audit-stream kosam amalulo unna circuit_breaker_pct ni cheppu; patram mariyu tainaati vivaraalu veruga unte paatha page chupinchu.|
+| Style | Example prompt |
+| --- | --- |
+| en:latin | What is the active production batch_size_mb for loyalty-api? Compare the runbook with deployment records and flag any outdated page. |
+| hi:native | loyalty-api का वर्तमान production batch_size_mb क्या है? दस्तावेज़ और deployment records की तुलना करें और पुराने पन्ने को पहचानें। |
+| hi:latin | audit-stream ka production circuit_breaker_pct nirdhaarit kijiye; likhit nirdesh aur naveen tainaati soochna mein antar ho to bataaiye. |
+| hinglish:latin | Bhai, loyalty-api ka actual production batch_size_mb kya hai? Runbook aur deployment updates match karke outdated page flag karo. |
+| te:native | loyalty-api కోసం ప్రస్తుతం production లో batch_size_mb ఎంత? రన్‌బుక్‌ను deployment ఆధారాలతో పోల్చి పాత పేజీని గుర్తించండి. |
+| te:latin | audit-stream kosam amalulo unna circuit_breaker_pct ni cheppu; patram mariyu tainaati vivaraalu veruga unte paatha page chupinchu. |
 
 ![Multilingual Reach](figures/2_multilingual_reach.png)
 
 ## 2. Hackathon Repos Used: Which Ones, For What, and Which Features
 
-```mermaid
-flowchart LR
-    F[Python facts + oracle] --> C[CuratorKIT: exact deduplication]
-    C --> D[Frozen data + verified trajectories]
-    D --> A[AgentTune: SFT warmup + live multi-turn GRPO]
-    A --> K[AuditKIT: outcome / citations / tool accuracy]
-    K --> R[Saved traces + bootstrap CIs + OneDesk report]
-```
+![Lexsi Toolkit Pipeline](figures/0_toolkit_pipeline.png)
 
-|Toolkit|Features actually used|Code and output|
-|---|---|---|
-|**CuratorKIT 0.1.21** · `d6f2e44e`|`DataSample`, `ExactDeduplicator.run`: **1,955 candidates → 1,700 tasks**, with all **255 exact duplicate controls** rejected and logged.|`src/v2_dataset.py:curate`; `data_v2/curation_funnel.json`, `curation_rejections.jsonl`|
-|**AgentTune 1.1.4** · `e56a1094`|`Step`, `Trajectory`, `TrajectoryDataset`; `SFTTrainerBase` via `DriftGuardSFTTrainer`; `TrlAgenticGrpo` wrapper with `MCPGRPOTrainer` for executed multi-turn MCP rollouts.|`src_v2_2/toolkits.py`, `agenttune_sft_backend.py`, `agenttune_grpo_backend.py`, `training.py`|
-|**AuditKIT 1.1.7** · `fe6083e7`|`episodes_from_agenttune`, `FunctionScorer`, `ToolCallF1(arg_mode="name")`, `ToolCallValidity`, `RedundantToolCalls`; matched **580-episode checkpoint comparisons** (80 validation + 500 holdouts).|`src_v2_2/evaluate_auditkit.py`, `evaluation_core.py`; JSON summaries and raw episodes|
+| Toolkit | Features actually used | Code and output |
+| --- | --- | --- |
+| **CuratorKIT 0.1.21** · `d6f2e44e` | `DataSample`, `ExactDeduplicator.run`: **1,955 candidates → 1,700 tasks**, with all **255 exact duplicate controls** rejected and logged. | `src/v2_dataset.py:curate`; `data_v2/curation_funnel.json`, `curation_rejections.jsonl` |
+| **AgentTune 1.1.4** · `e56a1094` | `Step`, `Trajectory`, `TrajectoryDataset`; `SFTTrainerBase` via `DriftGuardSFTTrainer`; `TrlAgenticGrpo` wrapper with `MCPGRPOTrainer` for executed multi-turn MCP rollouts. | `src_v2_2/toolkits.py`, `agenttune_sft_backend.py`, `agenttune_grpo_backend.py`, `training.py` |
+| **AuditKIT 1.1.7** · `fe6083e7` | `episodes_from_agenttune`, `FunctionScorer`, `ToolCallF1(arg_mode="name")`, `ToolCallValidity`, `RedundantToolCalls`; matched **580-episode checkpoint comparisons** (80 validation + 500 holdouts). | `src_v2_2/evaluate_auditkit.py`, `evaluation_core.py`; JSON summaries and raw episodes |
 
 **Compatibility engineering:** we bridged AgentTune’s `_generate_single_turn` expectation to the installed TRL 0.23.1 live-rollout hook; loaded dependency-light `agenttune.agentic` leaf modules to avoid unrelated optional imports; and added explicit BF16 autocast around unwrapped PEFT decoder scoring. AgentTune retains its data/train/save lifecycle, TRL owns optimization, and our backend supplies full tool episodes and assistant-only loss masks. Issue-ready details and exact commits are in [SUBMISSION_DOSSIER.md](SUBMISSION_DOSSIER.md#5-chaining-the-three-lexsi-labs-repositories--upstream-findings).
 
@@ -103,12 +77,12 @@ flowchart LR
 
 We built a company world with **60 microservices**, **80 production incidents**, configuration histories, runbooks and deployment trails. Structured Python facts come first, so every gold value, timestamp and evidence ID is deterministic. The oracle executes the same tools available to the model and verifies its trajectories before text templates render each query in four language/register groups and six script styles.
 
-|Scenario|What the agent must do|
-|---|---|
-|Consistent knowledge|Verify that the production wiki and deployment agree, despite staging-only and sibling distractors.|
-|Conflicting / outdated documents|Find the latest production setting in GitHub or Slack, compare it with the runbook, and flag/cite the stale page. Some trails span all three sources.|
-|Database & calculation chains|Discover incident fields through read-only SQLite, then compute hours or convert kg→lb / decimal GB→MiB, and use math for the exact rounded cost. Config-audit incidents discover the service before checking its deployment.|
-|Safe refusal|Abstain when the entity does not exist or the explicitly required SQL server is unplugged, rather than inventing evidence or silently substituting another source.|
+| Scenario | What the agent must do |
+| --- | --- |
+| Consistent knowledge | Verify that the production wiki and deployment agree, despite staging-only and sibling distractors. |
+| Conflicting / outdated documents | Find the latest production setting in GitHub or Slack, compare it with the runbook, and flag/cite the stale page. Some trails span all three sources. |
+| Database & calculation chains | Discover incident fields through read-only SQLite, then compute hours or convert kg→lb / decimal GB→MiB, and use math for the exact rounded cost. Config-audit incidents discover the service before checking its deployment. |
+| Safe refusal | Abstain when the entity does not exist or the explicitly required SQL server is unplugged, rather than inventing evidence or silently substituting another source. |
 
 ### Tested split separation and context sizing
 
@@ -149,46 +123,46 @@ The selected OneDesk agent reached **75.8% synthetic**, **71.0% repo-style** and
 
 ### Master results — exact accuracy (%) with 95% case-bootstrap intervals
 
-|Checkpoint|Synthetic · n=400|Repo-style · n=100|Validation · n=80|
-|---|---|---|---|
-|Base|0.50 [0.00, 1.25]|0.00 [0.00, 0.00]|1.25 [0.00, 3.75]|
-|Weak SFT · 15 steps|15.00 [10.50, 20.00]|16.00 [7.52, 25.74]|22.50 [7.50, 40.00]|
-|Early RL · 120 updates|26.25 [18.75, 34.50]|26.00 [11.00, 43.14]|43.75 [23.75, 62.50]|
-|Collapsed RL · 340 updates|17.50 [11.00, 24.75]|15.00 [3.09, 30.30]|26.25 [8.72, 46.25]|
-|Warmup SFT · 60 steps|72.50 [65.25, 79.25]|64.00 [46.53, 80.39]|67.50 [48.75, 85.00]|
-|Final OneDesk · selected update 40|75.75 [68.50, 82.50]|71.00 [55.45, 84.31]|80.00 [63.75, 93.75]|
-|Full SFT · 120 steps|77.25 [70.00, 84.00]|76.00 [61.39, 88.89]|73.75 [56.25, 90.00]|
+| Checkpoint | Synthetic · n=400 | Repo-style · n=100 | Validation · n=80 |
+| --- | --- | --- | --- |
+| Base | 0.50 [0.00, 1.25] | 0.00 [0.00, 0.00] | 1.25 [0.00, 3.75] |
+| Weak SFT · 15 steps | 15.00 [10.50, 20.00] | 16.00 [7.52, 25.74] | 22.50 [7.50, 40.00] |
+| Early RL · 120 updates | 26.25 [18.75, 34.50] | 26.00 [11.00, 43.14] | 43.75 [23.75, 62.50] |
+| Collapsed RL · 340 updates | 17.50 [11.00, 24.75] | 15.00 [3.09, 30.30] | 26.25 [8.72, 46.25] |
+| Warmup SFT · 60 steps | 72.50 [65.25, 79.25] | 64.00 [46.53, 80.39] | 67.50 [48.75, 85.00] |
+| Final OneDesk · selected update 40 | 75.75 [68.50, 82.50] | 71.00 [55.45, 84.31] | 80.00 [63.75, 93.75] |
+| Full SFT · 120 steps | 77.25 [70.00, 84.00] | 76.00 [61.39, 88.89] | 73.75 [56.25, 90.00] |
 
 ### Multilingual breakdown — exact accuracy (%)
 
 **Synthetic holdout**
 
-|Language|Base|Warmup SFT|Full 4-epoch SFT|Final OneDesk|
-|---|---|---|---|---|
-|en|0.0|77.0|77.0|77.0|
-|hi|0.0|76.0|82.0|83.0|
-|hinglish|0.0|66.0|79.0|69.0|
-|te|2.0|71.0|71.0|74.0|
+| Language | Base | Warmup SFT | Full 4-epoch SFT | Final OneDesk |
+| --- | --- | --- | --- | --- |
+| en | 0.0 | 77.0 | 77.0 | 77.0 |
+| hi | 0.0 | 76.0 | 82.0 | 83.0 |
+| hinglish | 0.0 | 66.0 | 79.0 | 69.0 |
+| te | 2.0 | 71.0 | 71.0 | 74.0 |
 
 **Repo-style holdout**
 
-|Language|Base|Warmup SFT|Full 4-epoch SFT|Final OneDesk|
-|---|---|---|---|---|
-|en|0.0|64.0|76.0|72.0|
-|hi|0.0|64.0|76.0|68.0|
-|hinglish|0.0|64.0|76.0|72.0|
-|te|0.0|64.0|76.0|72.0|
+| Language | Base | Warmup SFT | Full 4-epoch SFT | Final OneDesk |
+| --- | --- | --- | --- | --- |
+| en | 0.0 | 64.0 | 76.0 | 72.0 |
+| hi | 0.0 | 64.0 | 76.0 | 68.0 |
+| hinglish | 0.0 | 64.0 | 76.0 | 72.0 |
+| te | 0.0 | 64.0 | 76.0 | 72.0 |
 
 ### AuditKIT tool-calling table
 
-|Cohort|Model|Tool precision %|Recall %|F1 %|Validity %|Redundancy % ↓|Verified cite F1 %|Required chain %|
-|---|---|---|---|---|---|---|---|---|
-|Synthetic|Base|7.0|7.0|7.0|—|—|0.0|0.0|
-|Synthetic|Full SFT|96.0|96.3|96.1|100.0|0.0|92.6|97.4|
-|Synthetic|Final OneDesk|93.2|87.9|89.9|100.0|0.0|88.3|86.5|
-|Repo-style|Base|7.0|7.0|7.0|—|—|0.0|0.0|
-|Repo-style|Full SFT|96.3|96.1|96.1|100.0|0.0|95.6|98.8|
-|Repo-style|Final OneDesk|93.3|84.8|88.0|100.0|0.0|84.6|74.1|
+| Cohort | Model | Tool precision % | Recall % | F1 % | Validity % | Redundancy % ↓ | Verified cite F1 % | Required chain % |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Synthetic | Base | 7.0 | 7.0 | 7.0 | — | — | 0.0 | 0.0 |
+| Synthetic | Full SFT | 96.0 | 96.3 | 96.1 | 100.0 | 0.0 | 92.6 | 97.4 |
+| Synthetic | Final OneDesk | 93.2 | 87.9 | 89.9 | 100.0 | 0.0 | 88.3 | 86.5 |
+| Repo-style | Base | 7.0 | 7.0 | 7.0 | — | — | 0.0 | 0.0 |
+| Repo-style | Full SFT | 96.3 | 96.1 | 96.1 | 100.0 | 0.0 | 95.6 | 98.8 |
+| Repo-style | Final OneDesk | 93.3 | 84.8 | 88.0 | 100.0 | 0.0 | 84.6 | 74.1 |
 
 In the AuditKIT table, — means the native metric is absent from that saved headline, rather than a zero score.
 
@@ -198,36 +172,36 @@ Full SFT is the strongest overall-accuracy control; OneDesk’s selected RL agen
 
 ![Cost and Privacy ROI](figures/4_cost_and_privacy_roi.png)
 
-|Deployment option|Monthly / 100,000 audits|Per 1,000 audits|Basis|
-|---|---|---|---|
-|Local workstation · RTX 2070 NF4|$8.00|$0.08|Electricity only: 175 W, $0.10/kWh; measured v1 NF4 speed|
-|Self-hosted L40S · BF16|$122.36|$1.22|Measured offline BF16 throughput; $1.80/GPU-hour|
-|Cloud T4 · scenario|$228.57|$2.29|Unmeasured T4; edge-latency proxy at $0.50/GPU-hour|
-|Closed API · GPT-4o|$1,316.66|$13.17|Historical uncached rates: $2.50/M input + $10/M output|
-|Closed API · Claude 3.5 Sonnet|$1,625.98|$16.26|Historical $3/M input + $15/M output; retired endpoint|
+| Deployment option | Monthly / 100,000 audits | Per 1,000 audits | Basis |
+| --- | --- | --- | --- |
+| Local workstation · RTX 2070 NF4 | $8.00 | $0.08 | Electricity only: 175 W, $0.10/kWh; measured v1 NF4 speed |
+| Self-hosted L40S · BF16 | $122.36 | $1.22 | Measured offline BF16 throughput; $1.80/GPU-hour |
+| Cloud T4 · scenario | $228.57 | $2.29 | Unmeasured T4; edge-latency proxy at $0.50/GPU-hour |
+| Closed API · GPT-4o | $1,316.66 | $13.17 | Historical uncached rates: $2.50/M input + $10/M output |
+| Closed API · Claude 3.5 Sonnet | $1,625.98 | $16.26 | Historical $3/M input + $15/M output; retired endpoint |
 
 For the selected agent, saved multi-turn holdout traces average **4,653.332 input tokens** and **153.322 decoded output tokens** per audit. The API scenario applies historical uncached rates to that volume. The L40S result uses the recorded **1,419.402 seconds / 580 evaluation episodes**, about **1,471 audits/hour**, at **$1.80/hour**. Local electricity assumes **175 W × $0.10/kWh** and the recorded v1 RTX 2070 runtime; it has no API token bill. On-premises deployment can keep model processing and evidence inside company infrastructure. A self-hosted cloud model can instead be deployed under an organization’s VPC controls.
 
 ## 5. Models Used and Their Licenses
 
-|Model family / artifact|Purpose|License|
-|---|---|---|
-|`CohereLabs/tiny-aya-fire` · 3.35B dense open weights|Base student and all fresh SFT starts; pinned revision `73500c80fcb6c8bea3e830c21d5d2920249a0e1a`|CC BY-NC 4.0|
-|Warmup, selected GRPO, final-update and full SFT LoRA adapters|Trained rank-16 / alpha-32 adapters on the pinned base|CC BY-NC 4.0; retain base attribution and terms|
-|V1 adapter/merged model, v1 pilot and v2 weak/collapsed controls|Historical experiments and negative-result controls|CC BY-NC 4.0; scores refer to their own cohorts|
+| Model family / artifact | Purpose | License |
+| --- | --- | --- |
+| `CohereLabs/tiny-aya-fire` · 3.35B dense open weights | Base student and all fresh SFT starts; pinned revision `73500c80fcb6c8bea3e830c21d5d2920249a0e1a` | CC BY-NC 4.0 |
+| Warmup, selected GRPO, final-update and full SFT LoRA adapters | Trained rank-16 / alpha-32 adapters on the pinned base | CC BY-NC 4.0; retain base attribution and terms |
+| V1 adapter/merged model, v1 pilot and v2 weak/collapsed controls | Historical experiments and negative-result controls | CC BY-NC 4.0; scores refer to their own cohorts |
 
 Gold facts are generated deterministically in Python, rather than by a teacher model.
 
 ## 6. Datasets and Benchmarks Used and Their Licenses
 
-|Frozen data_v2 artifact|Rows|Semantic cases|SHA-256|
-|---|---|---|---|
-|`train_sft_240.jsonl`|240|60|`96402f7d8ce8f05ee98aee212f1af9ac7a2b51fef1098e2beda3e395b90e1932`|
-|`train_grpo_stage1.jsonl`|400|100|`b44e67d78d2abc921583c535a10c3a2bd790aca8fd43723e87151c0c962b7768`|
-|`train_grpo_stage2.jsonl`|480|120|`8d7f5236f1fad9450f5ae3ecb81e83b9acda96f01d548225787b7f7eb5754977`|
-|`val_train_80.jsonl`|80|20|`4eb608f1391596afe2ad62f67e9c5a68e5b396838b8c97f130638d9510f3b254`|
-|`holdout_synth_400_frozen.jsonl`|400|100|`82b92badc6f1fdc71bba41a876db4adf9f19633108b26331297227a7587ac50b`|
-|`holdout_repo_style_100_frozen.jsonl`|100|26|`c6d808482bb85143b08eda51e6703f13f9f0817dd0b30a90ca3cd2d81e8b3469`|
+| Frozen data_v2 artifact | Rows | Semantic cases | SHA-256 |
+| --- | --- | --- | --- |
+| `train_sft_240.jsonl` | 240 | 60 | `96402f7d8ce8f05ee98aee212f1af9ac7a2b51fef1098e2beda3e395b90e1932` |
+| `train_grpo_stage1.jsonl` | 400 | 100 | `b44e67d78d2abc921583c535a10c3a2bd790aca8fd43723e87151c0c962b7768` |
+| `train_grpo_stage2.jsonl` | 480 | 120 | `8d7f5236f1fad9450f5ae3ecb81e83b9acda96f01d548225787b7f7eb5754977` |
+| `val_train_80.jsonl` | 80 | 20 | `4eb608f1391596afe2ad62f67e9c5a68e5b396838b8c97f130638d9510f3b254` |
+| `holdout_synth_400_frozen.jsonl` | 400 | 100 | `82b92badc6f1fdc71bba41a876db4adf9f19633108b26331297227a7587ac50b` |
+| `holdout_repo_style_100_frozen.jsonl` | 100 | 26 | `c6d808482bb85143b08eda51e6703f13f9f0817dd0b30a90ca3cd2d81e8b3469` |
 
 **Total: 1,700 rendered tasks.** Our original synthetic benchmark data is licensed under **CC-BY-4.0**; attribution: **OneDesk contributors / Revanth-ml**. Original project code is licensed under **Apache-2.0**. See [dataset licensing](LICENSE-DATA.md) and the [code license](LICENSE). Model weights and adapters remain **CC BY-NC 4.0**; third-party code retains its own license. The frozen data and its checksum manifest remain unchanged.
 
@@ -235,34 +209,34 @@ Gold facts are generated deterministically in Python, rather than by a teacher m
 
 **Publication status:** Public collections and repositories are linked below.
 
-**Model Collection:** https://huggingface.co/collections/Revanth-ml/onedesk-models-and-experimental-controls-6af97221a617ddc3326204a6
+**Model Collection:** [Revanth-ml/onedesk-models-and-experimental-controls](https://huggingface.co/collections/Revanth-ml/onedesk-models-and-experimental-controls-6af97221a617ddc3326204a6)
 
-|Artifact|Hugging Face repository|Pinned weight revision|
-|---|---|---|
-|Historical v1 SFT adapter|https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-sft|`b0d0d072311e62e31eb6258ad8ce987e8bf7926d`|
-|Historical v1 SFT merged|https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-sft-merged|`9747926dfe35d4a7ff10761c8caec3c1714496b2`|
-|Historical v1 GRPO pilot|https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-grpo-pilot|`1eae42be5b7a3e8eeeb8408078537b4b0b243732`|
-|V2 weak SFT|https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-sft|`f8bd317a9f84746328af7d078a49cc08a64f0086`|
-|V2 collapsed RL — negative-result control|https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-grpo|`c313816cc3ae46c4e3dd5ebc1d61cbff22ec05c4`|
-|Full four-epoch SFT control|https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-sft|`bf94f4cc6ec420752205859e6d63c7f83b85f14d`|
-|OneDesk protocol warmup · 60 steps|https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-sft|`72aafc56b1506a81a7cb12930e95f8f2f17d03d5`|
-|OneDesk final agent · validation-selected update 40|https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val|`016676680121b4dd90ec6026978de7ee1cdb1271`|
-|OneDesk final-update ablation · update 80|https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-final|`b006ec346e48807afd23030abf17b599adfcf71f`|
+| Artifact | Hugging Face repository | Pinned weight revision |
+| --- | --- | --- |
+| Historical v1 SFT adapter | [Revanth-ml/onedesk-tiny-aya-fire-sft](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-sft) | `b0d0d072311e62e31eb6258ad8ce987e8bf7926d` |
+| Historical v1 SFT merged | [Revanth-ml/onedesk-tiny-aya-fire-sft-merged](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-sft-merged) | `9747926dfe35d4a7ff10761c8caec3c1714496b2` |
+| Historical v1 GRPO pilot | [Revanth-ml/onedesk-tiny-aya-fire-grpo-pilot](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-grpo-pilot) | `1eae42be5b7a3e8eeeb8408078537b4b0b243732` |
+| V2 weak SFT | [Revanth-ml/onedesk-tiny-aya-fire-v2-sft](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-sft) | `f8bd317a9f84746328af7d078a49cc08a64f0086` |
+| V2 collapsed RL — negative-result control | [Revanth-ml/onedesk-tiny-aya-fire-v2-grpo](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-grpo) | `c313816cc3ae46c4e3dd5ebc1d61cbff22ec05c4` |
+| Full four-epoch SFT control | [Revanth-ml/onedesk-tiny-aya-fire-v2-1-sft](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-sft) | `bf94f4cc6ec420752205859e6d63c7f83b85f14d` |
+| OneDesk protocol warmup · 60 steps | [Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-sft](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-sft) | `72aafc56b1506a81a7cb12930e95f8f2f17d03d5` |
+| OneDesk final agent · validation-selected update 40 | [Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val) | `016676680121b4dd90ec6026978de7ee1cdb1271` |
+| OneDesk final-update ablation · update 80 | [Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-final](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-final) | `b006ec346e48807afd23030abf17b599adfcf71f` |
 
 Use the **warmup GRPO best-val** repository for the selected final agent. The final-update adapter is an ablation with no separate full holdout evaluation; its card does not borrow update 40’s scores.
 
 ## 8. Data Artifacts Public, as an HF Collection
 
-**Data Collection:** https://huggingface.co/collections/Revanth-ml/onedesk-data-and-experiment-evidence-6af97225c0f1dc548b9ba8ce
+**Data Collection:** [Revanth-ml/onedesk-data-and-experiment-evidence](https://huggingface.co/collections/Revanth-ml/onedesk-data-and-experiment-evidence-6af97225c0f1dc548b9ba8ce)
 
-|Repository|Contents|
-|---|---|
-|https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-v2-data|Frozen benchmark|
-|https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-warmup-runs|Recorded experiment artifacts|
-|https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-v2-runs|Recorded experiment artifacts|
-|https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-v2-1-runs|Recorded experiment artifacts|
-|https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-training-runs|Recorded experiment artifacts|
-|https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-grpo-runs|Recorded experiment artifacts|
+| Repository | Contents |
+| --- | --- |
+| [Revanth-ml/onedesk-mcp-v2-data](https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-v2-data) | Frozen benchmark |
+| [Revanth-ml/onedesk-mcp-warmup-runs](https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-warmup-runs) | Recorded experiment artifacts |
+| [Revanth-ml/onedesk-mcp-v2-runs](https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-v2-runs) | Recorded experiment artifacts |
+| [Revanth-ml/onedesk-mcp-v2-1-runs](https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-v2-1-runs) | Recorded experiment artifacts |
+| [Revanth-ml/onedesk-mcp-training-runs](https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-training-runs) | Recorded experiment artifacts |
+| [Revanth-ml/onedesk-mcp-grpo-runs](https://huggingface.co/datasets/Revanth-ml/onedesk-mcp-grpo-runs) | Recorded experiment artifacts |
 
 The frozen data repository contains the benchmark JSONL and manifests. Run repositories contain provenance, raw trajectories, evaluation summaries and training diagnostics. Human-readable model and dataset cards are available under [hf_cards/](hf_cards/).
 
@@ -270,12 +244,12 @@ The frozen data repository contains the benchmark JSONL and manifests. Run repos
 
 **Next experiment — targets, not measured results.** Extra credits would fund a controlled sweep and a fresh confirmation cohort, focusing on missing three-server evidence and unplugged-DB errors. The following “after” column is an explicit research target; it is not an extrapolated or achieved score.
 
-|Priority|Measured starting point|Proposed change|Target after a future run|
-|---|---|---|---|
-|Complete deployment trail|Final chain compliance: **86.47% synthetic / 74.12% repo-style**|Require all task-authoritative deployment evidence in successful conflict traces; add hard three-source examples|**>96% chain compliance**, without reducing exact accuracy|
-|Unplugged database handling|Final unplugged recall: **21.43% synthetic / 42.86% repo-style**|Oversample source-unavailable cases and contrast “missing entity” versus “source offline”|Higher unplugged recall with fewer false refusals; verify on fresh cases|
-|Overall answer accuracy|Final: **75.75% synthetic / 71.00% repo-style**|Sweep reward/chain balance, warmup length and sampling under matched compute; retain validation-only selection|**83%+ accuracy** as an aspirational target, not a prediction|
-|Scientific confirmation|One completed selected recipe; repeated validation use|Multiple random seeds and an untouched, source-backed evaluation cohort|Replicated paired improvements and narrower uncertainty|
+| Priority | Measured starting point | Proposed change | Target after a future run |
+| --- | --- | --- | --- |
+| Complete deployment trail | Final chain compliance: **86.47% synthetic / 74.12% repo-style** | Require all task-authoritative deployment evidence in successful conflict traces; add hard three-source examples | **>96% chain compliance**, without reducing exact accuracy |
+| Unplugged database handling | Final unplugged recall: **21.43% synthetic / 42.86% repo-style** | Oversample source-unavailable cases and contrast “missing entity” versus “source offline” | Higher unplugged recall with fewer false refusals; verify on fresh cases |
+| Overall answer accuracy | Final: **75.75% synthetic / 71.00% repo-style** | Sweep reward/chain balance, warmup length and sampling under matched compute; retain validation-only selection | **83%+ accuracy** as an aspirational target, not a prediction |
+| Scientific confirmation | One completed selected recipe; repeated validation use | Multiple random seeds and an untouched, source-backed evaluation cohort | Replicated paired improvements and narrower uncertainty |
 
 ### Reproducibility commands
 
@@ -296,7 +270,7 @@ CUDA_VISIBLE_DEVICES='' .venv/bin/python -m pytest tests tests_v2 tests_v2_1 tes
 
 **Teammates tagged:** [@Revanth-ml](https://huggingface.co/Revanth-ml).
 
-**Detailed reference:** [SUBMISSION_DOSSIER.md](SUBMISSION_DOSSIER.md). Saved evidence: [full seven-checkpoint comparison](reports_v2_2/downloads/warmup-20261113T084035Z/comparison/EXPERIMENT_REPORT.md), [paired trade-offs](reports_v2_2/downloads/warmup-20261113T084035Z/comparison/FINDINGS.md), and [chart source values](figures/CHART_DATA.json). Immutable dataset IDs and existing repository slugs retain their historical `driftguard` names.
+**Detailed reference:** [SUBMISSION_DOSSIER.md](SUBMISSION_DOSSIER.md). Saved evidence: [full seven-checkpoint comparison](reports_v2_2/downloads/warmup-20261113T084035Z/comparison/EXPERIMENT_REPORT.md), [paired trade-offs](reports_v2_2/downloads/warmup-20261113T084035Z/comparison/FINDINGS.md), and [chart source values](figures/CHART_DATA.json). Published artifacts use `onedesk` repository names; immutable task IDs and historical provenance retain their original experiment identifiers.
 
 ## 10. Honest Limitations
 
@@ -307,4 +281,3 @@ CUDA_VISIBLE_DEVICES='' .venv/bin/python -m pytest tests tests_v2 tests_v2_1 tes
 - **Exploration explanation:** shorter warmup, G4→G6 and higher temperatures changed together. Zero reward variance is not identical text, and identical sampled sequences are not a full-distribution entropy measurement. The recipe avoided the earlier abstention collapse in this run; no universal causal fix is claimed.
 - **Cost and privacy:** local 3.15 GiB and speed measurements are from the v1 NF4 adapter, while v2 quality/throughput was measured in BF16. T4 throughput and API accuracy were not measured; API prices are historical, Claude 3.5 Sonnet is retired, and costs exclude hardware amortization/operations. Privacy depends on the deployment, access controls, connectors and logs; it is not guaranteed by the model.
 - **Licenses and scope:** model weights and adapters retain CC BY-NC 4.0 noncommercial terms; original synthetic data is CC-BY-4.0 and original project code is Apache-2.0. Third-party licenses still apply. No public Gradio application is established by these artifacts. Future 83%+/96% numbers are targets only.
-

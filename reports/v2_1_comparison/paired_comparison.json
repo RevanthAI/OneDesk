@@ -1,0 +1,104 @@
+{
+  "validation": {
+    "v2 SFT (15 steps) -> v2 GRPO Stage 1 (120 updates)": {
+      "estimate": 0.2125,
+      "ci95": [
+        0.0625,
+        0.3875
+      ],
+      "clusters": 20
+    },
+    "v2 GRPO Stage 1 (120 updates) -> v2 GRPO Stage 2 (collapsed)": {
+      "estimate": -0.175,
+      "ci95": [
+        -0.375,
+        0.0125
+      ],
+      "clusters": 20
+    },
+    "v2.1 SFT Warmup -> v2.1 GRPO Anti-Collapse": {
+      "estimate": 0.125,
+      "ci95": [
+        0.0,
+        0.2625
+      ],
+      "clusters": 20
+    },
+    "v2.1 SFT Warmup -> v2.1 SFT Full 4-Epoch (ablation)": {
+      "estimate": 0.0625,
+      "ci95": [
+        -0.0875,
+        0.225
+      ],
+      "clusters": 20
+    }
+  },
+  "test_synth": {
+    "v2 SFT (15 steps) -> v2 GRPO Stage 1 (120 updates)": {
+      "estimate": 0.1125,
+      "ci95": [
+        0.05,
+        0.18
+      ],
+      "clusters": 100
+    },
+    "v2 GRPO Stage 1 (120 updates) -> v2 GRPO Stage 2 (collapsed)": {
+      "estimate": -0.0875,
+      "ci95": [
+        -0.1725,
+        -0.0075
+      ],
+      "clusters": 100
+    },
+    "v2.1 SFT Warmup -> v2.1 GRPO Anti-Collapse": {
+      "estimate": 0.0325,
+      "ci95": [
+        -0.025,
+        0.09
+      ],
+      "clusters": 100
+    },
+    "v2.1 SFT Warmup -> v2.1 SFT Full 4-Epoch (ablation)": {
+      "estimate": 0.0475,
+      "ci95": [
+        -0.0175,
+        0.11
+      ],
+      "clusters": 100
+    }
+  },
+  "repo_style": {
+    "v2 SFT (15 steps) -> v2 GRPO Stage 1 (120 updates)": {
+      "estimate": 0.1,
+      "ci95": [
+        -0.05825242718446602,
+        0.27450980392156865
+      ],
+      "clusters": 26
+    },
+    "v2 GRPO Stage 1 (120 updates) -> v2 GRPO Stage 2 (collapsed)": {
+      "estimate": -0.11,
+      "ci95": [
+        -0.297029702970297,
+        0.07144698085419708
+      ],
+      "clusters": 26
+    },
+    "v2.1 SFT Warmup -> v2.1 GRPO Anti-Collapse": {
+      "estimate": 0.07,
+      "ci95": [
+        -0.05,
+        0.20004807692307625
+      ],
+      "clusters": 26
+    },
+    "v2.1 SFT Warmup -> v2.1 SFT Full 4-Epoch (ablation)": {
+      "estimate": 0.12,
+      "ci95": [
+        -0.030303030303030304,
+        0.28
+      ],
+      "clusters": 26
+    }
+  }
+}

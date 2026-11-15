@@ -1,0 +1,788 @@
+{
+  "validation": {
+    "conflict": {
+      "Base": {
+        "estimate": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "v2 SFT15": {
+        "estimate": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "v2 GRPO Stage1": {
+        "estimate": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "v2 collapsed": {
+        "estimate": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "SFT warmup": {
+        "estimate": 0.65,
+        "ci95": [
+          0.25,
+          1.0
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "GRPO best": {
+        "estimate": 0.7,
+        "ci95": [
+          0.45,
+          0.95
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "SFT full120": {
+        "estimate": 0.45,
+        "ci95": [
+          0.05,
+          0.85
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      }
+    },
+    "incident": {
+      "Base": {
+        "estimate": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "v2 SFT15": {
+        "estimate": 0.25,
+        "ci95": [
+          0.0,
+          0.65
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "v2 GRPO Stage1": {
+        "estimate": 0.2,
+        "ci95": [
+          0.0,
+          0.6
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "v2 collapsed": {
+        "estimate": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "SFT warmup": {
+        "estimate": 0.8,
+        "ci95": [
+          0.4,
+          1.0
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "GRPO best": {
+        "estimate": 0.8,
+        "ci95": [
+          0.4,
+          1.0
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "SFT full120": {
+        "estimate": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      }
+    },
+    "consistent": {
+      "Base": {
+        "estimate": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "v2 SFT15": {
+        "estimate": 0.1,
+        "ci95": [
+          0.0,
+          0.3
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "v2 GRPO Stage1": {
+        "estimate": 0.75,
+        "ci95": [
+          0.55,
+          0.95
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "v2 collapsed": {
+        "estimate": 0.05,
+        "ci95": [
+          0.0,
+          0.15
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "SFT warmup": {
+        "estimate": 0.3,
+        "ci95": [
+          0.05,
+          0.55
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "GRPO best": {
+        "estimate": 0.75,
+        "ci95": [
+          0.35,
+          1.0
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "SFT full120": {
+        "estimate": 0.6,
+        "ci95": [
+          0.3,
+          0.9
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      }
+    },
+    "abstain": {
+      "Base": {
+        "estimate": 0.05,
+        "ci95": [
+          0.0,
+          0.15
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "v2 SFT15": {
+        "estimate": 0.55,
+        "ci95": [
+          0.15,
+          0.95
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "v2 GRPO Stage1": {
+        "estimate": 0.8,
+        "ci95": [
+          0.5,
+          1.0
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "v2 collapsed": {
+        "estimate": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "SFT warmup": {
+        "estimate": 0.95,
+        "ci95": [
+          0.85,
+          1.0
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "GRPO best": {
+        "estimate": 0.95,
+        "ci95": [
+          0.85,
+          1.0
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "SFT full120": {
+        "estimate": 0.9,
+        "ci95": [
+          0.7,
+          1.0
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      }
+    }
+  },
+  "test_synth": {
+    "conflict": {
+      "Base": {
+        "estimate": 0.01,
+        "ci95": [
+          0.0,
+          0.025
+        ],
+        "denominator": 200.0,
+        "clusters": 50
+      },
+      "v2 SFT15": {
+        "estimate": 0.07,
+        "ci95": [
+          0.04,
+          0.105
+        ],
+        "denominator": 200.0,
+        "clusters": 50
+      },
+      "v2 GRPO Stage1": {
+        "estimate": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "denominator": 200.0,
+        "clusters": 50
+      },
+      "v2 collapsed": {
+        "estimate": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "denominator": 200.0,
+        "clusters": 50
+      },
+      "SFT warmup": {
+        "estimate": 0.875,
+        "ci95": [
+          0.795,
+          0.94
+        ],
+        "denominator": 200.0,
+        "clusters": 50
+      },
+      "GRPO best": {
+        "estimate": 0.81,
+        "ci95": [
+          0.715,
+          0.895
+        ],
+        "denominator": 200.0,
+        "clusters": 50
+      },
+      "SFT full120": {
+        "estimate": 0.75,
+        "ci95": [
+          0.63,
+          0.86
+        ],
+        "denominator": 200.0,
+        "clusters": 50
+      }
+    },
+    "incident": {
+      "Base": {
+        "estimate": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "denominator": 60.0,
+        "clusters": 15
+      },
+      "v2 SFT15": {
+        "estimate": 0.13333333333333333,
+        "ci95": [
+          0.05,
+          0.23333333333333334
+        ],
+        "denominator": 60.0,
+        "clusters": 15
+      },
+      "v2 GRPO Stage1": {
+        "estimate": 0.1,
+        "ci95": [
+          0.03333333333333333,
+          0.18333333333333332
+        ],
+        "denominator": 60.0,
+        "clusters": 15
+      },
+      "v2 collapsed": {
+        "estimate": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "denominator": 60.0,
+        "clusters": 15
+      },
+      "SFT warmup": {
+        "estimate": 0.75,
+        "ci95": [
+          0.6333333333333333,
+          0.8666666666666667
+        ],
+        "denominator": 60.0,
+        "clusters": 15
+      },
+      "GRPO best": {
+        "estimate": 0.7333333333333333,
+        "ci95": [
+          0.5833333333333334,
+          0.8666666666666667
+        ],
+        "denominator": 60.0,
+        "clusters": 15
+      },
+      "SFT full120": {
+        "estimate": 0.85,
+        "ci95": [
+          0.7666666666666667,
+          0.9166666666666666
+        ],
+        "denominator": 60.0,
+        "clusters": 15
+      }
+    },
+    "consistent": {
+      "Base": {
+        "estimate": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "denominator": 80.0,
+        "clusters": 20
+      },
+      "v2 SFT15": {
+        "estimate": 0.1875,
+        "ci95": [
+          0.0875,
+          0.2875
+        ],
+        "denominator": 80.0,
+        "clusters": 20
+      },
+      "v2 GRPO Stage1": {
+        "estimate": 0.8625,
+        "ci95": [
+          0.7875,
+          0.9375
+        ],
+        "denominator": 80.0,
+        "clusters": 20
+      },
+      "v2 collapsed": {
+        "estimate": 0.125,
+        "ci95": [
+          0.075,
+          0.175
+        ],
+        "denominator": 80.0,
+        "clusters": 20
+      },
+      "SFT warmup": {
+        "estimate": 0.4,
+        "ci95": [
+          0.225,
+          0.575
+        ],
+        "denominator": 80.0,
+        "clusters": 20
+      },
+      "GRPO best": {
+        "estimate": 0.7375,
+        "ci95": [
+          0.55,
+          0.9
+        ],
+        "denominator": 80.0,
+        "clusters": 20
+      },
+      "SFT full120": {
+        "estimate": 0.7375,
+        "ci95": [
+          0.5625,
+          0.8875
+        ],
+        "denominator": 80.0,
+        "clusters": 20
+      }
+    },
+    "abstain": {
+      "Base": {
+        "estimate": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "denominator": 60.0,
+        "clusters": 15
+      },
+      "v2 SFT15": {
+        "estimate": 0.38333333333333336,
+        "ci95": [
+          0.16666666666666666,
+          0.6
+        ],
+        "denominator": 60.0,
+        "clusters": 15
+      },
+      "v2 GRPO Stage1": {
+        "estimate": 0.5,
+        "ci95": [
+          0.26666666666666666,
+          0.7333333333333333
+        ],
+        "denominator": 60.0,
+        "clusters": 15
+      },
+      "v2 collapsed": {
+        "estimate": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "denominator": 60.0,
+        "clusters": 15
+      },
+      "SFT warmup": {
+        "estimate": 0.6333333333333333,
+        "ci95": [
+          0.4166666666666667,
+          0.8333333333333334
+        ],
+        "denominator": 60.0,
+        "clusters": 15
+      },
+      "GRPO best": {
+        "estimate": 0.6333333333333333,
+        "ci95": [
+          0.4166666666666667,
+          0.8333333333333334
+        ],
+        "denominator": 60.0,
+        "clusters": 15
+      },
+      "SFT full120": {
+        "estimate": 0.8166666666666667,
+        "ci95": [
+          0.7,
+          0.9166666666666666
+        ],
+        "denominator": 60.0,
+        "clusters": 15
+      }
+    }
+  },
+  "repo_style": {
+    "conflict": {
+      "Base": {
+        "estimate": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "denominator": 50.0,
+        "clusters": 13
+      },
+      "v2 SFT15": {
+        "estimate": 0.14,
+        "ci95": [
+          0.02040816326530612,
+          0.27450980392156865
+        ],
+        "denominator": 50.0,
+        "clusters": 13
+      },
+      "v2 GRPO Stage1": {
+        "estimate": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "denominator": 50.0,
+        "clusters": 13
+      },
+      "v2 collapsed": {
+        "estimate": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "denominator": 50.0,
+        "clusters": 13
+      },
+      "SFT warmup": {
+        "estimate": 0.72,
+        "ci95": [
+          0.47058823529411764,
+          0.9387755102040817
+        ],
+        "denominator": 50.0,
+        "clusters": 13
+      },
+      "GRPO best": {
+        "estimate": 0.74,
+        "ci95": [
+          0.5102040816326531,
+          0.9230769230769231
+        ],
+        "denominator": 50.0,
+        "clusters": 13
+      },
+      "SFT full120": {
+        "estimate": 0.66,
+        "ci95": [
+          0.40816326530612246,
+          0.8800588235294109
+        ],
+        "denominator": 50.0,
+        "clusters": 13
+      }
+    },
+    "incident": {
+      "Base": {
+        "estimate": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "denominator": 15.0,
+        "clusters": 4
+      },
+      "v2 SFT15": {
+        "estimate": 0.13333333333333333,
+        "ci95": [
+          0.0,
+          0.2857142857142857
+        ],
+        "denominator": 15.0,
+        "clusters": 4
+      },
+      "v2 GRPO Stage1": {
+        "estimate": 0.06666666666666667,
+        "ci95": [
+          0.0,
+          0.1875
+        ],
+        "denominator": 15.0,
+        "clusters": 4
+      },
+      "v2 collapsed": {
+        "estimate": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "denominator": 15.0,
+        "clusters": 4
+      },
+      "SFT warmup": {
+        "estimate": 0.6,
+        "ci95": [
+          0.1875,
+          0.9230769230769231
+        ],
+        "denominator": 15.0,
+        "clusters": 4
+      },
+      "GRPO best": {
+        "estimate": 0.5333333333333333,
+        "ci95": [
+          0.1875,
+          0.75
+        ],
+        "denominator": 15.0,
+        "clusters": 4
+      },
+      "SFT full120": {
+        "estimate": 0.9333333333333333,
+        "ci95": [
+          0.8125,
+          1.0
+        ],
+        "denominator": 15.0,
+        "clusters": 4
+      }
+    },
+    "consistent": {
+      "Base": {
+        "estimate": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "v2 SFT15": {
+        "estimate": 0.1,
+        "ci95": [
+          0.0,
+          0.2
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "v2 GRPO Stage1": {
+        "estimate": 0.9,
+        "ci95": [
+          0.7,
+          1.0
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "v2 collapsed": {
+        "estimate": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "SFT warmup": {
+        "estimate": 0.3,
+        "ci95": [
+          0.0,
+          0.7
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "GRPO best": {
+        "estimate": 0.75,
+        "ci95": [
+          0.35,
+          1.0
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      },
+      "SFT full120": {
+        "estimate": 0.85,
+        "ci95": [
+          0.65,
+          1.0
+        ],
+        "denominator": 20.0,
+        "clusters": 5
+      }
+    },
+    "abstain": {
+      "Base": {
+        "estimate": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "denominator": 15.0,
+        "clusters": 4
+      },
+      "v2 SFT15": {
+        "estimate": 0.3333333333333333,
+        "ci95": [
+          0.0,
+          0.625
+        ],
+        "denominator": 15.0,
+        "clusters": 4
+      },
+      "v2 GRPO Stage1": {
+        "estimate": 0.4666666666666667,
+        "ci95": [
+          0.0,
+          0.875
+        ],
+        "denominator": 15.0,
+        "clusters": 4
+      },
+      "v2 collapsed": {
+        "estimate": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "denominator": 15.0,
+        "clusters": 4
+      },
+      "SFT warmup": {
+        "estimate": 0.8666666666666667,
+        "ci95": [
+          0.5384615384615384,
+          1.0
+        ],
+        "denominator": 15.0,
+        "clusters": 4
+      },
+      "GRPO best": {
+        "estimate": 0.7333333333333333,
+        "ci95": [
+          0.42857142857142855,
+          1.0
+        ],
+        "denominator": 15.0,
+        "clusters": 4
+      },
+      "SFT full120": {
+        "estimate": 0.8,
+        "ci95": [
+          0.5714285714285714,
+          1.0
+        ],
+        "denominator": 15.0,
+        "clusters": 4
+      }
+    }
+  }
+}

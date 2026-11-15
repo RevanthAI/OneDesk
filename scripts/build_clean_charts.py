@@ -1,4 +1,4 @@
-"""Build four CPU-only publication figures from existing saved benchmark JSON."""
+"""Build CPU-only benchmark charts and static publication flow diagrams."""
 PROJECT_NAME = 'OneDesk'
 
 import os
@@ -9,7 +9,7 @@ import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-from matplotlib.patches import Patch
+from matplotlib.patches import Patch, FancyBboxPatch, FancyArrowPatch
 from clean_report_data import ROOT, summaries, rows, roi, fmt, protect, digest
 
 BASE = '#94a3b8'
@@ -51,6 +51,65 @@ def save(fig, name, metadata):
     fig.savefig(OUT / (name+'.svg'), dpi=300, bbox_inches='tight', pad_inches=.22)
     plt.close(fig)
     return dict(name=name, **metadata, png_sha256=digest(OUT/(name+'.png')), svg_sha256=digest(OUT/(name+'.svg')))
+
+
+def flow_box(ax, x, y, width, height, title, subtitle, color=SFT, dashed=False, title_size=14):
+    ax.add_patch(FancyBboxPatch((x,y),width,height,boxstyle='round,pad=0.009,rounding_size=0.018',
+                              facecolor=color+'12',edgecolor=color,linewidth=1.7,
+                              linestyle='--' if dashed else '-'))
+    ax.text(x+width/2,y+height*.66,title,ha='center',va='center',fontsize=title_size,weight='bold')
+    ax.text(x+width/2,y+height*.29,subtitle,ha='center',va='center',fontsize=12,color='#475569')
+
+
+def flow_arrow(ax, start, end, color='#64748b', dashed=False):
+    ax.add_patch(FancyArrowPatch(start,end,arrowstyle='-|>',mutation_scale=17,linewidth=1.6,
+                               color=color,linestyle='--' if dashed else '-',shrinkA=4,shrinkB=4))
+
+
+def workspace_diagram():
+    fig,ax=plt.subplots(figsize=(19,11));fig.subplots_adjust(top=.88,bottom=.10,left=.02,right=.99)
+    fig.suptitle(f'{PROJECT_NAME}: Unified 9-Server MCP Workspace',fontsize=23,weight='bold',y=.98)
+    fig.text(.5,.925,'One query · production-aware retrieval · real SQL and utility calculations · cited resolution',ha='center',fontsize=14)
+    ax.set(xlim=(0,1),ylim=(0,1));ax.axis('off')
+    flow_box(ax,.015,.46,.205,.16,'Employee Query','English / Hindi\nHinglish / Telugu',BASE)
+    flow_box(ax,.275,.46,.185,.16,PROJECT_NAME,'Tiny Aya Fire 3.35B',SFT,title_size=19)
+    flow_arrow(ax,(.22,.54),(.275,.54))
+    ax.plot([.465,.505],[.54,.54],color='#64748b',linewidth=1.6)
+    ax.plot([.505,.505],[.085,.91],color='#64748b',linewidth=1.4)
+    tools=[('notion-mcp','Runbooks & production scope'),('github-mcp','Merged PRs & changes'),
+           ('slack-mcp','Deployments & hotfixes'),('db-mcp','Read-only SQLite SELECT'),
+           ('time-mcp','Incident durations'),('unit-converter-mcp','kg ↔ lb · decimal GB ↔ MiB'),
+           ('math-mcp','Exact rounded costs')]
+    ys=[.91,.815,.72,.625,.53,.435,.34]
+    for (name,detail),y in zip(tools,ys):
+        flow_box(ax,.545,y-.036,.235,.072,name,detail,SFT,title_size=13)
+        flow_arrow(ax,(.505,y),(.542,y))
+        ax.plot([.79,.815],[y,y],color='#64748b',linewidth=1.3)
+    ax.plot([.815,.815],[.34,.91],color='#64748b',linewidth=1.3)
+    flow_arrow(ax,(.815,.54),(.85,.54),color=FINAL)
+    flow_box(ax,.855,.42,.13,.24,'Verified Answer','Citations\n+ Stale-Page Flag\n(or justified abstention)',FINAL,title_size=14)
+    for name,detail,y in [('weather-mcp','Routing distractor',.18),('calendar-mcp','Routing distractor',.085)]:
+        flow_box(ax,.545,y-.036,.235,.072,name,detail,BASE,dashed=True,title_size=13)
+        flow_arrow(ax,(.505,y),(.542,y),color=BASE,dashed=True)
+    fig.text(.05,.035,'Tool observations return to the agent before its next decision. Dashed tools test routing immunity; they do not support the verified answer.',fontsize=12)
+    return save(fig,'0_workspace_architecture',dict(type='static_flow_diagram',active_tools=7,routing_distractors=2))
+
+
+def toolkit_diagram():
+    fig,ax=plt.subplots(figsize=(19,6.5));fig.subplots_adjust(top=.82,bottom=.17,left=.02,right=.98)
+    fig.suptitle('End-to-End Lexsi Labs Toolkit Chain',fontsize=24,weight='bold',y=.96)
+    fig.text(.5,.87,'Facts-first data → protocol warmup and live reinforcement learning → measured agent quality',ha='center',fontsize=14)
+    ax.set(xlim=(0,1),ylim=(0,1));ax.axis('off')
+    nodes=[(.015,'Python Facts + Oracle','Deterministic gold answers\nExecuted tool trajectories',BASE),
+           (.265,'CuratorKIT 0.1.21','1,955 → 1,700 tasks\n255 exact duplicates removed',SFT),
+           (.515,'AgentTune 1.1.4','SFT Warmup +\nLive Multi-Turn GRPO',SFT),
+           (.765,'AuditKIT 1.1.7','580-Episode Outcome,\nCitation & Tool Evaluation',FINAL)]
+    for x,title,subtitle,color in nodes:
+        flow_box(ax,x,.28,.215,.43,title,subtitle,color,title_size=15)
+    for (x,*_), (next_x,*_) in zip(nodes,nodes[1:]):
+        flow_arrow(ax,(x+.225,.49),(next_x-.01,.49))
+    fig.text(.5,.075,'Frozen inputs, real multi-turn tool episodes, saved traces and 95% semantic-case bootstrap confidence intervals.',ha='center',fontsize=12)
+    return save(fig,'0_toolkit_pipeline',dict(type='static_flow_diagram',toolkits=['CuratorKIT 0.1.21','AgentTune 1.1.4','AuditKIT 1.1.7']))
 
 
 def headline(ss):
@@ -144,6 +203,8 @@ def main():
     assert ss['Final OneDesk · selected update 40']['test_synth']['metrics']['exact_outcome']['estimate']==.7575
     results=[headline(ss),multilingual(ss),journey(ss),cost()]
     (OUT/'CHART_DATA.json').write_text(json.dumps(dict(project=PROJECT_NAME,dpi=300,source='Existing saved JSON only; no inference',charts=results),indent=2)+'\n')
-    protect();print(json.dumps({'project':PROJECT_NAME,'charts':4,'png':4,'svg':4,'dpi':300,'output':str(OUT)}))
+    diagrams=[workspace_diagram(),toolkit_diagram()]
+    (OUT/'DIAGRAM_DATA.json').write_text(json.dumps(dict(project=PROJECT_NAME,dpi=300,diagrams=diagrams),indent=2)+'\n')
+    protect();print(json.dumps({'project':PROJECT_NAME,'charts':4,'diagrams':2,'png':6,'svg':6,'dpi':300,'output':str(OUT)}))
 
 if __name__=='__main__':main()

@@ -49,8 +49,8 @@ def ci(metric, places=2):
     return f"{percent(metric['estimate'], places)} [{percent(metric['ci95'][0], places)}, {percent(metric['ci95'][1], places)}]"
 
 def table(headers, values):
-    return '\n|' + '|'.join(headers) + '|\n|' + '|'.join(['---'] * len(headers)) + '|\n' + ''.join(
-        '|' + '|'.join(str(v).replace('|', '\\|').replace('\n', '<br>') for v in row) + '|\n' for row in values) + '\n'
+    return '\n| ' + ' | '.join(headers) + ' |\n| ' + ' | '.join(['---'] * len(headers)) + ' |\n' + ''.join(
+        '| ' + ' | '.join(str(v).replace('|', '\\|').replace('\n', '<br>') for v in row) + ' |\n' for row in values) + '\n'
 
 def summaries():
     return {name: read(Path(folder) / 'summary.json') for name, folder in FOLDERS.items()}

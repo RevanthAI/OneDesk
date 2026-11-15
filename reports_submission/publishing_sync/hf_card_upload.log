@@ -1,0 +1,21 @@
+{"event": "card_uploaded", "repo": "Revanth-ml/onedesk-tiny-aya-fire-sft", "commit": "eddae9f4f8aed8670fd4ecd14353089d488c94b8"}
+{"event": "card_uploaded", "repo": "Revanth-ml/onedesk-tiny-aya-fire-sft-merged", "commit": "78c95db2eceddc9bcd70b6f82dba951349525c15"}
+{"event": "card_uploaded", "repo": "Revanth-ml/onedesk-tiny-aya-fire-grpo-pilot", "commit": "db4176a9734930760cf92dc97b09c45dae7b9f3c"}
+{"event": "card_uploaded", "repo": "Revanth-ml/onedesk-tiny-aya-fire-v2-sft", "commit": "9a154315a0a73882cb75c4b085fcb264c436ff28"}
+{"event": "card_uploaded", "repo": "Revanth-ml/onedesk-tiny-aya-fire-v2-grpo", "commit": "4010f0a46b42f61420a9b7922ac5c3101ad0d90e"}
+{"event": "card_uploaded", "repo": "Revanth-ml/onedesk-tiny-aya-fire-v2-1-sft", "commit": "68ac6dc3e78d8907036152807dab6ee765fb7af9"}
+{"event": "card_uploaded", "repo": "Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-sft", "commit": "a204a41f3e6b69d83c3951fca5b653dbbdd4c592"}
+{"event": "card_uploaded", "repo": "Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val", "commit": "dd1936b148a09a3397d691551e3ccba96e0ed0f6"}
+{"event": "card_uploaded", "repo": "Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-final", "commit": "ba91fca45e5d7932e2fcf0828c2776b5690221fb"}
+{"event": "card_uploaded", "repo": "Revanth-ml/onedesk-mcp-v2-data", "commit": "ef7662395b1d64a1a8e5bb0d732e6b951a61d272"}
+{"event": "card_uploaded", "repo": "Revanth-ml/onedesk-mcp-warmup-runs", "commit": "d38f5d2e25c1355fb56ab4583bb010ae9f963235"}
+{"event": "card_uploaded", "repo": "Revanth-ml/onedesk-mcp-v2-runs", "commit": "1c040f2017f5e3f46fe87507c2dfe8b0a1c7cbe9"}
+{"event": "card_uploaded", "repo": "Revanth-ml/onedesk-mcp-v2-1-runs", "commit": "3a6ff92e11185ff721601906753c5e8f0cf1024d"}
+{"event": "card_uploaded", "repo": "Revanth-ml/onedesk-mcp-training-runs", "commit": "7e4dcc16ce4c147cf243813ca49064a0cefc7b08"}
+{"event": "card_uploaded", "repo": "Revanth-ml/onedesk-mcp-grpo-runs", "commit": "c6fe69971061d895edd413e3101d8f7e709dcd18"}
+{
+  "complete": true,
+  "cards_uploaded": 15,
+  "renamed": false,
+  "visibility_changed": false
+}

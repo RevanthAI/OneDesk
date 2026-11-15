@@ -1,0 +1,98 @@
+{
+  "stage1": {
+    "attempted_groups": 153,
+    "accepted_groups": 120,
+    "skipped_groups": 33,
+    "acceptance_rate": 0.7843137254901961,
+    "kind_fallback_events": 0,
+    "sampling_temperatures": {
+      "0.8": 153
+    },
+    "mean_attempted_reward": -0.1235457546181149,
+    "skipped_outcome_composition": {
+      "all_outcomes_wrong": 25,
+      "all_outcomes_correct": 8
+    },
+    "skipped_uniform_rewards": {
+      "-0.8": 1,
+      "1": 8,
+      "-0.2": 24
+    },
+    "attempted_by_kind": {
+      "consistent": 32,
+      "incident": 45,
+      "conflict": 38,
+      "abstain": 38
+    },
+    "accepted_by_kind": {
+      "consistent": 30,
+      "incident": 30,
+      "conflict": 30,
+      "abstain": 30
+    },
+    "final_sampler": {
+      "accepted": 120,
+      "accepted_by_kind": {
+        "consistent": 30,
+        "incident": 30,
+        "conflict": 30,
+        "abstain": 30
+      },
+      "saturated": [],
+      "draws": {
+        "consistent": 32,
+        "incident": 45,
+        "conflict": 38,
+        "abstain": 38
+      }
+    }
+  },
+  "stage2": {
+    "attempted_groups": 655,
+    "accepted_groups": 220,
+    "skipped_groups": 435,
+    "acceptance_rate": 0.33587786259541985,
+    "kind_fallback_events": 0,
+    "sampling_temperatures": {
+      "0.8": 648,
+      "0.95": 7
+    },
+    "mean_attempted_reward": 0.1962251905971811,
+    "skipped_outcome_composition": {
+      "all_outcomes_wrong": 253,
+      "all_outcomes_correct": 182
+    },
+    "skipped_uniform_rewards": {
+      "-0.2": 253,
+      "1": 182
+    },
+    "attempted_by_kind": {
+      "consistent": 85,
+      "incident": 233,
+      "conflict": 98,
+      "abstain": 239
+    },
+    "accepted_by_kind": {
+      "consistent": 55,
+      "incident": 55,
+      "conflict": 55,
+      "abstain": 55
+    },
+    "final_sampler": {
+      "accepted": 220,
+      "accepted_by_kind": {
+        "consistent": 55,
+        "incident": 55,
+        "conflict": 55,
+        "abstain": 55
+      },
+      "saturated": [],
+      "draws": {
+        "consistent": 85,
+        "incident": 233,
+        "conflict": 98,
+        "abstain": 239
+      }
+    }
+  }
+}

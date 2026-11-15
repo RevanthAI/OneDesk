@@ -1,0 +1,811 @@
+{
+  "test_synth": {
+    "n": 400,
+    "correct": 2,
+    "breakdowns": {
+      "kind": {
+        "conflict": {
+          "n": 200,
+          "correct": 2,
+          "format_valid": 156,
+          "chain_compliant": 0
+        },
+        "incident": {
+          "n": 60,
+          "correct": 0,
+          "format_valid": 19,
+          "chain_compliant": 0
+        },
+        "abstain": {
+          "n": 60,
+          "correct": 0,
+          "format_valid": 39,
+          "chain_compliant": 0
+        },
+        "consistent": {
+          "n": 80,
+          "correct": 0,
+          "format_valid": 62,
+          "chain_compliant": 0
+        }
+      },
+      "language": {
+        "en": {
+          "n": 100,
+          "correct": 0,
+          "format_valid": 79,
+          "chain_compliant": 0
+        },
+        "hi": {
+          "n": 100,
+          "correct": 0,
+          "format_valid": 49,
+          "chain_compliant": 0
+        },
+        "hinglish": {
+          "n": 100,
+          "correct": 0,
+          "format_valid": 87,
+          "chain_compliant": 0
+        },
+        "te": {
+          "n": 100,
+          "correct": 2,
+          "format_valid": 61,
+          "chain_compliant": 0
+        }
+      },
+      "incident_subtype": {
+        "sla_penalty": {
+          "n": 16,
+          "correct": 0,
+          "format_valid": 5,
+          "chain_compliant": 0
+        },
+        "config_audit": {
+          "n": 16,
+          "correct": 0,
+          "format_valid": 7,
+          "chain_compliant": 0
+        },
+        "payload_lb": {
+          "n": 16,
+          "correct": 0,
+          "format_valid": 4,
+          "chain_compliant": 0
+        },
+        "payload_mib": {
+          "n": 12,
+          "correct": 0,
+          "format_valid": 3,
+          "chain_compliant": 0
+        }
+      }
+    },
+    "error_flags": {
+      "wrong_value": 274,
+      "invalid_final_format": 124,
+      "wrong_status": 121,
+      "returned_stale_value": 1
+    },
+    "examples": [
+      {
+        "task_id": "holdout_synth-0000-en",
+        "kind": "conflict",
+        "language": "en",
+        "expected_status": "conflict_resolved",
+        "gold_value": 3836,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": 100,
+          "cites": [
+            "production_incidents:incident_id=12345,service_name=statement-worker,environment=production"
+          ],
+          "stale_source": "notion-mcp/search_notion?query=statement-worker+rate_limit_rpm"
+        },
+        "flags": [
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\n  \"status\": \"conflict_resolved\",\n  \"value\": 100,\n  \"cites\": [\"production_incidents:incident_id=12345,service_name=statement-worker,environment=production\"],\n  \"stale_source\": \"notion-mcp/search_notion?query=statement-worker+rate_limit_rpm\"\n}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0000-hi",
+        "kind": "conflict",
+        "language": "hi",
+        "expected_status": "conflict_resolved",
+        "gold_value": 3836,
+        "prediction": {},
+        "flags": [
+          "invalid_final_format"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\"status\":\"answered\",\"value\":\"rate_limit_rpm=100\",\"cites\":[\"db-mcp:schema:production_incidents\",\"db-mcp:schema:microservices\",\"db-mcp:schema:unit-converter-mcp\",\"db-mcp:schema:math-mcp\",\"db-mcp:schema:search_notion\",\"db-mcp:schema:search_github_prs\",\"db-mcp:schema:search_slack\",\"db-mcp:schema:query_db\",\"db-mcp:schema:inspect_schema\",\"db-mcp:schema:time-mcp\"]}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0000-hinglish",
+        "kind": "conflict",
+        "language": "hinglish",
+        "expected_status": "conflict_resolved",
+        "gold_value": 3836,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": "rate_limit_rpm superseded",
+          "cites": [
+            "operational_docs",
+            "release_trail"
+          ],
+          "stale_source": "operational_docs"
+        },
+        "flags": [
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\n  \"status\": \"conflict_resolved\",\n  \"value\": \"rate_limit_rpm superseded\",\n  \"cites\": [\n    \"operational_docs\",\n    \"release_trail\"\n  ],\n  \"stale_source\": \"operational_docs\"\n}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0000-te",
+        "kind": "conflict",
+        "language": "te",
+        "expected_status": "conflict_resolved",
+        "gold_value": 3836,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": "rate_limit_rpm=1000 RPM",
+          "cites": [
+            "production_incidents#service-worker#environment#rate_limit_rpm"
+          ],
+          "stale_source": "notion-mcp#production_rate_limit#service-worker#environment"
+        },
+        "flags": [
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\"status\":\"conflict_resolved\",\"value\":\"rate_limit_rpm=1000 RPM\",\"cites\":[\"production_incidents#service-worker#environment#rate_limit_rpm\"],\"stale_source\":\"notion-mcp#production_rate_limit#service-worker#environment\"}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0001-en",
+        "kind": "incident",
+        "language": "en",
+        "expected_status": "answered",
+        "gold_value": 15.0,
+        "prediction": {
+          "status": "answered",
+          "value": "$1,200.00",
+          "cites": [
+            "production_incidents(incident_id='INC-V2-TS-000',environment='production')",
+            "unit-converter-mcp(convert_unit(value=1,from_unit='hour',to_unit='day'))",
+            "math-mcp(calculate(expression='1200 * 1'))"
+          ],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\"status\":\"answered\",\"value\":\"$1,200.00\",\"cites\":[\"production_incidents(incident_id='INC-V2-TS-000',environment='production')\",\"unit-converter-mcp(convert_unit(value=1,from_unit='hour',to_unit='day'))\",\"math-mcp(calculate(expression='1200 * 1'))\"],\"stale_source\":null}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0001-hi",
+        "kind": "incident",
+        "language": "hi",
+        "expected_status": "answered",
+        "gold_value": 15.0,
+        "prediction": {},
+        "flags": [
+          "invalid_final_format"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\"status\":\"answered\",\"value\":\"$0.00\",\"cites\":[\"INC-V2-TS-000\",\"production_incidents\",\"service_name=incident management\",\"environment=production\"]}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0001-hinglish",
+        "kind": "incident",
+        "language": "hinglish",
+        "expected_status": "answered",
+        "gold_value": 15.0,
+        "prediction": {},
+        "flags": [
+          "invalid_final_format"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\"status\":\"answered\",\"value\":\"$0.00\",\"cites\":[\"production_incidents\",\"service_name=incident management\",\"environment=production\",\"started_at=2023-10-26T10:00:00Z\",\"resolved_at=2023-10-26T11:00:00Z\",\"data_spill_gb=0\",\"recovery_cost_per_lb=0\",\"recovery_cost_per_mib=0\"]}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0001-te",
+        "kind": "incident",
+        "language": "te",
+        "expected_status": "answered",
+        "gold_value": 15.0,
+        "prediction": {},
+        "flags": [
+          "invalid_final_format"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\"status\":\"answered\",\"value\":\"$0.00\",\"cites\":[\"INC-V2-TS-000\",\"service_name:incident-service\",\"environment:production\",\"last_pr\":\"2023-11-15T14:30:00Z\",\"evidence_id\":\"ev-123\"]}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0002-en",
+        "kind": "abstain",
+        "language": "en",
+        "expected_status": "abstain",
+        "gold_value": null,
+        "prediction": {},
+        "flags": [
+          "invalid_final_format"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\"status\":\"conflict_resolved\",\"value\":\"Circuit Breaker: 80%\",\"cites\":[\"db-mcp:service:microservices\",\"db-mcp:schema:production_incidents\",\"db-mcp:schema:microservices\",\"db-mcp:schema:production_incidents\",\"db-mcp:schema:microservices\",\"db-mcp:schema:production_incidents\"]}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0002-hi",
+        "kind": "abstain",
+        "language": "hi",
+        "expected_status": "abstain",
+        "gold_value": null,
+        "prediction": {},
+        "flags": [
+          "invalid_final_format"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\"status\":\"conflict_resolved\",\"value\":42,\"cites\":[\"crypto-hedger_circuit_breaker_pct\"], \"stale_source\":[\"notion-mcp\"]}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0002-hinglish",
+        "kind": "abstain",
+        "language": "hinglish",
+        "expected_status": "abstain",
+        "gold_value": null,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": "circuit_breaker_pct ka value database evidence se aane wala hai",
+          "cites": [
+            "crypto-hedger",
+            "circuit_breaker_pct"
+          ],
+          "stale_source": "database disconnected ya service absent ho toh decline karna"
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\n  \"status\": \"conflict_resolved\",\n  \"value\": \"circuit_breaker_pct ka value database evidence se aane wala hai\",\n  \"cites\": [\"crypto-hedger\", \"circuit_breaker_pct\"],\n  \"stale_source\": \"database disconnected ya service absent ho toh decline karna\"\n}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0002-te",
+        "kind": "abstain",
+        "language": "te",
+        "expected_status": "abstain",
+        "gold_value": null,
+        "prediction": {
+          "status": "answered",
+          "value": 68.0,
+          "cites": [
+            "crypto-hedger_circuit_breaker_pct"
+          ],
+          "stale_source": null
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\"status\":\"answered\",\"value\":68.0,\"cites\":[\"crypto-hedger_circuit_breaker_pct\"], \"stale_source\":null}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0003-en",
+        "kind": "incident",
+        "language": "en",
+        "expected_status": "answered",
+        "gold_value": 2,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": 3,
+          "cites": [
+            "production_incidents(incident_id=INC-V2-TS-001, environment=production)"
+          ],
+          "stale_source": "notion-mcp/search_notion?query=component+max_retries+production"
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\n  \"status\": \"conflict_resolved\",\n  \"value\": 3,\n  \"cites\": [\"production_incidents(incident_id=INC-V2-TS-001, environment=production)\"],\n  \"stale_source\": \"notion-mcp/search_notion?query=component+max_retries+production\"\n}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0003-hi",
+        "kind": "incident",
+        "language": "hi",
+        "expected_status": "answered",
+        "gold_value": 2,
+        "prediction": {},
+        "flags": [
+          "invalid_final_format"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\"status\":\"answered\",\"value\":\"max_retries=3\",\"cites\":[\"INC-V2-TS-001\",\"production_incidents\",\"db-mcp:query_db\",\"db-mcp:inspect_schema\"]}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0003-hinglish",
+        "kind": "incident",
+        "language": "hinglish",
+        "expected_status": "answered",
+        "gold_value": 2,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": "max_retries = 3",
+          "cites": [
+            "operational_docs_max_retries"
+          ],
+          "stale_source": "notion-mcp"
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\n  \"status\": \"conflict_resolved\",\n  \"value\": \"max_retries = 3\",\n  \"cites\": [\"operational_docs_max_retries\"],\n  \"stale_source\": \"notion-mcp\"\n}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_synth-0003-te",
+        "kind": "incident",
+        "language": "te",
+        "expected_status": "answered",
+        "gold_value": 2,
+        "prediction": {},
+        "flags": [
+          "invalid_final_format"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\"status\":\"answered\",\"value\":\"max_retries=3\",\"cites\":[\"INC-V2-TS-001\",\"production schema: microservices (timeout_sec INTEGER, max_retries INTEGER)\"]}\n</final_answer>"
+        ]
+      }
+    ]
+  },
+  "repo_style": {
+    "n": 100,
+    "correct": 0,
+    "breakdowns": {
+      "kind": {
+        "consistent": {
+          "n": 20,
+          "correct": 0,
+          "format_valid": 17,
+          "chain_compliant": 0
+        },
+        "abstain": {
+          "n": 15,
+          "correct": 0,
+          "format_valid": 12,
+          "chain_compliant": 0
+        },
+        "conflict": {
+          "n": 50,
+          "correct": 0,
+          "format_valid": 41,
+          "chain_compliant": 0
+        },
+        "incident": {
+          "n": 15,
+          "correct": 0,
+          "format_valid": 4,
+          "chain_compliant": 0
+        }
+      },
+      "language": {
+        "en": {
+          "n": 25,
+          "correct": 0,
+          "format_valid": 21,
+          "chain_compliant": 0
+        },
+        "hi": {
+          "n": 25,
+          "correct": 0,
+          "format_valid": 12,
+          "chain_compliant": 0
+        },
+        "hinglish": {
+          "n": 25,
+          "correct": 0,
+          "format_valid": 23,
+          "chain_compliant": 0
+        },
+        "te": {
+          "n": 25,
+          "correct": 0,
+          "format_valid": 18,
+          "chain_compliant": 0
+        }
+      },
+      "incident_subtype": {
+        "sla_penalty": {
+          "n": 4,
+          "correct": 0,
+          "format_valid": 1,
+          "chain_compliant": 0
+        },
+        "config_audit": {
+          "n": 4,
+          "correct": 0,
+          "format_valid": 2,
+          "chain_compliant": 0
+        },
+        "payload_lb": {
+          "n": 4,
+          "correct": 0,
+          "format_valid": 0,
+          "chain_compliant": 0
+        },
+        "payload_mib": {
+          "n": 3,
+          "correct": 0,
+          "format_valid": 1,
+          "chain_compliant": 0
+        }
+      }
+    },
+    "error_flags": {
+      "wrong_status": 34,
+      "wrong_value": 74,
+      "invalid_final_format": 26,
+      "returned_stale_value": 3
+    },
+    "examples": [
+      {
+        "task_id": "holdout_repo_style-0000-en",
+        "kind": "consistent",
+        "language": "en",
+        "expected_status": "answered",
+        "gold_value": 33,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": 30,
+          "cites": [
+            "https://docs.pydantic.dev/latest/usage/pydantic_validator/#timeout"
+          ],
+          "stale_source": "https://docs.pydantic.dev/latest/usage/pydantic_validator/#timeout"
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\n  \"status\": \"conflict_resolved\",\n  \"value\": 30,\n  \"cites\": [\"https://docs.pydantic.dev/latest/usage/pydantic_validator/#timeout\"],\n  \"stale_source\": \"https://docs.pydantic.dev/latest/usage/pydantic_validator/#timeout\"\n}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0000-hi",
+        "kind": "consistent",
+        "language": "hi",
+        "expected_status": "answered",
+        "gold_value": 33,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": 30,
+          "cites": [
+            "production timeout_sec: 30s (documented in deployment evidence)"
+          ],
+          "stale_source": "notion-mcp"
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\n  \"status\": \"conflict_resolved\",\n  \"value\": 30,\n  \"cites\": [\"production timeout_sec: 30s (documented in deployment evidence)\"],\n  \"stale_source\": \"notion-mcp\"\n}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0000-hinglish",
+        "kind": "consistent",
+        "language": "hinglish",
+        "expected_status": "answered",
+        "gold_value": 33,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": "timeout_sec superseded by operational docs",
+          "cites": [
+            "operational_docs"
+          ],
+          "stale_source": "release_trail"
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\n  \"status\": \"conflict_resolved\",\n  \"value\": \"timeout_sec superseded by operational docs\",\n  \"cites\": [\"operational_docs\"],\n  \"stale_source\": \"release_trail\"\n}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0000-te",
+        "kind": "consistent",
+        "language": "te",
+        "expected_status": "answered",
+        "gold_value": 33,
+        "prediction": {},
+        "flags": [
+          "invalid_final_format"
+        ],
+        "raw_turns": [
+          "```json\n<final_answer>\n  {\"status\":\"conflict_resolved\",\"value\":600,\"cites\":[\"production timeout_sec 600\"], \"stale_source\":\"notion-mcp\"}\n</final_answer>\n"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0001-en",
+        "kind": "abstain",
+        "language": "en",
+        "expected_status": "abstain",
+        "gold_value": null,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": 50,
+          "cites": [
+            "active_services.circuit_breaker_pct"
+          ],
+          "stale_source": "notion-mcp"
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\n  \"status\": \"conflict_resolved\",\n  \"value\": 50,\n  \"cites\": [\"active_services.circuit_breaker_pct\"],\n  \"stale_source\": \"notion-mcp\"\n}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0001-hi",
+        "kind": "abstain",
+        "language": "hi",
+        "expected_status": "abstain",
+        "gold_value": null,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": "Circuit Breaker Percentage: 0%",
+          "cites": [
+            "asgi-hedger.circuit_breaker_pct"
+          ],
+          "stale_source": "notion-mcp/search_notion"
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\"status\":\"conflict_resolved\",\"value\":\"Circuit Breaker Percentage: 0%\",\"cites\":[\"asgi-hedger.circuit_breaker_pct\"], \"stale_source\": \"notion-mcp/search_notion\"}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0001-hinglish",
+        "kind": "abstain",
+        "language": "hinglish",
+        "expected_status": "abstain",
+        "gold_value": null,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": "Circuit_breaker_pct: 50%",
+          "cites": [
+            "asgi-hedger"
+          ],
+          "stale_source": "notion-mcp"
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\n  \"status\": \"conflict_resolved\",\n  \"value\": \"Circuit_breaker_pct: 50%\",\n  \"cites\": [\"asgi-hedger\"],\n  \"stale_source\": \"notion-mcp\"\n}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0001-te",
+        "kind": "abstain",
+        "language": "te",
+        "expected_status": "abstain",
+        "gold_value": null,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": "circuit_breaker_pct=80",
+          "cites": [
+            "asgi-hedger_circuit_breaker_pct"
+          ],
+          "stale_source": "notion-mcp"
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\"status\":\"conflict_resolved\",\"value\":\"circuit_breaker_pct=80\",\"cites\":[\"asgi-hedger_circuit_breaker_pct\"], \"stale_source\":\"notion-mcp\"}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0002-en",
+        "kind": "conflict",
+        "language": "en",
+        "expected_status": "conflict_resolved",
+        "gold_value": 57,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": 50,
+          "cites": [
+            "production_incidents",
+            "rq-job-worker",
+            "circuit_breaker_pct"
+          ],
+          "stale_source": "notion-mcp/search_notion?query=rq-job-worker+circuit_breaker_pct"
+        },
+        "flags": [
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\n  \"status\": \"conflict_resolved\",\n  \"value\": 50,\n  \"cites\": [\"production_incidents\", \"rq-job-worker\", \"circuit_breaker_pct\"],\n  \"stale_source\": \"notion-mcp/search_notion?query=rq-job-worker+circuit_breaker_pct\"\n}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0002-hi",
+        "kind": "conflict",
+        "language": "hi",
+        "expected_status": "conflict_resolved",
+        "gold_value": 57,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": 50,
+          "cites": [
+            "production_incidents",
+            "rq-job-worker"
+          ],
+          "stale_source": "notion-mcp"
+        },
+        "flags": [
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\n  \"status\": \"conflict_resolved\",\n  \"value\": 50,\n  \"cites\": [\"production_incidents\", \"rq-job-worker\"],\n  \"stale_source\": \"notion-mcp\"\n}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0002-hinglish",
+        "kind": "conflict",
+        "language": "hinglish",
+        "expected_status": "conflict_resolved",
+        "gold_value": 57,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": 50,
+          "cites": [
+            "https://example.com/operationaldocs#circuit-breaker-pct"
+          ],
+          "stale_source": "https://example.com/release-trail#circuit-breaker-pct"
+        },
+        "flags": [
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\n  \"status\": \"conflict_resolved\",\n  \"value\": 50,\n  \"cites\": [\"https://example.com/operationaldocs#circuit-breaker-pct\"],\n  \"stale_source\": \"https://example.com/release-trail#circuit-breaker-pct\"\n}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0002-te",
+        "kind": "conflict",
+        "language": "te",
+        "expected_status": "conflict_resolved",
+        "gold_value": 57,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": "Circuit Breaker Percentage: 50%",
+          "cites": [
+            "production_incidents#service_name=rq-job-worker",
+            "schemas#service_name=rq-job-worker",
+            "documentation#page=circuit_breaker_pct"
+          ],
+          "stale_source": "notion-mcp#page=circuit_breaker_pct"
+        },
+        "flags": [
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\"status\":\"conflict_resolved\",\"value\":\"Circuit Breaker Percentage: 50%\",\"cites\":[\"production_incidents#service_name=rq-job-worker\",\"schemas#service_name=rq-job-worker\",\"documentation#page=circuit_breaker_pct\"],\"stale_source\":\"notion-mcp#page=circuit_breaker_pct\"}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0003-en",
+        "kind": "consistent",
+        "language": "en",
+        "expected_status": "answered",
+        "gold_value": 30,
+        "prediction": {},
+        "flags": [
+          "invalid_final_format"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\n  \"status\": \"conflict_resolved\",\n  \"value\": {\n    \"sla_hours\": 1,\n    \"documentation_update\": \"falcon-api-middleware documentation has been updated to reflect an SLA of 1 hour, superseding previous documentation that listed 5 hours.\"\n  },\n  \"cites\": [\n    \"falcon-api-middleware documentation update (2023-10-27)\"\n  ],\n  \"stale_source\": \"previous documentation (5 hours SLA)\"\n}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0003-hi",
+        "kind": "consistent",
+        "language": "hi",
+        "expected_status": "answered",
+        "gold_value": 30,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": "falcon-api-middleware",
+          "cites": [
+            "production_sla_hours"
+          ],
+          "stale_source": "notion-mcp"
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\n  \"status\": \"conflict_resolved\",\n  \"value\": \"falcon-api-middleware\",\n  \"cites\": [\"production_sla_hours\"],\n  \"stale_source\": \"notion-mcp\"\n}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0003-hinglish",
+        "kind": "consistent",
+        "language": "hinglish",
+        "expected_status": "answered",
+        "gold_value": 30,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": "falcon-api-middleware",
+          "cites": [
+            "production_review"
+          ],
+          "stale_source": "release_evidence"
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\n  \"status\": \"conflict_resolved\",\n  \"value\": \"falcon-api-middleware\",\n  \"cites\": [\"production_review\"],\n  \"stale_source\": \"release_evidence\"\n}\n</final_answer>"
+        ]
+      },
+      {
+        "task_id": "holdout_repo_style-0003-te",
+        "kind": "consistent",
+        "language": "te",
+        "expected_status": "answered",
+        "gold_value": 30,
+        "prediction": {
+          "status": "conflict_resolved",
+          "value": "falcon-api-middleware",
+          "cites": [
+            "production sla_hours nirdhaarinchandi"
+          ],
+          "stale_source": "notion-mcp"
+        },
+        "flags": [
+          "wrong_status",
+          "wrong_value"
+        ],
+        "raw_turns": [
+          "<final_answer>\n{\n  \"status\": \"conflict_resolved\",\n  \"value\": \"falcon-api-middleware\",\n  \"cites\": [\"production sla_hours nirdhaarinchandi\"],\n  \"stale_source\": \"notion-mcp\"\n}\n</final_answer>"
+        ]
+      }
+    ]
+  }
+}

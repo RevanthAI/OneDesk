@@ -13,10 +13,12 @@ from PIL import Image
 from clean_report_data import ROOT, protect, digest
 import prepare_hf_repos as publisher
 import build_clean_report
+from publication_markdown import MODEL_COLLECTION_URL, DATA_COLLECTION_URL
 
 
 def main():
     protect();cards=publisher.CARDS;plan=json.loads((cards/'PLAN.json').read_text())
+    saved_receipts={name:(cards/name).read_bytes() if (cards/name).exists() else None for name in ['PUBLISH_RECEIPT.json','PUBLISH_PROGRESS.json']}
     assert (plan['models'],plan['datasets'])==(9,6)
     assert len(plan['repositories'])==15
     snippets=0
@@ -40,7 +42,9 @@ def main():
     report=(ROOT/'REPORT.md').read_text()
     assert report.startswith('# OneDesk:') and 'SangamKB' not in report
     assert [int(x) for x in re.findall(r'^## (\d+)\.',report,re.M)]==list(range(1,11))
-    assert 'targets, not measured results' in report and 'pending `--publish`' in report
+    assert 'targets, not measured results' in report
+    assert MODEL_COLLECTION_URL in report and DATA_COLLECTION_URL in report
+    assert 'pending `--publish`' not in report and '```mermaid' not in report
     assert '**CC-BY-4.0**' in report and '**Apache-2.0**' in report
     chart=json.loads((ROOT/'figures/CHART_DATA.json').read_text())['charts'][1]['values']
     for split,expected in [('test_synth',[77.,76.,66.,71.]),('repo_style',[64.,64.,64.,64.])]:
@@ -94,11 +98,12 @@ def main():
             assert result['complete'] and len(calls)>0
             counts={key:sum(c[0]==key for c in calls) for key in ['read','upload','move','public','collection','item']}
             assert counts['upload']==15 and counts['public']==15 and counts['collection']==2 and counts['item']==15
-            assert counts['move']==(15 if rename else 0)
+            assert counts['move']==sum(r['repo_id']!=r['target_repo_id'] for r in simulated['repositories'])
             assert max(i for i,c in enumerate(calls) if c[0]=='read')<min(i for i,c in enumerate(calls) if c[0]=='upload')
             mutation_checks.append(dict(mocked=True,rename=rename,counts=counts))
-    assert not (cards/'PUBLISH_RECEIPT.json').exists(),'Unexpected real publication receipt'
-    assert not (cards/'PUBLISH_PROGRESS.json').exists(),'Unexpected real publication progress'
+    for name,expected in saved_receipts.items():
+        actual=(cards/name).read_bytes() if (cards/name).exists() else None
+        assert actual==expected,'Real publication receipt changed during mocked checks'
     assert digest('REPORT.md')==json.loads((ROOT/'reports_submission/clean_assets/REPORT_METADATA.json').read_text())['sha256']
     protect()
     result=dict(cards=15,model_cards=9,dataset_cards=6,python_snippets_parsed=snippets,yaml_valid=True,charts=figures,

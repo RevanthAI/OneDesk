@@ -1,0 +1,113 @@
+{
+  "updated_at": "2026-11-15T09:34:26.949286+00:00",
+  "complete": true,
+  "cards": [
+    {
+      "repo_id": "Revanth-ml/onedesk-tiny-aya-fire-sft",
+      "repo_type": "model",
+      "commit": "eddae9f4f8aed8670fd4ecd14353089d488c94b8",
+      "card_sha256": "9bdcc46a31df88fe898e77497bc36462c773c7cdc9d04772e535c1e0c15d0c82",
+      "verified": true
+    },
+    {
+      "repo_id": "Revanth-ml/onedesk-tiny-aya-fire-sft-merged",
+      "repo_type": "model",
+      "commit": "78c95db2eceddc9bcd70b6f82dba951349525c15",
+      "card_sha256": "0972216dd3758a5afeaf28cbfe4e4ecde69d510c1704fecde17cef1b8d119edb",
+      "verified": true
+    },
+    {
+      "repo_id": "Revanth-ml/onedesk-tiny-aya-fire-grpo-pilot",
+      "repo_type": "model",
+      "commit": "db4176a9734930760cf92dc97b09c45dae7b9f3c",
+      "card_sha256": "e8f34a580a5aee0767dd164ec5823da055b0084c4479c4ec8addfc7e39874f9f",
+      "verified": true
+    },
+    {
+      "repo_id": "Revanth-ml/onedesk-tiny-aya-fire-v2-sft",
+      "repo_type": "model",
+      "commit": "9a154315a0a73882cb75c4b085fcb264c436ff28",
+      "card_sha256": "c629bc6428bef48ba40657e3d4645c3beee7463c9e4db1f7cba1f3469821f384",
+      "verified": true
+    },
+    {
+      "repo_id": "Revanth-ml/onedesk-tiny-aya-fire-v2-grpo",
+      "repo_type": "model",
+      "commit": "4010f0a46b42f61420a9b7922ac5c3101ad0d90e",
+      "card_sha256": "53e0c96b2fe6cd34f8247b10d3487de6aea8014a0115e3babab6cfd4c6cf6d64",
+      "verified": true
+    },
+    {
+      "repo_id": "Revanth-ml/onedesk-tiny-aya-fire-v2-1-sft",
+      "repo_type": "model",
+      "commit": "68ac6dc3e78d8907036152807dab6ee765fb7af9",
+      "card_sha256": "ebc0144644e9f3335c6661f82858f27e9b1e7a89df5793785ff8f6d54cc9a807",
+      "verified": true
+    },
+    {
+      "repo_id": "Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-sft",
+      "repo_type": "model",
+      "commit": "a204a41f3e6b69d83c3951fca5b653dbbdd4c592",
+      "card_sha256": "7ba685ffc73ec410cacef54946a9e1d5436a8dc3b3d8af46f6c6dbf216f5553c",
+      "verified": true
+    },
+    {
+      "repo_id": "Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val",
+      "repo_type": "model",
+      "commit": "dd1936b148a09a3397d691551e3ccba96e0ed0f6",
+      "card_sha256": "1d264351d2f663f6d9a67290d68e0f70bb7ae315d929ae3d4940b2b713041924",
+      "verified": true
+    },
+    {
+      "repo_id": "Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-final",
+      "repo_type": "model",
+      "commit": "ba91fca45e5d7932e2fcf0828c2776b5690221fb",
+      "card_sha256": "2eec6f2dfb6cecf7dbe022b2939cbd41a1b3277a0ebc7ea901f35a8232541f21",
+      "verified": true
+    },
+    {
+      "repo_id": "Revanth-ml/onedesk-mcp-v2-data",
+      "repo_type": "dataset",
+      "commit": "ef7662395b1d64a1a8e5bb0d732e6b951a61d272",
+      "card_sha256": "823548ab012f76ef554b7f489625d2f466dfdee87ff28e910541c244080fc26c",
+      "verified": true
+    },
+    {
+      "repo_id": "Revanth-ml/onedesk-mcp-warmup-runs",
+      "repo_type": "dataset",
+      "commit": "d38f5d2e25c1355fb56ab4583bb010ae9f963235",
+      "card_sha256": "5b079a546e3829b9e47bca4c0996a529be070a4964bab5ea065cba2a200bd5ae",
+      "verified": true
+    },
+    {
+      "repo_id": "Revanth-ml/onedesk-mcp-v2-runs",
+      "repo_type": "dataset",
+      "commit": "1c040f2017f5e3f46fe87507c2dfe8b0a1c7cbe9",
+      "card_sha256": "5b079a546e3829b9e47bca4c0996a529be070a4964bab5ea065cba2a200bd5ae",
+      "verified": true
+    },
+    {
+      "repo_id": "Revanth-ml/onedesk-mcp-v2-1-runs",
+      "repo_type": "dataset",
+      "commit": "3a6ff92e11185ff721601906753c5e8f0cf1024d",
+      "card_sha256": "5b079a546e3829b9e47bca4c0996a529be070a4964bab5ea065cba2a200bd5ae",
+      "verified": true
+    },
+    {
+      "repo_id": "Revanth-ml/onedesk-mcp-training-runs",
+      "repo_type": "dataset",
+      "commit": "7e4dcc16ce4c147cf243813ca49064a0cefc7b08",
+      "card_sha256": "5b079a546e3829b9e47bca4c0996a529be070a4964bab5ea065cba2a200bd5ae",
+      "verified": true
+    },
+    {
+      "repo_id": "Revanth-ml/onedesk-mcp-grpo-runs",
+      "repo_type": "dataset",
+      "commit": "c6fe69971061d895edd413e3101d8f7e709dcd18",
+      "card_sha256": "5b079a546e3829b9e47bca4c0996a529be070a4964bab5ea065cba2a200bd5ae",
+      "verified": true
+    }
+  ],
+  "renamed": false,
+  "visibility_changed": false
+}

@@ -1,4 +1,5 @@
 """Compile saved evidence into Markdown. CPU-only; never train, generate or submit jobs."""
+from publication_markdown import format_gfm, sync_publication_links, collection_links
 import json,re,hashlib,statistics,sys
 from pathlib import Path
 from collections import Counter
@@ -374,6 +375,11 @@ for line in text.splitlines():
     for i,value in enumerate(protected_text):line=line.replace('§'+str(i)+'§',value)
     polished.append(line)
 text='\n'.join(polished)+'\n' 
+text=sync_publication_links(text)
+if 'onedesk-models-and-experimental-controls-6af97221' not in text:
+    heading='## 10. Complete Inventory of Plots, Artifacts, Checksums & Hugging Face Links'
+    text=text.replace(heading,heading+'\n\n'+collection_links()+'\n')
+text=format_gfm(text)
 Path('SUBMISSION_DOSSIER.md').write_text(text)
 (E/'DOSSIER_METADATA.json').write_text(json.dumps(dict(abstract_words=wc,sections=11,words=len(text.split()),bytes=len(text.encode()),sha256=sha('SUBMISSION_DOSSIER.md'),source_artifacts_read=len(j(E/'SOURCE_INVENTORY.json')),paid_jobs_launched=False,model_inference_performed=False),indent=2)+'\n')
 print(json.dumps(j(E/'DOSSIER_METADATA.json')))

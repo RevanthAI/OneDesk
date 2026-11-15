@@ -1,1 +1,6 @@
-/home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/reports_v2/downloads/v2-20261112T110005Z/HANDOFF.json
+{
+  "source_prefix": "v2-20261112T103309Z",
+  "source_revision": "3c9fc4546b011111ed1df60b85c694d6a87c1781",
+  "reason": "Retain completed Base/SFT; correct FP32 temperature-scaling order before GRPO",
+  "sft_revision": "f8bd317a9f84746328af7d078a49cc08a64f0086"
+}

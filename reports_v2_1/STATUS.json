@@ -1,1 +1,6 @@
-/home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/reports_v2_1/downloads/v2-1-20261112T173923Z/STATUS.json
+{
+  "phase": "positive_anchor_grpo",
+  "updated_at": 1794509691.4086983,
+  "selected_sft_step": 120,
+  "validation_accuracy": 0.7375
+}

@@ -27,7 +27,7 @@
       },
       "cohort": "Frozen data_v2 holdouts; displayed labels round exact estimates",
       "png_sha256": "64594a3676fc1a418a889a4449cf6319df62e04c674f38008f3b915a42a92386",
-      "svg_sha256": "27cba9ae79a43f652b33bbed7a2720fa578900d59592456efe43a4d1a30b636f"
+      "svg_sha256": "50c7810930d2c33283b3c5e6e53b1a215d1e2d1f68341863c11fe640e0650618"
     },
     {
       "name": "2_multilingual_reach",
@@ -74,7 +74,7 @@
         }
       },
       "png_sha256": "2963ab9f53d10a398c3317da80b8476168fc717e602702d7346aa260c3577801",
-      "svg_sha256": "8cbbd12e34cd2f9c491205177361dcf97a21806d23205f802c126d93fef4eb4f"
+      "svg_sha256": "c8841707ce0f61fa28e02d29fe75678146526c464d692c6d2b045e5f467f1b5c"
     },
     {
       "name": "3_training_journey",
@@ -107,7 +107,7 @@
         70.0
       ],
       "png_sha256": "7c1a3d3a5078c64b8f64e6e4fdb77ef2f48b192fe352d1cad012274455e4254d",
-      "svg_sha256": "41bd4e631f591db1d0cfee22ef8b4fe3878c6132f80b9b79ec31f23d1e84eb3d"
+      "svg_sha256": "c6e1f56529d5acd7ae2bad7673928c12f850a7e400178ced3c74dd3326f1f835"
     },
     {
       "name": "4_cost_and_privacy_roi",
@@ -163,7 +163,7 @@
         "api_quality_measured": false
       },
       "png_sha256": "52ea3bd9de8004acf349b53ecb3b2bc8da55abc0027135a275b1e168617ecdb7",
-      "svg_sha256": "7c819e27a4c36672ae1e50b8930dae42fd8240fbe594ef353010d66269dfa915"
+      "svg_sha256": "d514e5788b6ed22bfd0e0173efa203295d2431bd958bbb8017af86e5334d5bed"
     }
   ]
 }

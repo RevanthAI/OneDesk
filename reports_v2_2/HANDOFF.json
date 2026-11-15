@@ -1,1 +1,12 @@
-/home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/reports_v2_2/downloads/warmup-20261113T084035Z/HANDOFF.json
+{
+  "source_prefix": "warmup-20261113T055708Z",
+  "source_revision": "c28a459859bcdeeaebdfe3695ec68a9d17478ad6",
+  "policy": "Exact Stage-1 40-update last_adapter",
+  "reference": {
+    "repo": "Revanth-ml/driftguard-tiny-aya-fire-v2-1-warmup-sft",
+    "revision": "72aafc56b1506a81a7cb12930e95f8f2f17d03d5"
+  },
+  "optimizer": "Stage-1 optimizer/scheduler/RNG restored when resuming a checkpoint; fresh Stage-2 optimizer as specified by the original recipe",
+  "resume_step": null,
+  "reason": "Separate planned stages to finish the requested 40+40 updates and evaluation within capped cloud allocations; no SFT, Stage-1 or baseline retraining"
+}

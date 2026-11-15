@@ -1,0 +1,35 @@
+{
+  "project": "OneDesk",
+  "tests_passed": 120,
+  "protected_files_unchanged": 19,
+  "static_diagrams": {
+    "figures/0_workspace_architecture.png": {
+      "pixels": [
+        5661,
+        3260
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    "figures/0_toolkit_pipeline.png": {
+      "pixels": [
+        5604,
+        1867
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    }
+  },
+  "README_REPORT_identical": true,
+  "gfm_block_spacing_verified": true,
+  "local_links_verified": true,
+  "absolute_report_symlinks_materialized": 42,
+  "HF_cards_uploaded": 15,
+  "HF_uploaded_readmes_readback_verified": true,
+  "paid_jobs_or_model_inference": false,
+  "metadata_only_HF_update": true
+}
