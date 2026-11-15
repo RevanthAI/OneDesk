@@ -1,0 +1,14 @@
+{
+  "url": "https://revanth-ml-onedesk.hf.space",
+  "all_four_tabs_checked": true,
+  "comparator_columns": 4,
+  "journals_javascript_controls_present": true,
+  "desktop_and_mobile": true,
+  "hero_contrast_checked": true,
+  "mobile_width": {
+    "body": 390,
+    "viewport": 390
+  },
+  "page_errors": [],
+  "model_inference_triggered": false
+}

@@ -1,0 +1,28 @@
+{"event": "live_smoke_progress", "status": "Status.STARTING", "elapsed_seconds": 0.0}
+Traceback (most recent call last):
+  File "/home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/scripts/smoke_public_space.py", line 29, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/scripts/smoke_public_space.py", line 23, in main
+    live_html,live_raw,live_note=job.result()
+                                 ^^^^^^^^^^^^
+  File "/home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/.venv/lib/python3.12/site-packages/gradio_client/client.py", line 1610, in result
+    return super().result(timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/revanth/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/revanth/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/revanth/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/.venv/lib/python3.12/site-packages/gradio_client/client.py", line 1214, in _inner
+    predictions = _predict(*data, **kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/.venv/lib/python3.12/site-packages/gradio_client/client.py", line 1334, in _predict
+    raise AppError(message=message, **result)
+gradio_client.exceptions.AppError: Live inference unavailable: GatedRepoError: 401 Client Error. (Request ID: Root=1-6afa10a0-66fda8cc5402c9115b0b7fcc;ad5a9e93-d721-419e-bf51-6b336ba96197)
+
+Cannot access gated repo for url https://huggingface.co/CohereLabs/tiny-aya-fire/resolve/73500c80fcb6c8bea3e830c21d5d2920249a0e1a/config.json.
+Access to model CohereLabs/tiny-aya-fire is restricted. You must have access to it and be authenticated to access it. Please log in.. Saved verified traces remain available instantly.

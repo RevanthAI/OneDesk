@@ -1,0 +1,42 @@
+{
+  "space": "https://huggingface.co/spaces/Revanth-ml/OneDesk",
+  "space_revision": "d4a9be90fb66a224ffcdfa107ffa23f8015ba0db",
+  "public_running": true,
+  "hardware": "t4-small",
+  "idle_sleep_seconds": 900,
+  "recorded_tasks": 500,
+  "recorded_episodes": 2500,
+  "all_recorded_episodes_rendered": true,
+  "all_500_comparator_tasks_checked": true,
+  "cached_render_mean_ms": 0.10285932809347287,
+  "cached_render_max_ms": 0.23688100191066042,
+  "real_sqlite_and_utility_smoke_cases": 7,
+  "public_api_without_authentication": true,
+  "public_desktop_mobile_browser_checks": {
+    "url": "https://revanth-ml-onedesk.hf.space",
+    "all_four_tabs_checked": true,
+    "comparator_columns": 4,
+    "journals_javascript_controls_present": true,
+    "desktop_and_mobile": true,
+    "hero_contrast_checked": true,
+    "mobile_width": {
+      "body": 390,
+      "viewport": 390
+    },
+    "page_errors": [],
+    "model_inference_triggered": false
+  },
+  "pytest_passed": 120,
+  "protected_files": 19,
+  "article": "docs/HF_ARTICLE.md",
+  "article_raw_github_images": 6,
+  "live_model_inference": {
+    "implemented": true,
+    "end_to_end_verified": false,
+    "button_enabled": false,
+    "blocker": "Explicit approval is required before persisting the authorized gated-model token as the private HF_TOKEN Space secret.",
+    "model_read_access_verified_locally": true,
+    "credential_persisted_by_this_task": false
+  },
+  "credential_scan_clean": true
+}

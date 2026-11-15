@@ -2,6 +2,12 @@
 
 *Turning a 3.35B Local Model (`CohereLabs/tiny-aya-fire`) into a Unified Enterprise Assistant Across Notion, GitHub, Slack, and Live SQL Databases — Track 3: Agentic Fine-Tuning*
 
+## Submission info
+
+| Artifact | Public link |
+| --- | --- |
+| Interactive Space | [Revanth-ml/OneDesk](https://huggingface.co/spaces/Revanth-ml/OneDesk) |
+
 ## ⚡ For Judges: 60-Second Overview
 
 | What matters | OneDesk |
@@ -290,7 +296,7 @@ CUDA_VISIBLE_DEVICES='' .venv/bin/python -m pytest tests -q
 - **Which checkpoint to choose:** full four-epoch SFT has higher overall accuracy (**77.25% / 76.00%**). Selected OneDesk GRPO is better on strict stale catch (**79.00% / 62.00%**), but required-chain compliance fell from warmup **93.82% / 90.59%** to **86.47% / 74.12%**. It still misses some unplugged sources and unnecessarily refuses some answerable tasks. The rule checks server calls, not causal use of every observation.
 - **Exploration explanation:** shorter warmup, G4→G6 and higher temperatures changed together. Zero reward variance is not identical text, and identical sampled sequences are not a full-distribution entropy measurement. The recipe avoided the earlier abstention collapse in this run; no universal causal fix is claimed.
 - **Cost and privacy:** local 3.15 GiB and speed measurements are from the v1 NF4 adapter, while v2 quality/throughput was measured in BF16. T4 throughput and API accuracy were not measured; API prices are historical, Claude 3.5 Sonnet is retired, and costs exclude hardware amortization/operations. Privacy depends on the deployment, access controls, connectors and logs; it is not guaranteed by the model.
-- **Licenses and scope:** model weights and adapters retain CC BY-NC 4.0 noncommercial terms; original synthetic data is CC-BY-4.0 and original project code is Apache-2.0. Third-party licenses still apply. No public Gradio application is established by these artifacts. Future 83%+/96% numbers are targets only.
+- **Licenses and scope:** model weights and adapters retain CC BY-NC 4.0 noncommercial terms; original synthetic data is CC-BY-4.0 and original project code is Apache-2.0. Third-party licenses still apply. The public OneDesk Space provides recorded traces; live MCP inference requires owner-configured gated-model access. Future 83%+/96% numbers are targets only.
 
 ## Appendix: All 19 Protected Dataset Checksums
 

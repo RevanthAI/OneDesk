@@ -1,0 +1,120 @@
+OneDesk startup: importing optional GPU SDK (no model weights).
+OneDesk startup: importing Gradio.
+OneDesk startup: building the recorded-trace UI.
+OneDesk startup: UI ready; model loading remains opt-in.
+/home/revanth/workspace/hackathons/lexisai_hackathon/driftguard-mcp/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_deprecation.py:131: FutureWarning: 'update_repo_visibility' (from 'huggingface_hub.hf_api') is deprecated and will be removed from version '0.32'. Please use `update_repo_settings` instead.
+  warnings.warn(warning_message, FutureWarning)
+{"tasks": 500, "recorded_episodes_rendered": 2500, "comparator_tasks": 500, "mean_instant_ms": 0.10238023415149655, "max_instant_ms": 0.2662700062501244, "live_callback_checks": [{"task_id": "holdout_synth-0000-en", "kind": "conflict", "subtype": null, "real_tools": true, "model_boundary": "scripted; no weights loaded"}, {"task_id": "holdout_synth-0013-en", "kind": "consistent", "subtype": null, "real_tools": true, "model_boundary": "scripted; no weights loaded"}, {"task_id": "holdout_synth-0002-en", "kind": "abstain", "subtype": null, "real_tools": true, "model_boundary": "scripted; no weights loaded"}, {"task_id": "holdout_synth-0001-en", "kind": "incident", "subtype": "sla_penalty", "real_tools": true, "model_boundary": "scripted; no weights loaded"}, {"task_id": "holdout_synth-0019-en", "kind": "incident", "subtype": "payload_lb", "real_tools": true, "model_boundary": "scripted; no weights loaded"}, {"task_id": "holdout_synth-0027-en", "kind": "incident", "subtype": "payload_mib", "real_tools": true, "model_boundary": "scripted; no weights loaded"}, {"task_id": "holdout_synth-0003-en", "kind": "incident", "subtype": "config_audit", "real_tools": true, "model_boundary": "scripted; no weights loaded"}], "sqlite_read_only_authorizer_checked": true, "html_escaping_checked": true, "roi_default_costs": [8.0, 122.36, 1316.66], "gradio_import_and_config_ok": true, "benchmark_model_weights_loaded": false, "protected_files": 19}
+
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B
+
+New Data Upload               : |          |  0.00B /  0.00B
+
+
+  ...es/0_toolkit_pipeline.png: 100%|██████████|  306kB /  306kB
+
+
+  ...es/0_toolkit_pipeline.png: 100%|██████████|  306kB /  306kB
+
+
+
+  ..._cost_and_privacy_roi.png: 100%|██████████|  523kB /  523kB
+
+
+
+
+  .../2_multilingual_reach.png: 100%|██████████|  478kB /  478kB
+
+
+
+
+
+  ...es/3_training_journey.png: 100%|██████████|  840kB /  840kB
+
+
+
+
+
+
+  ...orkspace_architecture.png: 100%|██████████|  570kB /  570kB
+
+
+
+
+
+
+
+  ...ets/rollout_explorer.html: 100%|██████████| 14.9MB / 14.9MB
+
+
+
+
+
+
+
+
+  ...es/1_headline_success.png: 100%|██████████|  458kB /  458kB
+
+
+  ...es/0_toolkit_pipeline.png: 100%|██████████|  306kB /  306kB
+
+
+
+  ..._cost_and_privacy_roi.png: 100%|██████████|  523kB /  523kB
+
+
+
+
+  .../2_multilingual_reach.png: 100%|██████████|  478kB /  478kB
+
+
+
+
+
+  ...es/3_training_journey.png: 100%|██████████|  840kB /  840kB
+
+
+
+
+
+
+  ...orkspace_architecture.png: 100%|██████████|  570kB /  570kB
+
+
+
+
+
+
+
+  ...ets/rollout_explorer.html: 100%|██████████| 14.9MB / 14.9MB
+
+
+
+
+
+
+
+
+  ...es/1_headline_success.png: 100%|██████████|  458kB /  458kB
+Processing Files (7 / 7)      : 100%|██████████| 18.1MB / 18.1MB,   ???B/s
+Processing Files (7 / 7)      : 100%|██████████| 18.1MB / 18.1MB,   ???B/s
+
+New Data Upload               : |          |  0.00B /  0.00B,   ???B/s
+
+  ...es/0_toolkit_pipeline.png: 100%|██████████|  306kB /  306kB
+
+  ..._cost_and_privacy_roi.png: 100%|██████████|  523kB /  523kB
+
+  .../2_multilingual_reach.png: 100%|██████████|  478kB /  478kB
+
+  ...es/3_training_journey.png: 100%|██████████|  840kB /  840kB
+
+  ...orkspace_architecture.png: 100%|██████████|  570kB /  570kB
+
+  ...ets/rollout_explorer.html: 100%|██████████| 14.9MB / 14.9MB
+
+  ...es/1_headline_success.png: 100%|██████████|  458kB /  458kB
+{"event": "space_runtime", "stage": "RUNNING_BUILDING", "url": "https://huggingface.co/spaces/Revanth-ml/OneDesk"}
+{"event": "space_runtime", "stage": "RUNNING_APP_STARTING", "url": "https://huggingface.co/spaces/Revanth-ml/OneDesk"}
+{"event": "space_runtime", "stage": "RUNNING", "url": "https://huggingface.co/spaces/Revanth-ml/OneDesk"}
+https://huggingface.co/spaces/Revanth-ml/OneDesk

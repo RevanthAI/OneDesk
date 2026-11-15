@@ -36,6 +36,7 @@ Runs locally in 4-bit NF4 (**3.15 GiB VRAM**, v1 adapter). Self-hosted L40S serv
 | --- | --- |
 | Track | 3, problem statements 1, 2, 4, 5, 6, 9 |
 | Model to use | [onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val) |
+| Public Space | [Revanth-ml/OneDesk](https://huggingface.co/spaces/Revanth-ml/OneDesk) |
 | Collections | [Models](https://huggingface.co/collections/Revanth-ml/onedesk-models-and-experimental-controls-6af97221a617ddc3326204a6) · [Data](https://huggingface.co/collections/Revanth-ml/onedesk-data-and-experiment-evidence-6af97225c0f1dc548b9ba8ce) |
 | Full report | [docs/FULL_REPORT.md](docs/FULL_REPORT.md) |
 | Work before the hackathon | None |
@@ -213,6 +214,6 @@ OneDesk is an open-source hackathon research prototype, formerly DriftGuard-MCP,
 - Prefer **full SFT for overall accuracy**, selected **GRPO for strict stale catch**; chain completeness, incident reasoning and unplugged-DB handling still need work.
 - Warmup length, group size and temperature changed together; zero variance does not prove full-distribution entropy collapse.
 - Local VRAM/speed is measured on the **v1 NF4 adapter**; v2 results are BF16. ROI excludes hardware/operations, uses historical API prices, and does not establish equal API accuracy; privacy requires appropriate connectors and logging.
-- Model weights retain noncommercial terms; third-party licenses apply. No public Gradio app is established, and future targets are unmeasured.
+- Model weights retain noncommercial terms; third-party licenses apply. The public Space distinguishes recorded evidence from opt-in live runs; future targets remain unmeasured.
 
 **Teammates tagged:** [@Revanth-ml](https://huggingface.co/Revanth-ml).

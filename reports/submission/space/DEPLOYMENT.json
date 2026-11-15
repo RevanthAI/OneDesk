@@ -1,0 +1,38 @@
+{
+  "repo": "Revanth-ml/OneDesk",
+  "url": "https://huggingface.co/spaces/Revanth-ml/OneDesk",
+  "revision": "d4a9be90fb66a224ffcdfa107ffa23f8015ba0db",
+  "hardware": "t4-small",
+  "hardware_attempts": [
+    {
+      "hardware": "t4-small",
+      "accepted": true
+    }
+  ],
+  "uploaded": true,
+  "runtime_stage": "RUNNING",
+  "app_url": "https://revanth-ml-onedesk.hf.space",
+  "live_weights_smoke_performed": false,
+  "model_secret_configured_by_this_run": false,
+  "runtime": {
+    "stage": "RUNNING",
+    "hardware": {
+      "current": "t4-small",
+      "requested": "t4-small"
+    },
+    "gcTimeout": 900,
+    "replicas": {
+      "current": 1,
+      "requested": 1
+    },
+    "devMode": false,
+    "domains": [
+      {
+        "domain": "revanth-ml-onedesk.hf.space",
+        "stage": "READY"
+      }
+    ],
+    "sha": "d4a9be90fb66a224ffcdfa107ffa23f8015ba0db"
+  },
+  "public_http_config_verified": true
+}

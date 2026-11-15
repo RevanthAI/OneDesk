@@ -1,0 +1,6 @@
+
+# Verbatim bundled snapshots retain canonical bytes, including whitespace.
+space/assets/optimization.svg -whitespace
+space/assets/training_rollouts.svg -whitespace
+space/runtime/evaluation_core.py -whitespace
+space/runtime/v2_tasks.py -whitespace

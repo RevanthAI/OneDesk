@@ -1,0 +1,4 @@
+OneDesk startup: importing optional GPU SDK (no model weights).
+OneDesk startup: importing Gradio.
+OneDesk startup: building the recorded-trace UI.
+OneDesk startup: UI ready; model loading remains opt-in.

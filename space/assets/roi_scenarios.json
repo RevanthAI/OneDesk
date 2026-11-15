@@ -1,0 +1,14 @@
+{
+  "input_tokens": 4653.332,
+  "output_tokens": 153.322,
+  "local_seconds_per_episode": 16.456702504932007,
+  "l40s_mixed_cohort_seconds_per_episode": 2.4472452166551726,
+  "local_gpu_hours_per_1000": 4.571306251370002,
+  "l40s_gpu_hours_per_1000": 0.6797903379597702,
+  "t4_measured": false,
+  "gpt4o_historical_usd_per_1000": 13.16655,
+  "sonnet35_historical_usd_per_1000": 16.259826,
+  "electricity_power_kw": 0.175,
+  "electricity_usd_per_kwh": 0.1,
+  "api_quality_measured": false
+}

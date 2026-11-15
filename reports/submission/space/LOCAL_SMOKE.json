@@ -1,0 +1,68 @@
+{
+  "tasks": 500,
+  "recorded_episodes_rendered": 2500,
+  "comparator_tasks": 500,
+  "mean_instant_ms": 0.10285932809347287,
+  "max_instant_ms": 0.23688100191066042,
+  "live_callback_checks": [
+    {
+      "task_id": "holdout_synth-0000-en",
+      "kind": "conflict",
+      "subtype": null,
+      "real_tools": true,
+      "model_boundary": "scripted; no weights loaded"
+    },
+    {
+      "task_id": "holdout_synth-0013-en",
+      "kind": "consistent",
+      "subtype": null,
+      "real_tools": true,
+      "model_boundary": "scripted; no weights loaded"
+    },
+    {
+      "task_id": "holdout_synth-0002-en",
+      "kind": "abstain",
+      "subtype": null,
+      "real_tools": true,
+      "model_boundary": "scripted; no weights loaded"
+    },
+    {
+      "task_id": "holdout_synth-0001-en",
+      "kind": "incident",
+      "subtype": "sla_penalty",
+      "real_tools": true,
+      "model_boundary": "scripted; no weights loaded"
+    },
+    {
+      "task_id": "holdout_synth-0019-en",
+      "kind": "incident",
+      "subtype": "payload_lb",
+      "real_tools": true,
+      "model_boundary": "scripted; no weights loaded"
+    },
+    {
+      "task_id": "holdout_synth-0027-en",
+      "kind": "incident",
+      "subtype": "payload_mib",
+      "real_tools": true,
+      "model_boundary": "scripted; no weights loaded"
+    },
+    {
+      "task_id": "holdout_synth-0003-en",
+      "kind": "incident",
+      "subtype": "config_audit",
+      "real_tools": true,
+      "model_boundary": "scripted; no weights loaded"
+    }
+  ],
+  "sqlite_read_only_authorizer_checked": true,
+  "html_escaping_checked": true,
+  "roi_default_costs": [
+    8.0,
+    122.36,
+    1316.66
+  ],
+  "gradio_import_and_config_ok": true,
+  "benchmark_model_weights_loaded": false,
+  "protected_files": 19
+}

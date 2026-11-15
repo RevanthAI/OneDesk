@@ -1,0 +1,7 @@
+{
+  "gated_base_config_access_with_existing_authorized_token": true,
+  "commit": "73500c80fcb6c8bea3e830c21d5d2920249a0e1a",
+  "config_bytes": 1961,
+  "credential_sent_to_space": false,
+  "secret_storage_requires_explicit_approval": true
+}

@@ -1,0 +1,9 @@
+{
+  "app_url": "https://revanth-ml-onedesk.hf.space",
+  "public_without_authentication": true,
+  "inspect_endpoint": true,
+  "comparator_endpoint": true,
+  "task_id": "holdout_synth-0000-en",
+  "model_inference_requested": false,
+  "live_button_enabled": false
+}

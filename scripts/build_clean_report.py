@@ -7,6 +7,7 @@ from publication_markdown import publication as published_state, format_gfm, url
 from text_leak_check import summary as audit_summary
 
 FINAL_REPO='Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val'
+SPACE_URL='https://huggingface.co/spaces/Revanth-ml/OneDesk'
 
 
 def update_full_report(audit):
@@ -15,6 +16,11 @@ def update_full_report(audit):
     if not path.exists():
         raise FileNotFoundError('Preserve the complete report in docs/FULL_REPORT.md before trimming.')
     text=path.read_text()
+    if '## Submission info\n' not in text:
+        space_info='## Submission info\n'+table(['Artifact','Public link'],[['Interactive Space',f'[Revanth-ml/OneDesk]({SPACE_URL})']])+'\n'
+        text=text.replace('## ⚡ For Judges: 60-Second Overview',space_info+'## ⚡ For Judges: 60-Second Overview',1)
+    text=text.replace('No public Gradio application is established by these artifacts.','The public OneDesk Space provides recorded traces; live MCP inference requires owner-configured gated-model access.')
+    text=text.replace('The public OneDesk Space provides recorded traces and opt-in live MCP inference.','The public OneDesk Space provides recorded traces; live MCP inference requires owner-configured gated-model access.')
     begin='<!-- TEXT_LEAK_AUDIT:BEGIN -->';end='<!-- TEXT_LEAK_AUDIT:END -->'
     note=begin+'\n\n### CPU Text-Level Overlap Check\n\n'+audit_summary(audit)+'\n\nExact counts, nearest matches and scalar-collision examples: [TEXT_LEAK_AUDIT.json](../reports/submission/TEXT_LEAK_AUDIT.json).\n\n'+end+'\n\n'
     if begin in text:
@@ -56,6 +62,7 @@ def build(publication=None, output_path=None):
     add(table(['',''],[
         ['Track','3, problem statements 1, 2, 4, 5, 6, 9'],
         ['Model to use',f'[onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val](https://huggingface.co/{FINAL_REPO})'],
+        ['Public Space',f'[Revanth-ml/OneDesk]({SPACE_URL})'],
         ['Collections',f"[Models]({pub['model_collection_url']}) · [Data]({pub['data_collection_url']})"],
         ['Full report','[docs/FULL_REPORT.md](docs/FULL_REPORT.md)'],
         ['Work before the hackathon','None']]))
@@ -157,7 +164,7 @@ CUDA_VISIBLE_DEVICES='' python -m pytest tests -q
 ```''')
     add('## 11. Honest Limitations & Teammates Tagged')
     add('OneDesk is an open-source hackathon research prototype, formerly DriftGuard-MCP, and is unrelated to the commercial OneDesk helpdesk software; internal `DriftGuard*` class names retain that history.')
-    add('- Constructed fixtures, modulo-3 configuration values and correlated template translations; no verified live-OSS transfer. Scalar answers recur across different facts, as the [text audit](reports/submission/TEXT_LEAK_AUDIT.json) reports.\n- Overall GRPO-over-warmup holdout gain intervals include zero; repeated validation selection and one run need fresh confirmation.\n- Prefer **full SFT for overall accuracy**, selected **GRPO for strict stale catch**; chain completeness, incident reasoning and unplugged-DB handling still need work.\n- Warmup length, group size and temperature changed together; zero variance does not prove full-distribution entropy collapse.\n- Local VRAM/speed is measured on the **v1 NF4 adapter**; v2 results are BF16. ROI excludes hardware/operations, uses historical API prices, and does not establish equal API accuracy; privacy requires appropriate connectors and logging.\n- Model weights retain noncommercial terms; third-party licenses apply. No public Gradio app is established, and future targets are unmeasured.')
+    add('- Constructed fixtures, modulo-3 configuration values and correlated template translations; no verified live-OSS transfer. Scalar answers recur across different facts, as the [text audit](reports/submission/TEXT_LEAK_AUDIT.json) reports.\n- Overall GRPO-over-warmup holdout gain intervals include zero; repeated validation selection and one run need fresh confirmation.\n- Prefer **full SFT for overall accuracy**, selected **GRPO for strict stale catch**; chain completeness, incident reasoning and unplugged-DB handling still need work.\n- Warmup length, group size and temperature changed together; zero variance does not prove full-distribution entropy collapse.\n- Local VRAM/speed is measured on the **v1 NF4 adapter**; v2 results are BF16. ROI excludes hardware/operations, uses historical API prices, and does not establish equal API accuracy; privacy requires appropriate connectors and logging.\n- Model weights retain noncommercial terms; third-party licenses apply. The public Space distinguishes recorded evidence from opt-in live runs; future targets remain unmeasured.')
     add('**Teammates tagged:** [@Revanth-ml](https://huggingface.co/Revanth-ml).')
     text=format_gfm('\n'.join(parts))
     output=Path(output_path) if output_path is not None else ROOT/'README.md';output.write_text(text)
