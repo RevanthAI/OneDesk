@@ -1,0 +1,18 @@
+{
+  "cpu_only": true,
+  "inference_run": false,
+  "cloud_jobs_launched": false,
+  "tests_passed": 126,
+  "core_tests": 120,
+  "submission_audit_tests": 6,
+  "protected_files": 19,
+  "requested_editorial_checks_passed": 6,
+  "bilingual_quote_line_break": "HTML br, preserving a visible break without trailing whitespace",
+  "figures_and_frozen_data_unchanged": true,
+  "relative_links_valid": true,
+  "sha256": {
+    "README.md": "68be00b555adb48241878939bac4ed520a7eea2f8ea957e33638af85623a8a28",
+    "docs/FULL_REPORT.md": "83e324fba06e603dec51f271ae6f6c6e34a59d26cb1072ccf968b50508f1e757",
+    "docs/HF_ARTICLE.md": "835f7f57f2c8a1a8cdb4922cc2f7ff74b13fa4a73bcaf3dc7b59e840cf620a27"
+  }
+}

@@ -28,6 +28,9 @@ These are executable tools, not names in a prompt. Each episode gets its own in-
 
 The model emits one XML-wrapped JSON action at a time. A compact example from our training world:
 
+> **Employee (Hinglish):** “Bhai, `loyalty-api` ka actual production `batch_size_mb` kya hai? Runbook aur deployment updates match karke outdated page flag karo.”<br>
+> **In English:** What is `loyalty-api`’s actual production `batch_size_mb`? Compare the runbook with deployment updates and flag the outdated page.
+
 ```xml
 <tool_call>{"server":"notion-mcp","tool":"search_notion","arguments":{"query":"loyalty-api batch_size_mb"}}</tool_call>
 <tool_call>{"server":"slack-mcp","tool":"search_slack","arguments":{"query":"loyalty-api batch_size_mb"}}</tool_call>
@@ -184,5 +187,7 @@ We would prioritize complete three-source evidence trails, unplugged-database ha
 All generators, datasets, toolkit integrations, training and evaluations were built during the hackathon. Code is **Apache-2.0**, original synthetic data **CC-BY-4.0**, and base/model adapters **CC-BY-NC-4.0**, including their noncommercial restrictions. OneDesk is our research prototype, unrelated to the commercial OneDesk helpdesk product.
 
 **[Try the Space](https://huggingface.co/spaces/Revanth-ml/OneDesk)** · **[Read the complete report](https://github.com/RevanthAI/OneDesk/blob/main/docs/FULL_REPORT.md)** · **[Inspect the submission dossier](https://github.com/RevanthAI/OneDesk/blob/main/docs/SUBMISSION_DOSSIER.md)**
+
+**Regression suite: 126 passed** — 120 core benchmark/training tests + 6 submission/audit verification tests.
 
 Built by [@Revanth-ml](https://huggingface.co/Revanth-ml).

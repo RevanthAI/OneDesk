@@ -10,13 +10,19 @@ from roi_analysis import narrative as roi_narrative, scenarios as roi_scenarios
 FINAL_REPO='Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val'
 SPACE_URL='https://huggingface.co/spaces/Revanth-ml/OneDesk'
 NAMING_NOTE='Formerly DriftGuard-MCP, hence the `DriftGuard*` class names in `src/v2_2/`. Unrelated to the commercial OneDesk helpdesk software.'
+REGRESSION_NOTE='**Regression suite: 126 passed** — 120 core benchmark/training tests + 6 submission/audit verification tests.'
+EMPLOYEE_QUOTE=('> **Employee (Hinglish):** “Bhai, `loyalty-api` ka actual production `batch_size_mb` kya hai? Runbook aur deployment updates match karke outdated page flag karo.”<br>\n'
+                '> **In English:** What is `loyalty-api`’s actual production `batch_size_mb`? Compare the runbook with deployment updates and flag the outdated page.')
 
 
 def details(summary, body):
     return '<details>\n<summary><strong>'+summary+'</strong></summary>\n\n'+body.strip()+'\n\n</details>'
 
 
-def validity_note(saved):
+def validity_note(saved, detailed=False):
+    if not detailed:
+        return ('The warmup, full-SFT, and final OneDesk checkpoints reach **100.0% valid final format** and '
+                '**100.0% AuditKIT tool-call schema validity** on both holdouts.')
     weak=[saved['Weak SFT · 15 steps'][sp]['auditkit_headline']['tool_call_validity'] for sp in ('test_synth','repo_style')]
     early=saved['Early RL · 120 updates']['test_synth']['auditkit_headline']['tool_call_validity']
     return ('Format percentages count valid structured final answers. AuditKIT records **100% tool-call validity for the warmup, final, and full-SFT checkpoints** on both holdouts; '
@@ -38,7 +44,8 @@ def compact_data(audit):
     metrics=('- **Exact accuracy:** correct status plus normalized value.\n'
              '- **Strict stale catch:** correct answer and stale-page flag; every gold source retrieved and cited.\n'
              '- **Citation & tool-chain compliance:** verified citation F1, successful required-server calls and AuditKIT routing diagnostics.\n'
-             '- **Refusal calibration & 10,000-sample case bootstrap:** track false/necessary refusals and uncertainty, keeping translations clustered by semantic case.')
+             '- **Refusal calibration:** precision, recall, false-refusal rate on answerable tasks, and unplugged-DB recall separate necessary refusals from lazy RL abstention collapse.\n'
+             '- **Cluster-bootstrapped uncertainty:** 95% confidence intervals use 10,000 semantic-case bootstrap resamples, keeping all translations of a case in the same cluster.')
     return '\n\n'.join(['## 3. Data Creation, Curation & Evaluation Strategy',summary,scenarios.strip(),metrics,
         details('Deep dive: How the data was built (facts-first world, live oracle, CuratorKIT funnel & v1→v2 anti-shortcut constraints)',deep)])
 
@@ -60,7 +67,7 @@ def compact_roi():
              '([recorded compute lower bound](reports/submission/COMPUTE_ACCOUNTING.json)).')
     visible=table(['Serving option','USD / 1k audits','USD / 100k audits','Basis'],[
         [names[r['key']],f"${r['cost_1000']:,.2f}",f"${r['cost_100000']:,.2f}",basis[r['key']]] for r in data])
-    return '\n\n'.join([summary,visible.strip(),details('Deep dive: Rule 5 throughput (tokens/sec), GPU runtime hours, live v2.1 NF4 timing & prefix-caching methodology',roi_narrative())])
+    return '\n\n'.join([summary,visible.strip(),details('Throughput, GPU hours, live NF4 timing and caching method',roi_narrative())])
 
 
 def update_full_report(audit):
@@ -89,10 +96,12 @@ def update_full_report(audit):
         text=text.replace(old,new)
     if '## 7. Repo Layout & Run Instructions' not in text:
         text=text.replace('### Reproducibility commands','## 7. Repo Layout & Run Instructions\n\n'+NAMING_NOTE+'\n\n### Reproducibility commands',1)
-    note=validity_note(summaries())
+    note=validity_note(summaries(),detailed=True)
     text=re.sub(r'Format percentages count valid structured final answers; AuditKIT independently records 100% tool-call validity for each trained stage on both holdouts\.[^\n]*',lambda _:note,text)
     marker='In the AuditKIT table, — means the native metric is absent from that saved headline, rather than a zero score.'
     if note not in text:text=text.replace(marker,marker+'\n\n'+note)
+    text=re.sub(r'^> \*\*Employee query, Hinglish:\*\*[^\n]*',lambda _:EMPLOYEE_QUOTE,text,flags=re.M)
+    if REGRESSION_NOTE not in text:text=text.replace(NAMING_NOTE,NAMING_NOTE+'\n\n'+REGRESSION_NOTE,1)
     path.write_text(format_gfm(text))
 
 
@@ -102,6 +111,8 @@ def update_article(audit):
     image='![Multilingual results](https://raw.githubusercontent.com/RevanthAI/OneDesk/main/figures/2_multilingual_reach.png)\n\n'
     text=re.sub(r'## 3\. Data Creation, Curation & Evaluation Strategy\n.*?(?=## Three Lexsi toolkits in one pipeline)',lambda _:data_section(audit,article=True)+image,path.read_text(),flags=re.S)
     text=re.sub(r'## What would it cost to run internally\?\n.*?(?=## What we would do next)',lambda _:'## What would it cost to run internally?\n\n![ROI scenarios](https://raw.githubusercontent.com/RevanthAI/OneDesk/main/figures/4_cost_and_privacy_roi.png)\n\n'+roi_narrative(article=True),text,flags=re.S)
+    if EMPLOYEE_QUOTE not in text:text=text.replace('```xml',EMPLOYEE_QUOTE+'\n\n```xml',1)
+    if REGRESSION_NOTE not in text:text=text.replace('Built by ',REGRESSION_NOTE+'\n\nBuilt by ',1)
     path.write_text(format_gfm(text))
 
 
@@ -114,8 +125,9 @@ def build(publication=None, output_path=None):
     add('# OneDesk: One Multilingual Workspace to Query Your Company’s Knowledge Base')
     add('*Track 3 · Agentic Fine-Tuning · `CohereLabs/tiny-aya-fire` (3.35B) with CuratorKIT, AgentTune and AuditKIT*')
     add('## The problem')
-    add("Company knowledge is split across Notion wikis, GitHub pull requests, Slack threads and SQL databases, and the newest-looking document is often a trap: a stale runbook that wasn't updated after yesterday's hotfix, or a `[STAGING-ONLY]` configuration page. Meanwhile, engineering and operations teams ask questions in English, Hindi (Devanagari and Latin), Hinglish and Telugu (native and Latin).")
-    add('Organizations want to run compact, on-premises models (~3B parameters) so private code, incidents and database schemas never leave their infrastructure. However, out of the box, small models struggle with multi-turn tool use and strict output formatting: our base model lacks a valid structured final answer on 30% of benchmark episodes, calls the wrong tools, or fails multi-step SQL, unit-conversion and math chains—scoring just **0.4% exact accuracy** across our 500-task benchmark.')
+    add("Company knowledge is split across Notion wikis, GitHub pull requests, Slack threads and SQL databases, and the newest-looking document is often a trap: a stale runbook that wasn't updated after yesterday's hotfix, or a `[STAGING-ONLY]` configuration page. Employees ask in English, Hindi (Devanagari and Latin), Hinglish and Telugu (native and Latin).")
+    add('**Why a small local model?** A ~3B model can run inside company infrastructure, so private code, incidents and database schemas never leave it.')
+    add("**The catch:** out of the box it can't do the job. The untrained model returns no valid final answer in 30% of episodes, calls the wrong tools, and breaks multi-step SQL, unit-conversion and math chains. It scores **0.4%** exact accuracy on our 500-task benchmark.")
     add('**Can a small, locally deployable 3.35B model learn to produce valid tool calls, find the current production answer, cite verified evidence, flag the outdated page, and refuse when a source is missing, using real tool calls instead of memorized answers?**')
     add('## Results')
     add('![Headline Results](figures/1_headline_success.png)')
@@ -146,6 +158,7 @@ def build(publication=None, output_path=None):
     add('Detailed submission reference: [docs/SUBMISSION_DOSSIER.md](docs/SUBMISSION_DOSSIER.md).')
     add('## 1. Problem Statement & Approach')
     add('A Hinglish employee asks for `loyalty-api`’s actual production `batch_size_mb`: the runbook says 154, a newer staging-only distractor says 286, and the production Slack update says 16. This `train_sft-0000-hinglish` protocol example shows the tool calls, cited answer and stale-page flag; the first query is shortened for readability.')
+    add(EMPLOYEE_QUOTE)
     add('''```xml
 <tool_call>{"server":"notion-mcp","tool":"search_notion","arguments":{"query":"loyalty-api batch_size_mb"}}</tool_call>
 <tool_call>{"server":"slack-mcp","tool":"search_slack","arguments":{"query":"loyalty-api batch_size_mb"}}</tool_call>
@@ -187,6 +200,7 @@ def build(publication=None, output_path=None):
         ['Confirmation','One selected recipe','Multiple seeds; fresh source-backed cohort','Replicated paired gains']]))
     add('## 7. Repo Layout & Run Instructions')
     add(NAMING_NOTE)
+    add(REGRESSION_NOTE)
     add('''```text
 ├── src/              # v1/, v2/, v2_1/, v2_2/ runtimes; provenance-listed sources stay here
 ├── data_v2/          # Frozen 1,700 tasks, worlds and SHA-256 manifest

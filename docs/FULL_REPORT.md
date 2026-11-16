@@ -30,7 +30,8 @@ An engineer checks a runbook, another announces a hotfix in Slack, and productio
 
 OneDesk gives that workflow one interface. Its small multilingual agent searches across the available tools, checks scope and timestamps, and returns a compact answer with evidence IDs the employee can follow.
 
-> **Employee query, Hinglish:** “Bhai, `loyalty-api` ka actual production `batch_size_mb` kya hai? Runbook aur deployment updates match karke outdated page flag karo.”
+> **Employee (Hinglish):** “Bhai, `loyalty-api` ka actual production `batch_size_mb` kya hai? Runbook aur deployment updates match karke outdated page flag karo.”<br>
+> **In English:** What is `loyalty-api`’s actual production `batch_size_mb`? Compare the runbook with deployment updates and flag the outdated page.
 
 1. **Wiki lookup.** The production Notion runbook says **154 MB** and identifies Slack `#deployments` as its tracking channel. A newer staging page says **286 MB**; the agent must ignore it for this production request.
 2. **Deployment verification.** Follow the observed tracking hint to Slack, or check GitHub and Slack when the deployment trail spans both. In this frozen example, the production Slack record updates the value to **16 MB**.
@@ -299,6 +300,8 @@ The frozen data repository contains the benchmark JSONL and manifests. Run repos
 ## 7. Repo Layout & Run Instructions
 
 Formerly DriftGuard-MCP, hence the `DriftGuard*` class names in `src/v2_2/`. Unrelated to the commercial OneDesk helpdesk software.
+
+**Regression suite: 126 passed** — 120 core benchmark/training tests + 6 submission/audit verification tests.
 
 ### Reproducibility commands
 

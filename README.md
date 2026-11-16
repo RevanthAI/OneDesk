@@ -4,9 +4,11 @@
 
 ## The problem
 
-Company knowledge is split across Notion wikis, GitHub pull requests, Slack threads and SQL databases, and the newest-looking document is often a trap: a stale runbook that wasn't updated after yesterday's hotfix, or a `[STAGING-ONLY]` configuration page. Meanwhile, engineering and operations teams ask questions in English, Hindi (Devanagari and Latin), Hinglish and Telugu (native and Latin).
+Company knowledge is split across Notion wikis, GitHub pull requests, Slack threads and SQL databases, and the newest-looking document is often a trap: a stale runbook that wasn't updated after yesterday's hotfix, or a `[STAGING-ONLY]` configuration page. Employees ask in English, Hindi (Devanagari and Latin), Hinglish and Telugu (native and Latin).
 
-Organizations want to run compact, on-premises models (~3B parameters) so private code, incidents and database schemas never leave their infrastructure. However, out of the box, small models struggle with multi-turn tool use and strict output formatting: our base model lacks a valid structured final answer on 30% of benchmark episodes, calls the wrong tools, or fails multi-step SQL, unit-conversion and math chains—scoring just **0.4% exact accuracy** across our 500-task benchmark.
+**Why a small local model?** A ~3B model can run inside company infrastructure, so private code, incidents and database schemas never leave it.
+
+**The catch:** out of the box it can't do the job. The untrained model returns no valid final answer in 30% of episodes, calls the wrong tools, and breaks multi-step SQL, unit-conversion and math chains. It scores **0.4%** exact accuracy on our 500-task benchmark.
 
 **Can a small, locally deployable 3.35B model learn to produce valid tool calls, find the current production answer, cite verified evidence, flag the outdated page, and refuse when a source is missing, using real tool calls instead of memorized answers?**
 
@@ -26,7 +28,7 @@ Combined performance across all **500 held-out queries** (400 synthetic + 100 re
 
 OneDesk improves strict stale-document catch over full 4-epoch SFT by **+14.4 pp pooled** (**+15.5 pp [+5.5, +26.0]** on synthetic and **+10.0 pp [+2.0, +20.4]** on repo-style), while reaching **100% valid tool-call and response formatting**. Full SFT stays slightly ahead on overall accuracy (`77.0%` vs `74.8%`) and exhaustive 3-server chain compliance, and all benchmark data is synthetic.
 
-Format percentages count valid structured final answers. AuditKIT records **100% tool-call validity for the warmup, final, and full-SFT checkpoints** on both holdouts; the early 15-step SFT scores **99.3–99.5%**, and Stage 1 scores **99.75%** on synthetic. Pooled means use metric-specific denominators; paired confidence intervals remain split-specific.
+The warmup, full-SFT, and final OneDesk checkpoints reach **100.0% valid final format** and **100.0% AuditKIT tool-call schema validity** on both holdouts.
 
 The final adapter runs locally in NF4 (**3.33 GiB reserved VRAM**, 20-task timing sample). Self-hosted L40S serving is **$1.22 per 1k audits**, versus **$13.46** in the historical uncached GPT-4o same-string token scenario; cached billing is detailed below.
 
@@ -48,6 +50,9 @@ Detailed submission reference: [docs/SUBMISSION_DOSSIER.md](docs/SUBMISSION_DOSS
 ## 1. Problem Statement & Approach
 
 A Hinglish employee asks for `loyalty-api`’s actual production `batch_size_mb`: the runbook says 154, a newer staging-only distractor says 286, and the production Slack update says 16. This `train_sft-0000-hinglish` protocol example shows the tool calls, cited answer and stale-page flag; the first query is shortened for readability.
+
+> **Employee (Hinglish):** “Bhai, `loyalty-api` ka actual production `batch_size_mb` kya hai? Runbook aur deployment updates match karke outdated page flag karo.”<br>
+> **In English:** What is `loyalty-api`’s actual production `batch_size_mb`? Compare the runbook with deployment updates and flag the outdated page.
 
 ```xml
 <tool_call>{"server":"notion-mcp","tool":"search_notion","arguments":{"query":"loyalty-api batch_size_mb"}}</tool_call>
@@ -98,7 +103,8 @@ A live tool-executing oracle verified outcomes and evidence before trajectory ex
 - **Exact accuracy:** correct status plus normalized value.
 - **Strict stale catch:** correct answer and stale-page flag; every gold source retrieved and cited.
 - **Citation & tool-chain compliance:** verified citation F1, successful required-server calls and AuditKIT routing diagnostics.
-- **Refusal calibration & 10,000-sample case bootstrap:** track false/necessary refusals and uncertainty, keeping translations clustered by semantic case.
+- **Refusal calibration:** precision, recall, false-refusal rate on answerable tasks, and unplugged-DB recall separate necessary refusals from lazy RL abstention collapse.
+- **Cluster-bootstrapped uncertainty:** 95% confidence intervals use 10,000 semantic-case bootstrap resamples, keeping all translations of a case in the same cluster.
 
 <details>
 <summary><strong>Deep dive: How the data was built (facts-first world, live oracle, CuratorKIT funnel & v1→v2 anti-shortcut constraints)</strong></summary>
@@ -191,7 +197,7 @@ Local timing uses **20 distinct final-adapter NF4 cases**; L40S throughput comes
 | Closed API · GPT-4o (uncached) | $13.46 | $1,345.96 | Historical uncached `$2.50/M` input + `$10/M` output |
 
 <details>
-<summary><strong>Deep dive: Rule 5 throughput (tokens/sec), GPU runtime hours, live v2.1 NF4 timing & prefix-caching methodology</strong></summary>
+<summary><strong>Throughput, GPU hours, live NF4 timing and caching method</strong></summary>
 
 | Serving option | Sample volume | Pricing basis (GPU/hr or token rate) | Tokens/sec throughput | GPU runtime hours (1k /100k audits) | Cost /1k audits | Cost /100k audits |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -238,6 +244,8 @@ Local timing uses **20 distinct final-adapter NF4 cases**; L40S throughput comes
 ## 7. Repo Layout & Run Instructions
 
 Formerly DriftGuard-MCP, hence the `DriftGuard*` class names in `src/v2_2/`. Unrelated to the commercial OneDesk helpdesk software.
+
+**Regression suite: 126 passed** — 120 core benchmark/training tests + 6 submission/audit verification tests.
 
 ```text
 ├── src/              # v1/, v2/, v2_1/, v2_2/ runtimes; provenance-listed sources stay here
