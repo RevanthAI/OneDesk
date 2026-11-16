@@ -1,0 +1,49 @@
+{
+  "cpu_only": true,
+  "model_inference": false,
+  "cloud_jobs": false,
+  "protected_files": 19,
+  "updated_documents": [
+    "README.md",
+    "docs/FULL_REPORT.md",
+    "docs/HF_ARTICLE.md"
+  ],
+  "retained_tasks": 1700,
+  "candidate_prompts": 1955,
+  "rejected_exact_controls": 255,
+  "semantic_cases": 426,
+  "reserved_cases": 20,
+  "oracle_reward_histogram": {
+    "1.0": 60,
+    "1.3": 112,
+    "1.5": 68
+  },
+  "script_distribution": {
+    "en:latin": 425,
+    "hi:native": 213,
+    "hi:latin": 212,
+    "hinglish:latin": 425,
+    "te:native": 213,
+    "te:latin": 212
+  },
+  "split_counts_and_task_mixes_verified": true,
+  "forbidden_prompt_tool_names_absent": true,
+  "relative_document_links_valid": true,
+  "full_report_unchanged_outside_section_3": true,
+  "documents_sha256": {
+    "README.md": "9d53b44040d1a45b020ca56404d5cb214660f43b4daac04f95b14c3565108e89",
+    "docs/FULL_REPORT.md": "3f311012b11aa61cc75e620285bb3258bc38ad5d3739829c71ef53e4338579c9",
+    "docs/HF_ARTICLE.md": "460887de6574800e557ff509fc1856101376e00f325c7bbd6b7a9f283b57fb26"
+  },
+  "wording_corrections": [
+    "Most cases have four language versions, covering six script styles corpus-wide.",
+    "Actual builder order is facts, rendering, curation, oracle verification/export.",
+    "Modulo-3 guarantees distinct configuration integers, not all calculated scalar answers.",
+    "136 truncated rows were counted across the full multilingual set.",
+    "3.15 GiB is a measured v1 adapter NF4 deployment figure."
+  ],
+  "pytest_passed": 120,
+  "pytest_warnings": 1,
+  "asset_checks_passed": true,
+  "report_rebuild_idempotent": true
+}

@@ -4,14 +4,14 @@ import json
 import re
 from clean_report_data import (ROOT, BASE, summaries, combined_holdouts, table, ci, percent, language_examples, roi, protect, digest)
 from publication_markdown import publication as published_state, format_gfm, url_link
-from text_leak_check import summary as audit_summary
+from dataset_narrative import data_section
 
 FINAL_REPO='Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val'
 SPACE_URL='https://huggingface.co/spaces/Revanth-ml/OneDesk'
 
 
 def update_full_report(audit):
-    """Only add/update the audit note in the preserved complete snapshot."""
+    """Refresh Section 3 while preserving detailed experimental evidence."""
     path=ROOT/'docs/FULL_REPORT.md'
     if not path.exists():
         raise FileNotFoundError('Preserve the complete report in docs/FULL_REPORT.md before trimming.')
@@ -21,12 +21,15 @@ def update_full_report(audit):
         text=text.replace('## ⚡ For Judges: 60-Second Overview',space_info+'## ⚡ For Judges: 60-Second Overview',1)
     text=text.replace('No public Gradio application is established by these artifacts.','The public OneDesk Space provides recorded traces; live MCP inference requires owner-configured gated-model access.')
     text=text.replace('The public OneDesk Space provides recorded traces and opt-in live MCP inference.','The public OneDesk Space provides recorded traces; live MCP inference requires owner-configured gated-model access.')
-    begin='<!-- TEXT_LEAK_AUDIT:BEGIN -->';end='<!-- TEXT_LEAK_AUDIT:END -->'
-    note=begin+'\n\n### CPU Text-Level Overlap Check\n\n'+audit_summary(audit)+'\n\nExact counts, nearest matches and scalar-collision examples: [TEXT_LEAK_AUDIT.json](../reports/submission/TEXT_LEAK_AUDIT.json).\n\n'+end+'\n\n'
-    if begin in text:
-        text=re.sub(re.escape(begin)+r'.*?'+re.escape(end)+r'\n*',lambda m:note,text,flags=re.S)
-    else:
-        text=text.replace('## 4. Experiments Run, What Failed, and How We Found the Winning Recipe',note+'## 4. Experiments Run, What Failed, and How We Found the Winning Recipe',1)
+    text=re.sub(r'## 3\. Data Creation, Curation & Evaluation Strategy\n.*?(?=## 4\.)',lambda _:data_section(audit,prefix='../'),text,flags=re.S)
+    path.write_text(format_gfm(text))
+
+
+def update_article(audit):
+    path=ROOT/'docs/HF_ARTICLE.md'
+    if not path.exists():return
+    image='![Multilingual results](https://raw.githubusercontent.com/RevanthAI/OneDesk/main/figures/2_multilingual_reach.png)\n\n'
+    text=re.sub(r'## 3\. Data Creation, Curation & Evaluation Strategy\n.*?(?=## Three Lexsi toolkits in one pipeline)',lambda _:data_section(audit,article=True)+image,path.read_text(),flags=re.S)
     path.write_text(format_gfm(text))
 
 
@@ -86,14 +89,7 @@ def build(publication=None, output_path=None):
         ['**AgentTune 1.1.4**','`Step`/`Trajectory` serialization, `SFTTrainerBase` warmup and `TrlAgenticGrpo` lifecycle with executed live MCP rollouts.'],
         ['**AuditKIT 1.1.7**','580 episodes/checkpoint: trajectory import, outcome/citation scorers and native tool-selection, validity and redundancy metrics.']]))
     add('Compatibility fixes:\n\n- Bridge AgentTune’s missing `_generate_single_turn` hook to TRL 0.23.1 live rollouts.\n- Load dependency-light `agenttune.agentic` leaf modules instead of eager optional stacks.\n- Explicit BF16 autocast for unwrapped PEFT decoder log-probability scoring.')
-    add('## 3. Data Creation, Curation & Evaluation Strategy')
-    add(table(['Scenario','Required behavior'],[
-        ['Consistent knowledge','Match production scope; verify agreement despite staging/sibling distractors.'],
-        ['Outdated documents','Reconcile Notion against newer PR/hotfix evidence; identify and cite the stale page.'],
-        ['Database/calculation chains','Execute SQLite SELECT; derive duration or convert kg→lb / GB→MiB; calculate rounded incident cost.'],
-        ['Safe refusal','Abstain for absent entities or an unavailable explicitly required database.']]))
-    add(audit_summary(audit)+' A **2,560-token SFT window preserves every trajectory (0 truncations)**; evaluation uses 4,096 tokens, with [full split/token details and the audit](docs/FULL_REPORT.md#cpu-text-level-overlap-check).')
-    add('- **Exact accuracy:** correct status plus normalized scalar.\n- **Strict stale catch:** correct answer, correct stale page, every gold source retrieved and cited.\n- **Citation/tool compliance:** verified citation F1, required-server checks and AuditKIT metrics.\n- **Refusal calibration:** necessary versus false refusals, including unplugged-source recall.')
+    add(data_section(audit))
     add('## 4. Experiments Run, What Failed & Winning Recipe')
     add('![Training Journey](figures/3_training_journey.png)')
     add('### Lazy Refusal Trap\n\nOnly 15 SFT steps left a weak starting policy. Long RL then favored comparatively less-penalized refusal over malformed or stale answers. At 340 updates it refused **77.3%** of synthetic queries and caught **0%** of stale docs.')
@@ -170,6 +166,7 @@ CUDA_VISIBLE_DEVICES='' python -m pytest tests -q
     output=Path(output_path) if output_path is not None else ROOT/'README.md';output.write_text(text)
     if output_path is None:
         update_full_report(audit)
+        update_article(audit)
     target=output.parent if output_path is not None else ROOT/'reports/submission/clean_assets';target.mkdir(exist_ok=True)
     meta=dict(project='OneDesk',words=len(text.split()),sha256=digest(output),source='Saved results plus CPU TEXT_LEAK_AUDIT',no_inference=True,no_paid_jobs=True)
     (target/'REPORT_METADATA.json').write_text(json.dumps(meta,indent=2)+'\n')
