@@ -9,7 +9,7 @@ SPLITS=[
  ('train_grpo_stage2','Final live multi-turn GRPO Stage 2 (updates 41–80)'),
  ('val_train_80','Checkpoint selection & >40% predicted-abstention collapse guard'),
  ('holdout_synth_400_frozen','Primary synthetic holdout evaluation'),
- ('holdout_repo_style_100_frozen','Out-of-domain constructed OSS repo-style holdout')]
+ ('holdout_repo_style_100_frozen','Constructed repo-style holdout evaluation')]
 
 
 def data_section(audit=None,prefix='',article=False):

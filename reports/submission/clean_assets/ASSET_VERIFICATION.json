@@ -9,7 +9,7 @@
       "path": "figures/1_headline_success.png",
       "size": [
         5316,
-        2612
+        2274
       ],
       "dpi": [
         299.9994,
@@ -20,7 +20,7 @@
       "path": "figures/2_multilingual_reach.png",
       "size": [
         5261,
-        2501
+        2334
       ],
       "dpi": [
         299.9994,
@@ -31,7 +31,7 @@
       "path": "figures/3_training_journey.png",
       "size": [
         6703,
-        3007
+        2425
       ],
       "dpi": [
         299.9994,
@@ -41,8 +41,8 @@
     {
       "path": "figures/4_cost_and_privacy_roi.png",
       "size": [
-        5550,
-        3334
+        3232,
+        1851
       ],
       "dpi": [
         299.9994,

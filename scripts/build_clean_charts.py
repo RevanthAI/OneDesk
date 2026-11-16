@@ -117,8 +117,8 @@ def toolkit_diagram():
 
 def headline(ss):
     pooled=combined_holdouts(ss)
-    fig, ax = plt.subplots(figsize=(18, 9))
-    fig.subplots_adjust(top=.73, bottom=.21, left=.065, right=.99)
+    fig, ax = plt.subplots(figsize=(18, 8))
+    fig.subplots_adjust(top=.75, bottom=.13, left=.065, right=.99)
     fig.suptitle(f'{PROJECT_NAME}: Combined Holdout Benchmark', fontsize=23, weight='bold', y=.97)
     fig.text(.5,.915,'500 held-out queries · 400 synthetic + 100 repo-style · four training stages',ha='center',fontsize=15)
     keys=['Base','Warmup SFT · 60 steps','Full SFT · 120 steps','Final OneDesk · selected update 40']
@@ -129,15 +129,14 @@ def headline(ss):
     for offset,(key,name,color) in enumerate(zip(keys,names,colors)):
         vals=[100*pooled[key][metric]['estimate'] for metric in metrics]
         labels(ax,ax.bar(x+(offset-1.5)*width,vals,width,color=color,label=name,zorder=3));data[key]=vals
-    ax.set(xticks=x,xticklabels=['Exact answer accuracy\n(n=500)','Strict stale-doc catch\n(n=250 conflicts)','Verified citation F1\n(n=425)','Valid tool & final format*\n(n=500)'],ylim=(0,117),ylabel='Score (%)')
+    ax.set(xticks=x,xticklabels=['Exact answer accuracy\n(n=500)','Strict stale-doc catch\n(n=250 conflicts)','Verified citation F1\n(n=425)','Valid final format\n(n=500)'],ylim=(0,117),ylabel='Score (%)')
     ax.annotate('+14.4 pp vs Full SFT!',xy=(1+1.5*width,84),xytext=(1.15,105),ha='center',fontsize=14,weight='bold',color=FINAL,arrowprops={'arrowstyle':'->','color':FINAL,'lw':1.7})
     clean(ax);fig.legend(*ax.get_legend_handles_labels(),loc='upper center',bbox_to_anchor=(.53,.855),ncol=4,frameon=False,fontsize=12)
-    fig.text(.065,.055,'Scores are pooled using each metric’s eligible-task count, not an equal average of the two splits.\n*Format bars measure structured final-answer validity; AuditKIT separately confirms 100% tool-call validity for all trained stages.\nStrict stale catch requires the correct answer, stale-page flag, and every gold source retrieved and cited.',fontsize=11)
     return save(fig,'1_headline_success',dict(values=data,metrics=metrics,pooled=pooled,cohort='Combined 500-query frozen holdout; metric-specific denominators'))
 
 
 def multilingual(ss):
-    fig, axes=plt.subplots(1,2,figsize=(19,8.5));fig.subplots_adjust(top=.78,bottom=.20,left=.16,right=.97,wspace=.38)
+    fig, axes=plt.subplots(1,2,figsize=(19,8));fig.subplots_adjust(top=.78,bottom=.12,left=.16,right=.97,wspace=.38)
     fig.suptitle(f'{PROJECT_NAME} Across Languages: Ask in English, Hindi, Hinglish, or Telugu',fontsize=21,weight='bold',y=.98)
     fig.text(.5,.92,'Exact answer accuracy (%) on held-out queries before vs. after training',ha='center',fontsize=14)
     names=['English\nLatin','Hindi\nDevanagari & Latin','Hinglish\nCode-mixed','Telugu\nNative & Latin']; langs=['en','hi','hinglish','te']; data={}
@@ -151,13 +150,12 @@ def multilingual(ss):
             labels(ax,ax.barh(y+off,vals,height=width,color=color,label=model_names[key]),horizontal=True);data[split][key]=vals
         ax.set(yticks=y,yticklabels=names,xlim=(0,105),xlabel='Exact answer accuracy (%)',title=title);ax.invert_yaxis();clean(ax,True)
     handles, labs=axes[0].get_legend_handles_labels();fig.legend(handles,labs,loc='upper center',bbox_to_anchor=(.55,.87),ncol=3,frameon=False)
-    fig.text(.16,.055,'Both panels compare the same stages: base, 2-epoch warmup, and final agent. Native and Latin prompts share semantic cases.\nThe final agent matches or improves on warmup across all languages here; the separate full 4-epoch SFT control is reported in docs/FULL_REPORT.md.',fontsize=11)
     return save(fig,'2_multilingual_reach',dict(values=data))
 
 
 def journey(ss):
-    fig,(left,right)=plt.subplots(1,2,figsize=(23,10),gridspec_kw={'width_ratios':[1.35,1]})
-    fig.subplots_adjust(top=.77,bottom=.25,left=.055,right=.98,wspace=.22)
+    fig,(left,right)=plt.subplots(1,2,figsize=(23,8.6),gridspec_kw={'width_ratios':[1.35,1]})
+    fig.subplots_adjust(top=.75,bottom=.16,left=.055,right=.98,wspace=.22)
     fig.suptitle('Our Training Journey: Why Naive RL Failed & How the Sweet-Spot Recipe Won',fontsize=22,weight='bold',y=.98)
     fig.text(.5,.925,'Stronger drift detection through protocol warmup and selective, anti-collapse reinforcement learning',ha='center',fontsize=14)
     keys=['Collapsed RL · 340 updates','Full SFT · 120 steps','Warmup SFT · 60 steps','Final OneDesk · selected update 40'];colors=[FAILED,SFT,SFT,FINAL]
@@ -174,9 +172,6 @@ def journey(ss):
     left.set(xticks=x,xticklabels=['Attempt 1\nWeak SFT + long RL\nLazy refusal trap','Attempt 2\nFull 4-epoch SFT\nClone bottleneck','Attempt 3\n2-epoch warmup\nStarting point',f'Final {PROJECT_NAME}\nWarmup +\nanti-collapse RL'],ylim=(0,108),ylabel='Rate (%)',title='Accuracy, outdated-doc catch & false refusal\nSynthetic benchmark')
     clean(left)
     left.legend(handles=[Patch(facecolor=BASE,label='Exact answer accuracy'),Patch(facecolor=BASE,alpha=.55,hatch='///',label='Strict outdated-doc catch'),Patch(facecolor='white',edgecolor=FAILED,label='False refusal · answerable only')],loc='upper center',bbox_to_anchor=(.5,1.28),ncol=1,frameon=False)
-    # Keep notes outside the bars: factual distinctions must remain readable.
-    fig.text(.055,.10,'LAZY REFUSAL TRAP\n309/400 queries refused (77.3% overall);\n249/340 answerable queries refused (73.2%).',color=FAILED,fontsize=12,weight='bold')
-    fig.text(.285,.10,'CLONE BOTTLENECK\n66/72 groups had zero reward variance (91.7%);\n62 of those 66 had identical token sequences.',color=INK,fontsize=12)
     groups=['Synthetic\nbenchmark','Repo-style\nbenchmark','Validation\nset'];xx=np.arange(3);ww=.32
     old=[100*ss['Full SFT · 120 steps'][sp]['metrics']['stale_catch']['estimate'] for sp in ['test_synth','repo_style','validation']]
     new=[100*ss['Final OneDesk · selected update 40'][sp]['metrics']['stale_catch']['estimate'] for sp in ['test_synth','repo_style','validation']]
@@ -185,35 +180,36 @@ def journey(ss):
     for a,b,i in zip(old,new,xx):right.text(i,max(a,b)+10,f'+{fmt(b-a)} pp',ha='center',fontsize=13,color='#047857',weight='bold')
     right.set(xticks=xx,xticklabels=groups,ylim=(0,108),ylabel='Strict outdated-doc catch (%)',title='Catching Outdated Runbooks\nConflict resolution')
     clean(right);right.legend(loc='upper center',bbox_to_anchor=(.5,1.25),frameon=False)
-    fig.text(.62,.10,'FINAL AGENT\n+15.5 percentage points on synthetic conflicts\nand +10.0 points on repo-style vs. full SFT.',fontsize=13,color='#047857',weight='bold')
-    fig.text(.055,.025,'False refusal denominator: answerable synthetic queries. Zero reward variance is not the same as zero text diversity.\nValidation selected update 40 of 80 completed updates. Full SFT retains higher overall holdout accuracy; strict catch is the final agent’s stronger metric.',fontsize=11)
     return save(fig,'3_training_journey',dict(accuracy=accuracy,strict_catch=catches,false_refusal_answerable=false,catch_control=old,catch_final=new))
 
 
 def cost():
-    data=roi();fig,ax=plt.subplots(figsize=(21,11.5));fig.subplots_adjust(top=.85,bottom=.27,left=.49,right=.90)
-    fig.suptitle('Enterprise ROI: Measured Runtime, Throughput & Privacy Options',fontsize=22,weight='bold',y=.98)
-    fig.text(.5,.925,'100,000 multi-turn audits/month · 500 held-out traces · all token bills are offline estimates',ha='center',fontsize=14)
+    data=roi();fig,ax=plt.subplots(figsize=(12.8,6.2));fig.subplots_adjust(top=.82,bottom=.13,left=.40,right=.94)
+    fig.suptitle('Enterprise ROI: Cost & Privacy Options',fontsize=20,weight='bold',y=.98)
+    fig.text(.5,.91,'Estimated monthly cost · 100,000 multi-turn company audits',ha='center',fontsize=12)
     names=[]
     for r in data:
         if r['key']=='edge':
-            detail=f"{r['output_tps']:.2f} out / {r['total_tps']:,.0f} total tok/s · {r['hours_100000']:.1f} GPU h/100k\n{r['vram_gib']:.2f} GiB reserved · $0 API · 175 W × $0.10/kWh · n=20 final adapter"
+            name='Local Workstation · RTX 2070 NF4'
+            detail=f"{r['output_tps']:.2f} out tok/s · {r['vram_gib']:.2f} GiB VRAM · $0 API"
         elif r['key']=='l40s':
-            detail=f"$1.80/GPU-h · {r['output_tps']:.1f} out / {r['total_tps']:,.0f} total tok/s (generation)\n{r['hours_100000']:.2f} GPU h/100k · n=580 · organization-controlled VPC option"
+            name='Self-Hosted Cloud · L40S BF16'
+            detail=f"$1.80/h · {r['output_tps']:.1f} out tok/s · {r['hours_100000']:.1f} GPU-h/100k"
         elif r['key']=='t4':
-            detail=f"$0.40/GPU-h · {r['output_tps']:.2f} out / {r['total_tps']:,.0f} total tok/s (proxy)\n{r['hours_100000']:.1f} GPU h/100k · token-adjusted edge proxy · NOT measured T4"
+            name='Cloud T4-Small · NF4 Scenario'
+            detail=f"$0.40/h · {r['hours_100000']:.1f} GPU-h/100k (edge proxy)"
         elif r['key']=='gpt4o_cached':
-            detail='$1.25–$2.50/M input · $10/M output · eligible prefix-cache hits\nProvider-managed throughput / GPU hours not measured · n=500 saved'
+            name='Closed API · GPT-4o (Prefix Cached)'
+            detail='$1.25–$2.50/M in · $10/M out'
         else:
-            detail='$2.50/M input · $10/M output · 4,793.714 in / 147.536 out per audit\nProvider-managed throughput / GPU hours not measured · n=500 saved'
-        names.append(r['name']+'\n'+detail)
-    bars=ax.barh(np.arange(5),[r['cost'] for r in data],height=.58,color=[FINAL,SFT,BASE,'#fb923c',FAILED],alpha=.95)
+            name='Closed API · GPT-4o (Uncached)'
+            detail='$2.50/M in · $10/M out (o200k tokens)'
+        names.append(name+'\n'+detail)
+    bars=ax.barh(np.arange(5),[r['cost'] for r in data],height=.62,color=[FINAL,SFT,BASE,'#fb923c',FAILED],alpha=.95)
     labels(ax,bars,currency=True,horizontal=True)
-    ax.set(yticks=np.arange(5),yticklabels=names,xlim=(0,max(r['cost'] for r in data)*1.23),xlabel='Estimated USD / 100,000 audits (electricity only for owned workstation)')
-    ax.tick_params(axis='y',labelsize=11,pad=13);ax.invert_yaxis();clean(ax,True)
+    ax.set(yticks=np.arange(5),yticklabels=names,xlim=(0,max(r['cost'] for r in data)*1.24),xlabel='Estimated USD / 100,000 audits')
+    ax.tick_params(axis='y',labelsize=11,pad=10);ax.invert_yaxis();clean(ax,True)
     ax.axvline(0,color='#cbd5e1',linewidth=.8)
-    fig.text(.04,.16,'Rule 5: volume + tokens/sec + GPU hours + hourly prices. L40S end-to-end rate: 61.99 out / 1,937 total tok/s; 1,471 audits/hour.\nL40S prices use full wall time (1,419.402 s); its generation-only rates use 1,302.923 s. Logical input tokens exclude padding.\nLocal: 20 stratified final-adapter NF4 episodes, batch 1. Historical 3.15 GiB is a separate v1 adapter measurement.',fontsize=12)
-    fig.text(.04,.055,'GPT-4o same-string o200k counts replace the old Cohere-token $1,316.66 estimate; no actual API invoice or quality parity is asserted.\nCaching assumes in-TTL eligible hits (≥1,024 prefix tokens, 128-token blocks). Privacy depends on VPC, connectors and logging.\nElectricity uses nameplate power, excludes hardware/CPU/idle/operations; T4 speed is unmeasured. Sources and full arithmetic: ROI_VERIFIED_BENCHMARK.json.',fontsize=11)
     return save(fig,'4_cost_and_privacy_roi',dict(scenarios=data,input_basis=__import__('clean_report_data').read('reports/submission/ROI_VERIFIED_BENCHMARK.json')))
 
 

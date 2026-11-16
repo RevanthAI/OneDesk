@@ -8,7 +8,7 @@ Company knowledge is split across Notion wikis, GitHub pull requests, Slack thre
 
 Organizations want to run compact, on-premises models (~3B parameters) so private code, incidents and database schemas never leave their infrastructure. However, out of the box, small models struggle with multi-turn tool use and strict output formatting: our base model lacks a valid structured final answer on 30% of benchmark episodes, calls the wrong tools, or fails multi-step SQL, unit-conversion and math chains—scoring just **0.4% exact accuracy** across our 500-task benchmark.
 
-**Can a small, locally deployable 3.35B model learn to generate 100% valid multi-turn tool calls, find the current production answer, cite verified evidence, flag the outdated page, and refuse when a database is offline—without collapsing into lazy refusals during reinforcement learning?**
+**Can a small, locally deployable 3.35B model learn to produce valid tool calls, find the current production answer, cite verified evidence, flag the outdated page, and refuse when a source is missing, using real tool calls instead of memorized answers?**
 
 ## Results
 
@@ -26,11 +26,13 @@ Combined performance across all **500 held-out queries** (400 synthetic + 100 re
 
 OneDesk improves strict stale-document catch over full 4-epoch SFT by **+14.4 pp pooled** (**+15.5 pp [+5.5, +26.0]** on synthetic and **+10.0 pp [+2.0, +20.4]** on repo-style), while reaching **100% valid tool-call and response formatting**. Full SFT stays slightly ahead on overall accuracy (`77.0%` vs `74.8%`) and exhaustive 3-server chain compliance, and all benchmark data is synthetic.
 
-Format percentages count valid structured final answers; AuditKIT independently records 100% tool-call validity for each trained stage on both holdouts. Pooled means use the metric-specific denominators above; paired confidence intervals remain split-specific.
+Format percentages count valid structured final answers. AuditKIT records **100% tool-call validity for the warmup, final, and full-SFT checkpoints** on both holdouts; the early 15-step SFT scores **99.3–99.5%**, and Stage 1 scores **99.75%** on synthetic. Pooled means use metric-specific denominators; paired confidence intervals remain split-specific.
 
 The final adapter runs locally in NF4 (**3.33 GiB reserved VRAM**, 20-task timing sample). Self-hosted L40S serving is **$1.22 per 1k audits**, versus **$13.46** in the historical uncached GPT-4o same-string token scenario; cached billing is detailed below.
 
 ## Submission info
+
+> **Where to look:** **Skim:** [Results](#results), then [Section 4 (Experiments)](#4-experiments-run-what-failed-and-how-we-found-the-winning-recipe) · **Verify:** [Section 7 (Repo Layout & Run Instructions)](#7-repo-layout--run-instructions) · **Depth:** Expand the `<details>` blocks below or read [`docs/FULL_REPORT.md`](docs/FULL_REPORT.md).
 
 |  |  |
 | --- | --- |
@@ -82,6 +84,25 @@ Compatibility fixes:
 
 ## 3. Data Creation, Curation & Evaluation Strategy
 
+We generated deterministic Python facts for **60 services and 80 incidents**; no LLM invented gold facts.
+Question templates cover **six language/script styles**, and **CuratorKIT 0.1.21** deduplicated **1,955 → 1,700 tasks**.
+A live tool-executing oracle verified outcomes and evidence before trajectory export; training and holdout cases are disjoint.
+
+| Scenario | Required behavior |
+| --- | --- |
+| Consistent | Verify production agreement while ignoring staging/sibling distractors. |
+| Conflicting / Outdated | Find newer production evidence, cite it and flag the stale page. |
+| Database & Calculation Chains | Execute SQL, time/unit conversions and rounded incident-cost calculations. |
+| Safe Refusal | Abstain for missing entities or an unavailable required source. |
+
+- **Exact accuracy:** correct status plus normalized value.
+- **Strict stale catch:** correct answer and stale-page flag; every gold source retrieved and cited.
+- **Citation & tool-chain compliance:** verified citation F1, successful required-server calls and AuditKIT routing diagnostics.
+- **Refusal calibration & 10,000-sample case bootstrap:** track false/necessary refusals and uncertainty, keeping translations clustered by semantic case.
+
+<details>
+<summary><strong>Deep dive: How the data was built (facts-first world, live oracle, CuratorKIT funnel & v1→v2 anti-shortcut constraints)</strong></summary>
+
 ### 3.1 Rationale: Why We Built a Custom Benchmark & Chose `CohereLabs/tiny-aya-fire`
 
 Single-turn English API-syntax accuracy alone does not establish enterprise reliability. We needed one benchmark combining **contradictory silos** (a stale Notion runbook versus a newer GitHub PR or Slack hotfix), **scope traps** (a newer `[STAGING-ONLY]` record ranked above `[PROD]`), **SQL-to-time/unit/math chains**, and English, Hindi (Devanagari/Latin), Hinglish and Telugu (native/Latin) questions. We chose **`CohereLabs/tiny-aya-fire` (3.35B)** for South Asian-script text alongside Latin technical identifiers such as `loyalty-api` and `batch_size_mb`, at a size suited to an organization-controlled on-premises boundary: our **v1 NF4 adapter used 3.15 GiB peak reserved VRAM**. That edge measurement is separate from final v2 BF16 benchmark accuracy; tokenizer support is not itself evidence of answer correctness.
@@ -105,7 +126,7 @@ Single-turn English API-syntax accuracy alone does not establish enterprise reli
 | `train_grpo_stage2.jsonl` | 552 → **480** (72) | 120 | 120 per kind | Final live multi-turn GRPO Stage 2 (updates 41–80) |
 | `val_train_80.jsonl` | 92 → **80** (12) | 20 | 20 per kind | Checkpoint selection & >40% predicted-abstention collapse guard |
 | `holdout_synth_400_frozen.jsonl` | 460 → **400** (60) | 100 | 80 consistent, 200 conflict, 60 incident, 60 abstain | Primary synthetic holdout evaluation |
-| `holdout_repo_style_100_frozen.jsonl` | 115 → **100** (15) | 26 | 20 consistent, 50 conflict, 15 incident, 15 abstain | Out-of-domain constructed OSS repo-style holdout |
+| `holdout_repo_style_100_frozen.jsonl` | 115 → **100** (15) | 26 | 20 consistent, 50 conflict, 15 incident, 15 abstain | Constructed repo-style holdout evaluation |
 | **Total frozen corpus** | **1,955 → 1,700 (255)** | **426** (+20 unrendered reserved cases) | Balanced across four language groups; coverage of six script styles | 19 approved data-file hashes checked by `src.v2_2.manage.protected()` |
 
 Task mixes describe frozen rows, not the final sampler’s accepted-update ratio. The 20 reserved training cases are outside these 1,700 rows. `SHA256SUMS` lists 15 artifacts; `protected()` additionally checks all **19 approved data files** without rewriting them.
@@ -126,16 +147,9 @@ The audit of v1’s **85.25% (85.3% rounded)** SFT result found seven plausible 
 
 6. **Tokenizer truncation preflight** ([data_v2/token_length_audit.json](data_v2/token_length_audit.json)): the cached Tiny Aya Fire tokenizer measured **min 979, mean 1,646.5, max 2,359 tokens** across 240 SFT conversations. The old **1,536-token** limit would truncate **136/240 (56.7%) of the full multilingual set**, not only native-script rows. We require **2,560 SFT tokens**, **zero truncated trajectories**, and **4,096 GRPO/evaluation context tokens**; generation is bounded to 192 tokens per turn and six tool calls.
 
-### 3.4 Evaluation Strategy: Metrics Chosen and Why
+</details>
 
-- **Exact Answer Accuracy (`exact_outcome`, 500 holdouts):** both the expected status (`answered`, `conflict_resolved`, `abstain`) and normalized scalar must match. The right number with the wrong conflict/refusal status is still an operational error; dumping several numbers cannot satisfy a single-scalar answer.
-- **Strict Outdated-Doc Catch (`stale_catch`, 250 conflicts):** exact outcome **plus the exact stale-page ID plus every gold source actually retrieved and cited**. This tests whether the agent caught and grounded the documentation drift, rather than guessing the updated value or merely collecting evidence.
-- **Verified Citation & Tool-Chain Compliance (425 evidence/answerable tasks):** citation F1 credits retrieved-and-cited gold IDs while penalizing unsupported IDs; required-chain compliance checks successful required-server calls, including time/conversion/math utilities. These detect correct-looking unsupported answers and skipped calculations. AuditKIT’s native tool-selection precision/recall/F1, validity and redundancy diagnose routing/schema errors and wasted calls; valid final format is tracked separately. Tool calls per successful task measure efficiency without rewarding premature failure.
-- **Refusal Calibration:** abstention precision penalizes false refusals of answerable questions; recall checks necessary refusals, with unplugged-source recall isolated. An agent that refuses everything can appear cautious while failing the job—the failure our collapsed-RL control exposes.
-
-Reported 95% intervals use **10,000 semantic-case cluster bootstrap resamples**, keeping correlated language versions together: **20 validation / 100 synthetic / 26 repo-style cases**. Confidence intervals describe these frozen cohorts, not independent translations or verified live-enterprise generalization.
-
-## 4. Experiments Run, What Failed & Winning Recipe
+## 4. Experiments Run, What Failed, and How We Found the Winning Recipe
 
 ![Training Journey](figures/3_training_journey.png)
 
@@ -164,6 +178,21 @@ Two-epoch protocol warmup followed by anti-collapse, positive-anchor G6 GRPO com
 
 ![Cost and Privacy ROI](figures/4_cost_and_privacy_roi.png)
 
+Serving scenario: **100,000 multi-turn audits/month**; local electricity excludes hardware and operations.
+Local timing uses **20 distinct final-adapter NF4 cases**; L40S throughput comes from **580 recorded BF16 episodes**.
+**Hackathon compute used:** ~**12.05 L40S GPU-hours + 2.35 A100 minutes ≈ $21.80** at list rates ([recorded compute lower bound](reports/submission/COMPUTE_ACCOUNTING.json)).
+
+| Serving option | USD / 1k audits | USD / 100k audits | Basis |
+| --- | --- | --- | --- |
+| Local workstation · RTX 2070 NF4 | $0.10 | $9.55 | Measured final v2.1 NF4 (`7.84 out tok/s`, `3.33 GiB` VRAM); electricity only (`175W × $0.10/kWh`) |
+| Self-hosted L40S · BF16 | $1.22 | $122.36 | Measured HF Jobs BF16 (`67.5 out tok/s`, `67.98 GPU-h/100k` at `$1.80/h`) |
+| Cloud T4-small · NF4 scenario | $2.23 | $223.03 | Unmeasured T4; token-adjusted local NF4 proxy at `$0.40/h` |
+| Closed API · GPT-4o (prefix cached) | $10.58 | $1,057.93 | `o200k_base` counts (`4,794` in / `148` out) with 50% eligible prefix-cache discount |
+| Closed API · GPT-4o (uncached) | $13.46 | $1,345.96 | Historical uncached `$2.50/M` input + `$10/M` output |
+
+<details>
+<summary><strong>Deep dive: Rule 5 throughput (tokens/sec), GPU runtime hours, live v2.1 NF4 timing & prefix-caching methodology</strong></summary>
+
 | Serving option | Sample volume | Pricing basis (GPU/hr or token rate) | Tokens/sec throughput | GPU runtime hours (1k /100k audits) | Cost /1k audits | Cost /100k audits |
 | --- | --- | --- | --- | --- | --- | --- |
 | Local workstation · RTX 2070 NF4 | 20 | $0 API; 175 W × $0.10/kWh; 3.33 GiB reserved; Measured final v2.1 adapter, 20 episodes, batch 1 | 7.84 out / 239.5 total tok/s | 5.456 / 545.65 hrs | **$0.10** | **$9.55** |
@@ -176,19 +205,17 @@ Two-epoch protocol warmup followed by anti-collapse, positive-anchor G6 GRPO com
 
 **Workload:** 100,000 company audits/month, with 1,000-audit unit costs. Exact replay of **500 saved holdouts / 1,620 assistant turns** gives **4,653.332 Cohere input / 153.322 visible output tokens per audit**; the identical strings encode as **4,793.714 input / 147.536 output in `o200k_base`**. Of the OpenAI-encoded input, **1,881.468** tokens/audit are newly introduced and **2,912.246** repeat an earlier input prefix; **2,304.256** qualify under the historical ≥1,024-token / 128-token-block rule.
 
-**Timing basis:** the L40S log covers **580 episodes** (500 holdouts + 80 validation), **1,419.402 seconds full wall / 1,302.923 seconds generation**, and **87,984 generated tokens**. Its **67.53 output / 2,110.62 logical total tok/s** generation rate differs from **61.99 output / 1,937.42 total tok/s** end-to-end; runtime costs use the full wall clock. Replaying all 580 inputs yields **2,661,997** tokens, so the previously proposed ~1,968 total tok/s is replaced by these reproducible rates. Startup, idle capacity, API quality equivalence and operations are outside the serving projection.
+**Timing basis:** the L40S log covers **580 episodes** (500 holdouts + 80 validation), **1,419.402 seconds full wall / 1,302.923 seconds generation**, and **87,984 generated tokens**. Its **67.53 output / 2,110.62 logical total tok/s** generation rate differs from **61.99 output / 1,937.42 total tok/s** end-to-end; runtime costs use the full wall clock. Replaying all 580 inputs yields **2,661,997** logical input tokens. Startup, idle capacity, API quality equivalence and operations are outside the serving projection.
 
 **Live final-adapter NF4 check:** RTX 2070, FP16 compute, greedy batch 1, six-call limit, 192 generated tokens/turn, 4,096 context tokens; **16 synthetic + 4 repo-style tasks**, balanced five per kind, cover **20 distinct semantic cases**. After one excluded warmup episode, the 20 episodes used **392.865 wall seconds**, **391.615 generation seconds**, **90,993 input / 3,082 generated tokens**, and **3.332 GiB peak reserved VRAM**. Sample exact-outcome accuracy is **75.0%**, versus **80.0%** for the same 20 saved BF16 episodes; this is not a 500-task NF4 quality estimate. The table projects the measured sample runtime; T4 instead adjusts final holdout logical-token volume to edge speed and remains a proxy.
 
-**Caching and billing:** GPT-4o cached costs assume eligible in-TTL hits, not observed usage; the **$1,316.66 uncached legacy value uses Cohere token counts**. Retokenizing the same text with `o200k_base` gives **$1,316.66 → $1,345.96 /100k** for the uncached comparison. Provider message framing differs from the Cohere template, so these are offline estimates, not API invoices. Historical Claude 3.5 at $3/M ordinary input, $0.30/M cache reads, $3.75/M 5-minute writes and $15/M output gives **$16.59 uncached / $11.25 cached per 1k**, or **$1,659.42 / $1,124.50 per 100k**, using an explicitly non-native `o200k_base` token proxy with charged writes.
+**Caching and billing:** GPT-4o costs use `o200k_base` counts of the saved strings and historical token prices; cached costs assume eligible in-TTL hits, not observed usage. Provider message framing differs from the Cohere template, so these are offline estimates, not API invoices. Historical Claude 3.5 at $3/M ordinary input, $0.30/M cache reads, $3.75/M 5-minute writes and $15/M output gives **$16.59 uncached / $11.25 cached per 1k**, or **$1,659.42 / $1,124.50 per 100k**, using an explicitly non-native `o200k_base` token proxy with charged writes.
 
 [Full audit, per-hour prices and benchmark provenance](reports/submission/ROI_VERIFIED_BENCHMARK.json); per-turn counts are in `ROI_TOKEN_TURNS.jsonl`. Electricity uses **175 W × $0.10/kWh**, not a power meter. T4 remains an unmeasured token-adjusted edge proxy; on-premises/VPC privacy depends on connector and logging controls. Historical schedules: [OpenAI caching](https://openai.com/index/api-prompt-caching/), [Claude caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching), [HF Jobs rates](https://huggingface.co/docs/hub/en/jobs-pricing).
 
-**Hackathon Compute Used:** recorded **12.05 L40S hours + 2.35 A100 minutes ≈ $21.80** continuous list-rate lower bound.
+</details>
 
-Includes observed training/evaluation work; excludes uncovered setup/charged intervals and minute rounding, so it is not an invoice total ([accounting](reports/submission/COMPUTE_ACCOUNTING.json)).
-
-## 5–8. Models, Datasets & Public HF Collections
+## 5. Models, Datasets & Public HF Collections
 
 - **Primary Final Model:** [Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val](https://huggingface.co/Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val) (base: [CohereLabs/tiny-aya-fire](https://huggingface.co/CohereLabs/tiny-aya-fire), rev `73500c80`).
 - **Public Model Collection (all 9 artifacts & controls):** [Revanth-ml/onedesk-models-and-experimental-controls](https://huggingface.co/collections/Revanth-ml/onedesk-models-and-experimental-controls-6af97221a617ddc3326204a6).
@@ -197,7 +224,7 @@ Includes observed training/evaluation work; excludes uncovered setup/charged int
 
 [Nine-row revision table, six split hashes and all 19 protected-file checksums](docs/FULL_REPORT.md#5-models-used-and-their-licenses).
 
-## 9. With More Credits: Approach, Before and After Results
+## 6. With More Credits: Approach, Before and After Results
 
 **Targets, not measured results:**
 
@@ -208,7 +235,9 @@ Includes observed training/evaluation work; excludes uncovered setup/charged int
 | Overall accuracy | **75.75% / 71.00%** | Matched-compute warmup/reward/sampling sweep | **83%+**, aspirational |
 | Confirmation | One selected recipe | Multiple seeds; fresh source-backed cohort | Replicated paired gains |
 
-## 10. Repo Layout & Run Instructions
+## 7. Repo Layout & Run Instructions
+
+Formerly DriftGuard-MCP, hence the `DriftGuard*` class names in `src/v2_2/`. Unrelated to the commercial OneDesk helpdesk software.
 
 ```text
 ├── src/              # v1/, v2/, v2_1/, v2_2/ runtimes; provenance-listed sources stay here
@@ -217,7 +246,7 @@ Includes observed training/evaluation work; excludes uncovered setup/charged int
 ├── reports/          # v1/, v2/, v2_1/, v2_2/, submission/ evidence
 ├── figures/          # Benchmark charts and static architecture diagrams
 ├── docs/             # Full report, dossier, hf_cards/ and archive/data_v1/
-└── tests/            # v1/, v2/, v2_1/, v2_2/: 120 regression tests
+└── tests/            # v1/, v2/, v2_1/, v2_2/: 126 regression tests
 ```
 
 Canonical commands use `src.v2_2`; legacy imports remain supported. See [repository layout and source-provenance notes](docs/REPOSITORY_LAYOUT.md), including the two pre-existing source-checksum mismatches.
@@ -264,9 +293,7 @@ CUDA_VISIBLE_DEVICES='' python -m pytest tests -q
 python scripts/benchmark_v2_1_roi.py
 ```
 
-## 11. Honest Limitations & Teammates Tagged
-
-OneDesk is an open-source hackathon research prototype, formerly DriftGuard-MCP, and is unrelated to the commercial OneDesk helpdesk software; internal `DriftGuard*` class names retain that history.
+## 8. Honest Limitations & Teammates Tagged
 
 - Constructed fixtures, modulo-3 configuration values and correlated template translations; no verified live-OSS transfer. Scalar answers recur across different facts, as the [text audit](reports/submission/TEXT_LEAK_AUDIT.json) reports.
 - Overall GRPO-over-warmup holdout gain intervals include zero; repeated validation selection and one run need fresh confirmation.

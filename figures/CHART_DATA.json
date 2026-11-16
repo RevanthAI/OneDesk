@@ -144,8 +144,8 @@
         }
       },
       "cohort": "Combined 500-query frozen holdout; metric-specific denominators",
-      "png_sha256": "4c41ec0a4e83eb3941a954b2b4a2e86eb6d2aaaf13f93024003976e2f792771e",
-      "svg_sha256": "6ae6c9015ece8f1ea8cb9f95bbe33a14e0c5e8ec36307abbca3768aa0bb17d1d"
+      "png_sha256": "f873565b1259b34f33eba74cf24c7b471a2809c90f8815b4de932a2906057717",
+      "svg_sha256": "d9fc27b960b1e6dababa107ad0e5879008fa2d8dde1ad240fb36bb1984779bbc"
     },
     {
       "name": "2_multilingual_reach",
@@ -191,8 +191,8 @@
           ]
         }
       },
-      "png_sha256": "a963705a219e06ff8c8e8ee1cd4bc0ddfba25c3d99a317ec3455974b4abb4fe7",
-      "svg_sha256": "0488dc1ca2d11e3c8b25ef242a9fec6ce7eaf2cef947f1a52746906b0cb4d461"
+      "png_sha256": "4bdf5b6647a3af5ba26169a42595fb3b876ca8f0d8ecc8e8637197eea397cfcf",
+      "svg_sha256": "dae1b89129e279d20491262bf0bff75d1e0aae9031c1509866247ca73bdf783a"
     },
     {
       "name": "3_training_journey",
@@ -224,8 +224,8 @@
         62.0,
         70.0
       ],
-      "png_sha256": "7c1a3d3a5078c64b8f64e6e4fdb77ef2f48b192fe352d1cad012274455e4254d",
-      "svg_sha256": "5613bd370448ea4649242f609bae51bd9f66cb67656771fbbb8ce031d68f30c4"
+      "png_sha256": "8413b10a5a18cdb1a21fe6d47d4079d1a77393495ebc77fdb121e8609a72fa1f",
+      "svg_sha256": "f73be44e126d8921d69a31369e335cfc75a9bf72a427d7a25eaee5c8bc61c33c"
     },
     {
       "name": "4_cost_and_privacy_roi",
@@ -613,8 +613,8 @@
         ],
         "historical_cohere_uncached_usd_100000": 1316.6550000000002
       },
-      "png_sha256": "c973a6d114fd39c340d355d5e99bae9a0fdc967b58fe289b1f8ecb0d92649046",
-      "svg_sha256": "15cda65dcc4a754c517a1ea652aed58f82cc5ad70ddbbca52461be3552bdb7df"
+      "png_sha256": "7499b07f39d57d5839bf9c5174b8f79d70099ddbc7ffb56cd8cac7cf0dcc43e8",
+      "svg_sha256": "83746351f63a12f979de9a2cee55ecaa7107d683d1edad567f9949eb2ddd34b3"
     }
   ]
 }

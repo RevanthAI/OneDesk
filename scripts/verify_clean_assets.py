@@ -36,14 +36,22 @@ def main():
         png=next((ROOT/'figures').glob(f'{n}_*.png'));svg=png.with_suffix('.svg')
         assert svg.exists() and not png.is_symlink() and not svg.is_symlink()
         with Image.open(png) as im:
-            assert im.width>=4000 and im.height>=2000
+            minimum=(3000,1400) if n==4 else (4000,2000)
+            assert im.width>=minimum[0] and im.height>=minimum[1]
             assert all(abs(x-300)<1 for x in im.info['dpi'])
             figures.append(dict(path=str(png.relative_to(ROOT)),size=list(im.size),dpi=list(im.info['dpi'])))
     report=(ROOT/'README.md').read_text()
     assert report.startswith('# OneDesk: One Multilingual Workspace to Query Your Company’s Knowledge Base') and 'SangamKB' not in report
     assert '## The problem' in report and '## Results' in report and '## Submission info' in report
-    assert [int(x) for x in re.findall(r'^## (\d+)\.',report,re.M)]==[1,2,3,4,9,10,11]
-    assert '## 5–8. Models, Datasets & Public HF Collections' in report
+    assert [int(x) for x in re.findall(r'^## (\d+)\.',report,re.M)]==list(range(1,9))
+    assert '## 5. Models, Datasets & Public HF Collections' in report
+    blocks=re.findall(r'<details>\n<summary>.*?</summary>\n\n(.*?)\n\n</details>',report,re.S)
+    assert len(blocks)==2 and report.count('\n<details>\n')==2
+    assert 'train_sft_240.jsonl' in blocks[0]
+    assert 'modulo-3' in blocks[0] and 'Tokenizer truncation' in blocks[0]
+    assert 'Sample volume' in blocks[1] and 'GPU runtime hours' in blocks[1]
+    assert 'produce valid tool calls' in report and 'for each trained stage' not in report
+    assert '## 7. Repo Layout & Run Instructions\n\nFormerly DriftGuard-MCP' in report
     assert 'targets, not measured results' in report.casefold()
     assert MODEL_COLLECTION_URL in report and DATA_COLLECTION_URL in report
     assert 'pending `--publish`' not in report and '```mermaid' not in report
@@ -52,6 +60,7 @@ def main():
     assert (ROOT/'docs/archive/REPORT.md').is_file()
     assert (ROOT/'docs/SUBMISSION_DOSSIER.md').is_file()
     full=(ROOT/'docs/FULL_REPORT.md').read_text()
+    assert '<details>' not in full
     assert len(re.findall(r'!\[[^\]]*\]\(\.\./figures/[^)]+\)',full))==6
     assert 'All 19 Protected Dataset Checksums' in full
     assert 'CPU Text-Level Overlap Check' in full and '32/425' in full

@@ -1,0 +1,31 @@
+{
+  "cpu_only": true,
+  "inference_run": false,
+  "cloud_jobs_launched": false,
+  "tests_passed": 126,
+  "protected_files": 19,
+  "details_blocks": 2,
+  "details_markdown_spacing_valid": true,
+  "full_report_expanded": true,
+  "internal_links_verified": true,
+  "chart_values_unchanged": true,
+  "roi_prices_unchanged": true,
+  "charts_visually_verified": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "readme_words_total": 3757,
+  "readme_words_visible": 2024,
+  "source_data_and_checkpoints_modified": false,
+  "sha256": {
+    "README.md": "fe1d88bd5b8f7da6c3224532cc3b52a435c23e6aaa59881adecb1b230bfb2f5b",
+    "docs/FULL_REPORT.md": "deafee30cf9a6b88c2123367f59a2b658c629c8dead3f80413cfa90d817b819c",
+    "docs/HF_ARTICLE.md": "6f58e2b0faac977f6251578e03f0741e77a10d0bf03cc68c65a001667e2d3719",
+    "figures/1_headline_success.png": "f873565b1259b34f33eba74cf24c7b471a2809c90f8815b4de932a2906057717",
+    "figures/2_multilingual_reach.png": "4bdf5b6647a3af5ba26169a42595fb3b876ca8f0d8ecc8e8637197eea397cfcf",
+    "figures/3_training_journey.png": "8413b10a5a18cdb1a21fe6d47d4079d1a77393495ebc77fdb121e8609a72fa1f",
+    "figures/4_cost_and_privacy_roi.png": "7499b07f39d57d5839bf9c5174b8f79d70099ddbc7ffb56cd8cac7cf0dcc43e8"
+  }
+}
