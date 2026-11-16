@@ -1,0 +1,38 @@
+{
+  "tests_passed": 126,
+  "protected_files": 19,
+  "local_gpu_benchmark": true,
+  "paid_jobs_launched": false,
+  "final_adapter_sha256": "b286392a2d979af730b6c9fcd1c2a14369a2f859bcc691526478d0e8220a2f07",
+  "benchmark_sample_cases": 20,
+  "token_audit_episodes": 500,
+  "token_audit_turns": 1620,
+  "l40s_recorded_episodes": 580,
+  "token_conservation_passed": true,
+  "gfm_links_valid": true,
+  "chart_visually_verified": true,
+  "package_versions": {
+    "torch": "2.8.0+cu128",
+    "transformers": "4.57.6",
+    "peft": "0.17.1",
+    "bitsandbytes": "0.50.2",
+    "tiktoken": "0.14.0"
+  },
+  "notes": [
+    "Cached schedules assume eligible cache hits; no frontier inference or invoices.",
+    "Claude uses an explicitly disclosed o200k proxy.",
+    "T4 is unmeasured; its $0.40/hour cost uses token-adjusted final-adapter edge speed.",
+    "Historical 3.15 GiB belongs to v1; final adapter measured 3.33203125 GiB.",
+    "All 120 existing tests plus six new ROI tests pass."
+  ],
+  "sha256": {
+    "reports/submission/ROI_VERIFIED_BENCHMARK.json": "0137462fdfd3fd7ab2cff5d35121dda028a6172553213d20809cfe81e2762c57",
+    "reports/submission/ROI_TOKEN_AUDIT.json": "8463902fbc3d9b0fe6502511b82394ffb0191537b7e8e3cdaf6425b9c882c07b",
+    "reports/submission/ROI_LOCAL_NF4_BENCHMARK.json": "09da307709277ebd2372f30fbdee07e8203a1d5875c7dec38154d582447f0f32",
+    "figures/4_cost_and_privacy_roi.png": "c973a6d114fd39c340d355d5e99bae9a0fdc967b58fe289b1f8ecb0d92649046",
+    "figures/4_cost_and_privacy_roi.svg": "15cda65dcc4a754c517a1ea652aed58f82cc5ad70ddbbca52461be3552bdb7df",
+    "README.md": "4e4fdb0ad13d636caa573139d9f6f169601f0230da8f30da0272f287361bb6ba",
+    "docs/FULL_REPORT.md": "33e91a9d566b1ade812abdbb7dab3007802e00dd0aab446245004d57413ef734",
+    "docs/HF_ARTICLE.md": "0dc539f0db87df1a120af4bcb6af85a335244648588c7fbb41869306ce8c3905"
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "model": "CohereLabs/tiny-aya-fire",
+  "revision": "73500c80fcb6c8bea3e830c21d5d2920249a0e1a",
+  "selected_update": 40,
+  "tokenizer_metadata": {
+    "transformers": "4.57.6",
+    "tiktoken": "0.14.0",
+    "encoding": "o200k_base",
+    "tokenizer_class": "PreTrainedTokenizerFast",
+    "chat_template_sha256": "2147c474f41b522b7296f74692b9f31e45f49a31465960576a9d321339c5915a"
+  },
+  "scope": "500 saved final-model holdouts; no frontier API requests or measured API quality.",
+  "tokenizer_basis": "Cohere native chat-template strings, encoded identically by Cohere and o200k_base. o200k is exact for these strings, not provider wire framing; Claude uses a disclosed token proxy, NOT a native tokenizer.",
+  "output_basis": "Visible decoded assistant strings, excluding stripped EOS/pad tokens; runtime-generated token count is reported separately.",
+  "prefix_policy": "Longest common token prefix of consecutive per-episode inputs; new input includes prior assistant/tool observation. GPT-4o historical 1024 minimum /128 quantum, ideal in-TTL cache hits, no cross-episode reuse. Cache eligibility is not an observed cache hit.",
+  "claude_policy": "Historical 5-minute cache: read $0.30/M, write $3.75/M, ordinary $3/M, output $15/M. Explicit input-prefix breakpoints each turn except final, minimum1024; full-initial plus incremental writes billed. Token/framing eligibility is a scenario only.",
+  "token_counts": {
+    "cohere": {
+      "input_tokens": 2326666,
+      "repeated_prefix_tokens": 1421313,
+      "new_input_tokens": 905353,
+      "eligible_cached_tokens": 1421313,
+      "billed_uncached_tokens": 905353,
+      "output_tokens": 76661,
+      "claude_cache_read_tokens": 1110833,
+      "claude_cache_write_tokens": 708945,
+      "episodes": 500,
+      "assistant_turns": 1620,
+      "per_episode": {
+        "input_tokens": 4653.332,
+        "repeated_prefix_tokens": 2842.626,
+        "new_input_tokens": 1810.706,
+        "eligible_cached_tokens": 2842.626,
+        "billed_uncached_tokens": 1810.706,
+        "output_tokens": 153.322,
+        "claude_cache_read_tokens": 2221.666,
+        "claude_cache_write_tokens": 1417.89,
+        "assistant_turns": 3.24
+      }
+    },
+    "o200k_base": {
+      "input_tokens": 2396857,
+      "repeated_prefix_tokens": 1456123,
+      "new_input_tokens": 940734,
+      "eligible_cached_tokens": 1152128,
+      "billed_uncached_tokens": 1244729,
+      "output_tokens": 73768,
+      "claude_cache_read_tokens": 1193878,
+      "claude_cache_write_tokens": 731854,
+      "episodes": 500,
+      "assistant_turns": 1620,
+      "per_episode": {
+        "input_tokens": 4793.714,
+        "repeated_prefix_tokens": 2912.246,
+        "new_input_tokens": 1881.468,
+        "eligible_cached_tokens": 2304.256,
+        "billed_uncached_tokens": 2489.458,
+        "output_tokens": 147.536,
+        "claude_cache_read_tokens": 2387.756,
+        "claude_cache_write_tokens": 1463.708,
+        "assistant_turns": 3.24
+      }
+    }
+  },
+  "billing": {
+    "cohere": {
+      "gpt4o": {
+        "uncached_usd_per_1000": 13.16655,
+        "uncached_usd_per_100000": 1316.655,
+        "cached_usd_per_1000": 9.6132675,
+        "cached_usd_per_100000": 961.32675,
+        "cache_read_tokens": 1421313,
+        "cache_write_tokens": 0
+      },
+      "claude35": {
+        "uncached_usd_per_1000": 16.259826,
+        "uncached_usd_per_100000": 1625.9826,
+        "cached_usd_per_1000": 11.3247453,
+        "cached_usd_per_100000": 1132.47453,
+        "cache_read_tokens": 1110833,
+        "cache_write_tokens": 708945
+      }
+    },
+    "o200k_base": {
+      "gpt4o": {
+        "uncached_usd_per_1000": 13.459645,
+        "uncached_usd_per_100000": 1345.9645,
+        "cached_usd_per_1000": 10.579325,
+        "cached_usd_per_100000": 1057.9325,
+        "cache_read_tokens": 1152128,
+        "cache_write_tokens": 0
+      },
+      "claude35": {
+        "uncached_usd_per_1000": 16.594182,
+        "uncached_usd_per_100000": 1659.4182,
+        "cached_usd_per_1000": 11.2450218,
+        "cached_usd_per_100000": 1124.50218,
+        "cache_read_tokens": 1193878,
+        "cache_write_tokens": 731854
+      }
+    }
+  },
+  "l40s": {
+    "sample_volume": 580,
+    "holdout_sample_volume": 500,
+    "batch_size": 16,
+    "gpu": "NVIDIA L40S",
+    "dtype": "bfloat16",
+    "usd_per_gpu_hour": 1.8,
+    "wall_seconds": 1419.40222566,
+    "generation_seconds": 1302.9230059619986,
+    "runtime_generated_tokens": 87984,
+    "replayed_input_tokens": 2661997,
+    "generation_output_tokens_per_second": 67.5281652080723,
+    "generation_total_tokens_per_second": 2110.6243326861686,
+    "wall_output_tokens_per_second": 61.98665777002625,
+    "wall_total_tokens_per_second": 1937.421930363186,
+    "audits_per_hour": 1471.0417965063514,
+    "gpu_hours_per_1000": 0.6797903379597702,
+    "gpu_hours_per_100000": 67.97903379597702,
+    "usd_per_1000": 1.2236226083275863,
+    "usd_per_100000": 122.36226083275864,
+    "peak_reserved_gib": 13.56640625
+  },
+  "sources": {
+    "openai": "https://openai.com/index/api-prompt-caching/",
+    "claude": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
+    "hf_jobs": "https://huggingface.co/docs/hub/en/jobs-pricing"
+  },
+  "artifact_hashes": {
+    "reports/v2_2/grpo_evaluation/runtime.json": "c4784158e8fea5abea5243722b4c21bea2f90252bb935b688e9fe7fcb580bccd",
+    "reports/v2_2/grpo_evaluation/test_synth_episodes.jsonl": "0e5532aa82f96213ee4d51aa7af715779c3031adb765d22779514afecd21ac7d",
+    "reports/v2_2/grpo_evaluation/repo_style_episodes.jsonl": "71b19e725fe4477ce45738cc150a0bfc97909bdc99f94348f9305055b74f2873",
+    "reports/v2_2/grpo_evaluation/validation_episodes.jsonl": "2a941b0309a0fc7ab6bc8506dba927c58fd6e0f74abbb5abdbdab6bc15c5fce4"
+  },
+  "protected_files": 19
+}

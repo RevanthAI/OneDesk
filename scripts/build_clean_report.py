@@ -5,6 +5,7 @@ import re
 from clean_report_data import (ROOT, BASE, summaries, combined_holdouts, table, ci, percent, language_examples, roi, protect, digest)
 from publication_markdown import publication as published_state, format_gfm, url_link
 from dataset_narrative import data_section
+from roi_analysis import narrative as roi_narrative, scenarios as roi_scenarios
 
 FINAL_REPO='Revanth-ml/onedesk-tiny-aya-fire-v2-1-warmup-grpo-best-val'
 SPACE_URL='https://huggingface.co/spaces/Revanth-ml/OneDesk'
@@ -22,6 +23,10 @@ def update_full_report(audit):
     text=text.replace('No public Gradio application is established by these artifacts.','The public OneDesk Space provides recorded traces; live MCP inference requires owner-configured gated-model access.')
     text=text.replace('The public OneDesk Space provides recorded traces and opt-in live MCP inference.','The public OneDesk Space provides recorded traces; live MCP inference requires owner-configured gated-model access.')
     text=re.sub(r'## 3\. Data Creation, Curation & Evaluation Strategy\n.*?(?=## 4\.)',lambda _:data_section(audit,prefix='../'),text,flags=re.S)
+    text=re.sub(r'### Enterprise ROI & Privacy\n.*?(?=## 5\.)',lambda _:'### Enterprise ROI & Privacy\n\n![Cost and Privacy ROI](../figures/4_cost_and_privacy_roi.png)\n\n'+roi_narrative(prefix='../'),text,flags=re.S)
+    local=next(s for s in roi_scenarios() if s['key']=='edge')
+    text=re.sub(r'^\| On-premises & affordable \|.*$',lambda _:f"| On-premises & affordable | Final-adapter NF4 timing uses **{local['vram_gib']:.2f} GiB reserved VRAM** on 20 local tasks; $0 API fees. L40S is **$1.22/1k audits** at **$1.80/GPU-hour**; the detailed table includes cached/uncached API scenarios and measured throughput. Connector/logging controls define the privacy boundary. |",text,flags=re.M)
+    text=text.replace('local 3.15 GiB and speed measurements are from the v1 NF4 adapter, while v2 quality/throughput was measured in BF16.', 'final-adapter local NF4 timing/memory is measured on 20 stratified tasks; complete v2 quality results use BF16. The historical 3.15 GiB measurement belongs to v1.')
     path.write_text(format_gfm(text))
 
 
@@ -30,6 +35,7 @@ def update_article(audit):
     if not path.exists():return
     image='![Multilingual results](https://raw.githubusercontent.com/RevanthAI/OneDesk/main/figures/2_multilingual_reach.png)\n\n'
     text=re.sub(r'## 3\. Data Creation, Curation & Evaluation Strategy\n.*?(?=## Three Lexsi toolkits in one pipeline)',lambda _:data_section(audit,article=True)+image,path.read_text(),flags=re.S)
+    text=re.sub(r'## What would it cost to run internally\?\n.*?(?=## What we would do next)',lambda _:'## What would it cost to run internally?\n\n![ROI scenarios](https://raw.githubusercontent.com/RevanthAI/OneDesk/main/figures/4_cost_and_privacy_roi.png)\n\n'+roi_narrative(article=True),text,flags=re.S)
     path.write_text(format_gfm(text))
 
 
@@ -60,7 +66,8 @@ def build(publication=None, output_path=None):
     add(table(['Metric (Combined 500-Query Holdout)','Untrained Base','Warmup SFT (2-ep)','Full SFT (4-ep)','**OneDesk (Final RL)**'],result_rows))
     add('OneDesk improves strict stale-document catch over full 4-epoch SFT by **+14.4 pp pooled** (**+15.5 pp [+5.5, +26.0]** on synthetic and **+10.0 pp [+2.0, +20.4]** on repo-style), while reaching **100% valid tool-call and response formatting**. Full SFT stays slightly ahead on overall accuracy (`77.0%` vs `74.8%`) and exhaustive 3-server chain compliance, and all benchmark data is synthetic.')
     add('Format percentages count valid structured final answers; AuditKIT independently records 100% tool-call validity for each trained stage on both holdouts. Pooled means use the metric-specific denominators above; paired confidence intervals remain split-specific.')
-    add('Runs locally in 4-bit NF4 (**3.15 GiB VRAM**, v1 adapter). Self-hosted L40S serving costs **$1.22 per 1k audits** vs **$13.17** at historical GPT-4o prices.')
+    local=next(s for s in roi_scenarios() if s['key']=='edge');api=next(s for s in roi_scenarios() if s['key']=='gpt4o')
+    add(f"The final adapter runs locally in NF4 (**{local['vram_gib']:.2f} GiB reserved VRAM**, 20-task timing sample). Self-hosted L40S serving is **$1.22 per 1k audits**, versus **${api['cost_1000']:.2f}** in the historical uncached GPT-4o same-string token scenario; cached billing is detailed below.")
     add('## Submission info')
     add(table(['',''],[
         ['Track','3, problem statements 1, 2, 4, 5, 6, 9'],
@@ -98,8 +105,9 @@ def build(publication=None, output_path=None):
     keys=[('Base','Base'),('Warmup SFT · 60 steps','Warmup SFT · 60 steps'),('Final OneDesk · selected update 40','Final OneDesk · GRPO update 40'),('Full SFT · 120 steps','Full 4-Epoch SFT · 120 steps')]
     add(table(['Checkpoint','Synthetic % [95% CI]','Repo-style % [95% CI]','Validation % [95% CI]'],[[label]+[ci(ss[key][sp]['metrics']['exact_outcome']) for sp in ('test_synth','repo_style','validation')] for key,label in keys]))
     add('[Full seven-checkpoint, multilingual and AuditKIT tables](docs/FULL_REPORT.md).')
+    add('### Enterprise ROI & Privacy')
     add('![Cost and Privacy ROI](figures/4_cost_and_privacy_roi.png)')
-    add(table(['Serving option','USD /1k audits','USD /100k audits'],[[r['name'],f"${r['cost']/100:.2f}",f"${r['cost']:,.2f}"] for r in roi() if r['key'] in ('edge','l40s','gpt4o')]))
+    add(roi_narrative())
     add('**Hackathon Compute Used:** recorded **12.05 L40S hours + 2.35 A100 minutes ≈ $21.80** continuous list-rate lower bound.\n\nIncludes observed training/evaluation work; excludes uncovered setup/charged intervals and minute rounding, so it is not an invoice total ([accounting](reports/submission/COMPUTE_ACCOUNTING.json)).')
     add('## 5–8. Models, Datasets & Public HF Collections')
     add(f'- **Primary Final Model:** [{FINAL_REPO}](https://huggingface.co/{FINAL_REPO}) (base: [{BASE}](https://huggingface.co/{BASE}), rev `73500c80`).\n- **Public Model Collection (all 9 artifacts & controls):** '+url_link(pub['model_collection_url'])+'.\n- **Public Data Collection (frozen benchmark & rollout journals):** '+url_link(pub['data_collection_url'])+'.\n- **Licenses:** model weights/adapters `CC-BY-NC-4.0` · synthetic data `CC-BY-4.0` ([LICENSE-DATA.md](LICENSE-DATA.md)) · code `Apache-2.0` ([LICENSE](LICENSE)).')
@@ -156,11 +164,15 @@ python -m src.v2_2.local_demo --adapter checkpoints/v2_2/grpo_best_val_adapter
 
 # CPU audit and complete regression suite.
 python scripts/text_leak_check.py
+python scripts/verify_roi_billing.py --local-files-only
 CUDA_VISIBLE_DEVICES='' python -m pytest tests -q
+
+# Local GPU timing of the final adapter on 20 distinct cases.
+python scripts/benchmark_v2_1_roi.py
 ```''')
     add('## 11. Honest Limitations & Teammates Tagged')
     add('OneDesk is an open-source hackathon research prototype, formerly DriftGuard-MCP, and is unrelated to the commercial OneDesk helpdesk software; internal `DriftGuard*` class names retain that history.')
-    add('- Constructed fixtures, modulo-3 configuration values and correlated template translations; no verified live-OSS transfer. Scalar answers recur across different facts, as the [text audit](reports/submission/TEXT_LEAK_AUDIT.json) reports.\n- Overall GRPO-over-warmup holdout gain intervals include zero; repeated validation selection and one run need fresh confirmation.\n- Prefer **full SFT for overall accuracy**, selected **GRPO for strict stale catch**; chain completeness, incident reasoning and unplugged-DB handling still need work.\n- Warmup length, group size and temperature changed together; zero variance does not prove full-distribution entropy collapse.\n- Local VRAM/speed is measured on the **v1 NF4 adapter**; v2 results are BF16. ROI excludes hardware/operations, uses historical API prices, and does not establish equal API accuracy; privacy requires appropriate connectors and logging.\n- Model weights retain noncommercial terms; third-party licenses apply. The public Space distinguishes recorded evidence from opt-in live runs; future targets remain unmeasured.')
+    add('- Constructed fixtures, modulo-3 configuration values and correlated template translations; no verified live-OSS transfer. Scalar answers recur across different facts, as the [text audit](reports/submission/TEXT_LEAK_AUDIT.json) reports.\n- Overall GRPO-over-warmup holdout gain intervals include zero; repeated validation selection and one run need fresh confirmation.\n- Prefer **full SFT for overall accuracy**, selected **GRPO for strict stale catch**; chain completeness, incident reasoning and unplugged-DB handling still need work.\n- Warmup length, group size and temperature changed together; zero variance does not prove full-distribution entropy collapse.\n- Final-adapter local NF4 speed/memory is measured on 20 stratified episodes; full v2 accuracy results are BF16. ROI excludes hardware/operations, uses historical same-string API price estimates, and does not establish equal API accuracy; privacy requires appropriate connectors and logging.\n- Model weights retain noncommercial terms; third-party licenses apply. The public Space distinguishes recorded evidence from opt-in live runs; future targets remain unmeasured.')
     add('**Teammates tagged:** [@Revanth-ml](https://huggingface.co/Revanth-ml).')
     text=format_gfm('\n'.join(parts))
     output=Path(output_path) if output_path is not None else ROOT/'README.md';output.write_text(text)

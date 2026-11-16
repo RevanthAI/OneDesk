@@ -15,7 +15,7 @@
 | The vision | One internal workspace: ask in English, Hindi (Devanagari/Latin), Hinglish or Telugu (native/Latin), and reconcile company wikis, code PRs, chat threads and databases into a current, cited answer. |
 | The core challenge | A wiki may be stale after yesterday’s PR or hotfix; the newest document may be `[STAGING-ONLY]`. OneDesk checks production scope, reconciles evidence, flags outdated pages, runs SQL/time/unit/math chains, and handles unavailable sources. |
 | Headline results | Base → final: **0.5% → 75.8% synthetic accuracy**, **0.0% → 71.0% repo-style accuracy**, and **100% valid final response format** on all 500 holdouts. Strict outdated-doc catch: **79.0%**, beating four-epoch SFT’s 63.5% by **15.5 percentage points** on synthetic conflicts. |
-| On-premises & affordable | A local NF4 deployment measured **3.15 GiB VRAM** with $0 API fees (v1 adapter). The measured L40S serving scenario costs **$1.22/1,000 audits**, about 10.8× below the historical GPT-4o token-price scenario. On-premises deployment keeps model processing local; connector/logging controls define the privacy boundary. |
+| On-premises & affordable | Final-adapter NF4 timing uses **3.33 GiB reserved VRAM** on 20 local tasks; $0 API fees. L40S is **$1.22/1k audits** at **$1.80/GPU-hour**; the detailed table includes cached/uncached API scenarios and measured throughput. Connector/logging controls define the privacy boundary. |
 | What we built | A facts-first multilingual benchmark, real AgentTune SFT/live GRPO, CuratorKIT deduplication, AuditKIT evaluation, and a documented diagnosis and recovery from RL abstention collapse. |
 
 ![Headline Results](../figures/1_headline_success.png)
@@ -205,15 +205,25 @@ Full SFT is the strongest overall-accuracy control; OneDesk’s selected RL agen
 
 ![Cost and Privacy ROI](../figures/4_cost_and_privacy_roi.png)
 
-| Deployment option | Monthly / 100,000 audits | Per 1,000 audits | Basis |
-| --- | --- | --- | --- |
-| Local workstation · RTX 2070 NF4 | $8.00 | $0.08 | Electricity only: 175 W, $0.10/kWh; measured v1 NF4 speed |
-| Self-hosted L40S · BF16 | $122.36 | $1.22 | Measured offline BF16 throughput; $1.80/GPU-hour |
-| Cloud T4 · scenario | $228.57 | $2.29 | Unmeasured T4; edge-latency proxy at $0.50/GPU-hour |
-| Closed API · GPT-4o | $1,316.66 | $13.17 | Historical uncached rates: $2.50/M input + $10/M output |
-| Closed API · Claude 3.5 Sonnet | $1,625.98 | $16.26 | Historical $3/M input + $15/M output; retired endpoint |
+| Serving option | Sample volume | Pricing basis (GPU/hr or token rate) | Tokens/sec throughput | GPU runtime hours (1k /100k audits) | Cost /1k audits | Cost /100k audits |
+| --- | --- | --- | --- | --- | --- | --- |
+| Local workstation · RTX 2070 NF4 | 20 | $0 API; 175 W × $0.10/kWh; 3.33 GiB reserved; Measured final v2.1 adapter, 20 episodes, batch 1 | 7.84 out / 239.5 total tok/s | 5.456 / 545.65 hrs | **$0.10** | **$9.55** |
+| Self-hosted L40S · BF16 | 580 | $1.80/GPU-hour | 67.53 out / 2,110.6 total tok/s (generation); 61.99 / 1,937.4 wall; 1,471 audits/hr | 0.680 / 67.98 hrs | **$1.22** | **$122.36** |
+| Cloud T4-small · NF4 scenario | 500 saved; timing proxy | $0.40/GPU-hour | 7.64 out / 239.5 total tok/s (**proxy**) | 5.576 / 557.58 hrs | **$2.23** | **$223.03** |
+| GPT-4o · eligible prefix caching | 500 saved; offline pricing | $2.50/M new in · $1.25/M cache · $10/M out | Provider-managed; **not measured**; 3.24 turns/audit | N/A · external API | **$10.58** | **$1,057.93** |
+| GPT-4o · uncached baseline | 500 saved; offline pricing | $2.50/M input · $10/M output | Provider-managed; **not measured**; 3.24 turns/audit | N/A · external API | **$13.46** | **$1,345.96** |
 
-For the selected agent, saved multi-turn holdout traces average **4,653.332 input tokens** and **153.322 decoded output tokens** per audit. The API scenario applies historical uncached rates to that volume. The L40S result uses the recorded **1,419.402 seconds / 580 evaluation episodes**, about **1,471 audits/hour**, at **$1.80/hour**. Local electricity assumes **175 W × $0.10/kWh** and the recorded v1 RTX 2070 runtime; it has no API token bill. On-premises deployment can keep model processing and evidence inside company infrastructure. A self-hosted cloud model can instead be deployed under an organization’s VPC controls.
+**Volume rationale:** 100,000 audits/month is about 3,333/day—for example, roughly 200 service owners or scheduled agents running 17 configuration/incident checks per day. This is a deployment load scenario, not observed enterprise traffic or 100,000 independent incidents.
+
+**Workload:** 100,000 company audits/month, with 1,000-audit unit costs. Exact replay of **500 saved holdouts / 1,620 assistant turns** gives **4,653.332 Cohere input / 153.322 visible output tokens per audit**; the identical strings encode as **4,793.714 input / 147.536 output in `o200k_base`**. Of the OpenAI-encoded input, **1,881.468** tokens/audit are newly introduced and **2,912.246** repeat an earlier input prefix; **2,304.256** qualify under the historical ≥1,024-token / 128-token-block rule.
+
+**Timing basis:** the L40S log covers **580 episodes** (500 holdouts + 80 validation), **1,419.402 seconds full wall / 1,302.923 seconds generation**, and **87,984 generated tokens**. Its **67.53 output / 2,110.62 logical total tok/s** generation rate differs from **61.99 output / 1,937.42 total tok/s** end-to-end; runtime costs use the full wall clock. Replaying all 580 inputs yields **2,661,997** tokens, so the previously proposed ~1,968 total tok/s is replaced by these reproducible rates. Startup, idle capacity, API quality equivalence and operations are outside the serving projection.
+
+**Live final-adapter NF4 check:** RTX 2070, FP16 compute, greedy batch 1, six-call limit, 192 generated tokens/turn, 4,096 context tokens; **16 synthetic + 4 repo-style tasks**, balanced five per kind, cover **20 distinct semantic cases**. After one excluded warmup episode, the 20 episodes used **392.865 wall seconds**, **391.615 generation seconds**, **90,993 input / 3,082 generated tokens**, and **3.332 GiB peak reserved VRAM**. Sample exact-outcome accuracy is **75.0%**, versus **80.0%** for the same 20 saved BF16 episodes; this is not a 500-task NF4 quality estimate. The table projects the measured sample runtime; T4 instead adjusts final holdout logical-token volume to edge speed and remains a proxy.
+
+**Caching and billing:** GPT-4o cached costs assume eligible in-TTL hits, not observed usage; the **$1,316.66 uncached legacy value uses Cohere token counts**. Retokenizing the same text with `o200k_base` gives **$1,316.66 → $1,345.96 /100k** for the uncached comparison. Provider message framing differs from the Cohere template, so these are offline estimates, not API invoices. Historical Claude 3.5 at $3/M ordinary input, $0.30/M cache reads, $3.75/M 5-minute writes and $15/M output gives **$16.59 uncached / $11.25 cached per 1k**, or **$1,659.42 / $1,124.50 per 100k**, using an explicitly non-native `o200k_base` token proxy with charged writes.
+
+[Full audit, per-hour prices and benchmark provenance](../reports/submission/ROI_VERIFIED_BENCHMARK.json); per-turn counts are in `ROI_TOKEN_TURNS.jsonl`. Electricity uses **175 W × $0.10/kWh**, not a power meter. T4 remains an unmeasured token-adjusted edge proxy; on-premises/VPC privacy depends on connector and logging controls. Historical schedules: [OpenAI caching](https://openai.com/index/api-prompt-caching/), [Claude caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching), [HF Jobs rates](https://huggingface.co/docs/hub/en/jobs-pricing).
 
 ## 5. Models Used and Their Licenses
 
@@ -312,7 +322,7 @@ CUDA_VISIBLE_DEVICES='' .venv/bin/python -m pytest tests -q
 - **Selection and uncertainty:** translations are clustered, validation has only 20 semantic cases, and checkpoints were repeatedly selected on it. Overall GRPO-minus-warmup holdout gains have paired 95% intervals that include zero: **+3.25 pp [−2.50, +9.00] synthetic**, **+7.00 pp [−5.00, +20.00] repo-style**. A fresh confirmation set and multiple seeds are needed.
 - **Which checkpoint to choose:** full four-epoch SFT has higher overall accuracy (**77.25% / 76.00%**). Selected OneDesk GRPO is better on strict stale catch (**79.00% / 62.00%**), but required-chain compliance fell from warmup **93.82% / 90.59%** to **86.47% / 74.12%**. It still misses some unplugged sources and unnecessarily refuses some answerable tasks. The rule checks server calls, not causal use of every observation.
 - **Exploration explanation:** shorter warmup, G4→G6 and higher temperatures changed together. Zero reward variance is not identical text, and identical sampled sequences are not a full-distribution entropy measurement. The recipe avoided the earlier abstention collapse in this run; no universal causal fix is claimed.
-- **Cost and privacy:** local 3.15 GiB and speed measurements are from the v1 NF4 adapter, while v2 quality/throughput was measured in BF16. T4 throughput and API accuracy were not measured; API prices are historical, Claude 3.5 Sonnet is retired, and costs exclude hardware amortization/operations. Privacy depends on the deployment, access controls, connectors and logs; it is not guaranteed by the model.
+- **Cost and privacy:** final-adapter local NF4 timing/memory is measured on 20 stratified tasks; complete v2 quality results use BF16. The historical 3.15 GiB measurement belongs to v1. T4 throughput and API accuracy were not measured; API prices are historical, Claude 3.5 Sonnet is retired, and costs exclude hardware amortization/operations. Privacy depends on the deployment, access controls, connectors and logs; it is not guaranteed by the model.
 - **Licenses and scope:** model weights and adapters retain CC BY-NC 4.0 noncommercial terms; original synthetic data is CC-BY-4.0 and original project code is Apache-2.0. Third-party licenses still apply. The public OneDesk Space provides recorded traces; live MCP inference requires owner-configured gated-model access. Future 83%+/96% numbers are targets only.
 
 ## Appendix: All 19 Protected Dataset Checksums

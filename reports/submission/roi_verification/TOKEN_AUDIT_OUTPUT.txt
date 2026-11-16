@@ -1,0 +1,86 @@
+{
+  "counts": {
+    "cohere": {
+      "input_tokens": 4653.332,
+      "repeated_prefix_tokens": 2842.626,
+      "new_input_tokens": 1810.706,
+      "eligible_cached_tokens": 2842.626,
+      "billed_uncached_tokens": 1810.706,
+      "output_tokens": 153.322,
+      "claude_cache_read_tokens": 2221.666,
+      "claude_cache_write_tokens": 1417.89,
+      "assistant_turns": 3.24
+    },
+    "o200k_base": {
+      "input_tokens": 4793.714,
+      "repeated_prefix_tokens": 2912.246,
+      "new_input_tokens": 1881.468,
+      "eligible_cached_tokens": 2304.256,
+      "billed_uncached_tokens": 2489.458,
+      "output_tokens": 147.536,
+      "claude_cache_read_tokens": 2387.756,
+      "claude_cache_write_tokens": 1463.708,
+      "assistant_turns": 3.24
+    }
+  },
+  "billing": {
+    "cohere": {
+      "gpt4o": {
+        "uncached_usd_per_1000": 13.16655,
+        "uncached_usd_per_100000": 1316.655,
+        "cached_usd_per_1000": 9.6132675,
+        "cached_usd_per_100000": 961.32675,
+        "cache_read_tokens": 1421313,
+        "cache_write_tokens": 0
+      },
+      "claude35": {
+        "uncached_usd_per_1000": 16.259826,
+        "uncached_usd_per_100000": 1625.9826,
+        "cached_usd_per_1000": 11.3247453,
+        "cached_usd_per_100000": 1132.47453,
+        "cache_read_tokens": 1110833,
+        "cache_write_tokens": 708945
+      }
+    },
+    "o200k_base": {
+      "gpt4o": {
+        "uncached_usd_per_1000": 13.459645,
+        "uncached_usd_per_100000": 1345.9645,
+        "cached_usd_per_1000": 10.579325,
+        "cached_usd_per_100000": 1057.9325,
+        "cache_read_tokens": 1152128,
+        "cache_write_tokens": 0
+      },
+      "claude35": {
+        "uncached_usd_per_1000": 16.594182,
+        "uncached_usd_per_100000": 1659.4182,
+        "cached_usd_per_1000": 11.2450218,
+        "cached_usd_per_100000": 1124.50218,
+        "cache_read_tokens": 1193878,
+        "cache_write_tokens": 731854
+      }
+    }
+  },
+  "l40s": {
+    "sample_volume": 580,
+    "holdout_sample_volume": 500,
+    "batch_size": 16,
+    "gpu": "NVIDIA L40S",
+    "dtype": "bfloat16",
+    "usd_per_gpu_hour": 1.8,
+    "wall_seconds": 1419.40222566,
+    "generation_seconds": 1302.9230059619986,
+    "runtime_generated_tokens": 87984,
+    "replayed_input_tokens": 2661997,
+    "generation_output_tokens_per_second": 67.5281652080723,
+    "generation_total_tokens_per_second": 2110.6243326861686,
+    "wall_output_tokens_per_second": 61.98665777002625,
+    "wall_total_tokens_per_second": 1937.421930363186,
+    "audits_per_hour": 1471.0417965063514,
+    "gpu_hours_per_1000": 0.6797903379597702,
+    "gpu_hours_per_100000": 67.97903379597702,
+    "usd_per_1000": 1.2236226083275863,
+    "usd_per_100000": 122.36226083275864,
+    "peak_reserved_gib": 13.56640625
+  }
+}

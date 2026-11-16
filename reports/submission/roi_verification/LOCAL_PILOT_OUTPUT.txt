@@ -1,0 +1,73 @@
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:41<00:41, 41.87s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:55<00:00, 25.38s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:55<00:00, 27.85s/it]
+{"completed": 1, "total": 20, "generated_tokens": 199}
+{"completed": 2, "total": 20, "generated_tokens": 398}
+{"completed": 3, "total": 20, "generated_tokens": 597}
+{"completed": 4, "total": 20, "generated_tokens": 796}
+{"completed": 5, "total": 20, "generated_tokens": 929}
+{"completed": 6, "total": 20, "generated_tokens": 1062}
+{"completed": 7, "total": 20, "generated_tokens": 1195}
+{"completed": 8, "total": 20, "generated_tokens": 1328}
+{"completed": 9, "total": 20, "generated_tokens": 1534}
+{"completed": 10, "total": 20, "generated_tokens": 1753}
+{"completed": 11, "total": 20, "generated_tokens": 1959}
+{"completed": 12, "total": 20, "generated_tokens": 2165}
+{"completed": 13, "total": 20, "generated_tokens": 2242}
+{"completed": 14, "total": 20, "generated_tokens": 2319}
+{"completed": 15, "total": 20, "generated_tokens": 2396}
+{"completed": 16, "total": 20, "generated_tokens": 2473}
+{"completed": 17, "total": 20, "generated_tokens": 2627}
+{"completed": 18, "total": 20, "generated_tokens": 2765}
+{"completed": 19, "total": 20, "generated_tokens": 2971}
+{"completed": 20, "total": 20, "generated_tokens": 3049}
+{
+  "schema_version": 1,
+  "adapter": "checkpoints/v2_2/grpo_best_val_adapter",
+  "sample_volume": 20,
+  "sample_task_ids": [
+    "holdout_synth-0000-en",
+    "holdout_synth-0000-hi",
+    "holdout_synth-0000-hinglish",
+    "holdout_synth-0000-te",
+    "holdout_synth-0008-hi",
+    "holdout_synth-0008-hinglish",
+    "holdout_synth-0008-te",
+    "holdout_synth-0008-en",
+    "holdout_synth-0001-hinglish",
+    "holdout_synth-0001-te",
+    "holdout_synth-0001-en",
+    "holdout_synth-0001-hi",
+    "holdout_synth-0002-te",
+    "holdout_synth-0002-en",
+    "holdout_synth-0002-hi",
+    "holdout_synth-0002-hinglish",
+    "holdout_repo_style-0002-en",
+    "holdout_repo_style-0000-hi",
+    "holdout_repo_style-0007-hinglish",
+    "holdout_repo_style-0001-te"
+  ],
+  "batch_size": 1,
+  "cuda_available": true,
+  "cloud_job_launched": false,
+  "model": "CohereLabs/tiny-aya-fire",
+  "revision": "73500c80fcb6c8bea3e830c21d5d2920249a0e1a",
+  "adapter_sha256": "b286392a2d979af730b6c9fcd1c2a14369a2f859bcc691526478d0e8220a2f07",
+  "model_load_seconds": 58.54523177899955,
+  "gpu": "NVIDIA GeForce RTX 2070",
+  "compute_dtype": "float16",
+  "quantization": "bitsandbytes NF4 double-quant",
+  "status": "measured",
+  "wall_seconds": 393.411878723,
+  "generation_seconds": 392.1456872300014,
+  "input_tokens": 87973,
+  "generated_tokens": 3049,
+  "output_tokens_per_second": 7.750147275412574,
+  "total_tokens_per_second": 231.36566261154584,
+  "generation_only_output_tokens_per_second": 7.77517157344561,
+  "peak_reserved_gib": 3.30859375,
+  "gpu_hours_per_1000": 5.464053871152777,
+  "gpu_hours_per_100000": 546.4053871152777,
+  "electricity_usd_per_1000": 0.0956209427451736,
+  "electricity_usd_per_100000": 9.56209427451736,
+  "power_basis": "175 W nameplate scenario, not measured energy; $0.10/kWh; excludes CPU, idle and hardware",
+  "protected_files": 19
+}

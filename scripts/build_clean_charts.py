@@ -24,6 +24,7 @@ def style():
     plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 12, 'axes.titlesize': 15,
                          'axes.labelsize': 12, 'xtick.labelsize': 11, 'ytick.labelsize': 12,
                          'legend.fontsize': 11, 'figure.facecolor': 'white', 'axes.facecolor': 'white',
+                         'text.parse_math': False,
                          'text.color': INK, 'axes.labelcolor': INK, 'xtick.color': INK, 'ytick.color': INK,
                          'svg.fonttype': 'none', 'svg.hashsalt': PROJECT_NAME, 'savefig.facecolor': 'white'})
 
@@ -190,16 +191,30 @@ def journey(ss):
 
 
 def cost():
-    data=roi();fig,ax=plt.subplots(figsize=(17,9));fig.subplots_adjust(top=.79,bottom=.21,left=.37,right=.89)
-    fig.suptitle('Enterprise ROI: ~10× Lower Serving Cost & an On-Premises Option',fontsize=21,weight='bold',y=.98)
-    fig.text(.5,.92,'Estimated monthly cost for 100,000 multi-turn company knowledge queries',ha='center',fontsize=14)
-    names=[r['name']+'\n'+r['detail'] for r in data]
-    bars=ax.barh(np.arange(5),[r['cost'] for r in data],height=.60,color=[FINAL,SFT,BASE,FAILED,FAILED],alpha=.95)
-    labels(ax,bars,currency=True,horizontal=True);ax.set(yticks=np.arange(5),yticklabels=names,xlim=(0,1800),xlabel='Estimated monthly serving cost (USD)');ax.invert_yaxis();clean(ax,True)
+    data=roi();fig,ax=plt.subplots(figsize=(21,11.5));fig.subplots_adjust(top=.85,bottom=.27,left=.49,right=.90)
+    fig.suptitle('Enterprise ROI: Measured Runtime, Throughput & Privacy Options',fontsize=22,weight='bold',y=.98)
+    fig.text(.5,.925,'100,000 multi-turn audits/month · 500 held-out traces · all token bills are offline estimates',ha='center',fontsize=14)
+    names=[]
+    for r in data:
+        if r['key']=='edge':
+            detail=f"{r['output_tps']:.2f} out / {r['total_tps']:,.0f} total tok/s · {r['hours_100000']:.1f} GPU h/100k\n{r['vram_gib']:.2f} GiB reserved · $0 API · 175 W × $0.10/kWh · n=20 final adapter"
+        elif r['key']=='l40s':
+            detail=f"$1.80/GPU-h · {r['output_tps']:.1f} out / {r['total_tps']:,.0f} total tok/s (generation)\n{r['hours_100000']:.2f} GPU h/100k · n=580 · organization-controlled VPC option"
+        elif r['key']=='t4':
+            detail=f"$0.40/GPU-h · {r['output_tps']:.2f} out / {r['total_tps']:,.0f} total tok/s (proxy)\n{r['hours_100000']:.1f} GPU h/100k · token-adjusted edge proxy · NOT measured T4"
+        elif r['key']=='gpt4o_cached':
+            detail='$1.25–$2.50/M input · $10/M output · eligible prefix-cache hits\nProvider-managed throughput / GPU hours not measured · n=500 saved'
+        else:
+            detail='$2.50/M input · $10/M output · 4,793.714 in / 147.536 out per audit\nProvider-managed throughput / GPU hours not measured · n=500 saved'
+        names.append(r['name']+'\n'+detail)
+    bars=ax.barh(np.arange(5),[r['cost'] for r in data],height=.58,color=[FINAL,SFT,BASE,'#fb923c',FAILED],alpha=.95)
+    labels(ax,bars,currency=True,horizontal=True)
+    ax.set(yticks=np.arange(5),yticklabels=names,xlim=(0,max(r['cost'] for r in data)*1.23),xlabel='Estimated USD / 100,000 audits (electricity only for owned workstation)')
+    ax.tick_params(axis='y',labelsize=11,pad=13);ax.invert_yaxis();clean(ax,True)
     ax.axvline(0,color='#cbd5e1',linewidth=.8)
-    fig.text(.37,.12,'Electricity-only edge cost excludes hardware, CPU and operations. Cloud cost assumes on-demand use.\nVPC/on-premises deployment controls the data boundary; privacy depends on connectors and logging.',fontsize=11)
-    fig.text(.37,.045,'Local: measured v1 NF4 speed, 175 W × $0.10/kWh. L40S: measured v2 BF16 batch throughput.\nT4: unmeasured proxy. APIs: historical uncached prices; Claude 3.5 Sonnet is retired. No API accuracy comparison.',fontsize=11)
-    return save(fig,'4_cost_and_privacy_roi',dict(scenarios=data,input_basis=__import__('clean_report_data').read('reports/submission/ROI_SCENARIOS.json')))
+    fig.text(.04,.16,'Rule 5: volume + tokens/sec + GPU hours + hourly prices. L40S end-to-end rate: 61.99 out / 1,937 total tok/s; 1,471 audits/hour.\nL40S prices use full wall time (1,419.402 s); its generation-only rates use 1,302.923 s. Logical input tokens exclude padding.\nLocal: 20 stratified final-adapter NF4 episodes, batch 1. Historical 3.15 GiB is a separate v1 adapter measurement.',fontsize=12)
+    fig.text(.04,.055,'GPT-4o same-string o200k counts replace the old Cohere-token $1,316.66 estimate; no actual API invoice or quality parity is asserted.\nCaching assumes in-TTL eligible hits (≥1,024 prefix tokens, 128-token blocks). Privacy depends on VPC, connectors and logging.\nElectricity uses nameplate power, excludes hardware/CPU/idle/operations; T4 speed is unmeasured. Sources and full arithmetic: ROI_VERIFIED_BENCHMARK.json.',fontsize=11)
+    return save(fig,'4_cost_and_privacy_roi',dict(scenarios=data,input_basis=__import__('clean_report_data').read('reports/submission/ROI_VERIFIED_BENCHMARK.json')))
 
 
 def main():

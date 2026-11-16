@@ -111,14 +111,8 @@ def language_examples():
     return [next(r for r in rs if r['language'] == lang and r['script'] == script and r['kind'] == 'conflict') for lang, script in keys]
 
 def roi():
-    values = read('reports/submission/ROI_SCENARIOS.json')
-    return [
-        dict(key='edge', name='Local workstation · RTX 2070 NF4', detail='3.15 GiB measured · on-premises option', cost=8.00, basis='Electricity only: 175 W, $0.10/kWh; measured v1 NF4 speed'),
-        dict(key='l40s', name='Self-hosted L40S · BF16', detail='~1,471 audits/hour · VPC deployment option', cost=122.36, basis='Measured offline BF16 throughput; $1.80/GPU-hour'),
-        dict(key='t4', name='Cloud T4 · scenario', detail='VPC deployment option · assumed throughput', cost=228.57, basis='Unmeasured T4; edge-latency proxy at $0.50/GPU-hour'),
-        dict(key='gpt4o', name='Closed API · GPT-4o', detail='External API processing', cost=1316.66, basis='Historical uncached rates: $2.50/M input + $10/M output'),
-        dict(key='claude', name='Closed API · Claude 3.5 Sonnet', detail='Historical API comparison', cost=1625.98, basis='Historical $3/M input + $15/M output; retired endpoint'),
-    ]
+    from roi_analysis import scenarios
+    return [dict(r, cost=r['cost_100000'], detail=r['basis']) for r in scenarios()]
 
 def registry():
     """Only artifact-backed repositories, never the two untrained planned v2.1 names."""
